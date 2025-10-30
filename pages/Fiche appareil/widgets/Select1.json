@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 4,
   "boxShadow": "none",
-  "defaultOptionValue": "GREEN",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( appsmith.URL.queryParams.numero_appareil))(Select1.options, Select1.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -14,6 +14,9 @@
     },
     {
       "key": "sourceData"
+    },
+    {
+      "key": "defaultOptionValue"
     }
   ],
   "dynamicHeight": "FIXED",
@@ -47,7 +50,7 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "onOptionChange": "{{navigateTo('Fiche appareil', {\n  \"numero_appareil\": Select1.selectedOptionValue\n}, 'SAME_WINDOW');}}",
+  "onOptionChange": "{{navigateTo('Fiche appareil', {\n  \"numero_appareil\": Select1.selectedOptionValue\n}, 'SAME_WINDOW');\nDonneesGeneralesAffaire.run();\nCaracteristiquesAppareils.run();\nEnceintesAppareil.run();}}",
   "optionLabel": "numero_appareil",
   "optionValue": "numero_appareil",
   "parentColumnSpace": 19.8125,

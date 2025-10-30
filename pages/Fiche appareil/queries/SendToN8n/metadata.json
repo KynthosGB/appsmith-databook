@@ -11,7 +11,7 @@
           "value": "application/json"
         }
       ],
-      "body": "{\n  \"nom_client\": {{CaracteristiquesAppareils.data[0].nom_client}},\n  \"numero_affaire\": {{CaracteristiquesAppareils.data[0].numero_affaire}},\n  \"reference_client\": {{CaracteristiquesAppareils.data[0].reference_client}},\n  \"nom_appareil\": {{CaracteristiquesAppareils.data[0].nom_appareil}},\n  \"repere_appareil\": {{CaracteristiquesAppareils.data[0].repere_appareil}},\n  \"date_creation_dossier\": {{CaracteristiquesAppareils.data[0].date_creation_dossier}},\n}\n",
+      "body": "{\n  \"nom_client\": {{DonneesGeneralesAffaire.data[0].nom_client}},\n  \"numero_affaire\": {{CaracteristiquesAppareils.data[0].numero_affaire}},\n  \"reference_client\": {{CaracteristiquesAppareils.data[0].reference_client}},\n  \"nom_appareil\": {{CaracteristiquesAppareils.data[0].nom_appareil}},\n  \"repere_appareil\": {{CaracteristiquesAppareils.data[0].repere_appareil}},\n  \"date_creation_dossier\": {{DonneesGeneralesAffaire.data[0].date_creation_dossier}},\n}\n",
       "bodyFormData": [],
       "encodeParamsToggle": true,
       "formData": {
@@ -21,7 +21,7 @@
       "httpMethod": "POST",
       "httpVersion": "HTTP11",
       "paginationType": "NONE",
-      "path": "/webhook/appsmith-databook-to-n8n",
+      "path": "/webhook-test/appsmith-databook-to-n8n",
       "pluginSpecifiedTemplates": [
         {
           "value": true

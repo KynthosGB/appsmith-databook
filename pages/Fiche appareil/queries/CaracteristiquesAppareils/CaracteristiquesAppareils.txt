@@ -1,0 +1,2 @@
+SELECT * FROM public."caracteristiques_appareils"
+WHERE numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}';

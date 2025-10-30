@@ -1,0 +1,2 @@
+INSERT INTO public."affaires" ("numero_affaire", "nom_client", "cloture")
+  VALUES ('{{InputNumeroAffaire.text}}', '{{InputNomClient.text}}', 'false');

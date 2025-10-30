@@ -1,0 +1,8 @@
+{
+  "nom_client": {{CaracteristiquesAppareils.data[0].nom_client}},
+  "numero_affaire": {{CaracteristiquesAppareils.data[0].numero_affaire}},
+  "reference_client": {{CaracteristiquesAppareils.data[0].reference_client}},
+  "nom_appareil": {{CaracteristiquesAppareils.data[0].nom_appareil}},
+  "repere_appareil": {{CaracteristiquesAppareils.data[0].repere_appareil}},
+  "date_creation_dossier": {{CaracteristiquesAppareils.data[0].date_creation_dossier}},
+}

@@ -1,0 +1,8 @@
+SELECT *
+FROM public.caracteristiques_appareils ca
+LEFT JOIN public.enceintes_appareils ea ON ca.numero_appareil = ea.numero_appareil
+LEFT JOIN public.controles_visuels cv ON ca.numero_appareil = cv.numero_appareil
+LEFT JOIN public.controles_hydrauliques ch ON ca.numero_appareil = ch.numero_appareil
+LEFT JOIN public.plans_inspection pi ON ca.numero_appareil = pi.numero_appareil
+LEFT JOIN public.liste_appareils la ON ca.numero_appareil = la.numero_appareil
+WHERE ca.numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}';

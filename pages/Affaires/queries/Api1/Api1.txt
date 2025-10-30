@@ -1,0 +1,8 @@
+{
+  "nom_client": {{GetInformations.data[0].nom_client}},
+  "numero_affaire": {{GetInformations.data[0].numero_affaire}},
+  "reference_client": {{GetInformations.data[0].reference_client}},
+  "nom_appareil": {{GetInformations.data[0].nom_appareil}},
+  "repere_appareil": {{GetInformations.data[0].repere_appareil}},
+  "date_creation_dossier": {{GetInformations.data[0].date_creation_dossier}}
+}

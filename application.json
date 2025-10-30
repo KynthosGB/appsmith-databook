@@ -1,0 +1,28 @@
+{
+  "appIsExample": false,
+  "appLayout": {
+    "type": "DESKTOP"
+  },
+  "applicationVersion": 2,
+  "collapseInvisibleWidgets": true,
+  "color": "#C7F3F0",
+  "evaluationVersion": 2,
+  "icon": "book",
+  "pages": [
+    {
+      "id": "Appareils",
+      "isDefault": false
+    },
+    {
+      "id": "Affaires",
+      "isDefault": true
+    },
+    {
+      "id": "Fiche appareil",
+      "isDefault": false
+    }
+  ],
+  "unpublishedAppLayout": {
+    "type": "DESKTOP"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 22,
+  "boxShadow": "none",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonStyle": "PRIMARY_BUTTON",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    },
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "b4xheta7ln",
+  "leftColumn": 47,
+  "minWidth": 120,
+  "mobileBottomRow": 22,
+  "mobileLeftColumn": 47,
+  "mobileRightColumn": 63,
+  "mobileTopRow": 18,
+  "needsErrorInfo": false,
+  "onClick": "{{\n  (async () => {\n    // 1) Création du dossier sur le réseau\n    await CreerDossierAffaire.run()\n      .then(() => showAlert(\"Dossier de l'affaire créé sur le réseau\", \"success\"))\n      .catch((e) => {\n        showAlert(\"Échec de la création du dossier de l'affaire sur le réseau\", \"error\");\n        throw e; // stoppe la suite si erreur\n      });\n\n    // 2) Ajout de l'affaire dans la base\n    await AjoutAffaire.run()\n      .then(() => showAlert(\"Affaire créée en base\", \"success\"))\n      .catch((e) => {\n        showAlert(\"Erreur lors de la création de l'affaire en base\", \"error\");\n        throw e;\n      });\n\n    // 3) Rafraîchir le tableau\n    await GetAffaires.run();\n\n    // 4) Fermer la modal\n    closeModal(ModalCreerAffaire.name);\n  })().catch((e) => {\n    showAlert(\"Erreur : \" + (e.message || e), \"error\");\n  })\n}}\n",
+  "parentId": "t0mc8r7u34",
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": true,
+  "responsiveBehavior": "hug",
+  "rightColumn": 63,
+  "text": "Confirmer",
+  "topRow": 18,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "yjp1f55hrn",
+  "widgetName": "ButtonModalCreerAffaire"
+}

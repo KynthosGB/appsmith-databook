@@ -1,0 +1,33 @@
+UPDATE public.enceintes_appareils
+SET
+  numero = {{Table1.updatedRow.numero}},
+	pression_min = {{Table1.updatedRow.pression_min}},
+	pression_max = {{Table1.updatedRow.pression_max}},
+	pression_min_calculee = {{Table1.updatedRow.pression_min_calculee}},
+	pression_max_calculee = {{Table1.updatedRow.pression_max_calculee}},
+	temperature_min = {{Table1.updatedRow.temperature_min}},
+	temperature_max = {{Table1.updatedRow.temperature_max}},
+	temperature_min_calculee = {{Table1.updatedRow.temperature_min_calculee}},
+	temperature_max_calculee = {{Table1.updatedRow.temperature_max_calculee}},
+	delta_temperature = {{Table1.updatedRow.delta_temperature}},
+	pression_epreuve = {{Table1.updatedRow.pression_epreuve}},
+	date_epreuve = {{Table1.updatedRow.date_epreuve}},
+	densite = {{Table1.updatedRow.densite}},
+	poids_essai = {{Table1.updatedRow.poids_essai}},
+	nature_fluide = {{Table1.updatedRow.nature_fluide}},
+	capacite = {{Table1.updatedRow.capacite}},
+	nuance = {{Table1.updatedRow.nuance}},
+	epaisseur_calorifique = {{Table1.updatedRow.epaisseur_calorifique}},
+	explosif = {{Table1.updatedRow.explosif}},
+	inflammable = {{Table1.updatedRow.inflammable}},
+	toxique = {{Table1.updatedRow.toxique}},
+	oxydant = {{Table1.updatedRow.oxydant}},
+	type_appareil = {{Table1.updatedRow.type_appareil}},
+	epaisseur_corrosion = {{Table1.updatedRow.epaisseur_corrosion}},
+	numero_appareil = {{Table1.updatedRow.numero_appareil}},
+	poids_a_vide = {{Table1.updatedRow.poids_a_vide}},
+	poids_de_service = {{Table1.updatedRow.poids_de_service}},
+	pression_declenchement_securite = {{Table1.updatedRow.pression_declenchement_securite}}
+	
+WHERE
+  id = {{Table1.updatedRow.id}};

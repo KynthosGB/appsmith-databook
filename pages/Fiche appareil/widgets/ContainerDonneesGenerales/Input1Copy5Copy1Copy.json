@@ -46,6 +46,8 @@
   "mobileTopRow": 1,
   "needsErrorInfo": false,
   "onTextChanged": "{{TrackerModif.setModifiedTrue();}}",
+  "originalBottomRow": 36,
+  "originalTopRow": 29,
   "parentColumnSpace": 8.86328125,
   "parentId": "ucawd3igdx",
   "parentRowSpace": 10,

@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 8,
   "boxShadow": "none",
-  "defaultText": "{{CaracteristiquesAppareils.data[0].numero_affaire}}",
+  "defaultText": "{{DonneesGeneralesAffaire.data[0].numero_affaire}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

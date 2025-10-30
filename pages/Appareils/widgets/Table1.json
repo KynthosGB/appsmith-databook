@@ -99,7 +99,7 @@
   "isVisibleDownload": false,
   "isVisibleFilters": false,
   "isVisiblePagination": false,
-  "isVisibleSearch": false,
+  "isVisibleSearch": true,
   "key": "coala6m42w",
   "label": "Data",
   "leftColumn": 10,

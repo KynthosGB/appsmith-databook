@@ -1,2 +1,2 @@
 SELECT * FROM public."enceintes_appareils"
-WHERE numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}' LIMIT 10;
+WHERE numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}';

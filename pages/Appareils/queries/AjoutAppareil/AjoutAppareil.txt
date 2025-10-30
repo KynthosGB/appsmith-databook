@@ -1,2 +1,5 @@
 INSERT INTO public."appareils" ("numero_appareil", "numero_affaire")
 VALUES ('{{ appsmith.URL.queryParams.numero_affaire + InputRepereAppareil.text}}', '{{ appsmith.URL.queryParams.numero_affaire }}');
+
+INSERT INTO public."caracteristiques_appareils" ("numero_appareil", "numero_affaire", "nom_appareil", "repere_appareil")
+VALUES ('{{ appsmith.URL.queryParams.numero_affaire + InputRepereAppareil.text }}','{{ appsmith.URL.queryParams.numero_affaire}}','{{ appsmith.URL.queryParams.numero_affaire + InputRepereAppareil.text + ' - ' + InputNomAppareil.text}}', '{{ InputRepereAppareil.text }}');

@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO public.\"appareils\" (\"numero_appareil\", \"numero_affaire\")\nVALUES ('{{ appsmith.URL.queryParams.numero_affaire + InputRepereAppareil.text}}', '{{ appsmith.URL.queryParams.numero_affaire }}');",
+      "body": "INSERT INTO public.\"appareils\" (\"numero_appareil\", \"numero_affaire\")\nVALUES ('{{ appsmith.URL.queryParams.numero_affaire + InputRepereAppareil.text}}', '{{ appsmith.URL.queryParams.numero_affaire }}');\n\nINSERT INTO public.\"caracteristiques_appareils\" (\"numero_appareil\", \"numero_affaire\", \"nom_appareil\", \"repere_appareil\")\nVALUES ('{{ appsmith.URL.queryParams.numero_affaire + InputRepereAppareil.text }}','{{ appsmith.URL.queryParams.numero_affaire}}','{{ appsmith.URL.queryParams.numero_affaire + InputRepereAppareil.text + ' - ' + InputNomAppareil.text}}', '{{ InputRepereAppareil.text }}');",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

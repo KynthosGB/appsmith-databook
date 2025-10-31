@@ -1,6 +1,6 @@
 {
   "gitSyncId": "6900ce0e5fba93519b2b9c51_836ee6c6-56a6-4023-af24-a3bd03230117",
-  "id": "Affaires_Api1",
+  "id": "Affaires_SendToN8n",
   "pluginId": "restapi-plugin",
   "pluginType": "API",
   "unpublishedAction": {
@@ -44,7 +44,7 @@
         "key": "body"
       }
     ],
-    "name": "Api1",
+    "name": "SendToN8n",
     "pageId": "Affaires",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false

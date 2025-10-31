@@ -3,3 +3,13 @@ VALUES ('{{ appsmith.URL.queryParams.numero_affaire + InputRepereAppareil.text}}
 
 INSERT INTO public."caracteristiques_appareils" ("numero_appareil", "numero_affaire", "nom_appareil", "repere_appareil")
 VALUES ('{{ appsmith.URL.queryParams.numero_affaire + InputRepereAppareil.text }}','{{ appsmith.URL.queryParams.numero_affaire}}','{{ appsmith.URL.queryParams.numero_affaire + InputRepereAppareil.text + ' - ' + InputNomAppareil.text}}', '{{ InputRepereAppareil.text }}');
+
+INSERT INTO public."donnees_generales_appareils"
+("numero_appareil", "numero_affaire", "nom_client", "nom_affaire")
+SELECT
+  '{{ appsmith.URL.queryParams.numero_affaire }}' || {{ InputRepereAppareil.text }},
+  '{{ appsmith.URL.queryParams.numero_affaire }}',
+  a."nom_client",
+  '{{ appsmith.URL.queryParams.numero_affaire }}'
+FROM public."affaires" a
+WHERE a."numero_affaire" = '{{ appsmith.URL.queryParams.numero_affaire }}';

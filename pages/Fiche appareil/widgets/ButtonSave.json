@@ -20,6 +20,9 @@
     },
     {
       "key": "buttonColor"
+    },
+    {
+      "key": "onClick"
     }
   ],
   "dynamicTriggerPathList": [
@@ -39,7 +42,7 @@
   "mobileRightColumn": 49,
   "mobileTopRow": 8,
   "needsErrorInfo": false,
-  "onClick": "{{TrackerModif.resetModified();}}",
+  "onClick": "{{ SaveAll.saveAll() }}",
   "parentColumnSpace": 20.25,
   "parentId": "0",
   "parentRowSpace": 10,

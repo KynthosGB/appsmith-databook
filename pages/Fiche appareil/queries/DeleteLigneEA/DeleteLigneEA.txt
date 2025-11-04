@@ -1,2 +1,2 @@
 DELETE FROM public.enceintes_appareils
-WHERE id = {{ TableDonneesEnceintes.selectedRow.id }};
+WHERE id = {{ TableEnceintesAppareil.selectedRow.id }};

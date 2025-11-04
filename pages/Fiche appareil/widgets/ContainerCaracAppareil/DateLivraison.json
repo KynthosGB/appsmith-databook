@@ -25,7 +25,11 @@
       "key": "defaultDate"
     }
   ],
-  "dynamicTriggerPathList": [],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onDateSelected"
+    }
+  ],
   "firstDayOfWeek": "0",
   "isDisabled": false,
   "isLoading": false,
@@ -48,6 +52,7 @@
   "mobileRightColumn": 50,
   "mobileTopRow": 26,
   "needsErrorInfo": false,
+  "onDateSelected": "{{TrackerModif.setModifiedTrue();}}",
   "parentColumnSpace": 19.3046875,
   "parentId": "yto2tqllfl",
   "parentRowSpace": 10,

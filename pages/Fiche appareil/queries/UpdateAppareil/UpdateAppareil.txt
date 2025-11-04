@@ -1,0 +1,17 @@
+UPDATE public.donnees_generales_appareils
+SET
+  date_creation_dossier  = {{ moment(DateCreationDossier.selectedDate).format("YYYY-MM-DD") }},
+  nom_redacteur              = {{ Redacteur.text }},
+  fonction_redacteur     = {{ FonctionRedacteur.text }},
+  nom_verificateur           = {{ Verificateur.text }},
+  fonction_verificateur  = {{ FonctionVerificateur.text }},
+  organisme_controle     = {{ OrganismeControle.text }},
+  indice_plan            = {{ IndicePlan.text }},
+  indice_nomenclature    = {{ IndiceNomenclature.text }},
+	indice_cahier_soudures    = {{ IndiceCahierSoudage.text }},
+	indice_note_calcul    = {{ IndiceNoteCalcul.text }},
+  vent                   = {{ Vent.text }},
+  unite_vent             = {{ UniteVent.text }},
+  seisme                 = {{ Seisme.text }}
+WHERE numero_appareil = {{ appsmith.URL.queryParams.numero_appareil }}
+RETURNING *;

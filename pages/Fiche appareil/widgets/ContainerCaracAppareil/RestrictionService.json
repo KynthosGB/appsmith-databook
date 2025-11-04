@@ -19,7 +19,11 @@
       "key": "defaultSwitchState"
     }
   ],
-  "dynamicTriggerPathList": [],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onChange"
+    }
+  ],
   "isDisabled": false,
   "isLoading": false,
   "isVisible": true,
@@ -34,6 +38,7 @@
   "mobileRightColumn": 45,
   "mobileTopRow": 66,
   "needsErrorInfo": false,
+  "onChange": "{{TrackerModif.setModifiedTrue();}}",
   "originalBottomRow": 65,
   "originalTopRow": 61,
   "parentColumnSpace": 19.3046875,

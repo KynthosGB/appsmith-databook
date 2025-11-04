@@ -18,7 +18,11 @@
     }
   ],
   "dynamicHeight": "FIXED",
-  "dynamicTriggerPathList": [],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onTextChanged"
+    }
+  ],
   "iconAlign": "left",
   "inputType": "NUMBER",
   "isDisabled": false,
@@ -41,6 +45,7 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 1,
   "needsErrorInfo": false,
+  "onTextChanged": "{{TrackerModif.setModifiedTrue();}}",
   "parentColumnSpace": 8.86328125,
   "parentId": "yto2tqllfl",
   "parentRowSpace": 10,

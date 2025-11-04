@@ -1,33 +1,38 @@
 UPDATE public.enceintes_appareils
 SET
-  numero = {{TableDonneesEnceintes.updatedRow.numero}},
-	pression_min = {{TableDonneesEnceintes.updatedRow.pression_min}},
-	pression_max = {{TableDonneesEnceintes.updatedRow.pression_max}},
-	pression_min_calculee = {{TableDonneesEnceintes.updatedRow.pression_min_calculee}},
-	pression_max_calculee = {{TableDonneesEnceintes.updatedRow.pression_max_calculee}},
-	temperature_min = {{TableDonneesEnceintes.updatedRow.temperature_min}},
-	temperature_max = {{TableDonneesEnceintes.updatedRow.temperature_max}},
-	temperature_min_calculee = {{TableDonneesEnceintes.updatedRow.temperature_min_calculee}},
-	temperature_max_calculee = {{TableDonneesEnceintes.updatedRow.temperature_max_calculee}},
-	delta_temperature = {{TableDonneesEnceintes.updatedRow.delta_temperature}},
-	pression_epreuve = {{TableDonneesEnceintes.updatedRow.pression_epreuve}},
-	date_epreuve = {{TableDonneesEnceintes.updatedRow.date_epreuve}},
-	densite = {{TableDonneesEnceintes.updatedRow.densite}},
-	poids_essai = {{TableDonneesEnceintes.updatedRow.poids_essai}},
-	nature_fluide = {{TableDonneesEnceintes.updatedRow.nature_fluide}},
-	capacite = {{TableDonneesEnceintes.updatedRow.capacite}},
-	nuance = {{TableDonneesEnceintes.updatedRow.nuance}},
-	epaisseur_calorifique = {{TableDonneesEnceintes.updatedRow.epaisseur_calorifique}},
-	explosif = {{TableDonneesEnceintes.updatedRow.explosif}},
-	inflammable = {{TableDonneesEnceintes.updatedRow.inflammable}},
-	toxique = {{TableDonneesEnceintes.updatedRow.toxique}},
-	oxydant = {{TableDonneesEnceintes.updatedRow.oxydant}},
-	type_appareil = {{TableDonneesEnceintes.updatedRow.type_appareil}},
-	epaisseur_corrosion = {{TableDonneesEnceintes.updatedRow.epaisseur_corrosion}},
-	numero_appareil = {{TableDonneesEnceintes.updatedRow.numero_appareil}},
-	poids_a_vide = {{TableDonneesEnceintes.updatedRow.poids_a_vide}},
-	poids_de_service = {{TableDonneesEnceintes.updatedRow.poids_de_service}},
-	pression_declenchement_securite = {{TableDonneesEnceintes.updatedRow.pression_declenchement_securite}}
-	
-WHERE
-  id = {{TableDonneesEnceintes.updatedRow.id}};
+  -- ⚠ tu peux laisser 'numero' modifiable si c'est voulu ; sinon supprime cette ligne
+  numero                      = {{ this.params.numero }},
+
+  pression_min                = {{ this.params.pression_min }},
+  pression_max                = {{ this.params.pression_max }},
+  pression_min_calculee       = {{ this.params.pression_min_calculee }},
+  pression_max_calculee       = {{ this.params.pression_max_calculee }},
+  temperature_min             = {{ this.params.temperature_min }},
+  temperature_max             = {{ this.params.temperature_max }},
+  temperature_min_calculee    = {{ this.params.temperature_min_calculee }},
+  temperature_max_calculee    = {{ this.params.temperature_max_calculee }},
+  delta_temperature           = {{ this.params.delta_temperature }},
+  pression_epreuve            = {{ this.params.pression_epreuve }},
+
+  -- date : format YYYY-MM-DD ou NULL
+  date_epreuve = {{ this.params.date_epreuve }},
+	pression_declenchement_securite = {{ this.params.pression_declenchement_securite }},
+  densite                     = {{ this.params.densite }},
+  poids_essai                 = {{ this.params.poids_essai }},
+  nature_fluide               = {{ this.params.nature_fluide }},
+  capacite                    = {{ this.params.capacite }},
+  nuance                      = {{ this.params.nuance }},
+  epaisseur_calorifique       = {{ this.params.epaisseur_calorifique }},
+
+  -- booléens : cast explicite
+  explosif                    = {{ !!this.params.explosif }},
+  inflammable                 = {{ !!this.params.inflammable }},
+  toxique                     = {{ !!this.params.toxique }},
+  oxydant                     = {{ !!this.params.oxydant }},
+
+  type_appareil               = {{ this.params.type_appareil }},
+  epaisseur_corrosion         = {{ this.params.epaisseur_corrosion }},
+  poids_a_vide                = {{ this.params.poids_a_vide }},
+  poids_de_service            = {{ this.params.poids_de_service }}
+WHERE id = {{ Number(this.params.id) }}
+RETURNING *;

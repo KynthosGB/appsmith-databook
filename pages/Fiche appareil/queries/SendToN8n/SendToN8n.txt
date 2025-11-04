@@ -5,4 +5,5 @@
   "nom_appareil": {{CaracteristiquesAppareils.data[0].nom_appareil}},
   "repere_appareil": {{CaracteristiquesAppareils.data[0].repere_appareil}},
   "date_creation_dossier": {{DonneesGeneralesAffaire.data[0].date_creation_dossier}},
+	"file_name": {{"DC" + CaracteristiquesAppareils.data[0].numero_affaire + CaracteristiquesAppareils.data[0].repere_appareil}}
 }

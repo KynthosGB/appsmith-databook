@@ -1,9 +1,9 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 9,
+  "bottomRow": 10,
   "boxShadow": "none",
-  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonColor": "{{ TrackerModif.isModified() ? \"#553De9\" : \"lightgray\" }}",
   "buttonVariant": "PRIMARY",
   "disabledWhenInvalid": false,
   "dynamicBindingPathList": [
@@ -14,27 +14,32 @@
       "key": "borderRadius"
     }
   ],
-  "dynamicPropertyPathList": [],
+  "dynamicPropertyPathList": [
+    {
+      "key": "isDisabled"
+    },
+    {
+      "key": "buttonColor"
+    }
+  ],
   "dynamicTriggerPathList": [
     {
       "key": "onClick"
     }
   ],
-  "iconAlign": "left",
-  "iconName": "add",
   "isDefaultClickDisabled": true,
-  "isDisabled": false,
+  "isDisabled": "",
   "isLoading": false,
   "isVisible": true,
-  "key": "b4xheta7ln",
-  "leftColumn": 45,
+  "key": "22ky29dlnm",
+  "leftColumn": 13,
   "minWidth": 120,
-  "mobileBottomRow": 6,
-  "mobileLeftColumn": 44,
-  "mobileRightColumn": 60,
-  "mobileTopRow": 2,
+  "mobileBottomRow": 12,
+  "mobileLeftColumn": 33,
+  "mobileRightColumn": 49,
+  "mobileTopRow": 8,
   "needsErrorInfo": false,
-  "onClick": "{{showModal(ModalCreerAppareil.name);}}",
+  "onClick": "{{TrackerModif.resetModified();}}",
   "parentColumnSpace": 20.25,
   "parentId": "0",
   "parentRowSpace": 10,
@@ -43,11 +48,11 @@
   "renderMode": "CANVAS",
   "resetFormOnClick": false,
   "responsiveBehavior": "hug",
-  "rightColumn": 55,
-  "text": "Créer un appareil",
-  "topRow": 5,
+  "rightColumn": 19,
+  "text": "Enregistrer",
+  "topRow": 6,
   "type": "BUTTON_WIDGET",
   "version": 1,
-  "widgetId": "yxjorcxk7j",
-  "widgetName": "ButtonCreerAppareil"
+  "widgetId": "qs5u1z5hb3",
+  "widgetName": "ButtonSave"
 }

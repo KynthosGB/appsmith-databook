@@ -1,0 +1,1 @@
+SELECT numero_affaire FROM public."affaires" ORDER BY numero_affaire DESC;

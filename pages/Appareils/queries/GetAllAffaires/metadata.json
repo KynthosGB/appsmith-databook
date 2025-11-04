@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6900ce0e5fba93519b2b9c51_76cd5cc3-ee9f-400b-a895-bdc45793f850",
-  "id": "Appareils_GetAppareils",
+  "gitSyncId": "6900ce0e5fba93519b2b9c51_7b16241b-ffc3-4b62-a608-0620300753df",
+  "id": "Appareils_GetAllAffaires",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT numero_appareil, numero_affaire\nFROM public.\"appareils\"\nWHERE numero_affaire = '{{ appsmith.URL.queryParams.numero_affaire }}' ORDER BY numero_appareil ASC;\n\n",
+      "body": "SELECT numero_affaire FROM public.\"affaires\" ORDER BY numero_affaire DESC;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,14 +22,10 @@
       "name": "Databook - Neon",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [
-      {
-        "key": "body"
-      }
-    ],
-    "name": "GetAppareils",
+    "dynamicBindingPathList": [],
+    "name": "GetAllAffaires",
     "pageId": "Appareils",
-    "runBehaviour": "AUTOMATIC",
-    "userSetOnLoad": true
+    "runBehaviour": "MANUAL",
+    "userSetOnLoad": false
   }
 }

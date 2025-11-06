@@ -21,7 +21,7 @@
       "httpMethod": "POST",
       "httpVersion": "HTTP11",
       "paginationType": "NONE",
-      "path": "/webhook-test/appsmith-creer-affaire",
+      "path": "/webhook/appsmith-creer-affaire",
       "pluginSpecifiedTemplates": [
         {
           "value": true

@@ -21,7 +21,7 @@
       "httpMethod": "POST",
       "httpVersion": "HTTP11",
       "paginationType": "NONE",
-      "path": "/webhook-test/appsmith-databook-to-n8n",
+      "path": "/webhook/appsmith-databook-to-n8n",
       "pluginSpecifiedTemplates": [
         {
           "value": true

@@ -5,32 +5,86 @@ WITH params AS (
     '{{ InputNomAppareil.text }}'::text                                              AS nom_appareil,
     '{{ InputRepereAppareil.text }}'::text                                           AS repere
 ),
+
+-- 1) appareils
 ins_app AS (
   INSERT INTO public.appareils (numero_appareil, numero_affaire)
   SELECT num_app, num_aff FROM params
   ON CONFLICT (numero_appareil) DO NOTHING
   RETURNING 1
 ),
+
+-- 2) caractéristiques
 ins_carac AS (
-  INSERT INTO public.caracteristiques_appareils (numero_appareil, numero_affaire, nom_appareil, repere_appareil)
-  SELECT p.num_app, p.num_aff, p.num_aff || ' - ' || p.nom_appareil, p.repere
+  INSERT INTO public.caracteristiques_appareils
+         (numero_appareil, numero_affaire, nom_appareil, repere_appareil)
+  SELECT p.num_app, p.num_aff, p.num_aff || p.repere || ' - ' || p.nom_appareil, p.repere
   FROM params p
   ON CONFLICT (numero_appareil) DO NOTHING
   RETURNING 1
 ),
+
+-- 3) données générales
 ins_dg AS (
-  INSERT INTO public.donnees_generales_appareils (numero_appareil, numero_affaire, nom_client, nom_affaire)
+  INSERT INTO public.donnees_generales_appareils
+         (numero_appareil, numero_affaire, nom_client, nom_affaire)
   SELECT p.num_app, p.num_aff, a.nom_client, p.num_aff
   FROM params p
   JOIN public.affaires a ON a.numero_affaire = p.num_aff
   ON CONFLICT (numero_appareil) DO NOTHING
   RETURNING 1
 ),
-sync AS (
-  SELECT public.sync_sommaire_appareil((SELECT num_app FROM params)) AS synced
+
+-- 4) sync sommaire -> sommaire_appareils
+sync_som AS (
+  INSERT INTO public.sommaire_appareils
+         (numero_appareil, master_id, include, chapter_ord_override, sub_ord_override)
+  SELECT p.num_app, s.master_id, TRUE, NULL, NULL
+  FROM params p
+  CROSS JOIN public.sommaire s
+  ON CONFLICT (numero_appareil, master_id) DO NOTHING
+  RETURNING 1
+),
+
+/* 5) calcul des nouveaux ordres :
+      - actifs : 1..N selon ordre effectif
+      - inactifs : 1000 + rang global pour ne pas gêner les actifs
+*/
+new_orders AS (
+  SELECT
+    a.numero_appareil,
+    a.master_id,
+    CASE
+      WHEN a.include IS TRUE THEN
+        ROW_NUMBER() OVER (
+          PARTITION BY a.numero_appareil
+          ORDER BY COALESCE(a.chapter_ord_override, s.default_chapter_ord)
+        )
+      ELSE
+        1000 + ROW_NUMBER() OVER (
+          PARTITION BY a.numero_appareil
+          ORDER BY COALESCE(a.chapter_ord_override, s.default_chapter_ord)
+        )
+    END AS new_ord
+  FROM public.sommaire_appareils a
+  JOIN public.sommaire s ON s.master_id = a.master_id
+  JOIN params p ON p.num_app = a.numero_appareil
+  WHERE s.level = 1
+),
+
+-- 6) mise à jour des overrides à partir de new_orders
+upd_idx AS (
+  UPDATE public.sommaire_appareils t
+  SET chapter_ord_override = n.new_ord
+  FROM new_orders n
+  WHERE t.numero_appareil = n.numero_appareil
+    AND t.master_id      = n.master_id
+  RETURNING 1
 )
+
 SELECT
   (SELECT COALESCE(COUNT(*),0) FROM ins_app)   AS app_inserted,
   (SELECT COALESCE(COUNT(*),0) FROM ins_carac) AS carac_inserted,
   (SELECT COALESCE(COUNT(*),0) FROM ins_dg)    AS dg_inserted,
-  (SELECT synced FROM sync)                    AS sommaire_synced;
+  (SELECT COALESCE(COUNT(*),0) FROM sync_som)  AS sommaire_rows_added,
+  (SELECT COALESCE(COUNT(*),0) FROM upd_idx)   AS chapters_reindexed;

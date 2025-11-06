@@ -1,0 +1,16 @@
+{
+  "gitSyncId": "6900ce0e5fba93519b2b9c51_c7e34e19-1c56-42a0-8668-70f599793495",
+  "id": "Fiche appareil_JS_Sommaire",
+  "unpublishedCollection": {
+    "name": "JS_Sommaire",
+    "pageId": "Fiche appareil",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": [
+      {
+        "name": "master",
+        "value": "[{\n  id: \"1\",\n  label_fr: \"Caractéristique de l'appareil\",\n  label_en: \"Type characteristic\",\n  level: 1,\n  parent: null,\n  include: true,\n  order: 10\n}, {\n  id: \"2\",\n  label_fr: \"Déclaration de conformité\",\n  label_en: \"Declaration of conformity\",\n  level: 1,\n  parent: null,\n  include: true,\n  order: 20\n}, {\n  id: \"3\",\n  label_fr: \"Attestations et Certificats\",\n  label_en: \"Attestations and Certificates\",\n  level: 1,\n  parent: null,\n  include: true,\n  order: 30\n}, {\n  id: \"4\",\n  label_fr: \"Plaque de firme\",\n  label_en: \"Firm plate\",\n  level: 1,\n  parent: null,\n  include: true,\n  order: 40\n}, {\n  id: \"5\",\n  label_fr: \"Dossier de calcul et fabrication\",\n  label_en: \"Calculation & manufacturing file\",\n  level: 1,\n  parent: null,\n  include: true,\n  order: 50\n}, {\n  id: \"6\",\n  label_fr: \"Essais\",\n  label_en: \"Testing\",\n  level: 1,\n  parent: null,\n  include: true,\n  order: 60\n}, {\n  id: \"7\",\n  label_fr: \"Plan qualité\",\n  label_en: \"Quality plan\",\n  level: 1,\n  parent: null,\n  include: true,\n  order: 70\n}, {\n  id: \"1.1\",\n  parent: \"1\",\n  level: 2,\n  label_fr: \"Données de calcul\",\n  label_en: \"Calculation data\",\n  include: true,\n  order: 11\n}, {\n  id: \"1.2\",\n  parent: \"1\",\n  level: 2,\n  label_fr: \"Finition\",\n  label_en: \"Finish\",\n  include: true,\n  order: 12\n}, {\n  id: \"3.1.4\",\n  parent: \"3\",\n  level: 2,\n  label_fr: \"Attestation dimensionnelle des brides\",\n  label_en: \"Dimensional certificate of the flanges\",\n  include: false,\n  order: 999\n}]"
+      }
+    ]
+  }
+}

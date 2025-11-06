@@ -1,0 +1,4 @@
+SELECT *
+FROM public.v_sommaire_appareils
+WHERE numero_appareil = {{ appsmith.URL.queryParams.numero_appareil }}
+ORDER BY chapter_ord_eff, level, sub_ord_eff NULLS FIRST, master_id;

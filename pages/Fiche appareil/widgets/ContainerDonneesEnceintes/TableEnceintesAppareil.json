@@ -88,7 +88,7 @@
     "temperature_max": 131,
     "temperature_max_calculee": 198,
     "temperature_min": 135,
-    "temperature_min_calculee": 183,
+    "temperature_min_calculee": 206,
     "toxique": 92,
     "type_appareil": 100
   },
@@ -289,7 +289,7 @@
       "isSaveDisabled": false,
       "isSaveVisible": true,
       "isVisible": true,
-      "label": "Save / Discard",
+      "label": "Action",
       "notation": "standard",
       "onDiscard": "{{DeleteLigneEA.run().then(() => {\n  showAlert('Enceinte supprimée', 'success');\n}).catch(() => {\n  showAlert('Echec de la suppression', 'error');\n});}}",
       "onSave": "{{\n  (() => {\n    const r = TableEnceintesAppareil.triggeredRow;  // ligne éditée\n    if (!r) {\n      showAlert(\"Aucune ligne à mettre à jour\", \"warning\");\n      return;\n    }\n    SaveLigneEncApp.run({\n      ...r, // contient id + toutes les colonnes\n      date_epreuve: r.date_epreuve ?? null, // normalisation de la date\n    })\n    .then(() => {\n      showAlert(\"Ligne mise à jour\", \"success\");\n      EnceintesAppareil.run(); // recharge la table si besoin\n    })\n    .catch(() => {\n      showAlert(\"Échec de la mise à jour\", \"error\");\n    });\n  })()\n}}\n",

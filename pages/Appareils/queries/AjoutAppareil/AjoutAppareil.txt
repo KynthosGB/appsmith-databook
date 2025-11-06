@@ -1,15 +1,32 @@
-INSERT INTO public."appareils" ("numero_appareil", "numero_affaire")
-VALUES ('{{ appsmith.URL.queryParams.numero_affaire + InputRepereAppareil.text}}', '{{ appsmith.URL.queryParams.numero_affaire }}');
+BEGIN;
 
-INSERT INTO public."caracteristiques_appareils" ("numero_appareil", "numero_affaire", "nom_appareil", "repere_appareil")
-VALUES ('{{ appsmith.URL.queryParams.numero_affaire + InputRepereAppareil.text }}','{{ appsmith.URL.queryParams.numero_affaire}}','{{ appsmith.URL.queryParams.numero_affaire + InputRepereAppareil.text + ' - ' + InputNomAppareil.text}}', '{{ InputRepereAppareil.text }}');
+WITH params AS (
+  SELECT
+    '{{ appsmith.URL.queryParams.numero_affaire + InputRepereAppareil.text }}'::text AS num_app,
+    '{{ appsmith.URL.queryParams.numero_affaire }}'::text                        AS num_aff,
+    '{{ InputNomAppareil.text }}'::text                                          AS nom_appareil,
+    '{{ InputRepereAppareil.text }}'::text                                       AS repere
+)
 
-INSERT INTO public."donnees_generales_appareils"
-("numero_appareil", "numero_affaire", "nom_client", "nom_affaire")
-SELECT
-  '{{ appsmith.URL.queryParams.numero_affaire }}' || {{ InputRepereAppareil.text }},
-  '{{ appsmith.URL.queryParams.numero_affaire }}',
-  a."nom_client",
-  '{{ appsmith.URL.queryParams.numero_affaire }}'
-FROM public."affaires" a
-WHERE a."numero_affaire" = '{{ appsmith.URL.queryParams.numero_affaire }}';
+-- 1) appareils
+INSERT INTO public.appareils (numero_appareil, numero_affaire)
+SELECT num_app, num_aff FROM params
+ON CONFLICT (numero_appareil) DO NOTHING;
+
+-- 2) caracteristiques_appareils
+INSERT INTO public.caracteristiques_appareils (numero_appareil, numero_affaire, nom_appareil, repere_appareil)
+SELECT p.num_app, p.num_aff, p.num_aff || ' - ' || p.nom_appareil, p.repere
+FROM params p
+ON CONFLICT (numero_appareil) DO NOTHING;
+
+-- 3) donnees_generales_appareils
+INSERT INTO public.donnees_generales_appareils (numero_appareil, numero_affaire, nom_client, nom_affaire)
+SELECT p.num_app, p.num_aff, a.nom_client, p.num_aff
+FROM params p
+JOIN public.affaires a ON a.numero_affaire = p.num_aff
+ON CONFLICT (numero_appareil) DO NOTHING;
+
+-- 4) synchro du sommaire pour l'appareil nouvellement créé
+SELECT public.sync_sommaire_appareil((SELECT num_app FROM params));
+
+COMMIT;

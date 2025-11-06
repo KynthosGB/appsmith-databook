@@ -1,12 +1,16 @@
 {
-  "gitSyncId": "6900ce0e5fba93519b2b9c51_d23eb62d-a6d4-453a-a3b0-682f56c675f4",
-  "id": "Fiche appareil_SommaireUI.rows",
+  "gitSyncId": "6900ce0e5fba93519b2b9c51_4df3a80c-dd52-4678-ba59-9b7f7b8d78cd",
+  "id": "Fiche appareil_SommaireUI.effSub",
   "pluginId": "js-plugin",
   "pluginType": "JS",
   "unpublishedAction": {
     "actionConfiguration": {
       "encodeParamsToggle": true,
-      "jsArguments": [],
+      "jsArguments": [
+        {
+          "name": "x"
+        }
+      ],
       "paginationType": "NONE",
       "timeoutInMillisecond": 10000
     },
@@ -22,8 +26,8 @@
         "key": "body"
       }
     ],
-    "fullyQualifiedName": "SommaireUI.rows",
-    "name": "rows",
+    "fullyQualifiedName": "SommaireUI.effSub",
+    "name": "effSub",
     "pageId": "Fiche appareil",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false

@@ -49,7 +49,7 @@
   "parentId": "e2eld6xhbs",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 28,
+  "rightColumn": 54,
   "shouldTruncate": false,
   "text": "{{(\"&nbsp;\".repeat((currentItem.level - 1) * 4)) +\n  (currentItem.display_no ? currentItem.display_no + \" - \" : \"\") +\n  currentItem.label_fr\n}}\n",
   "textAlign": "",

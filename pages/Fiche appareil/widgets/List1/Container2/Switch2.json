@@ -4,7 +4,7 @@
   "animateLoading": true,
   "bottomRow": 5,
   "boxShadow": "none",
-  "defaultSwitchState": "{{ currentItem.include }}",
+  "defaultSwitchState": "{{ !!currentItem.include }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -41,7 +41,7 @@
   "mobileRightColumn": 14,
   "mobileTopRow": 5,
   "needsErrorInfo": false,
-  "onChange": "{{ SommaireUI.toggle(currentItem, currentItem.include) }}\n",
+  "onChange": "{{SommaireUI.toggle(currentItem) }}",
   "parentColumnSpace": 18.755859375,
   "parentId": "e2eld6xhbs",
   "parentRowSpace": 10,

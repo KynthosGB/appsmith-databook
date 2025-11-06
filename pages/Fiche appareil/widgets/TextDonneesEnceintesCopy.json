@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 140,
+  "bottomRow": 141,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -43,10 +43,10 @@
   "text": "Données des enceintes de l'appareil",
   "textAlign": "LEFT",
   "textColor": "#231F20",
-  "topRow": 136,
+  "topRow": 137,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "8brbowrwp4",
-  "widgetName": "TextDonneesEnceintes"
+  "widgetId": "7i7d7cqgnz",
+  "widgetName": "TextDonneesEnceintesCopy"
 }

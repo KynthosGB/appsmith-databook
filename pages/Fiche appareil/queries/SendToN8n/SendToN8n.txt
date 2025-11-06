@@ -5,5 +5,18 @@
   "nom_appareil": {{CaracteristiquesAppareils.data[0].nom_appareil}},
   "repere_appareil": {{CaracteristiquesAppareils.data[0].repere_appareil}},
   "date_creation_dossier": {{DonneesGeneralesAffaire.data[0].date_creation_dossier}},
-	"file_name": {{"DC" + CaracteristiquesAppareils.data[0].numero_affaire + CaracteristiquesAppareils.data[0].repere_appareil}}
+	"file_name": {{"DC" + CaracteristiquesAppareils.data[0].numero_affaire + CaracteristiquesAppareils.data[0].repere_appareil}},
+	"sommaire_tree": {{ SommaireUI.flatList()
+  .filter(r => r.include)
+  .reduce((acc, r) => {
+    const byId = acc.byId || (acc.byId = {});
+    byId[r.master_id] ||= { id:r.master_id, level:+r.level, no:r.display_no, fr:r.label_fr, en:r.label_en, children:[] };
+    if (r.parent_master_id) {
+      byId[r.parent_master_id] ||= { id:r.parent_master_id, children:[] };
+      byId[r.parent_master_id].children.push(byId[r.master_id]);
+    } else if (+r.level === 1) {
+      (acc.roots ||= []).push(byId[r.master_id]);
+    }
+    return acc;
+  }, {}).roots || [] }}
 }

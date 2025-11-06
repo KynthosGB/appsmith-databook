@@ -1,0 +1,3 @@
+UPDATE public.sommaire_appareils
+SET include = {{ this.params.include }}
+WHERE numero_appareil = {{ appsmith.URL.queryParams.numero_appareil }} AND master_id = {{ this.params.master_id }};

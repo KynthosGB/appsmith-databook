@@ -1,0 +1,56 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "alignWidget": "LEFT",
+  "animateLoading": true,
+  "bottomRow": 5,
+  "boxShadow": "none",
+  "defaultSwitchState": "{{ currentItem.include }}",
+  "dynamicBindingPathList": [
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "defaultSwitchState"
+    }
+  ],
+  "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [
+    {
+      "key": "defaultSwitchState"
+    },
+    {
+      "key": "onChange"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onChange"
+    }
+  ],
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "l18oc0j1cq",
+  "label": "",
+  "labelPosition": "Left",
+  "leftColumn": 1,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "mobileBottomRow": 9,
+  "mobileLeftColumn": 2,
+  "mobileRightColumn": 14,
+  "mobileTopRow": 5,
+  "needsErrorInfo": false,
+  "onChange": "{{ SommaireUI.toggle(currentItem, currentItem.include) }}\n",
+  "parentColumnSpace": 18.755859375,
+  "parentId": "e2eld6xhbs",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 3,
+  "topRow": 1,
+  "type": "SWITCH_WIDGET",
+  "version": 1,
+  "widgetId": "txjuvm666c",
+  "widgetName": "Switch2"
+}

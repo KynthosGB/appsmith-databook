@@ -6,6 +6,8 @@ export default {
 
       // 2) Update table caracteristiques_appareils
       await UpdateCaracteristiques.run();
+			
+			await GetSommaireAppareil.run();
 
       // 3) UI feedback & rafraîchissement
       showAlert('Enregistré', 'success');

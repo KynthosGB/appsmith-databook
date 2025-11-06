@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6900ce0e5fba93519b2b9c51_ce91b5bf-22b9-45e9-8e3d-b6ef8b2ba87f",
-  "id": "Fiche appareil_GetSommaireAppareil",
+  "gitSyncId": "6900ce0e5fba93519b2b9c51_d6562df3-5328-4685-bf7f-fb3854ac20ac",
+  "id": "Fiche appareil_ToggleInclude",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT *\nFROM public.v_sommaire_appareils\nWHERE numero_appareil = {{ appsmith.URL.queryParams.numero_appareil }}\nORDER BY\n  COALESCE(ch_no, 0),\n  COALESCE(sub_no, 0),\n  COALESCE(sub3_no, 0),\n  COALESCE(sub4_no, 0),\n  COALESCE(sub5_no, 0),\n  master_id;\n",
+      "body": "UPDATE public.sommaire_appareils\nSET include = {{ this.params.include }}\nWHERE numero_appareil = {{ appsmith.URL.queryParams.numero_appareil }} AND master_id = {{ this.params.master_id }};\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -27,7 +27,7 @@
         "key": "body"
       }
     ],
-    "name": "GetSommaireAppareil",
+    "name": "ToggleInclude",
     "pageId": "Fiche appareil",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false

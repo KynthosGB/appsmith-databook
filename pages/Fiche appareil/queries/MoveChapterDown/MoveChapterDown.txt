@@ -1,0 +1,38 @@
+WITH cur AS (
+  SELECT s.master_id, COALESCE(a.chapter_ord_override, s.default_chapter_ord) AS ord
+  FROM public.sommaire s
+  JOIN public.sommaire_appareils a ON a.master_id = s.master_id
+  WHERE a.numero_appareil = {{ appsmith.URL.queryParams.numero_appareil }}
+    AND s.level = 1
+    AND s.master_id = {{ this.params.master_id }}
+),
+nxt AS (
+  SELECT s.master_id, COALESCE(a.chapter_ord_override, s.default_chapter_ord) AS ord
+  FROM public.sommaire s
+  JOIN public.sommaire_appareils a ON a.master_id = s.master_id
+  WHERE a.numero_appareil = {{ appsmith.URL.queryParams.numero_appareil }}
+    AND s.level = 1
+    AND COALESCE(a.chapter_ord_override, s.default_chapter_ord) >
+        (SELECT ord FROM cur)
+  ORDER BY 2 ASC
+  LIMIT 1
+),
+upd1 AS (
+  UPDATE public.sommaire_appareils a
+     SET chapter_ord_override = (SELECT ord FROM nxt)
+   WHERE a.numero_appareil = {{ appsmith.URL.queryParams.numero_appareil }}
+     AND a.master_id = (SELECT master_id FROM cur)
+     AND EXISTS (SELECT 1 FROM nxt)
+  RETURNING 1
+),
+upd2 AS (
+  UPDATE public.sommaire_appareils a
+     SET chapter_ord_override = (SELECT ord FROM cur)
+   WHERE a.numero_appareil = {{ appsmith.URL.queryParams.numero_appareil }}
+     AND a.master_id = (SELECT master_id FROM nxt)
+     AND EXISTS (SELECT 1 FROM nxt)
+  RETURNING 1
+)
+SELECT
+  COALESCE((SELECT COUNT(*) FROM upd1),0) AS moved,
+  COALESCE((SELECT COUNT(*) FROM upd2),0) AS swapped;

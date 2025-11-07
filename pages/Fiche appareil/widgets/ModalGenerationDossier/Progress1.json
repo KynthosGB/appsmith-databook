@@ -30,7 +30,7 @@
   "parentColumnSpace": 9.90625,
   "parentId": "ozsomwsazg",
   "parentRowSpace": 10,
-  "progress": "{{ GetProgress.data?.[0]?.percent ?? 0 }}",
+  "progress": "{{ GetProgress.data?.[0]?.percent ?? appsmith.store.progressSnapshot?.percent ?? 0 }}",
   "progressType": "linear",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",

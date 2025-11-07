@@ -34,85 +34,131 @@ export default {
 
   // Liste plate + bornes up/down calculées avec l'ordre effectif
   flatList() {
-    const rows = this.sorted();
+		const rows = this.sorted();
 
-    // groupement par parent (root = chapitre)
-    const byParent = {};
-    for (const x of rows) {
-      const key = x.parent_master_id || "__ROOT__" + x.numero_appareil;
-      if (!byParent[key]) byParent[key] = [];
-      byParent[key].push(x);
-    }
+		// groupement par parent (root = chapitre)
+		const byParent = {};
+		for (const x of rows) {
+			const key = x.parent_master_id || "__ROOT__" + x.numero_appareil;
+			if (!byParent[key]) byParent[key] = [];
+			byParent[key].push(x);
+		}
 
-    // tri dans chaque groupe
-    for (const k of Object.keys(byParent)) {
-      const isRoot = k.startsWith("__ROOT__");
-      byParent[k].sort((a, b) => {
-        if (isRoot) {
-          // chapitres : ordre override/défaut
-          return this.effChapter(a) - this.effChapter(b);
-        }
-        // sous-chapitres d'un même parent
-        const d = this.effSub(a) - this.effSub(b);
-        if (d !== 0) return d;
-        return String(a.master_id).localeCompare(String(b.master_id));
-      });
-    }
+		// tri dans chaque groupe (inchangé)
+		for (const k of Object.keys(byParent)) {
+			const isRoot = k.startsWith("__ROOT__");
+			byParent[k].sort((a, b) => {
+				if (isRoot) return this.effChapter(a) - this.effChapter(b);
+				const d = this.effSub(a) - this.effSub(b);
+				if (d !== 0) return d;
+				return String(a.master_id).localeCompare(String(b.master_id));
+			});
+		}
 
-    // enrichissement UI
-    return rows.map((x) => {
-      const sibKey = x.parent_master_id || "__ROOT__" + x.numero_appareil;
-      const siblings = byParent[sibKey] || [];
-      const idx = siblings.findIndex((s) => s.master_id === x.master_id);
-      return {
-        ...x,
-        indent: (Number(x.level) - 1) * 20,
-        isChapter: Number(x.level) === 1,
-        canUp: idx > 0,
-        canDown: idx >= 0 && idx < siblings.length - 1,
-        title: (x.display_no ? x.display_no + " - " : "") + x.label_fr,
-      };
-    });
-  },
+		// pré-calcul d'une numérotation effective "effDisplayNo" par parent parmi les items inclus
+		const effDisplayNoMap = new Map();
+		for (const [parentKey, siblings] of Object.entries(byParent)) {
+			// parent display_no (pour préfixer les sous-niveaux)
+			let parentDisplay = "";
+			if (!parentKey.startsWith("__ROOT__")) {
+				const parentItem = rows.find(r => r.master_id === parentKey);
+				parentDisplay = parentItem?.display_no ? String(parentItem.display_no) : "";
+			}
+
+			let i = 0;
+			for (const s of siblings) {
+				if (s.include) {
+					i += 1;
+					const myNo = parentDisplay ? `${parentDisplay}.${i}` : String(i);
+					effDisplayNoMap.set(s.master_id, myNo);
+				} else {
+					// non inclus : pas de numéro effectif
+					effDisplayNoMap.set(s.master_id, s.display_no ?? "");
+				}
+			}
+		}
+
+		// enrichissement UI
+		return rows.map((x) => {
+			const sibKey = x.parent_master_id || "__ROOT__" + x.numero_appareil;
+			const siblings = byParent[sibKey] || [];
+			const siblingsIncluded = siblings.filter(s => s.include);             // *** clé ***
+			const idxInc = siblingsIncluded.findIndex(s => s.master_id === x.master_id);
+
+			return {
+				...x,
+				indent: (Number(x.level) - 1) * 20,
+				isChapter: Number(x.level) === 1,
+				// boutons: bornes calculées parmi les seuls éléments inclus
+				canUp: x.include && idxInc > 0,
+				canDown: x.include && idxInc >= 0 && idxInc < siblingsIncluded.length - 1,
+				// numéro effectif calculé (fallback sur display_no si présent)
+				effDisplayNo: effDisplayNoMap.get(x.master_id) || x.display_no || "",
+				// titre basé sur la numérotation effective
+				title: ((effDisplayNoMap.get(x.master_id) || x.display_no) ? (effDisplayNoMap.get(x.master_id) || x.display_no) + " - " : "") + x.label_fr,
+			};
+		});
+	},
+
 
   // boutons up/down -> requêtes DB puis refresh
-  move(direction, item) {
+	move(direction, item) {
+		const numero_appareil = appsmith.URL.queryParams.numero_appareil;
 		const isUp = direction === "up";
-		const after = () => ReindexChaptersForAppareil.run({
-												numero_appareil: appsmith.URL.queryParams.numero_appareil
-											}).then(() => GetSommaireAppareil.run());
+		const refresh = () => GetSommaireAppareil.run();
 
-		if (Number(item.level) === 1) {
+		if (+item.level === 1) {
 			const fn = isUp ? MoveChapterUp : MoveChapterDown;
-			return fn.run({ master_id: item.master_id }).then(after);
+			return fn.run({ master_id: item.master_id })
+				.then(() => ReindexChaptersForAppareil.run({ numero_appareil }))
+				.then(refresh)
+				.catch(e => showAlert('Erreur move(chapitre): ' + (e?.message || e), 'error'));
 		} else {
 			const fn = isUp ? MoveSubUp : MoveSubDown;
 			return fn.run({
-				master_id: item.master_id,
-				parent_master_id: item.parent_master_id,
-			}).then(() => GetSommaireAppareil.run()); // pas besoin de réindexer pour les sous-chapitres
+					master_id: item.master_id,
+					parent_master_id: item.parent_master_id,
+				})
+				.then(() => ReindexSubByParent.run({
+					numero_appareil,
+					parent_master_id: item.parent_master_id,
+				}))
+				.then(refresh)
+				.catch(e => showAlert('Erreur move(sous-chapitre): ' + (e?.message || e), 'error'));
 		}
 	},
 
-  // toggle : inverse localement et envoie la nouvelle valeur
-  toggle(item) {
+	// toggle : inverse localement et envoie la nouvelle valeur
+		toggle(item) {
+		const numero_appareil = appsmith.URL.queryParams.numero_appareil;
 		const include = !Boolean(item.include);
-		const run = Number(item.level) === 1
+
+		// Niveau 1 : tu as déjà la cascade existante
+		const runToggle = (+item.level === 1)
 			? () => ToggleIncludeCascade.run({
-					numero_appareil: appsmith.URL.queryParams.numero_appareil,
+					numero_appareil,
 					master_id: item.master_id,
 					include,
 				})
-			: () => ToggleInclude.run({
-					master_id: item.master_id,
+			// Niveaux >= 2 : nouvelle cascade par sous-arbre
+			: () => ToggleIncludeCascadeFromNode.run({
+					numero_appareil,
+					root_master_id: item.master_id,
 					include,
 				});
 
-		return run()
-			.then(() => ReindexChaptersForAppareil.run({
-				numero_appareil: appsmith.URL.queryParams.numero_appareil
-			}))
+		// Réindexation : chapitres vs sous-chapitres
+		const reindex = (+item.level === 1)
+			? () => ReindexChaptersForAppareil.run({ numero_appareil })
+			: () => ReindexSubByParent.run({
+					numero_appareil,
+					parent_master_id: item.parent_master_id,
+				});
+
+		return runToggle()
+			.then(reindex)
 			.then(() => GetSommaireAppareil.run())
-			.catch(e => showAlert('Erreur: ' + (e?.message || e), 'error'));
+			.catch(e => showAlert('Erreur toggle: ' + (e?.message || e), 'error'));
 	},
+
 };

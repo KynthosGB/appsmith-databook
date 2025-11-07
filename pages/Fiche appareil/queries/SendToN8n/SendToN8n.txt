@@ -4,8 +4,8 @@
   "reference_client": {{CaracteristiquesAppareils.data[0].reference_client}},
   "nom_appareil": {{CaracteristiquesAppareils.data[0].nom_appareil}},
   "repere_appareil": {{CaracteristiquesAppareils.data[0].repere_appareil}},
-  "date_creation_dossier": {{DonneesGeneralesAffaire.data[0].date_creation_dossier}},
-	"file_name": {{"DC" + CaracteristiquesAppareils.data[0].numero_affaire + CaracteristiquesAppareils.data[0].repere_appareil}},
+  "date_creation_dossier": {{moment(DonneesGeneralesAffaire.data[0].date_creation_dossier).format("DD/MM/YYYY")}},
+	"file_name": {{"TRAME" + CaracteristiquesAppareils.data[0].numero_affaire + CaracteristiquesAppareils.data[0].repere_appareil}},
 	"sommaire_tree": {{ SommaireUI.flatList()
   .filter(r => r.include)
   .reduce((acc, r) => {
@@ -18,5 +18,6 @@
       (acc.roots ||= []).push(byId[r.master_id]);
     }
     return acc;
-  }, {}).roots || [] }}
+  }, {}).roots || [] }},
+  "job_id": {{ appsmith.store.jobId }}
 }

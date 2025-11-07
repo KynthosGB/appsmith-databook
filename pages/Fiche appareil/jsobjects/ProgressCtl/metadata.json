@@ -1,0 +1,16 @@
+{
+  "gitSyncId": "6900ce0e5fba93519b2b9c51_b7e35652-ade5-4b09-95e8-709d2963d64b",
+  "id": "Fiche appareil_ProgressCtl",
+  "unpublishedCollection": {
+    "name": "ProgressCtl",
+    "pageId": "Fiche appareil",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": [
+      {
+        "name": "intv",
+        "value": "null"
+      }
+    ]
+  }
+}

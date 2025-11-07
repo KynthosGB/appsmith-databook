@@ -1,0 +1,3 @@
+{
+	"nom_appareil": "{{ Table1.triggeredRow?.numero_appareil || currentRow.numero_appareil }}",
+}

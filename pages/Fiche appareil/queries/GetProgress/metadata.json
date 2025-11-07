@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6900ce0e5fba93519b2b9c51_881a4c29-aae9-4a91-8c0e-bfde0c5f0ba0",
-  "id": "Affaires_GetAffaires",
+  "gitSyncId": "6900ce0e5fba93519b2b9c51_d7b44bcb-f591-4008-9590-ea8e39d11a8d",
+  "id": "Fiche appareil_GetProgress",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT * FROM public.\"affaires\";",
+      "body": "SELECT percent, step\nFROM public.job_progress\nWHERE job_id = {{ appsmith.store.jobId }};\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,10 +22,14 @@
       "name": "Databook - Neon",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [],
-    "name": "GetAffaires",
-    "pageId": "Affaires",
-    "runBehaviour": "MANUAL",
+    "dynamicBindingPathList": [
+      {
+        "key": "body"
+      }
+    ],
+    "name": "GetProgress",
+    "pageId": "Fiche appareil",
+    "runBehaviour": "AUTOMATIC",
     "userSetOnLoad": false
   }
 }

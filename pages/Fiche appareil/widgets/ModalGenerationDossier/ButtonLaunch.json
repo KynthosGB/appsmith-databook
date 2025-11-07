@@ -1,0 +1,56 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 53,
+  "boxShadow": "none",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonStyle": "PRIMARY_BUTTON",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    },
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "023y3w9j9u",
+  "leftColumn": 47,
+  "minWidth": 120,
+  "mobileBottomRow": 22,
+  "mobileLeftColumn": 47,
+  "mobileRightColumn": 63,
+  "mobileTopRow": 18,
+  "needsErrorInfo": false,
+  "onClick": "{{\n  // 0) reset affichage\n  storeValue('missingCodes', [])\n    .then(() => storeValue('notFoundCount', 0))\n\n    // 1) génère/stocke le jobId pour ce run\n    .then(() => storeValue('jobId', ProgressCtl.newJobId()))\n\n    // 2) démarre le polling de progression\n    .then(() => { ProgressCtl.startPolling(); })\n\n    // 3) lance le workflow n8n\n    .then(() => SendToN8n.run())\n\n    // 4) traite la réponse n8n\n    .then((res) => {\n      const payload = Array.isArray(res) ? res[0] : res;\n\n      const list = Array.isArray(payload?.missingCodes) ? payload.missingCodes : [];\n      const unique = [...new Set(list)]; // dédoublonne\n\n      // stocke pour la table\n      return Promise.all([\n        storeValue('missingCodes', unique),\n        storeValue('notFoundCount', payload?.notFoundCount ?? unique.length),\n      ]).then(() => payload);\n    })\n\n    // 5) feedback utilisateur\n    .then((payload) => {\n      const count = Number(payload?.notFoundCount ?? 0);\n      if (count > 0) {\n        showAlert(`${count} CCPU manquant${count > 1 ? 's' : ''}`, 'warning');\n      } else {\n        showAlert('Dossier généré — aucun CCPU manquant', 'success');\n      }\n    })\n\n    // 6) gestion d'erreur\n    .catch((e) => {\n      showAlert('Erreur : ' + (e?.message || 'échec de l\\'envoi'), 'error');\n    })\n\n    // 7) arrêt du polling + dernier refresh\n    .finally(() => {\n      ProgressCtl.stopPolling();\n      GetProgress.run();\n    });\n}}",
+  "originalBottomRow": 56,
+  "originalTopRow": 52,
+  "parentId": "ozsomwsazg",
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 63,
+  "text": "Lancer la création",
+  "topRow": 49,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "k9qkfmgqab",
+  "widgetName": "ButtonLaunch"
+}

@@ -1,0 +1,16 @@
+-- D'abord les enfants
+DELETE FROM public.enceintes_appareils
+WHERE numero_appareil = '{{ Table1.triggeredRow?.numero_appareil || currentRow.numero_appareil }}';
+
+DELETE FROM public.sommaire_appareils
+WHERE numero_appareil = '{{ Table1.triggeredRow?.numero_appareil || currentRow.numero_appareil }}';
+
+DELETE FROM public.caracteristiques_appareils
+WHERE numero_appareil = '{{ Table1.triggeredRow?.numero_appareil || currentRow.numero_appareil }}';
+
+DELETE FROM public.donnees_generales_appareils
+WHERE numero_appareil = '{{ Table1.triggeredRow?.numero_appareil || currentRow.numero_appareil }}';
+
+-- Ensuite le parent
+DELETE FROM public.appareils
+WHERE numero_appareil = '{{ Table1.triggeredRow?.numero_appareil || currentRow.numero_appareil }}';

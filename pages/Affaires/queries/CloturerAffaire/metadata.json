@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6900ce0e5fba93519b2b9c51_881a4c29-aae9-4a91-8c0e-bfde0c5f0ba0",
-  "id": "Affaires_GetAffaires",
+  "gitSyncId": "6900ce0e5fba93519b2b9c51_8ae63f75-3fbf-4eda-8961-54d1231b8450",
+  "id": "Affaires_CloturerAffaire",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT * FROM public.\"affaires\"\nWHERE cloture = FALSE\nORDER BY numero_affaire DESC;",
+      "body": "UPDATE public.affaires\nSET cloture = TRUE\nWHERE numero_affaire = '{{ Table1.triggeredRow.numero_affaire }}';\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,10 +22,14 @@
       "name": "Databook - Neon",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [],
-    "name": "GetAffaires",
+    "dynamicBindingPathList": [
+      {
+        "key": "body"
+      }
+    ],
+    "name": "CloturerAffaire",
     "pageId": "Affaires",
-    "runBehaviour": "AUTOMATIC",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

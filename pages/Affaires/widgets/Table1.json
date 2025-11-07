@@ -34,13 +34,15 @@
   "columnOrder": [
     "numero_affaire",
     "customColumn1",
+    "customColumn2",
+    "cloture",
     "id",
-    "nom_client",
-    "cloture"
+    "nom_client"
   ],
-  "columnUpdatedAt": 1761753067988,
+  "columnUpdatedAt": 1762527082662,
   "columnWidthMap": {
-    "numero_affaire": 774
+    "customColumn1": 91,
+    "numero_affaire": 685
   },
   "compactMode": "DEFAULT",
   "customIsLoading": false,
@@ -68,15 +70,6 @@
       "key": "primaryColumns.numero_affaire.computedValue"
     },
     {
-      "key": "primaryColumns.customColumn1.buttonColor"
-    },
-    {
-      "key": "primaryColumns.customColumn1.borderRadius"
-    },
-    {
-      "key": "primaryColumns.customColumn1.boxShadow"
-    },
-    {
       "key": "primaryColumns.id.computedValue"
     },
     {
@@ -84,16 +77,28 @@
     },
     {
       "key": "primaryColumns.cloture.computedValue"
+    },
+    {
+      "key": "primaryColumns.customColumn2.borderRadius"
+    },
+    {
+      "key": "primaryColumns.customColumn2.boxShadow"
     }
   ],
   "dynamicPropertyPathList": [
     {
       "key": "tableData"
+    },
+    {
+      "key": "primaryColumns.customColumn2.onClick"
     }
   ],
   "dynamicTriggerPathList": [
     {
       "key": "primaryColumns.customColumn1.onClick"
+    },
+    {
+      "key": "primaryColumns.customColumn2.onClick"
     }
   ],
   "enableClientSideSearch": true,
@@ -144,7 +149,7 @@
       "isEditable": false,
       "isSaveVisible": true,
       "isVisible": false,
-      "label": "cloture",
+      "label": "Clôturé",
       "notation": "standard",
       "originalId": "cloture",
       "sticky": "",
@@ -159,12 +164,9 @@
       "alias": "Choisir",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "borderRadius": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.borderRadius.appBorderRadius)))}}",
-      "boxShadow": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( \"none\"))}}",
-      "buttonColor": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.colors.primaryColor)))}}",
-      "buttonLabel": "->",
+      "buttonLabel": "Action",
       "buttonStyle": "rgb(3, 179, 101)",
-      "columnType": "button",
+      "columnType": "iconButton",
       "computedValue": "",
       "currencyCode": "USD",
       "customAlias": "",
@@ -172,6 +174,7 @@
       "enableFilter": true,
       "enableSort": true,
       "horizontalAlignment": "LEFT",
+      "iconName": "arrow-right",
       "id": "customColumn1",
       "index": 1,
       "isCellEditable": false,
@@ -187,6 +190,45 @@
       "notation": "standard",
       "onClick": "{{navigateTo('Appareils', {\n  \"numero_affaire\": currentRow.numero_affaire,\n\t\"nom_client\": currentRow.nom_client\n}, 'SAME_WINDOW');}}",
       "originalId": "customColumn1",
+      "sticky": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "customColumn2": {
+      "alias": "Clôturer",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "borderRadius": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.borderRadius.appBorderRadius)))}}",
+      "boxShadow": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( \"none\"))}}",
+      "buttonColor": "#eab308",
+      "buttonStyle": "rgb(3, 179, 101)",
+      "columnType": "iconButton",
+      "computedValue": "",
+      "currencyCode": "USD",
+      "customAlias": "",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "iconName": "box",
+      "id": "customColumn2",
+      "index": 4,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": true,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Clôturer",
+      "labelColor": "#FFFFFF",
+      "notation": "standard",
+      "onClick": "{{ \nCloturerAffaire.run()\n  .then(() => showAlert('Affaire clôturée avec succès ✅', 'success'))\n  .then(() => GetAffaires.run())  // recharge la table si tu as une requête GetAffaires\n  .catch(() => showAlert('Erreur lors de la clôture', 'error'))\n}}\n",
+      "originalId": "customColumn2",
       "sticky": "",
       "textSize": "0.875rem",
       "thousandSeparator": true,

@@ -39,9 +39,9 @@
   ],
   "columnUpdatedAt": 1762503958307,
   "columnWidthMap": {
-    "customColumn1": 89,
+    "customColumn1": 87,
     "numero_affaire": 1119,
-    "numero_appareil": 678
+    "numero_appareil": 710
   },
   "customIsLoading": false,
   "customIsLoadingValue": "",
@@ -63,15 +63,6 @@
     },
     {
       "key": "tableData"
-    },
-    {
-      "key": "primaryColumns.customColumn1.buttonColor"
-    },
-    {
-      "key": "primaryColumns.customColumn1.borderRadius"
-    },
-    {
-      "key": "primaryColumns.customColumn1.boxShadow"
     },
     {
       "key": "primaryColumns.numero_appareil.computedValue"
@@ -134,12 +125,9 @@
       "alias": "Choisir",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "borderRadius": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.borderRadius.appBorderRadius)))}}",
-      "boxShadow": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( \"none\"))}}",
-      "buttonColor": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.colors.primaryColor)))}}",
       "buttonLabel": "->",
       "buttonStyle": "rgb(3, 179, 101)",
-      "columnType": "button",
+      "columnType": "iconButton",
       "computedValue": "",
       "currencyCode": "USD",
       "customAlias": "",
@@ -147,6 +135,7 @@
       "enableFilter": true,
       "enableSort": true,
       "horizontalAlignment": "LEFT",
+      "iconName": "arrow-right",
       "id": "customColumn1",
       "index": 1,
       "isCellEditable": false,

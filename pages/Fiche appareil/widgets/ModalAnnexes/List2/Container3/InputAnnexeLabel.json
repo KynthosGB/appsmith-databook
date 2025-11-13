@@ -20,7 +20,7 @@
   "dynamicHeight": "FIXED",
   "dynamicPropertyPathList": [
     {
-      "key": "onTextChanged"
+      "key": "onBlur"
     }
   ],
   "dynamicTriggerPathList": [
@@ -53,8 +53,8 @@
   "mobileRightColumn": 32,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "onBlur": "",
-  "onTextChanged": "{{\n  (() => {\n    const d = { ...(appsmith.store.annex_drafts || {}) };\n    d[currentItem.master_id] = InputAnnexeLabel.text;\n    storeValue('annex_drafts', d);\n  })()\n}}",
+  "onBlur": "{{\n  (() => {\n    const d = { ...(appsmith.store.annex_drafts || {}) };\n    d[currentItem.master_id] = InputAnnexeLabel.text;\n    storeValue('annex_drafts', d);\n  })()\n}}",
+  "onTextChanged": "",
   "parentColumnSpace": 10.37451171875,
   "parentId": "20tmbzc0d6",
   "parentRowSpace": 10,

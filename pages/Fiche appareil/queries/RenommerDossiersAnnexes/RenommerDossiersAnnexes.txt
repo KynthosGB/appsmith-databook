@@ -1,0 +1,7 @@
+{
+  "nom_client": {{ DonneesGeneralesAffaire.data[0].nom_client }},
+  "numero_affaire": {{ CaracteristiquesAppareils.data[0].numero_affaire }},
+  "nom_appareil": {{ CaracteristiquesAppareils.data[0].nom_appareil }},
+  "repere_appareil": {{ CaracteristiquesAppareils.data[0].repere_appareil }},
+  "annexes": {{ this.params.annexes ?? [] }}
+}

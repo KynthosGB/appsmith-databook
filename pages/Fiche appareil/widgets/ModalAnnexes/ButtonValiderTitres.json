@@ -1,0 +1,54 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 59,
+  "boxShadow": "none",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonStyle": "PRIMARY_BUTTON",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    },
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "4l4k1jvbos",
+  "leftColumn": 49,
+  "minWidth": 120,
+  "mobileBottomRow": 22,
+  "mobileLeftColumn": 47,
+  "mobileRightColumn": 63,
+  "mobileTopRow": 18,
+  "needsErrorInfo": false,
+  "onClick": "{{\n  (async () => {\n    const lang   = (appsmith.store.langue_appareil || (RadioLangue.selectedOptionValue || 'fr')).toLowerCase();\n    const rows   = SommaireUI.annexList();              // chapitre 8 + sous-chapitres actifs (déjà flatten)\n    const drafts = appsmith.store.annex_drafts || {};\n\n    // calcule les lignes modifiées\n    const changes = rows.map(r => {\n      const initial = (lang === 'en'\n        ? (r.label_en || r.label_fr || '')\n        : (r.label_fr || r.label_en || '')\n      );\n      const val = (drafts[r.master_id] ?? initial);\n      return (val !== initial) ? { master_id: r.master_id, new_label: val } : null;\n    }).filter(Boolean);\n\n    if (!changes.length) {\n      closeModal('ModalAnnexes');\n      showAlert('Aucune modification', 'info');\n      return;\n    }\n\n    // updates en parallèle\n    await Promise.all(\n      changes.map(it =>\n        RenameSommaireItem.run({\n          master_id: it.master_id,\n          new_label: it.new_label,\n          lang\n        })\n      )\n    );\n\n    await GetSommaireAppareil.run();        // refresh liste principale\n    await storeValue('annex_drafts', null); // nettoie le brouillon\n    closeModal('ModalAnnexes');\n    showAlert('Libellés mis à jour', 'success');\n  })().catch(e => showAlert('Erreur sauvegarde: ' + (e?.message || e), 'error'))\n}}\n",
+  "parentId": "z27mk9t6a3",
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 63,
+  "text": "Valider",
+  "topRow": 55,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "fqdzecbzkl",
+  "widgetName": "ButtonValiderTitres"
+}

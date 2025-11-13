@@ -10,6 +10,14 @@ export default {
 			? (x.label_en || x.label_fr || '')
 			: (x.label_fr || x.label_en || '');
 	},
+	
+	annexList() {
+		// reprend la liste plate et ne garde que le chapitre 8 et ses enfants inclus
+		const all = this.flatList();
+		return all.filter(x =>
+			x.master_id === '8' || (x.parent_master_id === '8' && x.include)
+		);
+	},
 
   // --- helpers ordre effectif
   effChapter(x) {

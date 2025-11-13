@@ -1,0 +1,57 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 4,
+  "boxShadow": "none",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonVariant": "SECONDARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    },
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "iconAlign": "left",
+  "iconName": "edit",
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "4l4k1jvbos",
+  "leftColumn": 46,
+  "minWidth": 120,
+  "mobileBottomRow": 4,
+  "mobileLeftColumn": 47,
+  "mobileRightColumn": 63,
+  "mobileTopRow": 0,
+  "needsErrorInfo": false,
+  "onClick": "{{\n  (async () => {\n    const rows = SommaireUI.annexList();\n    const lang = (appsmith.store.langue_appareil || (RadioLangue.selectedOptionValue || 'fr')).toLowerCase();\n    const init = {};\n    rows.forEach(r => {\n      init[r.master_id] = (lang === 'en'\n        ? (r.label_en || r.label_fr || '')\n        : (r.label_fr || r.label_en || '')\n      );\n    });\n    await storeValue('annex_drafts', init);\n    showModal('ModalAnnexes');\n  })().catch(e => showAlert('Erreur ouverture modal: ' + (e?.message || e), 'error'))\n}}\n",
+  "parentColumnSpace": 18.880859375,
+  "parentId": "4um0uyzxua",
+  "parentRowSpace": 10,
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 63,
+  "text": "Modifier les noms des chapitres annexes",
+  "topRow": 0,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "mar8dnaq6r",
+  "widgetName": "ButtonModalAnnexes"
+}

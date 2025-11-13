@@ -1,0 +1,4 @@
+UPDATE public.donnees_generales_appareils
+SET langue = {{ (RadioLangue.selectedOptionValue || '').toLowerCase() }}
+WHERE numero_appareil = {{ appsmith.URL.queryParams.numero_appareil }}
+RETURNING langue;

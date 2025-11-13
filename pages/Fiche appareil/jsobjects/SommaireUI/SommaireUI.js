@@ -1,4 +1,16 @@
 export default {
+	labelFor(x) {
+		const lang =
+			// 1) choix en cours (reactif)
+			(appsmith.store.langue_appareil || (RadioLangue.selectedOptionValue || 'fr')).toLowerCase()
+			// 2) fallback DB si rien en mémoire (rare)
+			|| (DonneesGeneralesAffaire.data?.[0]?.langue || 'fr').toLowerCase();
+
+		return lang === 'en'
+			? (x.label_en || x.label_fr || '')
+			: (x.label_fr || x.label_en || '');
+	},
+
   // --- helpers ordre effectif
   effChapter(x) {
     // ordre d'affichage des chapitres (niveau 1)
@@ -95,7 +107,7 @@ export default {
 				// numéro effectif calculé (fallback sur display_no si présent)
 				effDisplayNo: effDisplayNoMap.get(x.master_id) || x.display_no || "",
 				// titre basé sur la numérotation effective
-				title: ((effDisplayNoMap.get(x.master_id) || x.display_no) ? (effDisplayNoMap.get(x.master_id) || x.display_no) + " - " : "") + x.label_fr,
+				title: ( (effDisplayNoMap.get(x.master_id) || x.display_no ? (effDisplayNoMap.get(x.master_id) || x.display_no) + " - " : "") + this.labelFor(x)),
 			};
 		});
 	},

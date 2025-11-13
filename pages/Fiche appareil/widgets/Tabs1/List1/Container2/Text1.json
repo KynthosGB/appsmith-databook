@@ -51,7 +51,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 54,
   "shouldTruncate": false,
-  "text": "{{(\"&nbsp;\".repeat((currentItem.level - 1) * 4)) +\n  (currentItem.display_no ? currentItem.display_no + \" - \" : \"\") +\n  currentItem.label_fr\n}}\n",
+  "text": "{{(\"&nbsp;\".repeat((currentItem.level - 1) * 4)) + currentItem.title }}",
   "textAlign": "",
   "textColor": "#231F20",
   "textStyle": "HEADING",

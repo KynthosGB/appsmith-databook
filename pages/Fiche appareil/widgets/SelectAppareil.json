@@ -59,7 +59,7 @@
   "placeholderText": "Choisir un appareil",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 18,
+  "rightColumn": 13,
   "serverSideFiltering": false,
   "sourceData": "{{GetAllAppareils.data}}",
   "topRow": 0,

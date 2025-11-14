@@ -24,12 +24,14 @@
       "key": "onClick"
     }
   ],
+  "iconAlign": "left",
+  "iconName": "cog",
   "isDefaultClickDisabled": true,
   "isDisabled": false,
   "isLoading": false,
   "isVisible": true,
   "key": "d4qk1w953r",
-  "leftColumn": 54,
+  "leftColumn": 53,
   "minWidth": 120,
   "mobileBottomRow": 6,
   "mobileLeftColumn": 47,

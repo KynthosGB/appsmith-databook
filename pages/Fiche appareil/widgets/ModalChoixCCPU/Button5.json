@@ -1,0 +1,59 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 59,
+  "boxShadow": "none",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonStyle": "PRIMARY_BUTTON",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "text"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "v87p6l6x5u",
+  "leftColumn": 47,
+  "minWidth": 120,
+  "mobileBottomRow": 22,
+  "mobileLeftColumn": 47,
+  "mobileRightColumn": 63,
+  "mobileTopRow": 18,
+  "needsErrorInfo": false,
+  "onClick": "{{\n  (async () => {\n    const cand = ListeCandidatsCCPU.selectedRow;\n\n    if (!cand) {\n      showAlert(\"Sélectionne d'abord un fichier candidat.\", \"warning\");\n      return;\n    }\n\n    const rows = appsmith.store.ccpuSelectedRows || [];\n    if (!rows.length) {\n      showAlert(\"Aucune ligne à alimenter (sélection perdue, rouvre la fenêtre).\", \"error\");\n      return;\n    }\n\n    const numAff = CaracteristiquesAppareils.data?.[0]?.numero_affaire;\n    const nomCli = DonneesGeneralesAffaire.data?.[0]?.nom_client;\n    const nomApp = CaracteristiquesAppareils.data?.[0]?.nom_appareil;\n\n    const tasks = rows.map(r =>\n      CopyCCPUFromCandidate.run({\n        srcPath: cand.path,\n        rep: r.rep,\n        srsm: (r.srsm == null || String(r.srsm).trim() === \"\") ? \"1\" : String(r.srsm).trim(),\n        code: r.code,\n        numero_affaire: numAff,\n        nom_client: nomCli,\n        nom_appareil: nomApp,\n      })\n    );\n\n    const results = await Promise.allSettled(tasks);\n    const ok = results.filter(r => r.status === \"fulfilled\").length;\n    const ko = results.length - ok;\n\n    showAlert(\n      `Copie terminée — OK: ${ok}${ko ? \" / Échecs: \" + ko : \"\"}`,\n      ko ? \"warning\" : \"success\"\n    );\n\n    // Rafraîchir les statuts en base\n    await QryCCPUStatus.run();\n\t\t// Rafraîchir la liste\n    await QryCCPUManquants.run();\n\n    closeModal(ModalChoixCCPU.name);\n  })()\n}}\n",
+  "originalBottomRow": 22,
+  "originalTopRow": 18,
+  "parentId": "0sf57rrs9y",
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 63,
+  "text": "{{ \"Valider \" + ListeCandidatsCCPU.selectedRow.name }}",
+  "topRow": 55,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "k17a3orc55",
+  "widgetName": "Button5"
+}

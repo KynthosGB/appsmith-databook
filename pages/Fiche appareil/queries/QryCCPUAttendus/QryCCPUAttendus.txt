@@ -1,8 +1,0 @@
-SELECT
-  rep,
-  srsm,
-  code
-FROM ccpu_attendus
-WHERE numero_affaire = {{ CaracteristiquesAppareils.data[0]?.numero_affaire }}
-  AND nom_appareil   = {{ CaracteristiquesAppareils.data?.[0]?.nom_appareil }}
-ORDER BY rep, srsm, code;

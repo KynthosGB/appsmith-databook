@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n    numero_affaire,\n    nom_appareil,\n    rep,\n    srsm,\n    code,\n    search_status,\n    src_path,\n    dest_path,\n    copied_at\nFROM liste_ccpu_nomenclature_appareil\nWHERE numero_affaire = '{{ DonneesGeneralesAffaire.data[0].numero_affaire }}'\n  AND nom_appareil   = '{{ CaracteristiquesAppareils.data[0].nom_appareil }}'\nORDER BY rep, srsm;\n",
+      "body": "SELECT\n    numero_affaire,\n    nom_appareil,\n    rep,\n    srsm,\n\t\tep,\n\t\tnuance,\n\t\tnorme,\n    code,\n    search_status,\n    src_path,\n    dest_path,\n    copied_at\nFROM liste_ccpu_nomenclature_appareil\nWHERE numero_affaire = '{{ DonneesGeneralesAffaire.data[0].numero_affaire }}'\n  AND nom_appareil   = '{{ CaracteristiquesAppareils.data[0].nom_appareil }}'\nORDER BY code;\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

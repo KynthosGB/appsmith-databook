@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 4,
+  "bottomRow": 5,
   "boxShadow": "none",
   "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
   "buttonVariant": "PRIMARY",
@@ -47,7 +47,7 @@
   "responsiveBehavior": "hug",
   "rightColumn": 14,
   "text": "Lancer la vérification des CCPU",
-  "topRow": 0,
+  "topRow": 1,
   "type": "BUTTON_WIDGET",
   "version": 1,
   "widgetId": "bbredjc1q7",

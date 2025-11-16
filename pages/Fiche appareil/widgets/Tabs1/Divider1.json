@@ -1,6 +1,6 @@
 {
   "animateLoading": true,
-  "bottomRow": 73,
+  "bottomRow": 74,
   "capSide": 0,
   "capType": "nc",
   "dividerColor": "#858282",
@@ -25,7 +25,7 @@
   "rightColumn": 35,
   "strokeStyle": "dotted",
   "thickness": 2,
-  "topRow": 0,
+  "topRow": 1,
   "type": "DIVIDER_WIDGET",
   "version": 1,
   "widgetId": "nutraji4e5",

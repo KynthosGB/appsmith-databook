@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 4,
+  "bottomRow": 5,
   "boxShadow": "none",
   "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
   "buttonVariant": "PRIMARY",
@@ -56,7 +56,7 @@
   "responsiveBehavior": "hug",
   "rightColumn": 33,
   "text": "{{\n(() => {\n  const rows = ListeCCPU.selectedRows || [];\n  if (!rows.length) return \"Voir le CCPU\";\n\n  // tous les codes identiques ?\n  const codes = Array.from(new Set(rows.map(r => String(r.code || \"\").trim())));\n  if (codes.length !== 1) return \"Voir le CCPU\";\n\n  // états uniques\n  const statuses = Array.from(new Set(rows.map(r => r.search_status)));\n\n  if (statuses.length !== 1) return \"Voir le CCPU\";\n\n  const status = statuses[0];\n\n  if (status === \"found_unique\") return \"Voir le CCPU\";\n  if (status === \"need_manual_validation\") return \"Choisir le CCPU\";\n\n  return \"Voir le CCPU\";\n})()\n}}\n",
-  "topRow": 0,
+  "topRow": 1,
   "type": "BUTTON_WIDGET",
   "version": 1,
   "widgetId": "jcouu45vcl",

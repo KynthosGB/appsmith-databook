@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 10,
+  "bottomRow": 6,
   "boxShadow": "none",
   "buttonColor": "{{ TrackerModif.isModified() ? \"#553De9\" : \"lightgray\" }}",
   "buttonVariant": "PRIMARY",
@@ -53,7 +53,7 @@
   "responsiveBehavior": "hug",
   "rightColumn": 19,
   "text": "Enregistrer",
-  "topRow": 6,
+  "topRow": 2,
   "type": "BUTTON_WIDGET",
   "version": 1,
   "widgetId": "qs5u1z5hb3",

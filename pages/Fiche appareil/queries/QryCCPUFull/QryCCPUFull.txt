@@ -3,6 +3,9 @@ SELECT
     nom_appareil,
     rep,
     srsm,
+		ep,
+		nuance,
+		norme,
     code,
     search_status,
     src_path,
@@ -11,4 +14,4 @@ SELECT
 FROM liste_ccpu_nomenclature_appareil
 WHERE numero_affaire = '{{ DonneesGeneralesAffaire.data[0].numero_affaire }}'
   AND nom_appareil   = '{{ CaracteristiquesAppareils.data[0].nom_appareil }}'
-ORDER BY rep, srsm;
+ORDER BY code;

@@ -1,0 +1,64 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 4,
+  "boxShadow": "none",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "text"
+    },
+    {
+      "key": "isDisabled"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    },
+    {
+      "key": "isDisabled"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "isDefaultClickDisabled": true,
+  "isDisabled": "{{\n(() => {\n  const rows = ListeCCPU.selectedRows || [];\n\n  // Désactivé si aucune ligne\n  if (!rows.length) return true;\n\n  // Récupère les codes sélectionnés\n  const codes = Array.from(\n    new Set(rows.map(r => String(r.code || \"\").trim()))\n  );\n\n  // Désactivé si plusieurs codes différents\n  return codes.length !== 1;\n})()\n}}\n",
+  "isLoading": false,
+  "isVisible": true,
+  "key": "dnnnqbxsab",
+  "leftColumn": 22,
+  "minWidth": 120,
+  "mobileBottomRow": 5,
+  "mobileLeftColumn": 40,
+  "mobileRightColumn": 56,
+  "mobileTopRow": 1,
+  "needsErrorInfo": false,
+  "onClick": "{{\n(async () => {\n  const rows = ListeCCPU.selectedRows || [];\n\n  if (!rows.length) {\n    showAlert(\"Veuillez sélectionner au moins une ligne\", \"warning\");\n    return;\n  }\n\n  // Vérifier que tous les codes sont identiques\n  const codes = Array.from(new Set(rows.map(r => String(r.code || \"\").trim())));\n  if (codes.length !== 1) {\n    showAlert(\"Toutes les lignes sélectionnées doivent avoir le même CCPU.\", \"error\");\n    return;\n  }\n  const code = codes[0];\n\n  // Vérifier que tous les search_status sont identiques\n  const statuses = Array.from(new Set(rows.map(r => r.search_status)));\n  if (statuses.length !== 1) {\n    showAlert(\"Toutes les lignes sélectionnées doivent avoir le même état de recherche.\", \"error\");\n    return;\n  }\n  const status = statuses[0];\n\n  // nom_appareil au format \"260999A - CUVE\"\n  const nomAppareil = CaracteristiquesAppareils.data?.[0]?.nom_appareil;\n  if (!nomAppareil) {\n    showAlert(\"Nom d'appareil introuvable\", \"error\");\n    return;\n  }\n\n  // Cas 1 : found_unique -> on affiche directement le CCPU\n  if (status === \"found_unique\") {\n    const url =\n      `https://n8n.kynthos.fr/webhook/appsmith-ccpu-file` +\n      `?nom_appareil=${encodeURIComponent(nomAppareil)}` +\n      `&code=${encodeURIComponent(code)}`;\n\n    storeValue(\"ccpuUrl\", url);\n    return;\n  }\n\n  // Cas 2 : need_manual_validation -> on ouvre la modale de choix\n  if (status === \"need_manual_validation\") {\n    const res = await ListCCPUCandidats.run({ code });\n    const payload = Array.isArray(res) ? res[0] : res;\n    const candidates = payload?.candidates || [];\n\n    if (!candidates.length) {\n      showAlert(`Aucun fichier candidat trouvé pour le code ${code}.`, \"warning\");\n      return;\n    }\n\n    await storeValue(\"ccpuCandidates\", candidates);\n    await storeValue(\"ccpuSelectedRows\", rows);\n\n    showModal(ModalChoixCCPU.name);\n    return;\n  }\n\n  // Autres cas : rien à faire\n  showAlert(\"Les lignes sélectionnées ne sont ni 'Trouvé' ni 'À vérifier'.\", \"warning\");\n})()\n}}\n",
+  "parentColumnSpace": 17.064453125,
+  "parentId": "k8zg0a8aiv",
+  "parentRowSpace": 10,
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 33,
+  "text": "{{\n(() => {\n  const rows = ListeCCPU.selectedRows || [];\n  if (!rows.length) return \"Voir le CCPU\";\n\n  // tous les codes identiques ?\n  const codes = Array.from(new Set(rows.map(r => String(r.code || \"\").trim())));\n  if (codes.length !== 1) return \"Voir le CCPU\";\n\n  // états uniques\n  const statuses = Array.from(new Set(rows.map(r => r.search_status)));\n\n  if (statuses.length !== 1) return \"Voir le CCPU\";\n\n  const status = statuses[0];\n\n  if (status === \"found_unique\") return \"Voir le CCPU\";\n  if (status === \"need_manual_validation\") return \"Choisir le CCPU\";\n\n  return \"Voir le CCPU\";\n})()\n}}\n",
+  "topRow": 0,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "jcouu45vcl",
+  "widgetName": "Button5"
+}

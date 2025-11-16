@@ -1,6 +1,6 @@
 {
   "animateLoading": true,
-  "bottomRow": 67,
+  "bottomRow": 71,
   "docUrl": "{{ appsmith.store.ccpuUrl }}",
   "dynamicBindingPathList": [
     {
@@ -19,7 +19,7 @@
   "flexVerticalAlignment": "start",
   "isCanvas": false,
   "isLoading": false,
-  "isVisible": "{{ !!appsmith.store.ccpuUrl }}",
+  "isVisible": "{{\n(() => {\n  const url = appsmith.store.ccpuUrl;\n  const rows = ListeCCPU.selectedRows || [];\n\n  // 1) Pas d'URL → invisible\n  if (!url) return false;\n\n  // 2) Pas de sélection → invisible\n  if (!rows.length) return false;\n\n  // 3) Tous les codes identiques ?\n  const codes = Array.from(new Set(rows.map(r => String(r.code || \"\").trim())));\n  if (codes.length !== 1) return false;\n\n  // 4) Tous les statuts found_unique ou path_ok ?\n  const ok = rows.every(r =>\n    r.search_status === \"found_unique\" ||\n    r.search_status === \"path_ok\"\n  );\n  if (!ok) return false;\n\n  // Sinon → visible\n  return true;\n})()\n}}",
   "key": "qx1angimdm",
   "leftColumn": 0,
   "mobileBottomRow": 40,

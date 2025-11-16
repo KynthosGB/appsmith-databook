@@ -11,6 +11,9 @@
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "text"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
@@ -36,7 +39,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 41,
   "shouldTruncate": false,
-  "text": "Choix du CCPU",
+  "text": "{{ \"Choix du CCPU pour le code \" + (appsmith.store.ccpuSelectedRows?.[0]?.code || \"\") }}",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 1,

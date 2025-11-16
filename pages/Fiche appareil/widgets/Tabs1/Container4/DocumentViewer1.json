@@ -1,38 +1,41 @@
 {
   "animateLoading": true,
   "bottomRow": 67,
-  "bottomRowBeforeCollapse": 57,
   "docUrl": "{{ appsmith.store.ccpuUrl }}",
   "dynamicBindingPathList": [
     {
       "key": "docUrl"
+    },
+    {
+      "key": "isVisible"
     }
   ],
-  "dynamicPropertyPathList": [],
+  "dynamicPropertyPathList": [
+    {
+      "key": "isVisible"
+    }
+  ],
   "dynamicTriggerPathList": [],
   "flexVerticalAlignment": "start",
   "isCanvas": false,
   "isLoading": false,
-  "isVisible": true,
-  "key": "3rbvgbxrsy",
+  "isVisible": "{{ !!appsmith.store.ccpuUrl }}",
+  "key": "qx1angimdm",
   "leftColumn": 0,
-  "mobileBottomRow": 41,
-  "mobileLeftColumn": 36,
-  "mobileRightColumn": 60,
-  "mobileTopRow": 1,
+  "mobileBottomRow": 40,
+  "mobileLeftColumn": 0,
+  "mobileRightColumn": 24,
+  "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "originalBottomRow": 57,
-  "originalTopRow": 1,
-  "parentColumnSpace": 17.064453125,
+  "parentColumnSpace": 7.107330322265625,
   "parentId": "yydmwla4t9",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 63,
-  "topRow": 1,
-  "topRowBeforeCollapse": 1,
+  "rightColumn": 64,
+  "topRow": 0,
   "type": "DOCUMENT_VIEWER_WIDGET",
   "version": 1,
-  "widgetId": "w6cnzth2rq",
+  "widgetId": "8cc3gbvxxr",
   "widgetName": "DocumentViewer1"
 }

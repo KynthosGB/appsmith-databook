@@ -29,7 +29,7 @@
     ],
     "name": "QryCCPUManquants",
     "pageId": "Fiche appareil",
-    "runBehaviour": "AUTOMATIC",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

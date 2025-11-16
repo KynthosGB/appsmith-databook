@@ -1,11 +1,11 @@
 {
   "gitSyncId": "6915b9d6a2ab6852a3eeef70_d4d89ca3-0983-4811-ae29-fab9459cd6cc",
-  "id": "Fiche appareil_Query1",
+  "id": "Fiche appareil_QryCCPUFull",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT * FROM auth.\"audit_log_entries\" LIMIT 10;",
+      "body": "SELECT\n    numero_affaire,\n    nom_appareil,\n    rep,\n    srsm,\n    code,\n    search_status,\n    src_path,\n    dest_path,\n    copied_at\nFROM liste_ccpu_nomenclature_appareil\nWHERE numero_affaire = '{{ DonneesGeneralesAffaire.data[0].numero_affaire }}'\n  AND nom_appareil   = '{{ CaracteristiquesAppareils.data[0].nom_appareil }}'\nORDER BY rep, srsm;\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,9 +22,14 @@
       "name": "Databook - Neon",
       "pluginId": "postgres-plugin"
     },
-    "name": "Query1",
+    "dynamicBindingPathList": [
+      {
+        "key": "body"
+      }
+    ],
+    "name": "QryCCPUFull",
     "pageId": "Fiche appareil",
-    "runBehaviour": "MANUAL",
+    "runBehaviour": "AUTOMATIC",
     "userSetOnLoad": false
   }
 }

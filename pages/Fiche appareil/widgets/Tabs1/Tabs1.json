@@ -5,12 +5,12 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": 1,
-  "bottomRow": 74,
+  "bottomRow": 141,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "children": [
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 1750,
+      "bottomRow": 1760,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": true,
       "detachFromLayout": true,
@@ -102,7 +102,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 530,
+      "bottomRow": 1200,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -138,12 +138,57 @@
       "responsiveBehavior": "fill",
       "rightColumn": 1228.375,
       "tabId": "tab050u2j8n08",
-      "tabName": "Documents",
+      "tabName": "Vérification des CCPU",
       "topRow": 1,
       "type": "CANVAS_WIDGET",
       "version": 1,
       "widgetId": "k8zg0a8aiv",
       "widgetName": "Canvas12"
+    },
+    {
+      "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "bottomRow": 1200,
+      "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+      "canExtend": false,
+      "containerStyle": "none",
+      "detachFromLayout": true,
+      "dynamicBindingPathList": [
+        {
+          "key": "borderRadius"
+        },
+        {
+          "key": "boxShadow"
+        }
+      ],
+      "dynamicHeight": "AUTO_HEIGHT",
+      "dynamicTriggerPathList": [],
+      "flexLayers": [],
+      "isLoading": false,
+      "isVisible": true,
+      "key": "l5l2jyxkpf",
+      "leftColumn": 0,
+      "maxDynamicHeight": 9000,
+      "minDynamicHeight": 4,
+      "minHeight": 570,
+      "minWidth": 450,
+      "mobileBottomRow": 571,
+      "mobileLeftColumn": 0,
+      "mobileRightColumn": 1228.375,
+      "mobileTopRow": 1,
+      "needsErrorInfo": false,
+      "parentColumnSpace": 1,
+      "parentId": "zvpe4hxely",
+      "parentRowSpace": 1,
+      "renderMode": "CANVAS",
+      "responsiveBehavior": "fill",
+      "rightColumn": 1228.375,
+      "tabId": "tab2sv3ruxkst",
+      "tabName": "Documents divers",
+      "topRow": 1,
+      "type": "CANVAS_WIDGET",
+      "version": 1,
+      "widgetId": "pb3fn8yjx0",
+      "widgetName": "Canvas17"
     }
   ],
   "defaultTab": "Données de l'appareil",
@@ -174,7 +219,7 @@
   "mobileRightColumn": 25,
   "mobileTopRow": 13,
   "needsErrorInfo": false,
-  "originalBottomRow": 74,
+  "originalBottomRow": 136,
   "originalTopRow": 17,
   "parentColumnSpace": 19.8125,
   "parentId": "0",
@@ -189,7 +234,7 @@
       "id": "tab050u2j8n08",
       "index": 2,
       "isVisible": true,
-      "label": "Documents",
+      "label": "Vérification des CCPU",
       "widgetId": "k8zg0a8aiv"
     },
     "tab1": {
@@ -207,6 +252,13 @@
       "label": "Sommaire",
       "positioning": "vertical",
       "widgetId": "4um0uyzxua"
+    },
+    "tab2sv3ruxkst": {
+      "id": "tab2sv3ruxkst",
+      "index": 3,
+      "isVisible": true,
+      "label": "Documents divers",
+      "widgetId": "pb3fn8yjx0"
     }
   },
   "topRow": 17,

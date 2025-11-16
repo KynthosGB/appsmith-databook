@@ -1,0 +1,4 @@
+{
+  "nom_appareil": "{{ CaracteristiquesAppareils.data[0].nom_appareil }}",
+  "code": "{{ ListeCCPU.selectedRows[0].code }}"
+}

@@ -1,0 +1,14 @@
+SELECT
+    numero_affaire,
+    nom_appareil,
+    rep,
+    srsm,
+    code,
+    search_status,
+    src_path,
+    dest_path,
+    copied_at
+FROM liste_ccpu_nomenclature_appareil
+WHERE numero_affaire = '{{ DonneesGeneralesAffaire.data[0].numero_affaire }}'
+  AND nom_appareil   = '{{ CaracteristiquesAppareils.data[0].nom_appareil }}'
+ORDER BY rep, srsm;

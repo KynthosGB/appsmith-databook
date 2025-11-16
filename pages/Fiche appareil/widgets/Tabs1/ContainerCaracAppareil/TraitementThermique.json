@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "alignWidget": "LEFT",
   "animateLoading": true,
-  "bottomRow": 65,
+  "bottomRow": 66,
   "boxShadow": "none",
   "defaultSwitchState": "{{CaracteristiquesAppareils.data[0].traitement_thermique}}",
   "dynamicBindingPathList": [
@@ -39,7 +39,7 @@
   "mobileTopRow": 66,
   "needsErrorInfo": false,
   "onChange": "{{TrackerModif.setModifiedTrue();}}",
-  "originalBottomRow": 65,
+  "originalBottomRow": 66,
   "originalTopRow": 61,
   "parentColumnSpace": 19.3046875,
   "parentId": "yto2tqllfl",

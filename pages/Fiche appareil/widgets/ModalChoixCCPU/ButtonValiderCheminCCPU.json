@@ -16,11 +16,17 @@
     },
     {
       "key": "text"
+    },
+    {
+      "key": "isDisabled"
     }
   ],
   "dynamicPropertyPathList": [
     {
       "key": "onClick"
+    },
+    {
+      "key": "isDisabled"
     }
   ],
   "dynamicTriggerPathList": [
@@ -29,7 +35,7 @@
     }
   ],
   "isDefaultClickDisabled": true,
-  "isDisabled": false,
+  "isDisabled": "{{ ListeCandidatsCCPU.selectedRow.name == \"\" }}\n",
   "isLoading": false,
   "isVisible": true,
   "key": "v87p6l6x5u",

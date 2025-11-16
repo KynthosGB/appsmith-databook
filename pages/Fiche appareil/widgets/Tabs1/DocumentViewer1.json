@@ -1,6 +1,7 @@
 {
   "animateLoading": true,
   "bottomRow": 73,
+  "bottomRowBeforeCollapse": 73,
   "docUrl": "{{ appsmith.store.ccpuUrl }}",
   "dynamicBindingPathList": [
     {
@@ -27,6 +28,8 @@
   "mobileRightColumn": 24,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
+  "originalBottomRow": 73,
+  "originalTopRow": 1,
   "parentColumnSpace": 7.107330322265625,
   "parentId": "k8zg0a8aiv",
   "parentRowSpace": 10,
@@ -34,6 +37,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 64,
   "topRow": 1,
+  "topRowBeforeCollapse": 1,
   "type": "DOCUMENT_VIEWER_WIDGET",
   "version": 1,
   "widgetId": "8cc3gbvxxr",

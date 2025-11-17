@@ -1,4 +1,4 @@
 {
-  "numero_affaire": {{ Table1.triggeredRow.numero_affaire }},
-  "nom_client": {{ Table1.triggeredRow.nom_client }}
+  "numero_affaire": {{ ListeAffaires.triggeredRow.numero_affaire }},
+  "nom_client": {{ ListeAffaires.triggeredRow.nom_client }}
 }

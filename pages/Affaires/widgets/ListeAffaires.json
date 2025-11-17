@@ -88,9 +88,6 @@
   "dynamicPropertyPathList": [
     {
       "key": "tableData"
-    },
-    {
-      "key": "primaryColumns.customColumn2.onClick"
     }
   ],
   "dynamicTriggerPathList": [
@@ -133,7 +130,7 @@
       "allowSameOptionsInNewRow": true,
       "cellBackground": "",
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"cloture\"])) : cloture })()}}",
+      "computedValue": "{{(() => { const tableData = ListeAffaires.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"cloture\"])) : cloture })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -202,8 +199,8 @@
       "alias": "Clôturer",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "borderRadius": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.borderRadius.appBorderRadius)))}}",
-      "boxShadow": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( \"none\"))}}",
+      "borderRadius": "{{ListeAffaires.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.borderRadius.appBorderRadius)))}}",
+      "boxShadow": "{{ListeAffaires.processedTableData.map((currentRow, currentIndex) => ( \"none\"))}}",
       "buttonColor": "#eab308",
       "buttonStyle": "rgb(3, 179, 101)",
       "columnType": "iconButton",
@@ -228,7 +225,7 @@
       "label": "Clôturer",
       "labelColor": "#FFFFFF",
       "notation": "standard",
-      "onClick": "{{\n  (() => {\n    const row = Table1.triggeredRow;\n    if (!row) {\n      showAlert(\"Aucune affaire sélectionnée\", \"warning\");\n      return;\n    }\n\n    CloturerAffaire.run()\n      .then(() => {\n        // Lance le workflow n8n qui déplace le dossier\n        return DeplacerDossierAffaire.run();\n      })\n      .then(() => {\n        showAlert(\"Affaire clôturée et dossier déplacé ✅\", \"success\");\n        return GetAffaires.run(); // rafraîchir la liste\n      })\n      .catch((e) => {\n        console.log(\"Erreur clôture / déplacement\", e);\n        showAlert(\"Erreur lors de la clôture ou du déplacement du dossier\", \"error\");\n      });\n  })()\n}}",
+      "onClick": "{{showModal(ModalConfirmationCloture.name);}}",
       "originalId": "customColumn2",
       "sticky": "",
       "textSize": "0.875rem",
@@ -243,7 +240,7 @@
       "allowSameOptionsInNewRow": true,
       "cellBackground": "",
       "columnType": "number",
-      "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"id\"])) : id })()}}",
+      "computedValue": "{{(() => { const tableData = ListeAffaires.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"id\"])) : id })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -277,7 +274,7 @@
       "allowSameOptionsInNewRow": true,
       "cellBackground": "",
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"nom_client\"])) : nom_client })()}}",
+      "computedValue": "{{(() => { const tableData = ListeAffaires.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"nom_client\"])) : nom_client })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -311,7 +308,7 @@
       "allowSameOptionsInNewRow": true,
       "cellBackground": "",
       "columnType": "number",
-      "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"numero_affaire\"])) : numero_affaire })()}}",
+      "computedValue": "{{(() => { const tableData = ListeAffaires.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"numero_affaire\"])) : numero_affaire })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -352,5 +349,5 @@
   "version": 2,
   "verticalAlignment": "CENTER",
   "widgetId": "6pjiefan7u",
-  "widgetName": "Table1"
+  "widgetName": "ListeAffaires"
 }

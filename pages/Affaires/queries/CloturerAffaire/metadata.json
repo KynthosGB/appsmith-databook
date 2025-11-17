@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "UPDATE public.affaires\nSET cloture = TRUE\nWHERE numero_affaire = '{{ Table1.triggeredRow.numero_affaire }}';\n",
+      "body": "UPDATE public.affaires\nSET cloture = TRUE\nWHERE numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}';\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

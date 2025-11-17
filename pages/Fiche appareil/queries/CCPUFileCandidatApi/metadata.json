@@ -1,6 +1,6 @@
 {
-  "gitSyncId": "6915b9d6a2ab6852a3eeef70_d7ef9dbc-b739-4ec1-8428-92788360f6dc",
-  "id": "Fiche appareil_CopyCCPUFromCandidate",
+  "gitSyncId": "6915b9d6a2ab6852a3eeef70_e6f0d9bf-93c1-4abb-ae24-c31d2017469f",
+  "id": "Fiche appareil_CCPUFileCandidatApi",
   "pluginId": "restapi-plugin",
   "pluginType": "API",
   "unpublishedAction": {
@@ -11,17 +11,17 @@
           "value": "application/json"
         }
       ],
-      "body": "{\n\t\"srcPath\": {{this.params.srcPath}},\n\t\"rep\": {{this.params.rep}},\n\t\"srsm\": {{this.params.srsm}},\n\t\"code\": {{this.params.code}},\n\t\"numero_affaire\": {{this.params.numero_affaire}},\n\t\"nom_client\": {{this.params.nom_client}},\n\t\"nom_appareil\": {{this.params.nom_appareil}}\n}\n",
+      "body": "{\n  \"src_path\": \"{{ ListeCandidatsCCPU.selectedRow.path }}\"\n}\n",
       "bodyFormData": [],
       "encodeParamsToggle": true,
       "formData": {
         "apiContentType": "application/json"
       },
       "headers": [],
-      "httpMethod": "POST",
+      "httpMethod": "GET",
       "httpVersion": "HTTP11",
       "paginationType": "NONE",
-      "path": "/webhook/appsmith-ccpu-copy",
+      "path": "/webhook/appsmith-ccpu-file-candidat",
       "pluginSpecifiedTemplates": [
         {
           "value": true
@@ -44,7 +44,7 @@
         "key": "body"
       }
     ],
-    "name": "CopyCCPUFromCandidate",
+    "name": "CCPUFileCandidatApi",
     "pageId": "Fiche appareil",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false

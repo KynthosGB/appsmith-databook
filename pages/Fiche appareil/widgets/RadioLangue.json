@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "alignment": "left",
   "animateLoading": true,
-  "bottomRow": 11,
+  "bottomRow": 13,
   "boxShadow": "none",
   "defaultOptionValue": "fr",
   "dynamicBindingPathList": [
@@ -33,7 +33,7 @@
   "labelPosition": "Left",
   "labelTextSize": "0.875rem",
   "labelWidth": "9",
-  "leftColumn": 45,
+  "leftColumn": 53,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "mobileBottomRow": 16,
@@ -52,7 +52,7 @@
       "value": "en"
     }
   ],
-  "originalBottomRow": 11,
+  "originalBottomRow": 13,
   "originalTopRow": 7,
   "parentColumnSpace": 19.8125,
   "parentId": "0",

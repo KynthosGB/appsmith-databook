@@ -1,0 +1,64 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 5,
+  "boxShadow": "none",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "isDisabled"
+    },
+    {
+      "key": "text"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    },
+    {
+      "key": "isDisabled"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "isDefaultClickDisabled": true,
+  "isDisabled": "{{\n(() => {\n  const rows = ListeCCPU.selectedRows || [];\n  const url = appsmith.store.ccpuUrl;\n\n  // 1) Rien sélectionné → disable\n  if (rows.length === 0) return true;\n\n  // 2) Tous les codes doivent être identiques\n  const codes = Array.from(\n    new Set(rows.map(r => String(r.code || \"\").trim()))\n  );\n  if (codes.length !== 1) return true;\n\n  const selectedCode = codes[0];\n\n  // 3) search_status doit être found_unique OU path_ok\n  const validStatuses = [\"found_unique\", \"path_ok\"];\n  const allValid = rows.every(r => validStatuses.includes(r.search_status));\n  if (!allValid) return true;\n\n  // 4) Vérifier que l'URL contient bien le code sélectionné\n  if (!url || !url.includes(selectedCode)) return true;\n\n  // 5) Vérifier que le CCPU n'a pas déjà été copié\n  //    → copied_at non nul  => \"✔️ Traité\"\n  const anyNotCopied = rows.some(r => !r.copied_at);\n  if (!anyNotCopied) return true; // toutes les lignes déjà traitées → disable\n\n  // 6) Sinon → bouton activé\n  return false;\n})()\n}}\n",
+  "isLoading": false,
+  "isVisible": true,
+  "key": "3okwx5aj2z",
+  "leftColumn": 35,
+  "minWidth": 120,
+  "mobileBottomRow": 5,
+  "mobileLeftColumn": 35,
+  "mobileRightColumn": 51,
+  "mobileTopRow": 1,
+  "needsErrorInfo": false,
+  "onClick": "{{\n(async () => {\n  const rows = ListeCCPU.selectedRows || [];\n\n  if (!rows.length) {\n    showAlert(\"Veuillez sélectionner au moins une ligne\", \"warning\");\n    return;\n  }\n\n  // Tous les codes doivent être identiques\n  const codes = Array.from(\n    new Set(rows.map(r => String(r.code || \"\").trim()))\n  );\n  if (codes.length !== 1) {\n    showAlert(\"Toutes les lignes sélectionnées doivent avoir le même code CCPU.\", \"error\");\n    return;\n  }\n  const code = codes[0];\n\n  // Tous les src_path doivent être identiques et non vides\n  const srcPaths = Array.from(\n    new Set(rows.map(r => r.src_path).filter(p => !!p))\n  );\n  if (srcPaths.length !== 1) {\n    showAlert(\"Chemin source du CCPU introuvable ou différent entre les lignes sélectionnées.\", \"error\");\n    return;\n  }\n  const srcPath = srcPaths[0];\n\n  const numAff = DonneesGeneralesAffaire.data?.[0]?.numero_affaire;\n  const nomCli = DonneesGeneralesAffaire.data?.[0]?.nom_client;\n  const nomApp = CaracteristiquesAppareils.data?.[0]?.nom_appareil;\n\n  if (!numAff || !nomCli || !nomApp) {\n    showAlert(\"Informations affaire/appareil incomplètes.\", \"error\");\n    return;\n  }\n\n  // Appel du webhook n8n via l'API CCPUCopyApi\n  await CCPUCopyApi.run({\n    srcPath,           // -> this.params.srcPath\n    code,              // -> this.params.code\n    rows: rows.map(r => ({  // -> this.params.rows\n      rep: r.rep,\n      srsm: r.srsm,\n      code: r.code,\n    })),\n  });\n\n  showAlert(\"CCPU copié dans 'Certificat de contrôle des matériaux'.\", \"success\");\n\n  // Rafraîchir la liste ListeCCPU\n  await QryCCPUFull.run();\n})()\n}}\n",
+  "parentColumnSpace": 19.3046875,
+  "parentId": "k8zg0a8aiv",
+  "parentRowSpace": 10,
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 49,
+  "text": "{{\n(() => {\n  const rows = ListeCCPU.selectedRows || [];\n  if (!rows.length) return \"Valider et copier ce CCPU\";\n\n  const codes = Array.from(\n    new Set(rows.map(r => String(r.code || \"\").trim()))\n  );\n  const code = codes.length === 1 ? codes[0] : \"\";\n\n  return code\n    ? `Valider et copier le CCPU ${code}`\n    : \"Valider et copier ce CCPU\";\n})()\n}}\n",
+  "topRow": 1,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "nb075v7xki",
+  "widgetName": "ButtonValiderCCPU"
+}

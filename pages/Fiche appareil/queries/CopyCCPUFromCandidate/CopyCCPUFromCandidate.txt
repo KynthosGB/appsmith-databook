@@ -1,9 +1,0 @@
-{
-	"srcPath": {{this.params.srcPath}},
-	"rep": {{this.params.rep}},
-	"srsm": {{this.params.srsm}},
-	"code": {{this.params.code}},
-	"numero_affaire": {{this.params.numero_affaire}},
-	"nom_client": {{this.params.nom_client}},
-	"nom_appareil": {{this.params.nom_appareil}}
-}

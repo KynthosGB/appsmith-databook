@@ -1,14 +1,14 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 732,
+  "bottomRow": 782,
   "boxShadow": "none",
   "canEscapeKeyClose": true,
   "canOutsideClickClose": true,
   "children": [
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 710,
+      "bottomRow": 760,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": true,
       "detachFromLayout": true,
@@ -29,7 +29,7 @@
       "leftColumn": 0,
       "maxDynamicHeight": 9000,
       "minDynamicHeight": 4,
-      "minHeight": 450,
+      "minHeight": 760,
       "minWidth": 450,
       "mobileBottomRow": 240,
       "mobileLeftColumn": 0,
@@ -57,14 +57,14 @@
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
-  "height": 710,
+  "height": 760,
   "isCanvas": true,
   "isLoading": false,
   "key": "qptj2kqz60",
   "leftColumn": 7,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 24,
-  "minHeight": 710,
+  "minHeight": 760,
   "mobileBottomRow": 46,
   "mobileLeftColumn": 7,
   "mobileRightColumn": 31,
@@ -81,5 +81,5 @@
   "version": 2,
   "widgetId": "0aeirh07ak",
   "widgetName": "ModalChoixCCPU",
-  "width": 922
+  "width": 1326.6
 }

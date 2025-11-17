@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "alignWidget": "LEFT",
   "animateLoading": true,
-  "bottomRow": 66,
+  "bottomRow": 65,
   "boxShadow": "none",
   "defaultSwitchState": "{{CaracteristiquesAppareils.data[0].traitement_thermique}}",
   "dynamicBindingPathList": [

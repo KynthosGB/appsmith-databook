@@ -50,7 +50,7 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "onOptionChange": "{{navigateTo('Fiche appareil', {\n  \"numero_appareil\": SelectAppareil.selectedOptionValue\n}, 'SAME_WINDOW');\nDonneesGeneralesAffaire.run();\nCaracteristiquesAppareils.run();\nEnceintesAppareil.run();\nGetSommaireAppareil.run()}}",
+  "onOptionChange": "{{navigateTo('Fiche appareil', {\n  \"numero_appareil\": SelectAppareil.selectedOptionValue\n}, 'SAME_WINDOW');\nDonneesGeneralesAffaire.run();\nCaracteristiquesAppareils.run();\nEnceintesAppareil.run();\nGetSommaireAppareil.run();\nQryCCPUFull.run()}}",
   "optionLabel": "numero_appareil",
   "optionValue": "numero_appareil",
   "parentColumnSpace": 19.8125,

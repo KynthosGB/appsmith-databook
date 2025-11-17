@@ -125,6 +125,7 @@
   "parentColumnSpace": 20.25,
   "parentId": "0",
   "parentRowSpace": 10,
+  "primaryColumnId": "id",
   "primaryColumns": {
     "cloture": {
       "alias": "cloture",
@@ -227,7 +228,7 @@
       "label": "Clôturer",
       "labelColor": "#FFFFFF",
       "notation": "standard",
-      "onClick": "{{ \nCloturerAffaire.run()\n  .then(() => showAlert('Affaire clôturée avec succès ✅', 'success'))\n  .then(() => GetAffaires.run())  // recharge la table si tu as une requête GetAffaires\n  .catch(() => showAlert('Erreur lors de la clôture', 'error'))\n}}\n",
+      "onClick": "{{\n  (() => {\n    const row = Table1.triggeredRow;\n    if (!row) {\n      showAlert(\"Aucune affaire sélectionnée\", \"warning\");\n      return;\n    }\n\n    CloturerAffaire.run()\n      .then(() => {\n        // Lance le workflow n8n qui déplace le dossier\n        return DeplacerDossierAffaire.run();\n      })\n      .then(() => {\n        showAlert(\"Affaire clôturée et dossier déplacé ✅\", \"success\");\n        return GetAffaires.run(); // rafraîchir la liste\n      })\n      .catch((e) => {\n        console.log(\"Erreur clôture / déplacement\", e);\n        showAlert(\"Erreur lors de la clôture ou du déplacement du dossier\", \"error\");\n      });\n  })()\n}}",
       "originalId": "customColumn2",
       "sticky": "",
       "textSize": "0.875rem",

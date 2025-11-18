@@ -11,7 +11,7 @@
           "value": "application/json"
         }
       ],
-      "body": "{\n\t\"nom_appareil\": \"{{ Table1.triggeredRow?.numero_appareil || currentRow.numero_appareil }}\",\n}",
+      "body": "{\n\t\"nom_appareil\": \"{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}\",\n}",
       "bodyFormData": [],
       "encodeParamsToggle": true,
       "formData": {

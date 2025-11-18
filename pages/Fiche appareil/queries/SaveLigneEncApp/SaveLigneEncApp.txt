@@ -1,8 +1,6 @@
 UPDATE public.enceintes_appareils
 SET
-  -- ⚠ tu peux laisser 'numero' modifiable si c'est voulu ; sinon supprime cette ligne
   numero                      = {{ this.params.numero }},
-
   pression_min                = {{ this.params.pression_min }},
   pression_max                = {{ this.params.pression_max }},
   pression_min_calculee       = {{ this.params.pression_min_calculee }},
@@ -13,8 +11,6 @@ SET
   temperature_max_calculee    = {{ this.params.temperature_max_calculee }},
   delta_temperature           = {{ this.params.delta_temperature }},
   pression_epreuve            = {{ this.params.pression_epreuve }},
-
-  -- date : format YYYY-MM-DD ou NULL
   date_epreuve = {{ this.params.date_epreuve }},
 	pression_declenchement_securite = {{ this.params.pression_declenchement_securite }},
   densite                     = {{ this.params.densite }},
@@ -23,13 +19,10 @@ SET
   capacite                    = {{ this.params.capacite }},
   nuance                      = {{ this.params.nuance }},
   epaisseur_calorifique       = {{ this.params.epaisseur_calorifique }},
-
-  -- booléens : cast explicite
   explosif                    = {{ !!this.params.explosif }},
   inflammable                 = {{ !!this.params.inflammable }},
   toxique                     = {{ !!this.params.toxique }},
   oxydant                     = {{ !!this.params.oxydant }},
-
   type_appareil               = {{ this.params.type_appareil }},
   epaisseur_corrosion         = {{ this.params.epaisseur_corrosion }},
   poids_a_vide                = {{ this.params.poids_a_vide }},

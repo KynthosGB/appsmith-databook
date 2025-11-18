@@ -1,6 +1,10 @@
 UPDATE public.donnees_generales_appareils
 SET
-  date_creation_dossier  = {{ moment(DateCreationDossier.selectedDate).format("YYYY-MM-DD") }},
+  date_creation_dossier = {{
+		DateCreationDossier.formattedDate
+			? moment(DateCreationDossier.formattedDate, "DD/MM/YYYY").format("YYYY-MM-DD")
+			: null
+	}},
   nom_redacteur              = {{ Redacteur.text }},
   fonction_redacteur     = {{ FonctionRedacteur.text }},
   nom_verificateur           = {{ Verificateur.text }},

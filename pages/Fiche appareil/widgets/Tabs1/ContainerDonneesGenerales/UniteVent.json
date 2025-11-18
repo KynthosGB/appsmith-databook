@@ -18,10 +18,17 @@
     }
   ],
   "dynamicHeight": "FIXED",
-  "dynamicPropertyPathList": [],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onBlur"
+    }
+  ],
   "dynamicTriggerPathList": [
     {
       "key": "onTextChanged"
+    },
+    {
+      "key": "onBlur"
     }
   ],
   "iconAlign": "left",
@@ -46,6 +53,7 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 1,
   "needsErrorInfo": false,
+  "onBlur": "{{ SaveAll.saveAll(); }}",
   "onTextChanged": "{{TrackerModif.setModifiedTrue();}}",
   "parentColumnSpace": 8.86328125,
   "parentId": "ucawd3igdx",

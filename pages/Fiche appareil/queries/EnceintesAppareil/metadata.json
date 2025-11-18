@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT * FROM public.\"enceintes_appareils\"\nWHERE numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}';",
+      "body": "SELECT * FROM public.\"enceintes_appareils\"\nWHERE numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}'\nORDER BY id ASC;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

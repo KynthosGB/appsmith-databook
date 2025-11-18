@@ -17,6 +17,9 @@
   "dynamicPropertyPathList": [
     {
       "key": "defaultSwitchState"
+    },
+    {
+      "key": "onChange"
     }
   ],
   "dynamicTriggerPathList": [
@@ -38,8 +41,8 @@
   "mobileRightColumn": 45,
   "mobileTopRow": 66,
   "needsErrorInfo": false,
-  "onChange": "{{TrackerModif.setModifiedTrue();}}",
-  "originalBottomRow": 66,
+  "onChange": "{{ SaveAll.saveAll(); }}",
+  "originalBottomRow": 65,
   "originalTopRow": 61,
   "parentColumnSpace": 19.3046875,
   "parentId": "yto2tqllfl",

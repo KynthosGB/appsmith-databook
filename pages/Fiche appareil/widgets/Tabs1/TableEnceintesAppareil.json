@@ -8,7 +8,7 @@
   "bottomRow": 175,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "cachedTableData": {},
-  "canFreezeColumn": true,
+  "canFreezeColumn": false,
   "childStylesheet": {
     "button": {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
@@ -79,16 +79,16 @@
     "numero": 74,
     "oxydant": 99,
     "poids_de_service": 182,
-    "pression_declenchement_securite": 184,
+    "pression_declenchement_securite": 190,
     "pression_epreuve": 180,
-    "pression_max": 138,
-    "pression_max_calculee": 182,
-    "pression_min": 135,
+    "pression_max": 128,
+    "pression_max_calculee": 186,
+    "pression_min": 125,
     "pression_min_calculee": 181,
     "temperature_max": 131,
-    "temperature_max_calculee": 198,
+    "temperature_max_calculee": 186,
     "temperature_min": 135,
-    "temperature_min_calculee": 206,
+    "temperature_min_calculee": 185,
     "toxique": 92,
     "type_appareil": 100
   },
@@ -224,6 +224,15 @@
     },
     {
       "key": "textSize"
+    },
+    {
+      "key": "primaryColumns.numero.onSubmit"
+    },
+    {
+      "key": "primaryColumns.type_appareil.onSubmit"
+    },
+    {
+      "key": "primaryColumns.pression_min.onSubmit"
     }
   ],
   "dynamicTriggerPathList": [
@@ -235,6 +244,15 @@
     },
     {
       "key": "primaryColumns.EditActions1.onSave"
+    },
+    {
+      "key": "primaryColumns.numero.onSubmit"
+    },
+    {
+      "key": "primaryColumns.type_appareil.onSubmit"
+    },
+    {
+      "key": "primaryColumns.pression_min.onSubmit"
     }
   ],
   "enableClientSideSearch": true,
@@ -259,8 +277,8 @@
   "mobileTopRow": 2,
   "needsErrorInfo": false,
   "onAddNewRowSave": "{{ InsertEnceinte.run(() => {\n    EnceintesAppareil.run();\n    showAlert(\"Ligne ajoutée avec succès\", \"success\");\n  },\n  () => showAlert(\"Erreur d'insertion\", \"error\")\n); }}",
-  "originalBottomRow": 176,
-  "originalTopRow": 135,
+  "originalBottomRow": 175,
+  "originalTopRow": 134,
   "parentColumnSpace": 19.3046875,
   "parentId": "z6h42f35pi",
   "parentRowSpace": 10,
@@ -710,6 +728,7 @@
       "isVisible": true,
       "label": "N°",
       "notation": "standard",
+      "onSubmit": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "numero",
       "sticky": "",
       "textColor": "",
@@ -1050,6 +1069,7 @@
       "isVisible": true,
       "label": "Press. min",
       "notation": "standard",
+      "onSubmit": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "pression_min",
       "sticky": "",
       "textColor": "",
@@ -1288,6 +1308,7 @@
       "isVisible": true,
       "label": "Type",
       "notation": "standard",
+      "onSubmit": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "type_appareil",
       "sticky": "",
       "textColor": "",

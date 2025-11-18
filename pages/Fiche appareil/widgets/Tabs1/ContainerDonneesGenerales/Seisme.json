@@ -18,9 +18,17 @@
     }
   ],
   "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [
+    {
+      "key": "onBlur"
+    }
+  ],
   "dynamicTriggerPathList": [
     {
       "key": "onTextChanged"
+    },
+    {
+      "key": "onBlur"
     }
   ],
   "iconAlign": "left",
@@ -45,6 +53,7 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 1,
   "needsErrorInfo": false,
+  "onBlur": "{{ SaveAll.saveAll(); }}",
   "onTextChanged": "{{TrackerModif.setModifiedTrue();}}",
   "originalBottomRow": 36,
   "originalTopRow": 29,

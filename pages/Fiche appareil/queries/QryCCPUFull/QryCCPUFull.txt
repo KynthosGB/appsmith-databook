@@ -3,6 +3,7 @@ SELECT
     nom_appareil,
     rep,
     srsm,
+		designation,
 		ep,
 		nuance,
 		norme,

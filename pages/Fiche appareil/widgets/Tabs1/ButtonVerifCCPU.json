@@ -12,6 +12,9 @@
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "text"
     }
   ],
   "dynamicPropertyPathList": [
@@ -36,7 +39,7 @@
   "mobileRightColumn": 55,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "onClick": "{{\n  (async () => {\n    try {\n      // 1) appel du workflow n8n (écrit les manquants dans ccpu_copies_manuelles)\n      const res = await CheckCCPU.run();\n      const payload = Array.isArray(res) ? res[0] : res;\n\n      // 2) recharge la liste des CCPU manquants (vue Statut = Traité / Non traité)\n      await QryCCPUFull.run();\n\n      // 3) feedback utilisateur\n      const count = Number(payload?.notFoundCount ?? 0);\n      if (count > 0) {\n        showAlert(\n          `${count} CCPU nécessitent une vérification manuelle`,\n          \"warning\"\n        );\n      } else {\n        showAlert(\n          \"Tous les CCPU ont été trouvés automatiquement\",\n          \"success\"\n        );\n      }\n    } catch (e) {\n      showAlert(\n        \"Erreur lors de la vérification des CCPU : \" + (e?.message || \"\"),\n        \"error\"\n      );\n    }\n  })()\n}}\n",
+  "onClick": "{{\n  (async () => {\n    try {\n      const selected = ListeCCPU.selectedRows || [];\n\n      // --- CAS 1 : des lignes sont sélectionnées -> relance uniquement celles-ci ---\n      if (selected.length) {\n        // Appel du workflow n8n spécial \"recheck sélection\"\n        // (la requête HTTP RecheckCCPUSelection doit déjà être configurée côté Appsmith\n        //  avec numero_affaire, nom_appareil + rows = selectedRows)\n        await RecheckCCPUSelection.run();\n\n        // On recharge la liste complète\n        await QryCCPUFull.run();\n\n        showAlert(\n          `Vérification relancée pour ${selected.length} ligne(s) sélectionnée(s)`,\n          \"success\"\n        );\n        return;\n      }\n\n      // --- CAS 2 : aucune ligne sélectionnée -> première vérification complète ---\n      const res = await CheckCCPU.run();\n      const payload = Array.isArray(res) ? res[0] : res;\n\n      await QryCCPUFull.run();\n\n      const count = Number(payload?.notFoundCount ?? 0);\n      if (count > 0) {\n        showAlert(\n          `${count} CCPU nécessitent une vérification manuelle`,\n          \"warning\"\n        );\n      } else {\n        showAlert(\n          \"Tous les CCPU ont été trouvés automatiquement\",\n          \"success\"\n        );\n      }\n    } catch (e) {\n      showAlert(\n        \"Erreur lors de la vérification des CCPU : \" + (e?.message || \"\"),\n        \"error\"\n      );\n    }\n  })()\n}}\n",
   "parentColumnSpace": 18.880859375,
   "parentId": "k8zg0a8aiv",
   "parentRowSpace": 10,
@@ -46,7 +49,7 @@
   "resetFormOnClick": false,
   "responsiveBehavior": "hug",
   "rightColumn": 14,
-  "text": "Lancer la vérification des CCPU",
+  "text": "{{\n  (() => {\n    const sel = ListeCCPU.selectedRows || [];\n    return sel.length\n      ? \"Relancer la vérification des CCPU\"\n      : \"Lancer la vérification des CCPU\";\n  })()\n}}\n",
   "topRow": 1,
   "type": "BUTTON_WIDGET",
   "version": 1,

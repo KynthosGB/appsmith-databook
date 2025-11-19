@@ -1,0 +1,3 @@
+SELECT id, code_construction
+FROM public.liste_code_construction
+ORDER BY code_construction;

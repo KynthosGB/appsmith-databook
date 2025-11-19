@@ -3,9 +3,9 @@
   "animateLoading": true,
   "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 41,
+  "bottomRow": 17,
   "boxShadow": "none",
-  "defaultText": "{{CaracteristiquesAppareils.data[0].attestation_conception ? CaracteristiquesAppareils.data[0].attestation_conception : \"\"}}",
+  "defaultText": "{{CaracteristiquesAppareils.data[0].edition_code_construction ? CaracteristiquesAppareils.data[0].edition_code_construction : \"\"}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -38,13 +38,13 @@
   "isRequired": false,
   "isVisible": true,
   "key": "o4jhc0vgp5",
-  "label": "N° d'attestation de la revue de contrôle",
+  "label": "Edition du code de construction",
   "labelAlignment": "left",
   "labelPosition": "Top",
   "labelStyle": "",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
-  "leftColumn": 33,
+  "leftColumn": 49,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
@@ -61,12 +61,12 @@
   "renderMode": "CANVAS",
   "resetOnSubmit": true,
   "responsiveBehavior": "fill",
-  "rightColumn": 48,
+  "rightColumn": 63,
   "shouldAllowAutofill": false,
   "showStepArrows": false,
-  "topRow": 34,
+  "topRow": 10,
   "type": "INPUT_WIDGET_V2",
   "version": 2,
-  "widgetId": "pwcrxwsm7a",
-  "widgetName": "NumAttestation"
+  "widgetId": "sgr1msj5yk",
+  "widgetName": "EditionCodeConstruction"
 }

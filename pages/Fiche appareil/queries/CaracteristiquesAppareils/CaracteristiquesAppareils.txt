@@ -1,2 +1,7 @@
-SELECT * FROM public."caracteristiques_appareils"
-WHERE numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}';
+SELECT 
+    ca.*,
+    lcc.code_construction AS code_construction
+FROM public.caracteristiques_appareils ca
+LEFT JOIN public.liste_code_construction lcc
+    ON ca.code_construction_id = lcc.id
+WHERE ca.numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}';

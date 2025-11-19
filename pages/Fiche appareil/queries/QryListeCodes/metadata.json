@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6900ce0e5fba93519b2b9c51_c9ba2a39-0512-48f5-879e-ea19714bb24b",
-  "id": "Fiche appareil_CaracteristiquesAppareils",
+  "gitSyncId": "6915b9d6a2ab6852a3eeef70_fb0994f4-1649-4ee0-84bb-bda4403b7d8a",
+  "id": "Fiche appareil_QryListeCodes",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT \n    ca.*,\n    lcc.code_construction AS code_construction\nFROM public.caracteristiques_appareils ca\nLEFT JOIN public.liste_code_construction lcc\n    ON ca.code_construction_id = lcc.id\nWHERE ca.numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}';\n",
+      "body": "SELECT id, code_construction\nFROM public.liste_code_construction\nORDER BY code_construction;\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,12 +22,8 @@
       "name": "Databook - Neon",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [
-      {
-        "key": "body"
-      }
-    ],
-    "name": "CaracteristiquesAppareils",
+    "dynamicBindingPathList": [],
+    "name": "QryListeCodes",
     "pageId": "Fiche appareil",
     "runBehaviour": "AUTOMATIC",
     "userSetOnLoad": false

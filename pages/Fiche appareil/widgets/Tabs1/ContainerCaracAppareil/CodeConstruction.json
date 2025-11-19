@@ -1,11 +1,10 @@
 {
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
-  "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 41,
+  "bottomRow": 17,
   "boxShadow": "none",
-  "defaultText": "{{CaracteristiquesAppareils.data[0].code_construction ? CaracteristiquesAppareils.data[0].code_construction : \"\"}}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( CaracteristiquesAppareils.data[0]?.code_construction_id ))(CodeConstruction.options, CodeConstruction.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -14,59 +13,61 @@
       "key": "borderRadius"
     },
     {
-      "key": "defaultText"
+      "key": "defaultOptionValue"
+    },
+    {
+      "key": "sourceData"
     }
   ],
   "dynamicHeight": "FIXED",
   "dynamicPropertyPathList": [
     {
-      "key": "onBlur"
+      "key": "sourceData"
+    },
+    {
+      "key": "onOptionChange"
     }
   ],
   "dynamicTriggerPathList": [
     {
-      "key": "onTextChanged"
-    },
-    {
-      "key": "onBlur"
+      "key": "onOptionChange"
     }
   ],
-  "iconAlign": "left",
-  "inputType": "TEXT",
   "isDisabled": false,
+  "isFilterable": true,
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,
-  "key": "o4jhc0vgp5",
-  "label": "Code de construction",
+  "key": "tedq9budne",
   "labelAlignment": "left",
   "labelPosition": "Top",
-  "labelStyle": "",
+  "labelText": "Code de construction",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
   "leftColumn": 33,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 8,
-  "mobileLeftColumn": 1,
-  "mobileRightColumn": 21,
-  "mobileTopRow": 1,
+  "mobileBottomRow": 17,
+  "mobileLeftColumn": 29,
+  "mobileRightColumn": 49,
+  "mobileTopRow": 10,
   "needsErrorInfo": false,
-  "onBlur": "{{ SaveAll.saveAll(); }}",
-  "onTextChanged": "{{TrackerModif.setModifiedTrue();}}",
-  "parentColumnSpace": 8.86328125,
+  "onOptionChange": "{{ SaveAll.saveAll(); }}",
+  "optionLabel": "code_construction",
+  "optionValue": "id",
+  "parentColumnSpace": 18.388916015625,
   "parentId": "yto2tqllfl",
   "parentRowSpace": 10,
+  "placeholderText": "Select option",
   "renderMode": "CANVAS",
-  "resetOnSubmit": true,
   "responsiveBehavior": "fill",
   "rightColumn": 48,
-  "shouldAllowAutofill": false,
-  "showStepArrows": false,
-  "topRow": 34,
-  "type": "INPUT_WIDGET_V2",
-  "version": 2,
-  "widgetId": "o8bz8fczsk",
+  "serverSideFiltering": false,
+  "sourceData": "{{ QryListeCodes.data }}",
+  "topRow": 10,
+  "type": "SELECT_WIDGET",
+  "version": 1,
+  "widgetId": "1mdz78twbx",
   "widgetName": "CodeConstruction"
 }

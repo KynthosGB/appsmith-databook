@@ -1,18 +1,9 @@
-SELECT
-    numero_affaire,
-    nom_appareil,
-    rep,
-    srsm,
-		designation,
-		ep,
-		nuance,
-		norme,
-    code,
-    search_status,
-    src_path,
-    dest_path,
-    copied_at
+SELECT *
 FROM liste_ccpu_nomenclature_appareil
-WHERE numero_affaire = '{{ DonneesGeneralesAffaire.data[0].numero_affaire }}'
-  AND nom_appareil   = '{{ CaracteristiquesAppareils.data[0].nom_appareil }}'
+WHERE numero_affaire = '{{ 
+  appsmith.URL.queryParams.numero_affaire || DonneesGeneralesAffaire.data?.[0]?.numero_affaire 
+}}'
+  AND numero_appareil = '{{ 
+  appsmith.URL.queryParams.numero_appareil || CaracteristiquesAppareils.data?.[0]?.numero_appareil 
+}}'
 ORDER BY code DESC;

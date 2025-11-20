@@ -41,7 +41,7 @@
   ],
   "columnUpdatedAt": 1763122646977,
   "columnWidthMap": {
-    "path": 591.34375
+    "path": 547.7562499999999
   },
   "customIsLoading": false,
   "customIsLoadingValue": "",
@@ -107,8 +107,8 @@
   "mobileRightColumn": 35,
   "mobileTopRow": 11,
   "needsErrorInfo": false,
-  "originalBottomRow": 64,
-  "originalTopRow": 9,
+  "originalBottomRow": 65,
+  "originalTopRow": 10,
   "parentColumnSpace": 9.4375,
   "parentId": "0sf57rrs9y",
   "parentRowSpace": 10,

@@ -11,7 +11,7 @@
           "value": "application/json"
         }
       ],
-      "body": "{\n  \"numero_affaire\": \"{{ CaracteristiquesAppareils.data?.[0]?.numero_affaire }}\",\n  \"nom_client\": \"{{ DonneesGeneralesAffaire.data?.[0]?.nom_client }}\",\n  \"nom_appareil\": \"{{ CaracteristiquesAppareils.data?.[0]?.nom_appareil }}\"\n}\n",
+      "body": "{\n  \"numero_affaire\": \"{{ CaracteristiquesAppareils.data?.[0]?.numero_affaire }}\",\n  \"nom_client\": \"{{ DonneesGeneralesAffaire.data?.[0]?.nom_client }}\",\n  \"nom_appareil\": \"{{ CaracteristiquesAppareils.data?.[0]?.nom_appareil }}\",\n\t\"numero_appareil\": \"{{ CaracteristiquesAppareils.data?.[0]?.numero_appareil }}\"\n}\n",
       "bodyFormData": [],
       "encodeParamsToggle": true,
       "formData": {

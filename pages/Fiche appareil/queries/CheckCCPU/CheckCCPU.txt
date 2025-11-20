@@ -1,5 +1,6 @@
 {
   "numero_affaire": "{{ CaracteristiquesAppareils.data?.[0]?.numero_affaire }}",
   "nom_client": "{{ DonneesGeneralesAffaire.data?.[0]?.nom_client }}",
-  "nom_appareil": "{{ CaracteristiquesAppareils.data?.[0]?.nom_appareil }}"
+  "nom_appareil": "{{ CaracteristiquesAppareils.data?.[0]?.nom_appareil }}",
+	"numero_appareil": "{{ CaracteristiquesAppareils.data?.[0]?.numero_appareil }}"
 }

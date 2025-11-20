@@ -42,7 +42,7 @@
   "mobileTopRow": 66,
   "needsErrorInfo": false,
   "onChange": "{{ SaveAll.saveAll(); }}",
-  "originalBottomRow": 66,
+  "originalBottomRow": 65,
   "originalTopRow": 61,
   "parentColumnSpace": 19.3046875,
   "parentId": "yto2tqllfl",

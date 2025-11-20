@@ -233,6 +233,78 @@
     },
     {
       "key": "primaryColumns.pression_min.onSubmit"
+    },
+    {
+      "key": "primaryColumns.pression_max.onSubmit"
+    },
+    {
+      "key": "primaryColumns.pression_min_calculee.onSubmit"
+    },
+    {
+      "key": "primaryColumns.pression_max_calculee.onSubmit"
+    },
+    {
+      "key": "primaryColumns.temperature_min.onSubmit"
+    },
+    {
+      "key": "primaryColumns.temperature_max.onSubmit"
+    },
+    {
+      "key": "primaryColumns.temperature_min_calculee.onSubmit"
+    },
+    {
+      "key": "primaryColumns.temperature_max_calculee.onSubmit"
+    },
+    {
+      "key": "primaryColumns.delta_temperature.onSubmit"
+    },
+    {
+      "key": "primaryColumns.pression_epreuve.onSubmit"
+    },
+    {
+      "key": "primaryColumns.date_epreuve.onDateSelected"
+    },
+    {
+      "key": "primaryColumns.epaisseur_corrosion.onSubmit"
+    },
+    {
+      "key": "primaryColumns.pression_declenchement_securite.onSubmit"
+    },
+    {
+      "key": "primaryColumns.densite.onSubmit"
+    },
+    {
+      "key": "primaryColumns.poids_a_vide.onSubmit"
+    },
+    {
+      "key": "primaryColumns.poids_de_service.onSubmit"
+    },
+    {
+      "key": "primaryColumns.poids_essai.onSubmit"
+    },
+    {
+      "key": "primaryColumns.nature_fluide.onSubmit"
+    },
+    {
+      "key": "primaryColumns.capacite.onSubmit"
+    },
+    {
+      "key": "primaryColumns.nuance.onSubmit"
+    },
+    {
+      "key": "primaryColumns.epaisseur_calorifique.onSubmit"
+    },
+    {
+      "key": "primaryColumns.explosif.onCheckChange"
+    },
+    {
+      "key": "primaryColumns.inflammable.onCheckChange"
+    },
+    {
+      "key": "primaryColumns.toxique.onCheckChange"
+    },
+    {
+      "key": "primaryColumns.oxydant.onCheckChange"
     }
   ],
   "dynamicTriggerPathList": [
@@ -253,6 +325,78 @@
     },
     {
       "key": "primaryColumns.pression_min.onSubmit"
+    },
+    {
+      "key": "primaryColumns.pression_max.onSubmit"
+    },
+    {
+      "key": "primaryColumns.pression_min_calculee.onSubmit"
+    },
+    {
+      "key": "primaryColumns.pression_max_calculee.onSubmit"
+    },
+    {
+      "key": "primaryColumns.temperature_min.onSubmit"
+    },
+    {
+      "key": "primaryColumns.temperature_max.onSubmit"
+    },
+    {
+      "key": "primaryColumns.temperature_min_calculee.onSubmit"
+    },
+    {
+      "key": "primaryColumns.temperature_max_calculee.onSubmit"
+    },
+    {
+      "key": "primaryColumns.delta_temperature.onSubmit"
+    },
+    {
+      "key": "primaryColumns.pression_epreuve.onSubmit"
+    },
+    {
+      "key": "primaryColumns.date_epreuve.onDateSelected"
+    },
+    {
+      "key": "primaryColumns.epaisseur_corrosion.onSubmit"
+    },
+    {
+      "key": "primaryColumns.pression_declenchement_securite.onSubmit"
+    },
+    {
+      "key": "primaryColumns.densite.onSubmit"
+    },
+    {
+      "key": "primaryColumns.poids_a_vide.onSubmit"
+    },
+    {
+      "key": "primaryColumns.poids_de_service.onSubmit"
+    },
+    {
+      "key": "primaryColumns.poids_essai.onSubmit"
+    },
+    {
+      "key": "primaryColumns.nature_fluide.onSubmit"
+    },
+    {
+      "key": "primaryColumns.capacite.onSubmit"
+    },
+    {
+      "key": "primaryColumns.nuance.onSubmit"
+    },
+    {
+      "key": "primaryColumns.epaisseur_calorifique.onSubmit"
+    },
+    {
+      "key": "primaryColumns.explosif.onCheckChange"
+    },
+    {
+      "key": "primaryColumns.inflammable.onCheckChange"
+    },
+    {
+      "key": "primaryColumns.toxique.onCheckChange"
+    },
+    {
+      "key": "primaryColumns.oxydant.onCheckChange"
     }
   ],
   "enableClientSideSearch": true,
@@ -277,8 +421,8 @@
   "mobileTopRow": 2,
   "needsErrorInfo": false,
   "onAddNewRowSave": "{{ InsertEnceinte.run(() => {\n    EnceintesAppareil.run();\n    showAlert(\"Ligne ajoutée avec succès\", \"success\");\n  },\n  () => showAlert(\"Erreur d'insertion\", \"error\")\n); }}",
-  "originalBottomRow": 176,
-  "originalTopRow": 135,
+  "originalBottomRow": 175,
+  "originalTopRow": 134,
   "parentColumnSpace": 19.3046875,
   "parentId": "z6h42f35pi",
   "parentRowSpace": 10,
@@ -352,6 +496,7 @@
       "isVisible": true,
       "label": "Capacité",
       "notation": "standard",
+      "onSubmit": "{{EnceintesActions.saveCurrentRow();}}",
       "originalId": "capacite",
       "sticky": "",
       "textColor": "",
@@ -387,6 +532,7 @@
       "isVisible": true,
       "label": "Date épreuve",
       "notation": "standard",
+      "onDateSelected": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "date_epreuve",
       "outputFormat": "DD/MM/YYYY",
       "sticky": "",
@@ -422,6 +568,7 @@
       "isVisible": true,
       "label": "delta temp. max",
       "notation": "standard",
+      "onSubmit": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "delta_temperature",
       "sticky": "",
       "textColor": "",
@@ -456,6 +603,7 @@
       "isVisible": true,
       "label": "densite",
       "notation": "standard",
+      "onSubmit": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "densite",
       "sticky": "",
       "textColor": "",
@@ -490,6 +638,7 @@
       "isVisible": true,
       "label": "Ep. caloriguge",
       "notation": "standard",
+      "onSubmit": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "epaisseur_calorifique",
       "sticky": "",
       "textColor": "",
@@ -524,6 +673,7 @@
       "isVisible": true,
       "label": "SurEp. corrosion",
       "notation": "standard",
+      "onSubmit": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "epaisseur_corrosion",
       "sticky": "",
       "textColor": "",
@@ -558,6 +708,7 @@
       "isVisible": true,
       "label": "Expl.",
       "notation": "standard",
+      "onCheckChange": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "explosif",
       "sticky": "",
       "textColor": "",
@@ -626,6 +777,7 @@
       "isVisible": true,
       "label": "Infl.",
       "notation": "standard",
+      "onCheckChange": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "inflammable",
       "sticky": "",
       "textColor": "",
@@ -660,6 +812,7 @@
       "isVisible": true,
       "label": "Nature fluide",
       "notation": "standard",
+      "onSubmit": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "nature_fluide",
       "sticky": "",
       "textColor": "",
@@ -694,6 +847,7 @@
       "isVisible": true,
       "label": "Nuance",
       "notation": "standard",
+      "onSubmit": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "nuance",
       "sticky": "",
       "textColor": "",
@@ -797,6 +951,7 @@
       "isVisible": true,
       "label": "Oxyd.",
       "notation": "standard",
+      "onCheckChange": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "oxydant",
       "sticky": "",
       "textColor": "",
@@ -831,6 +986,7 @@
       "isVisible": true,
       "label": "Poids à vide",
       "notation": "standard",
+      "onSubmit": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "poids_a_vide",
       "sticky": "",
       "textColor": "",
@@ -865,6 +1021,7 @@
       "isVisible": true,
       "label": "Poids de service",
       "notation": "standard",
+      "onSubmit": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "poids_de_service",
       "sticky": "",
       "textColor": "",
@@ -899,6 +1056,7 @@
       "isVisible": true,
       "label": "Poids essai",
       "notation": "standard",
+      "onSubmit": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "poids_essai",
       "sticky": "",
       "textColor": "",
@@ -933,6 +1091,7 @@
       "isVisible": true,
       "label": "Press. décl. sécurité",
       "notation": "standard",
+      "onSubmit": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "pression_declenchement_securite",
       "sticky": "",
       "textColor": "",
@@ -967,6 +1126,7 @@
       "isVisible": true,
       "label": "Pression épreuve",
       "notation": "standard",
+      "onSubmit": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "pression_epreuve",
       "sticky": "",
       "textColor": "",
@@ -1001,6 +1161,7 @@
       "isVisible": true,
       "label": "Press. max",
       "notation": "standard",
+      "onSubmit": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "pression_max",
       "sticky": "",
       "textColor": "",
@@ -1035,6 +1196,7 @@
       "isVisible": true,
       "label": "Press. max calculée",
       "notation": "standard",
+      "onSubmit": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "pression_max_calculee",
       "sticky": "",
       "textColor": "",
@@ -1104,6 +1266,7 @@
       "isVisible": true,
       "label": "Press. min calculée",
       "notation": "standard",
+      "onSubmit": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "pression_min_calculee",
       "sticky": "",
       "textColor": "",
@@ -1138,6 +1301,7 @@
       "isVisible": true,
       "label": "Temp. max",
       "notation": "standard",
+      "onSubmit": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "temperature_max",
       "sticky": "",
       "textColor": "",
@@ -1172,6 +1336,7 @@
       "isVisible": true,
       "label": "Temp. max calculée",
       "notation": "standard",
+      "onSubmit": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "temperature_max_calculee",
       "sticky": "",
       "textColor": "",
@@ -1206,6 +1371,7 @@
       "isVisible": true,
       "label": "Temp. min",
       "notation": "standard",
+      "onSubmit": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "temperature_min",
       "sticky": "",
       "textColor": "",
@@ -1240,6 +1406,7 @@
       "isVisible": true,
       "label": "Temp. min calculée",
       "notation": "standard",
+      "onSubmit": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "temperature_min_calculee",
       "sticky": "",
       "textColor": "",
@@ -1274,6 +1441,7 @@
       "isVisible": true,
       "label": "Toxi.",
       "notation": "standard",
+      "onCheckChange": "{{EnceintesActions.saveCurrentRow(); }}",
       "originalId": "toxique",
       "sticky": "",
       "textColor": "",

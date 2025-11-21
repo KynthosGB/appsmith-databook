@@ -1,0 +1,46 @@
+SELECT
+  a.numero_appareil,
+  a.numero_affaire,
+	ca.nom_appareil,
+	a.delai,
+  aff.nom_client AS client,
+
+  -- Stats globales
+  COUNT(wea.*) AS total_etapes,
+  COUNT(*) FILTER (WHERE wea.statut_travail = 'termine') AS etapes_terminees,
+  COUNT(*) FILTER (WHERE wea.statut_validation_client = 'en_attente_client') AS nb_en_attente_client,
+
+  -- Détail des sous-étapes pour calculer les couleurs côté Appsmith
+  jsonb_agg(
+    jsonb_build_object(
+      'etape_code', wed.code,
+      'etape_libelle', wed.libelle,
+      'groupe_id', wed.groupe_id,
+      'statut_travail', wea.statut_travail,
+      'statut_validation_client', wea.statut_validation_client,
+      'meta', wea.meta
+    )
+    ORDER BY wed.code
+  ) AS etapes
+
+FROM public.appareils a
+LEFT JOIN public.affaires aff
+       ON aff.numero_affaire = a.numero_affaire
+LEFT JOIN public.caracteristiques_appareils ca
+       ON ca.numero_appareil = a.numero_appareil
+LEFT JOIN public.workflow_etape_appareil wea
+       ON wea.numero_appareil = a.numero_appareil
+LEFT JOIN public.workflow_etape_def wed
+       ON wed.id = wea.etape_id
+
+-- filtre si tu ne veux que les appareils d'une affaire :
+-- WHERE a.numero_affaire = '{{ appsmith.URL.queryParams.numero_affaire }}'
+
+GROUP BY
+  a.numero_appareil,
+  a.numero_affaire,
+	ca.nom_appareil,
+	a.delai,
+  aff.nom_client
+
+ORDER BY a.numero_appareil DESC;

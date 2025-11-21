@@ -37,6 +37,14 @@
     {
       "id": "Fiche appareil",
       "isDefault": false
+    },
+    {
+      "id": "Tableau de bord fabrication",
+      "isDefault": false
+    },
+    {
+      "id": "Suivi fabrication appareil",
+      "isDefault": false
     }
   ],
   "unpublishedAppLayout": {

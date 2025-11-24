@@ -1,0 +1,11 @@
+SELECT
+  a.numero_appareil,
+  a.numero_affaire,
+  ca.nom_appareil,
+  aff.nom_client
+FROM public.appareils a
+LEFT JOIN public.caracteristiques_appareils ca
+       ON ca.numero_appareil = a.numero_appareil
+LEFT JOIN public.affaires aff
+       ON aff.numero_affaire = a.numero_affaire
+ORDER BY a.numero_appareil DESC;

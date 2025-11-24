@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 17,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( CaracteristiquesAppareils.data[0]?.code_construction_id ))(CodeConstruction.options, CodeConstruction.serverSideFiltering) }}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( CaracteristiquesAppareils.data[0].code_construction_id ? CaracteristiquesAppareils.data[0].code_construction_id : 1))(CodeConstruction.options, CodeConstruction.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
-  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 10,
+  "borderRadius": "0.375rem",
+  "bottomRow": 4,
   "boxShadow": "none",
   "buttonVariant": "PRIMARY",
   "childStylesheet": {
@@ -10,9 +10,6 @@
     }
   },
   "dynamicBindingPathList": [
-    {
-      "key": "borderRadius"
-    },
     {
       "key": "groupButtons.groupButtonobq2jwpcs8.buttonColor"
     },
@@ -39,31 +36,42 @@
     },
     {
       "key": "groupButtons.groupButtonln510cc54m.buttonColor"
-    },
-    {
-      "key": "groupButtons.groupButton4b76jy47m8.buttonColor"
     }
   ],
   "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [
+    {
+      "key": "groupButtons.groupButtonobq2jwpcs8.buttonColor"
+    },
+    {
+      "key": "groupButtons.groupButtonn61z9z6dnh.buttonColor"
+    },
+    {
+      "key": "groupButtons.groupButtontj8m0y1ynl.buttonColor"
+    },
+    {
+      "key": "groupButtons.groupButtonglm3o60iyu.buttonColor"
+    },
+    {
+      "key": "groupButtons.groupButtonqqfj4no4yf.buttonColor"
+    },
+    {
+      "key": "groupButtons.groupButtoniizdgpbgjq.buttonColor"
+    },
+    {
+      "key": "groupButtons.groupButton61axpb6lx1.buttonColor"
+    },
+    {
+      "key": "groupButtons.groupButtonfrdsmhdvmz.buttonColor"
+    },
+    {
+      "key": "groupButtons.groupButtonln510cc54m.buttonColor"
+    }
+  ],
   "dynamicTriggerPathList": [],
   "groupButtons": {
-    "groupButton4b76jy47m8": {
-      "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
-      "buttonType": "SIMPLE",
-      "id": "groupButton4b76jy47m8",
-      "index": 9,
-      "isDisabled": false,
-      "isSeparator": false,
-      "isVisible": true,
-      "itemType": "BUTTON",
-      "label": "Do something",
-      "menuItems": {},
-      "placement": "CENTER",
-      "variant": "filled",
-      "widgetId": "9ujjv9b8cn"
-    },
     "groupButton61axpb6lx1": {
-      "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+      "buttonColor": "{{JS_Suivi.colorFor(currentItem.etapes, \"FABRICATION\") }}",
       "buttonType": "SIMPLE",
       "id": "groupButton61axpb6lx1",
       "index": 6,
@@ -71,14 +79,14 @@
       "isSeparator": false,
       "isVisible": true,
       "itemType": "BUTTON",
-      "label": "Do something",
+      "label": "FAB",
       "menuItems": {},
       "placement": "CENTER",
       "variant": "filled",
       "widgetId": "pqbty69qfj"
     },
     "groupButtonfrdsmhdvmz": {
-      "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+      "buttonColor": "{{JS_Suivi.colorFor(currentItem.etapes, \"DOSSIER_CE\") }}",
       "buttonType": "SIMPLE",
       "id": "groupButtonfrdsmhdvmz",
       "index": 7,
@@ -86,14 +94,14 @@
       "isSeparator": false,
       "isVisible": true,
       "itemType": "BUTTON",
-      "label": "Do something",
+      "label": "DOSSIER CE",
       "menuItems": {},
       "placement": "CENTER",
       "variant": "filled",
       "widgetId": "c8pjk3jkv3"
     },
     "groupButtonglm3o60iyu": {
-      "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+      "buttonColor": "{{JS_Suivi.colorFor(currentItem.etapes, \"APPRO\") }}",
       "buttonType": "SIMPLE",
       "id": "groupButtonglm3o60iyu",
       "index": 3,
@@ -101,14 +109,14 @@
       "isSeparator": false,
       "isVisible": true,
       "itemType": "BUTTON",
-      "label": "Do something",
+      "label": "APPRO",
       "menuItems": {},
       "placement": "CENTER",
       "variant": "filled",
       "widgetId": "obuffi3dbc"
     },
     "groupButtoniizdgpbgjq": {
-      "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+      "buttonColor": "{{JS_Suivi.colorFor(currentItem.etapes, \"DVAI\") }}",
       "buttonType": "SIMPLE",
       "id": "groupButtoniizdgpbgjq",
       "index": 5,
@@ -116,14 +124,14 @@
       "isSeparator": false,
       "isVisible": true,
       "itemType": "BUTTON",
-      "label": "Do something",
+      "label": "DVAI",
       "menuItems": {},
       "placement": "CENTER",
       "variant": "filled",
       "widgetId": "f78ugm7wv1"
     },
     "groupButtonln510cc54m": {
-      "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+      "buttonColor": "{{JS_Suivi.colorFor(currentItem.etapes, \"DOSSIER_CONSTRUCTEUR\") }}",
       "buttonType": "SIMPLE",
       "id": "groupButtonln510cc54m",
       "index": 8,
@@ -131,14 +139,14 @@
       "isSeparator": false,
       "isVisible": true,
       "itemType": "BUTTON",
-      "label": "Do something",
+      "label": "DC",
       "menuItems": {},
       "placement": "CENTER",
       "variant": "filled",
       "widgetId": "u8gd8rfd90"
     },
     "groupButtonn61z9z6dnh": {
-      "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+      "buttonColor": "{{JS_Suivi.colorFor(currentItem.etapes, \"PLAN\") }}",
       "buttonType": "SIMPLE",
       "id": "groupButtonn61z9z6dnh",
       "index": 1,
@@ -146,14 +154,14 @@
       "isSeparator": false,
       "isVisible": true,
       "itemType": "BUTTON",
-      "label": "Do something",
+      "label": "PLAN",
       "menuItems": {},
       "placement": "CENTER",
       "variant": "filled",
       "widgetId": "9d006h1u25"
     },
     "groupButtonobq2jwpcs8": {
-      "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+      "buttonColor": "{{JS_Suivi.colorFor(currentItem.etapes, \"NOTE_CALCUL\") }}",
       "buttonType": "SIMPLE",
       "id": "groupButtonobq2jwpcs8",
       "index": 0,
@@ -161,14 +169,14 @@
       "isSeparator": false,
       "isVisible": true,
       "itemType": "BUTTON",
-      "label": "Do something",
+      "label": "NDC",
       "menuItems": {},
       "placement": "CENTER",
       "variant": "filled",
       "widgetId": "8f653eitcb"
     },
     "groupButtonqqfj4no4yf": {
-      "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+      "buttonColor": "{{JS_Suivi.colorFor(currentItem.etapes, \"PREPARATION\") }}",
       "buttonType": "SIMPLE",
       "id": "groupButtonqqfj4no4yf",
       "index": 4,
@@ -176,14 +184,14 @@
       "isSeparator": false,
       "isVisible": true,
       "itemType": "BUTTON",
-      "label": "Do something",
+      "label": "PREPA",
       "menuItems": {},
       "placement": "CENTER",
       "variant": "filled",
       "widgetId": "131xs1s49n"
     },
     "groupButtontj8m0y1ynl": {
-      "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+      "buttonColor": "{{JS_Suivi.colorFor(currentItem.etapes, \"CAHIER_SOUDAGE\") }}",
       "buttonType": "SIMPLE",
       "id": "groupButtontj8m0y1ynl",
       "index": 2,
@@ -191,7 +199,7 @@
       "isSeparator": false,
       "isVisible": true,
       "itemType": "BUTTON",
-      "label": "Do something",
+      "label": "CDS",
       "menuItems": {},
       "placement": "CENTER",
       "variant": "filled",
@@ -202,7 +210,7 @@
   "isLoading": false,
   "isVisible": true,
   "key": "wqk8fmovg4",
-  "leftColumn": 0,
+  "leftColumn": 13,
   "minWidth": 450,
   "mobileBottomRow": 12,
   "mobileLeftColumn": 1,
@@ -215,8 +223,8 @@
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 64,
-  "topRow": 6,
+  "rightColumn": 53,
+  "topRow": 0,
   "type": "BUTTON_GROUP_WIDGET",
   "version": 1,
   "widgetId": "429vacnd5q",

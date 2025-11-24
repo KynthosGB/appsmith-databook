@@ -54,7 +54,7 @@
   "mobileTopRow": 1,
   "needsErrorInfo": false,
   "onBlur": "{{ SaveAll.saveAll(); }}",
-  "onTextChanged": "{{TrackerModif.setModifiedTrue();}}",
+  "onTextChanged": "",
   "originalBottomRow": 27,
   "originalTopRow": 20,
   "parentColumnSpace": 8.86328125,

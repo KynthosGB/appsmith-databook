@@ -1,26 +1,50 @@
 SELECT
   a.numero_appareil,
   a.numero_affaire,
-	ca.nom_appareil,
-	a.delai,
+  ca.nom_appareil,
+  a.delai,
   aff.nom_client AS client,
 
-  -- Stats globales
-  COUNT(wea.*) AS total_etapes,
-  COUNT(*) FILTER (WHERE wea.statut_travail = 'termine') AS etapes_terminees,
-  COUNT(*) FILTER (WHERE wea.statut_validation_client = 'en_attente_client') AS nb_en_attente_client,
+  -- Stats globales par appareil
+  COUNT(wga.*) AS total_etapes,
+  COUNT(*) FILTER (WHERE wga.statut_travail = 'fait')        AS etapes_faites,
+  COUNT(*) FILTER (WHERE wga.statut_travail = 'en_cours')    AS etapes_en_cours,
+  COUNT(*) FILTER (WHERE wga.statut_travail = 'non_commence') AS etapes_non_commencees,
+  COUNT(*) FILTER (WHERE wga.statut_validation_client = 'en_attente_client') AS nb_en_attente_client,
 
-  -- Détail des sous-étapes pour calculer les couleurs côté Appsmith
+  -- Détail des grandes étapes pour l'appareil (utilisé dans la List + boutons)
   jsonb_agg(
     jsonb_build_object(
-      'etape_code', wed.code,
-      'etape_libelle', wed.libelle,
-      'groupe_id', wed.groupe_id,
-      'statut_travail', wea.statut_travail,
-      'statut_validation_client', wea.statut_validation_client,
-      'meta', wea.meta
+      'groupe_id',                wge.id,
+      'groupe_code',              wge.code,          -- NOTE_CALCUL, PLAN, APPRO, ...
+      'groupe_libelle',           wge.libelle,
+
+      'statut_travail',           wga.statut_travail,            -- non_concerne / non_commence / en_cours / fait
+      'statut_validation_client', wga.statut_validation_client,  -- non_concerne / en_attente_client / ...
+
+      'date_debut',               wga.date_debut,
+      'date_fin',                 wga.date_fin,
+      'date_envoi_client',        wga.date_envoi_client,
+      'date_retour_client',       wga.date_retour_client,
+      'responsable',              wga.responsable,
+      'commentaire',              wga.commentaire,
+      'meta',                     wga.meta,          -- tous les champs spécifiques (demande appro, ressuyage, etc.)
+      'groupe_appareil_id',       wga.id,            -- pour les UPDATE
+
+      -- Couleur pré-calculée pour l'UI
+      'color',
+        CASE
+          WHEN wga.statut_travail = 'non_concerne'                 THEN '#e5e7eb' -- gris
+          WHEN wga.statut_validation_client = 'en_attente_client'  THEN '#7AC2F0' -- jaune
+          WHEN wga.statut_validation_client = 'refuse_client'      THEN '#ef4444' -- rouge
+          WHEN wga.statut_validation_client = 'valide_client'      THEN '#22c55e' -- vert
+          WHEN wga.statut_travail = 'fait'                         THEN '#22c55e' -- vert
+          WHEN wga.statut_travail = 'en_cours'                     THEN '#facc15' -- orange
+          WHEN wga.statut_travail = 'non_commence'                 THEN '#ef4444' -- rouge
+          ELSE '#e5e7eb'
+        END
     )
-    ORDER BY wed.code
+    ORDER BY wge.ordre
   ) AS etapes
 
 FROM public.appareils a
@@ -28,19 +52,16 @@ LEFT JOIN public.affaires aff
        ON aff.numero_affaire = a.numero_affaire
 LEFT JOIN public.caracteristiques_appareils ca
        ON ca.numero_appareil = a.numero_appareil
-LEFT JOIN public.workflow_etape_appareil wea
-       ON wea.numero_appareil = a.numero_appareil
-LEFT JOIN public.workflow_etape_def wed
-       ON wed.id = wea.etape_id
-
--- filtre si tu ne veux que les appareils d'une affaire :
--- WHERE a.numero_affaire = '{{ appsmith.URL.queryParams.numero_affaire }}'
+LEFT JOIN public.workflow_groupe_appareil wga
+       ON wga.numero_appareil = a.numero_appareil
+LEFT JOIN public.workflow_groupe_etape wge
+       ON wge.id = wga.groupe_id
 
 GROUP BY
   a.numero_appareil,
   a.numero_affaire,
-	ca.nom_appareil,
-	a.delai,
+  ca.nom_appareil,
+  a.delai,
   aff.nom_client
 
 ORDER BY a.numero_appareil DESC;

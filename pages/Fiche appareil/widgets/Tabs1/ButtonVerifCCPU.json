@@ -49,7 +49,7 @@
   "resetFormOnClick": false,
   "responsiveBehavior": "hug",
   "rightColumn": 15,
-  "text": "{{\n  (() => {\n    const sel = ListeCCPU.selectedRows || [];\n    return sel.length\n      ? \"Relancer la vérification de la sélection\"\n      : \"Lancer la vérification des CCPU\";\n  })()\n}}\n",
+  "text": "{{\n  (() => {\n    const sel = ListeCCPU.selectedRows || [];\n    return sel.length\n      ? \"Relancer le scan des CCPU pour sélection\"\n      : \"Lancer le scan des CCPU\";\n  })()\n}}\n",
   "topRow": 1,
   "type": "BUTTON_WIDGET",
   "version": 1,

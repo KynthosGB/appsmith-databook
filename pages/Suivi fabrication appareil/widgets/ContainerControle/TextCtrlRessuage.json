@@ -3,7 +3,7 @@
   "borderColor": "#71717a",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "1",
-  "bottomRow": 31,
+  "bottomRow": 40,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -45,7 +45,7 @@
   "text": "Ressuage",
   "textAlign": "CENTER",
   "textColor": "#231F20",
-  "topRow": 27,
+  "topRow": 36,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

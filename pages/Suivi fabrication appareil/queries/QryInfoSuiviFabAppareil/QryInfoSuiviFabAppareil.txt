@@ -1,0 +1,76 @@
+SELECT
+  -- clé et info étape
+  wga.id                AS groupe_appareil_id,
+  wge.code              AS groupe_code,
+  wge.libelle           AS groupe_libelle,
+
+  -- statut
+  ws.id                 AS statut_id,
+  ws.code               AS statut_code,
+  ws.libelle            AS statut_libelle,
+  ws.couleur            AS statut_couleur,
+
+  -- header commun
+  wga.date_debut,
+  wga.date_fin,
+  wga.date_envoi_client,
+  wga.date_retour_client,
+  wga.responsable,
+  wga.commentaire,
+
+  -- NOTE_CALCUL
+  wnc.numero            AS ndc_numero,
+  wnc.indice            AS ndc_indice,
+  wnc.date_objectif     AS ndc_date_objectif,
+  wnc.date_edition      AS ndc_date_edition,
+
+  -- PLAN
+  wp.numero             AS plan_numero,
+  wp.indice             AS plan_indice,
+  wp.dessinateur        AS plan_dessinateur,
+  wp.date_objectif      AS plan_date_objectif,
+  wp.date_premier_envoi AS plan_date_premier_envoi,
+
+  -- CAHIER SOUDAGE
+  wcs.iwt               AS cs_iwt,
+  wcs.numero            AS cs_numero,
+  wcs.indice            AS cs_indice,
+  wcs.date_objectif     AS cs_date_objectif,
+
+  -- PREPARATION
+  wprep.preparateur     AS prep_preparateur,
+  wprep.date_objectif   AS prep_date_objectif,
+
+  -- FABRICATION
+  wf.monteur            AS fab_monteur,
+  wf.heures_prevues     AS fab_heures_prevues,
+  wf.heures_passees     AS fab_heures_passees,
+
+  -- DOSSIER CONSTRUCTEUR
+  wdc.numero            AS dc_numero
+
+FROM public.workflow_groupe_appareil      wga
+JOIN public.workflow_groupe_etape         wge ON wge.id = wga.groupe_id
+JOIN public.workflow_statut               ws  ON ws.id  = wga.statut_id
+
+-- joins spécifiques par étape
+LEFT JOIN public.workflow_note_calcul      wnc  ON wnc.groupe_appareil_id = wga.id
+  AND wge.code = 'NOTE_CALCUL'
+
+LEFT JOIN public.workflow_plan             wp   ON wp.groupe_appareil_id  = wga.id
+  AND wge.code = 'PLAN'
+
+LEFT JOIN public.workflow_cahier_soudage   wcs  ON wcs.groupe_appareil_id = wga.id
+  AND wge.code = 'CAHIER_SOUDAGE'
+
+LEFT JOIN public.workflow_preparation      wprep ON wprep.groupe_appareil_id = wga.id
+  AND wge.code = 'PREPARATION'
+
+LEFT JOIN public.workflow_fabrication      wf   ON wf.groupe_appareil_id  = wga.id
+  AND wge.code = 'FABRICATION'
+
+LEFT JOIN public.workflow_dossier_constructeur wdc ON wdc.groupe_appareil_id = wga.id
+  AND wge.code = 'DOSSIER_CONSTRUCTEUR'
+
+WHERE wga.numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}'
+ORDER BY wge.ordre;

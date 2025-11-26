@@ -1,0 +1,11 @@
+SELECT
+  wga.id         AS groupe_appareil_id,
+  wai.code       AS appro_code,       -- 'FONDS','VIROLES',...
+  wai.na,
+  wai.envoye,
+  wai.date
+FROM public.workflow_groupe_appareil wga
+JOIN public.workflow_groupe_etape   wge ON wge.id = wga.groupe_id
+LEFT JOIN public.workflow_appro_item wai ON wai.groupe_appareil_id = wga.id
+WHERE wga.numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}'
+  AND wge.code = 'APPRO';

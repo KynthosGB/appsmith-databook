@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 53,
+  "bottomRow": 71,
   "defaultSelectedValues": [
     "BLUE"
   ],
@@ -42,18 +42,18 @@
       "value": "na"
     },
     {
-      "label": "Envoyé",
-      "value": "envoye"
+      "label": "Fait",
+      "value": "fait"
     }
   ],
-  "originalBottomRow": 57,
-  "originalTopRow": 53,
+  "originalBottomRow": 53,
+  "originalTopRow": 49,
   "parentColumnSpace": 6.015625,
   "parentId": "r1zkdwx0c7",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
-  "rightColumn": 35,
-  "topRow": 49,
+  "rightColumn": 28,
+  "topRow": 64,
   "type": "CHECKBOX_GROUP_WIDGET",
   "version": 2,
   "widgetId": "oxzbgjqq6v",

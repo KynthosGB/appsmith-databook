@@ -36,8 +36,8 @@
   "labelAlignment": "left",
   "labelPosition": "Left",
   "labelTextSize": "0.875rem",
-  "labelWidth": "5",
-  "leftColumn": 51,
+  "labelWidth": "6",
+  "leftColumn": 47,
   "maxDate": "2121-12-31T18:29:00.000Z",
   "maxDynamicHeight": 9000,
   "minDate": "1920-12-31T18:30:00.000Z",
@@ -60,5 +60,5 @@
   "type": "DATE_PICKER_WIDGET2",
   "version": 2,
   "widgetId": "vqu3qjjrhq",
-  "widgetName": "DatePicker1"
+  "widgetName": "DateLivraison"
 }

@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 60,
+  "bottomRow": 78,
   "defaultSelectedValues": [
     "BLUE"
   ],
@@ -46,14 +46,14 @@
       "value": "envoye"
     }
   ],
-  "originalBottomRow": 63,
-  "originalTopRow": 59,
+  "originalBottomRow": 60,
+  "originalTopRow": 56,
   "parentColumnSpace": 6.015625,
   "parentId": "zs1v3ckhn2",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
-  "rightColumn": 35,
-  "topRow": 56,
+  "rightColumn": 30,
+  "topRow": 71,
   "type": "CHECKBOX_GROUP_WIDGET",
   "version": 2,
   "widgetId": "3208tfdv1v",

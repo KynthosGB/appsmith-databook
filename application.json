@@ -45,6 +45,10 @@
     {
       "id": "Suivi fabrication appareil",
       "isDefault": false
+    },
+    {
+      "id": "Planning",
+      "isDefault": false
     }
   ],
   "unpublishedAppLayout": {

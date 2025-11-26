@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 97,
+  "bottomRow": 117,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -30,8 +30,8 @@
   "mobileRightColumn": 17,
   "mobileTopRow": 24,
   "needsErrorInfo": false,
-  "originalBottomRow": 97,
-  "originalTopRow": 93,
+  "originalBottomRow": 117,
+  "originalTopRow": 113,
   "overflow": "NONE",
   "parentColumnSpace": 20.25,
   "parentId": "0",
@@ -43,7 +43,7 @@
   "text": "Cahier de soudage",
   "textAlign": "LEFT",
   "textColor": "#231F20",
-  "topRow": 93,
+  "topRow": 113,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

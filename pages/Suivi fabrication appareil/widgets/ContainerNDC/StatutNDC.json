@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 7,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( JS_SuiviFabAppareil.statutLabelFor ))(StatutNDC.options, StatutNDC.serverSideFiltering) }}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( JS_SuiviFabAppareil.statutLabelFor() ))(StatutNDC.options, StatutNDC.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

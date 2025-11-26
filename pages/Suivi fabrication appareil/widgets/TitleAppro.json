@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 49,
+  "bottomRow": 26,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -21,7 +21,7 @@
   "isLoading": false,
   "isVisible": true,
   "key": "v73l77sdw8",
-  "leftColumn": 17,
+  "leftColumn": 20,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
@@ -30,23 +30,23 @@
   "mobileRightColumn": 17,
   "mobileTopRow": 24,
   "needsErrorInfo": false,
-  "originalBottomRow": 49,
-  "originalTopRow": 45,
+  "originalBottomRow": 26,
+  "originalTopRow": 22,
   "overflow": "NONE",
   "parentColumnSpace": 20.25,
   "parentId": "0",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 31,
+  "rightColumn": 34,
   "shouldTruncate": false,
   "text": "Appro",
   "textAlign": "LEFT",
   "textColor": "#231F20",
-  "topRow": 45,
+  "topRow": 22,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "ing4y7lck4",
+  "widgetId": "khpobwcxvg",
   "widgetName": "TitleAppro"
 }

@@ -1,0 +1,18 @@
+INSERT INTO public.workflow_controle_item (
+  groupe_appareil_id,
+  code,
+  na,
+  fait,
+  date
+)
+VALUES (
+  {{ this.params.groupe_appareil_id }},
+  {{ this.params.code }},      -- 'VISUELS','RADIO','FAT',...
+  {{ this.params.na }},
+  {{ this.params.fait }},
+  {{ this.params.date }}
+)
+ON CONFLICT (groupe_appareil_id, code) DO UPDATE SET
+  na   = EXCLUDED.na,
+  fait = EXCLUDED.fait,
+  date = EXCLUDED.date;

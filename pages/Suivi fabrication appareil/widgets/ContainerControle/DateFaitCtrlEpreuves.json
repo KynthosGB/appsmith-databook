@@ -7,17 +7,32 @@
   "closeOnSelection": true,
   "dateFormat": "DD-MM-YYYY",
   "datePickerType": "DATE_PICKER",
-  "defaultDate": "2025-11-24T12:39:00.016Z",
+  "defaultDate": "{{\n  (QryInfoControlesAppareil.data || [])\n    .find(r => r.controle_code === \"EPREUVES\")\n    ?.date || \"\"\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "defaultDate"
     }
   ],
   "dynamicHeight": "FIXED",
-  "dynamicTriggerPathList": [],
+  "dynamicPropertyPathList": [
+    {
+      "key": "defaultDate"
+    },
+    {
+      "key": "onDateSelected"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onDateSelected"
+    }
+  ],
   "firstDayOfWeek": 0,
   "isDisabled": false,
   "isLoading": false,
@@ -40,6 +55,7 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 10,
   "needsErrorInfo": false,
+  "onDateSelected": "{{JS_SuiviFab.saveControleItem(\"EPREUVES\", CheckboxCtrlEpreuves, DateFaitCtrlEpreuves)}}",
   "originalBottomRow": 26,
   "originalTopRow": 22,
   "parentColumnSpace": 4.1171875,
@@ -54,5 +70,5 @@
   "type": "DATE_PICKER_WIDGET2",
   "version": 2,
   "widgetId": "eyzhvdpw0j",
-  "widgetName": "DateFaitCtrlEpreuve"
+  "widgetName": "DateFaitCtrlEpreuves"
 }

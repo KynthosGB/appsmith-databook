@@ -21,22 +21,33 @@ SELECT
   wp.indice             AS plan_indice,
   wp.dessinateur        AS plan_dessinateur,
   wp.date_objectif      AS plan_date_objectif,
+	wp.date_debut         AS plan_date_debut,
   wp.date_premier_envoi AS plan_date_premier_envoi,
+	wp.date_fin           AS plan_date_fin,
 
   -- CAHIER SOUDAGE
-  wcs.iwt               AS cs_iwt,
-  wcs.numero            AS cs_numero,
-  wcs.indice            AS cs_indice,
-  wcs.date_objectif     AS cs_date_objectif,
+  wcs.iwt           AS cs_iwt,
+	wcs.numero        AS cs_numero,
+	wcs.indice        AS cs_indice,
+	wcs.date_objectif AS cs_date_objectif,
+	wcs.date_debut    AS cs_date_debut,
+	wcs.date_fin      AS cs_date_fin,
+	
+	-- APPRO
+	wa.date_objectif AS appro_date_objectif,
 
   -- PREPARATION
   wprep.preparateur     AS prep_preparateur,
   wprep.date_objectif   AS prep_date_objectif,
+	wprep.date_debut      AS prep_date_debut,
+	wprep.date_fin        AS prep_date_fin,
 
   -- FABRICATION
   wf.monteur            AS fab_monteur,
   wf.heures_prevues     AS fab_heures_prevues,
   wf.heures_passees     AS fab_heures_passees,
+	wf.date_debut         AS fab_date_debut,
+	wf.date_fin           AS fab_date_fin,
 
   -- DOSSIER CONSTRUCTEUR
   wdc.numero            AS dc_numero
@@ -53,6 +64,9 @@ LEFT JOIN public.workflow_plan             wp   ON wp.groupe_appareil_id  = wga.
 
 LEFT JOIN public.workflow_cahier_soudage   wcs  ON wcs.groupe_appareil_id = wga.id
   AND wge.code = 'CAHIER_SOUDAGE'
+	
+LEFT JOIN public.workflow_appro wa ON wa.groupe_appareil_id = wga.id
+  AND wge.code = 'APPRO'
 
 LEFT JOIN public.workflow_preparation      wprep ON wprep.groupe_appareil_id = wga.id
   AND wge.code = 'PREPARATION'

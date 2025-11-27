@@ -2,20 +2,30 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 26,
-  "defaultSelectedValues": [
-    "BLUE"
-  ],
+  "bottomRow": 84,
+  "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoApproAppareil.data || [])\n      .find(r => r.appro_code === \"AUTRE\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)      values.push(\"na\");\n    if (row.envoye)  values.push(\"envoye\");\n    return values;\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "defaultSelectedValues"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
-  "dynamicTriggerPathList": [],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onSelectionChange"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onSelectionChange"
+    }
+  ],
   "flexVerticalAlignment": "start",
   "isDisabled": false,
   "isInline": true,
@@ -36,26 +46,27 @@
   "mobileRightColumn": 25,
   "mobileTopRow": 9,
   "needsErrorInfo": false,
+  "onSelectionChange": "{{JS_SuiviFab.saveApproItem(\"AUTRE\", CheckboxAutre, DateEnvoiAutre)\n}}",
   "options": [
     {
       "label": "NA",
       "value": "na"
     },
     {
-      "label": "Fait",
-      "value": "fait"
+      "label": "Envoyé",
+      "value": "envoye"
     }
   ],
-  "originalBottomRow": 26,
-  "originalTopRow": 22,
+  "originalBottomRow": 84,
+  "originalTopRow": 80,
   "parentColumnSpace": 6.015625,
-  "parentId": "r1zkdwx0c7",
+  "parentId": "zs1v3ckhn2",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
-  "rightColumn": 28,
-  "topRow": 22,
+  "rightColumn": 29,
+  "topRow": 80,
   "type": "CHECKBOX_GROUP_WIDGET",
   "version": 2,
-  "widgetId": "d89rwb6v58",
-  "widgetName": "CheckboxCtrlEpreuve"
+  "widgetId": "yqafmeurer",
+  "widgetName": "CheckboxAutre"
 }

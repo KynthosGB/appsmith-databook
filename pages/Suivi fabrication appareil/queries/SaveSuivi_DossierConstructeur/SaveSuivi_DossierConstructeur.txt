@@ -1,0 +1,10 @@
+INSERT INTO public.workflow_dossier_constructeur (
+  groupe_appareil_id,
+  numero
+)
+VALUES (
+  {{ this.params.groupe_appareil_id }},
+  {{ this.params.numero }}
+)
+ON CONFLICT (groupe_appareil_id) DO UPDATE SET
+  numero = EXCLUDED.numero;

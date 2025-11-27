@@ -5,13 +5,16 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 14,
   "boxShadow": "none",
-  "defaultText": "",
+  "defaultText": "{{\n  (QryInfoSuiviFabAppareil.data || [])\n    .find(r => r.groupe_code === \"NOTE_CALCUL\")\n    ?.ndc_indice || \"\"\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "defaultText"
     }
   ],
   "dynamicHeight": "FIXED",

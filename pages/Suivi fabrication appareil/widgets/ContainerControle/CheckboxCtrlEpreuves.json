@@ -2,20 +2,30 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 84,
-  "defaultSelectedValues": [
-    "BLUE"
-  ],
+  "bottomRow": 26,
+  "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoControlesAppareil.data || [])\n      .find(r => r.controle_code === \"EPREUVES\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)   values.push(\"na\");\n    if (row.fait) values.push(\"fait\");\n    return values;\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "defaultSelectedValues"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
-  "dynamicTriggerPathList": [],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onSelectionChange"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onSelectionChange"
+    }
+  ],
   "flexVerticalAlignment": "start",
   "isDisabled": false,
   "isInline": true,
@@ -36,26 +46,27 @@
   "mobileRightColumn": 25,
   "mobileTopRow": 9,
   "needsErrorInfo": false,
+  "onSelectionChange": "{{JS_SuiviFab.saveControleItem(\"EPREUVES\", CheckboxCtrlEpreuves, DateFaitCtrlEpreuves)}}",
   "options": [
     {
       "label": "NA",
       "value": "na"
     },
     {
-      "label": "Envoyé",
-      "value": "envoye"
+      "label": "Fait",
+      "value": "fait"
     }
   ],
-  "originalBottomRow": 84,
-  "originalTopRow": 80,
+  "originalBottomRow": 26,
+  "originalTopRow": 22,
   "parentColumnSpace": 6.015625,
-  "parentId": "zs1v3ckhn2",
+  "parentId": "r1zkdwx0c7",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
-  "rightColumn": 29,
-  "topRow": 80,
+  "rightColumn": 28,
+  "topRow": 22,
   "type": "CHECKBOX_GROUP_WIDGET",
   "version": 2,
-  "widgetId": "yqafmeurer",
-  "widgetName": "CheckboxAppro"
+  "widgetId": "d89rwb6v58",
+  "widgetName": "CheckboxCtrlEpreuves"
 }

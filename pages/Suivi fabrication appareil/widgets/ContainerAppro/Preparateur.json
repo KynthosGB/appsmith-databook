@@ -5,17 +5,29 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 15,
   "boxShadow": "none",
-  "defaultText": "",
+  "defaultText": "{{\n  (QryInfoSuiviFabAppareil.data || [])\n    .find(r => r.groupe_code === \"PREPARATION\")\n    ?.prep_preparateur || \"\"\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "defaultText"
     }
   ],
   "dynamicHeight": "FIXED",
-  "dynamicTriggerPathList": [],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onBlur"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onBlur"
+    }
+  ],
   "iconAlign": "left",
   "inputType": "TEXT",
   "isDisabled": false,
@@ -23,7 +35,7 @@
   "isRequired": false,
   "isVisible": true,
   "key": "jdjyd6pywq",
-  "label": "Préparateur\n",
+  "label": "Préparateur",
   "labelAlignment": "left",
   "labelPosition": "Top",
   "labelStyle": "",
@@ -38,6 +50,7 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
+  "onBlur": "{{ JS_SuiviFab.savePreparation() }}\n",
   "originalBottomRow": 82,
   "originalTopRow": 75,
   "parentColumnSpace": 4.1171875,

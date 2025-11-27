@@ -1,0 +1,18 @@
+INSERT INTO public.workflow_appro_item (
+  groupe_appareil_id,
+  code,
+  na,
+  envoye,
+  date
+)
+VALUES (
+  {{ this.params.groupe_appareil_id }},
+  {{ this.params.code }},      -- 'FONDS','VIROLES',...
+  {{ this.params.na }},
+  {{ this.params.envoye }},
+  {{ this.params.date }}
+)
+ON CONFLICT (groupe_appareil_id, code) DO UPDATE SET
+  na     = EXCLUDED.na,
+  envoye = EXCLUDED.envoye,
+  date   = EXCLUDED.date;

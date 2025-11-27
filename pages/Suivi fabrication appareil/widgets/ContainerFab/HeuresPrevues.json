@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 20,
   "boxShadow": "none",
-  "defaultText": "{{QryInfoSuiviFabAppareil.}}",
+  "defaultText": "{{\n  (QryInfoSuiviFabAppareil.data || [])\n    .find(r => r.groupe_code === \"FABRICATION\")\n    ?.fab_heures_prevues ?? \"\"\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -18,7 +18,16 @@
     }
   ],
   "dynamicHeight": "FIXED",
-  "dynamicTriggerPathList": [],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onBlur"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onBlur"
+    }
+  ],
   "iconAlign": "left",
   "inputType": "TEXT",
   "isDisabled": false,
@@ -41,6 +50,7 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
+  "onBlur": "{{ JS_SuiviFab.saveFabrication() }}\n",
   "parentColumnSpace": 4.1171875,
   "parentId": "u42us00znf",
   "parentRowSpace": 10,

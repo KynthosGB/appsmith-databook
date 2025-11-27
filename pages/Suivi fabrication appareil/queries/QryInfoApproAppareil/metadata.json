@@ -29,7 +29,7 @@
     ],
     "name": "QryInfoApproAppareil",
     "pageId": "Suivi fabrication appareil",
-    "runBehaviour": "MANUAL",
+    "runBehaviour": "AUTOMATIC",
     "userSetOnLoad": false
   }
 }

@@ -50,7 +50,7 @@
   "mobileRightColumn": 14,
   "mobileTopRow": 1,
   "needsErrorInfo": false,
-  "onOptionChange": "{{navigateTo('Suivi fabrication appareil', {\n  numero_appareil: SelectAppareil.selectedOptionValue\n}, 'SAME_WINDOW');\nQryInfosAppareil.run();\nQrySuiviFab_Groupes.run()}}",
+  "onOptionChange": "{{navigateTo('Suivi fabrication appareil', {\n  numero_appareil: SelectAppareil.selectedOptionValue\n}, 'SAME_WINDOW');\nQryInfosAppareil.run();\nQrySuiviFab_Groupes.run();\nQryInfoSuiviFabAppareil.run();\nQryInfoControlesAppareil.run();\nQryInfoApproAppareil.run()}}",
   "optionLabel": "label",
   "optionValue": "value",
   "parentColumnSpace": 20.25,

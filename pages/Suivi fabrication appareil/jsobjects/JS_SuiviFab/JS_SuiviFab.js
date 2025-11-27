@@ -141,8 +141,8 @@ export default {
 
 		// ⚠️ adapter les noms de widgets :
 		const iwt      = IWT.text;
-		const numero   = InputNumCDS.text;
-		const indice   = InputIndiceCDS.text;
+		const numero   = NumCDS.text;
+		const indice   = IndiceCDS.text;
 
 		const dateObj  = DateCDSObjectif.selectedDate;
 		const dateDeb  = DateDebutCDS.selectedDate;
@@ -175,4 +175,167 @@ export default {
 				showAlert("Erreur lors de l'enregistrement du cahier de soudage", "error");
 			});
 	},
+	
+	// --- PRÉPARATION ---
+	savePreparation() {
+		const row = this.getRowByCode("PREPARATION");
+		if (!row) return;
+
+		// ⚠️ adapter les noms de widgets :
+		const preparateur = Preparateur.text;
+		const dateObj     = DatePrepaObjectif.selectedDate;
+		const dateDebut   = DateDebutPrepa.selectedDate;
+		const dateFin     = DateFinPrepa.selectedDate;
+
+		return SaveSuivi_Preparation.run({
+			groupe_appareil_id: row.groupe_appareil_id,
+
+			preparateur: preparateur || null,
+
+			date_objectif: dateObj
+				? moment(dateObj).format("YYYY-MM-DD")
+				: null,
+
+			date_debut: dateDebut
+				? moment(dateDebut).format("YYYY-MM-DD")
+				: null,
+
+			date_fin: dateFin
+				? moment(dateFin).format("YYYY-MM-DD")
+				: null,
+		})
+			.then(() => {
+				showAlert("Préparation mise à jour ✅", "success");
+			})
+			.catch(e => {
+				console.log("Erreur save préparation", e);
+				showAlert("Erreur lors de l'enregistrement de la préparation", "error");
+			});
+	},
+	
+	// --- APPRO : un sous-groupe (Fonds, Virolés, etc.) ---
+	saveApproItem(code, checkboxGroup, datePicker) {
+		const row = this.getRowByCode("APPRO");
+		if (!row) return;
+
+		const selected = checkboxGroup.selectedValues || [];
+		const na     = selected.includes("na");
+		const envoye = selected.includes("envoye");
+
+		const date = datePicker.selectedDate
+			? moment(datePicker.selectedDate).format("YYYY-MM-DD")
+			: null;
+
+		return SaveSuivi_ApproItem.run({
+			groupe_appareil_id: row.groupe_appareil_id,
+			code,
+			na,
+			envoye,
+			date,
+		})
+			.then(() => this.setEnCoursIfNeeded("APPRO"))
+			.then(() => this.refreshBar())
+			.then(() => {
+				showAlert("Appro mis à jour ✅", "success");
+			})
+			.catch(e => {
+				console.log("Erreur save appro", e);
+				showAlert("Erreur lors de l'enregistrement de l'approvisionnement", "error");
+			});
+	},
+
+	// --- CONTROLE : un sous-groupe (Visuels, Radio, FAT, ...) ---
+	saveControleItem(code, checkboxGroup, datePicker) {
+		// code = 'VISUELS', 'RADIO', 'FAT', ...
+		// checkboxGroup = widget CheckboxGroup (NA / Fait)
+		// datePicker = widget DatePicker correspondant
+
+		const row = this.getRowByCode("CONTROLE");
+		if (!row) return;
+
+		const selected = checkboxGroup.selectedValues || [];
+		const na   = selected.includes("na");
+		const fait = selected.includes("fait");
+
+		const date = datePicker.selectedDate
+			? moment(datePicker.selectedDate).format("YYYY-MM-DD")
+			: null;
+
+		return SaveSuivi_ControleItem.run({
+			groupe_appareil_id: row.groupe_appareil_id,
+			code,
+			na,
+			fait,
+			date,
+		})
+			.then(() => this.setEnCoursIfNeeded("CONTROLE")) // A_FAIRE -> EN_COURS
+			.then(() => this.refreshBar())                   // refresh ButtonGroup
+			.then(() => {
+				showAlert("Contrôle mis à jour ✅", "success");
+			})
+			.catch(e => {
+				console.log("Erreur save contrôle", e);
+				showAlert("Erreur lors de l'enregistrement du contrôle", "error");
+			});
+	},
+
+	// --- FABRICATION ---
+
+	saveFabrication() {
+		const row = this.getRowByCode("FABRICATION");
+		if (!row) return;
+
+		// ⚠️ remplace par les noms réels de tes widgets
+		const monteur       = Monteur.text;
+		const dateDebutVal  = DateDebutFab.selectedDate;
+		const dateFinVal    = DateFinFab.selectedDate;
+		const heuresPrevues = Number(HeuresPrevues.text || "") || null;
+		const heuresPassees = Number(HeuresPassees.text || "") || null;
+
+		return SaveSuivi_Fabrication.run({
+			groupe_appareil_id: row.groupe_appareil_id,
+			monteur: monteur || null,
+
+			date_debut: dateDebutVal
+				? moment(dateDebutVal).format("YYYY-MM-DD")
+				: null,
+
+			date_fin: dateFinVal
+				? moment(dateFinVal).format("YYYY-MM-DD")
+				: null,
+
+			heures_prevues: heuresPrevues,
+			heures_passees: heuresPassees,
+		})
+			.then(() => {
+				showAlert("Fabrication mise à jour ✅", "success");
+			})
+			.catch(e => {
+				console.log("Erreur save fabrication", e);
+				showAlert("Erreur lors de l'enregistrement de la fabrication", "error");
+			});
+	},
+
+	// --- DOSSIER CONSTRUCTEUR ---
+	saveDossierConstructeur() {
+		const row = this.getRowByCode("DOSSIER_CONSTRUCTEUR");
+		if (!row) return;
+
+		// ⚠️ remplace par le nom réel du widget
+		const numero = InputNumDC.text;
+
+		return SaveSuivi_DossierConstructeur.run({
+			groupe_appareil_id: row.groupe_appareil_id,
+			numero: numero || null,
+		})
+			.then(() => {
+				showAlert("Dossier constructeur mis à jour ✅", "success");
+			})
+			.catch(e => {
+				console.log("Erreur save dossier constructeur", e);
+				showAlert("Erreur lors de l'enregistrement du dossier constructeur", "error");
+			});
+	},
+
+
 };

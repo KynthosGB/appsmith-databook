@@ -5,17 +5,29 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 21,
   "boxShadow": "none",
-  "defaultText": "",
+  "defaultText": "{{\n  (QryInfoSuiviFabAppareil.data || [])\n    .find(r => r.groupe_code === \"CAHIER_SOUDAGE\")\n    ?.cs_indice || \"\"\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "defaultText"
     }
   ],
   "dynamicHeight": "FIXED",
-  "dynamicTriggerPathList": [],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onBlur"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onBlur"
+    }
+  ],
   "iconAlign": "left",
   "inputType": "TEXT",
   "isDisabled": false,
@@ -38,6 +50,7 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
+  "onBlur": "{{ JS_SuiviFab.saveCahierSoudage() }}",
   "parentColumnSpace": 4.1171875,
   "parentId": "77x6wi14qh",
   "parentRowSpace": 10,
@@ -50,5 +63,5 @@
   "type": "INPUT_WIDGET_V2",
   "version": 2,
   "widgetId": "80elt2p6az",
-  "widgetName": "InputIndiceCDS"
+  "widgetName": "IndiceCDS"
 }

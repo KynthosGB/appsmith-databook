@@ -7,16 +7,24 @@
   "closeOnSelection": true,
   "dateFormat": "DD-MM-YYYY",
   "datePickerType": "DATE_PICKER",
-  "defaultDate": "2025-11-24T12:39:00.016Z",
+  "defaultDate": "{{\n (QryInfoSuiviFabAppareil.data || [])\n    .find(r => r.groupe_code === \"APPRO\")\n    ?.appro_date_objectif || \"\"\n}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "defaultDate"
     }
   ],
   "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [
+    {
+      "key": "defaultDate"
+    }
+  ],
   "dynamicTriggerPathList": [],
   "firstDayOfWeek": 0,
   "isDisabled": false,

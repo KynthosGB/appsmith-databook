@@ -2,8 +2,8 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 16,
-  "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoApproAppareil.data || [])\n      .find(r => r.appro_code === \"FONDS\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)      values.push(\"na\");\n    if (row.envoye)  values.push(\"envoye\");\n    return values;\n  })()\n}}\n",
+  "bottomRow": 86,
+  "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoApproAppareil.data || [])\n      .find(r => r.appro_code === \"AUTRE\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)      values.push(\"na\");\n    if (row.envoye)  values.push(\"envoye\");\n    return values;\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -46,7 +46,7 @@
   "mobileRightColumn": 25,
   "mobileTopRow": 9,
   "needsErrorInfo": false,
-  "onSelectionChange": "{{JS_SuiviFab.saveApproItem(\"FONDS\", CheckboxFonds, DateEnvoiFonds)\n}}",
+  "onSelectionChange": "{{JS_SuiviFab.saveApproItem(\"AUTRE\", CheckboxAutre, DateEnvoiAutre)\n}}",
   "options": [
     {
       "label": "NA",
@@ -57,16 +57,16 @@
       "value": "envoye"
     }
   ],
-  "originalBottomRow": 16,
-  "originalTopRow": 12,
+  "originalBottomRow": 84,
+  "originalTopRow": 80,
   "parentColumnSpace": 6.015625,
   "parentId": "zs1v3ckhn2",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
-  "rightColumn": 30,
-  "topRow": 12,
+  "rightColumn": 29,
+  "topRow": 82,
   "type": "CHECKBOX_GROUP_WIDGET",
   "version": 2,
-  "widgetId": "wf2k3j2qbc",
-  "widgetName": "CheckboxFonds"
+  "widgetId": "yqafmeurer",
+  "widgetName": "CheckboxAutre"
 }

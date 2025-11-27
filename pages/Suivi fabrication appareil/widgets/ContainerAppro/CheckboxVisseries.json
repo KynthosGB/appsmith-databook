@@ -2,8 +2,8 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 76,
-  "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoApproAppareil.data || [])\n      .find(r => r.appro_code === \"BERCES\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)      values.push(\"na\");\n    if (row.envoye)  values.push(\"envoye\");\n    return values;\n  })()\n}}\n",
+  "bottomRow": 54,
+  "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoApproAppareil.data || [])\n      .find(r => r.appro_code === \"VISSERIES\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)      values.push(\"na\");\n    if (row.envoye)  values.push(\"envoye\");\n    return values;\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -46,7 +46,7 @@
   "mobileRightColumn": 25,
   "mobileTopRow": 9,
   "needsErrorInfo": false,
-  "onSelectionChange": "{{JS_SuiviFab.saveApproItem(\"BERCES\", CheckboxFonds, DateEnvoiFonds)\n}}",
+  "onSelectionChange": "{{JS_SuiviFab.saveApproItem(\"VISSERIES\", CheckboxVisseries, DateEnvoiVisseries)\n}}",
   "options": [
     {
       "label": "NA",
@@ -57,16 +57,16 @@
       "value": "envoye"
     }
   ],
-  "originalBottomRow": 76,
-  "originalTopRow": 72,
+  "originalBottomRow": 52,
+  "originalTopRow": 48,
   "parentColumnSpace": 6.015625,
   "parentId": "zs1v3ckhn2",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
-  "rightColumn": 29,
-  "topRow": 72,
+  "rightColumn": 30,
+  "topRow": 50,
   "type": "CHECKBOX_GROUP_WIDGET",
   "version": 2,
-  "widgetId": "suwlsy9lub",
-  "widgetName": "CheckboxBerces"
+  "widgetId": "0l0umk6znx",
+  "widgetName": "CheckboxVisseries"
 }

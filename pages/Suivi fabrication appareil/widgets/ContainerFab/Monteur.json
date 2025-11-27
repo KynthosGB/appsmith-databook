@@ -3,7 +3,7 @@
   "animateLoading": true,
   "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 7,
+  "bottomRow": 15,
   "boxShadow": "none",
   "defaultText": "{{\n  (QryInfoSuiviFabAppareil.data || [])\n    .find(r => r.groupe_code === \"FABRICATION\")\n    ?.fab_monteur || \"\"\n}}\n",
   "dynamicBindingPathList": [
@@ -59,7 +59,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 63,
   "showStepArrows": false,
-  "topRow": 0,
+  "topRow": 8,
   "type": "INPUT_WIDGET_V2",
   "version": 2,
   "widgetId": "objhfq74vr",

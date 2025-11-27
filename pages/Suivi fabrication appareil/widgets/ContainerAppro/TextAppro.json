@@ -4,7 +4,7 @@
   "borderColor": "",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "1",
-  "bottomRow": 48,
+  "bottomRow": 82,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -33,8 +33,8 @@
   "mobileRightColumn": 17,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "originalBottomRow": 48,
-  "originalTopRow": 44,
+  "originalBottomRow": 80,
+  "originalTopRow": 76,
   "overflow": "NONE",
   "parentColumnSpace": 6.015625,
   "parentId": "zs1v3ckhn2",
@@ -43,13 +43,13 @@
   "responsiveBehavior": "fill",
   "rightColumn": 62,
   "shouldTruncate": false,
-  "text": "Visseries",
+  "text": "Autre",
   "textAlign": "CENTER",
   "textColor": "#3f3f46",
-  "topRow": 44,
+  "topRow": 78,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "a7oy9rtove",
-  "widgetName": "TextVisseries"
+  "widgetId": "q0vucliqcl",
+  "widgetName": "TextAppro"
 }

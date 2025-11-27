@@ -2,8 +2,8 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 25,
-  "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoApproAppareil.data || [])\n      .find(r => r.appro_code === \"VIROLES\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)      values.push(\"na\");\n    if (row.envoye)  values.push(\"envoye\");\n    return values;\n  })()\n}}\n",
+  "bottomRow": 38,
+  "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoApproAppareil.data || [])\n      .find(r => r.appro_code === \"DVAI\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)      values.push(\"na\");\n    if (row.envoye)  values.push(\"envoye\");\n    return values;\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -46,7 +46,7 @@
   "mobileRightColumn": 25,
   "mobileTopRow": 9,
   "needsErrorInfo": false,
-  "onSelectionChange": "{{JS_SuiviFab.saveApproItem(\"VIROLES\", CheckboxViroles, DateEnvoiViroles)\n}}",
+  "onSelectionChange": "{{JS_SuiviFab.saveApproItem(\"DVAI\", CheckboxDVAI, DateEnvoiDVAI)\n}}",
   "options": [
     {
       "label": "NA",
@@ -57,16 +57,16 @@
       "value": "envoye"
     }
   ],
-  "originalBottomRow": 25,
-  "originalTopRow": 21,
+  "originalBottomRow": 34,
+  "originalTopRow": 30,
   "parentColumnSpace": 6.015625,
   "parentId": "zs1v3ckhn2",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "rightColumn": 30,
-  "topRow": 21,
+  "topRow": 34,
   "type": "CHECKBOX_GROUP_WIDGET",
   "version": 2,
-  "widgetId": "j3qp5j5h0w",
-  "widgetName": "CheckboxViroles"
+  "widgetId": "0nstjj6yxw",
+  "widgetName": "CheckboxDVAI"
 }

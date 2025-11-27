@@ -2,8 +2,8 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 43,
-  "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoApproAppareil.data || [])\n      .find(r => r.appro_code === \"BRIDES\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)      values.push(\"na\");\n    if (row.envoye)  values.push(\"envoye\");\n    return values;\n  })()\n}}\n",
+  "bottomRow": 30,
+  "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoApproAppareil.data || [])\n      .find(r => r.appro_code === \"VIROLES\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)      values.push(\"na\");\n    if (row.envoye)  values.push(\"envoye\");\n    return values;\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -46,7 +46,7 @@
   "mobileRightColumn": 25,
   "mobileTopRow": 9,
   "needsErrorInfo": false,
-  "onSelectionChange": "{{JS_SuiviFab.saveApproItem(\"BRIDES\", CheckboxBrides, DateEnvoiBrides)\n}}",
+  "onSelectionChange": "{{JS_SuiviFab.saveApproItem(\"VIROLES\", CheckboxViroles, DateEnvoiViroles)\n}}",
   "options": [
     {
       "label": "NA",
@@ -57,16 +57,16 @@
       "value": "envoye"
     }
   ],
-  "originalBottomRow": 43,
-  "originalTopRow": 39,
+  "originalBottomRow": 25,
+  "originalTopRow": 21,
   "parentColumnSpace": 6.015625,
   "parentId": "zs1v3ckhn2",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "rightColumn": 30,
-  "topRow": 39,
+  "topRow": 26,
   "type": "CHECKBOX_GROUP_WIDGET",
   "version": 2,
-  "widgetId": "dr2imj5pog",
-  "widgetName": "CheckboxBrides"
+  "widgetId": "j3qp5j5h0w",
+  "widgetName": "CheckboxViroles"
 }

@@ -2,12 +2,12 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 60,
+  "bottomRow": 22,
   "boxShadow": "none",
   "closeOnSelection": true,
   "dateFormat": "DD-MM-YYYY",
   "datePickerType": "DATE_PICKER",
-  "defaultDate": "{{\n  (QryInfoApproAppareil.data || [])\n    .find(r => r.appro_code === \"JOINTS\")\n    ?.date || \"\"\n}}\n",
+  "defaultDate": "{{\n  (QryInfoApproAppareil.data || [])\n    .find(r => r.appro_code === \"FONDS\")\n    ?.date || \"\"\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -55,9 +55,7 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 10,
   "needsErrorInfo": false,
-  "onDateSelected": "{{JS_SuiviFab.saveApproItem(\"JOINTS\", CheckboxFonds, DateEnvoiFonds)}}",
-  "originalBottomRow": 60,
-  "originalTopRow": 56,
+  "onDateSelected": "{{JS_SuiviFab.saveApproItem(\"FONDS\", CheckboxFonds, DateEnvoiFonds)}}",
   "parentColumnSpace": 4.1171875,
   "parentId": "zs1v3ckhn2",
   "parentRowSpace": 10,
@@ -66,9 +64,9 @@
   "rightColumn": 62,
   "shortcuts": false,
   "timePrecision": "minute",
-  "topRow": 56,
+  "topRow": 18,
   "type": "DATE_PICKER_WIDGET2",
   "version": 2,
-  "widgetId": "3b4hvioyjt",
-  "widgetName": "DateEnvoiJoints"
+  "widgetId": "btb6ighh1j",
+  "widgetName": "DateEnvoiFonds"
 }

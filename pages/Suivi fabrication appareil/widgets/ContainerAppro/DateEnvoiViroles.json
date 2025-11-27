@@ -2,12 +2,12 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 34,
+  "bottomRow": 30,
   "boxShadow": "none",
   "closeOnSelection": true,
   "dateFormat": "DD-MM-YYYY",
   "datePickerType": "DATE_PICKER",
-  "defaultDate": "{{\n  (QryInfoApproAppareil.data || [])\n    .find(r => r.appro_code === \"DVAI\")\n    ?.date || \"\"\n}}\n",
+  "defaultDate": "{{\n  (QryInfoApproAppareil.data || [])\n    .find(r => r.appro_code === \"VIROLES\")\n    ?.date || \"\"\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -55,9 +55,10 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 10,
   "needsErrorInfo": false,
-  "onDateSelected": "{{JS_SuiviFab.saveApproItem(\"DVAI\", CheckboxDVAI, DateEnvoiDVAI)}}",
-  "originalBottomRow": 34,
-  "originalTopRow": 30,
+  "onDateSelected": "{{JS_SuiviFab.saveApproItem(\"VIROLES\", CheckboxViroles, DateEnvoiViroles)}}",
+  "onFocus": "{{}}",
+  "originalBottomRow": 25,
+  "originalTopRow": 21,
   "parentColumnSpace": 4.1171875,
   "parentId": "zs1v3ckhn2",
   "parentRowSpace": 10,
@@ -66,9 +67,9 @@
   "rightColumn": 62,
   "shortcuts": false,
   "timePrecision": "minute",
-  "topRow": 30,
+  "topRow": 26,
   "type": "DATE_PICKER_WIDGET2",
   "version": 2,
-  "widgetId": "5com6t9gck",
-  "widgetName": "DateEnvoiDVAI"
+  "widgetId": "28dvy6bxdw",
+  "widgetName": "DateEnvoiViroles"
 }

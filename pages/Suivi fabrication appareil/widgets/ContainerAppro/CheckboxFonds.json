@@ -2,8 +2,8 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 60,
-  "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoApproAppareil.data || [])\n      .find(r => r.appro_code === \"JOINTS\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)      values.push(\"na\");\n    if (row.envoye)  values.push(\"envoye\");\n    return values;\n  })()\n}}\n",
+  "bottomRow": 22,
+  "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoApproAppareil.data || [])\n      .find(r => r.appro_code === \"FONDS\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)      values.push(\"na\");\n    if (row.envoye)  values.push(\"envoye\");\n    return values;\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -46,7 +46,7 @@
   "mobileRightColumn": 25,
   "mobileTopRow": 9,
   "needsErrorInfo": false,
-  "onSelectionChange": "{{JS_SuiviFab.saveApproItem(\"JOINTS\", CheckboxJoints, DateEnvoiJoints)\n}}",
+  "onSelectionChange": "{{JS_SuiviFab.saveApproItem(\"FONDS\", CheckboxFonds, DateEnvoiFonds)\n}}",
   "options": [
     {
       "label": "NA",
@@ -57,16 +57,16 @@
       "value": "envoye"
     }
   ],
-  "originalBottomRow": 60,
-  "originalTopRow": 56,
+  "originalBottomRow": 16,
+  "originalTopRow": 12,
   "parentColumnSpace": 6.015625,
   "parentId": "zs1v3ckhn2",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "rightColumn": 30,
-  "topRow": 56,
+  "topRow": 18,
   "type": "CHECKBOX_GROUP_WIDGET",
   "version": 2,
-  "widgetId": "3208tfdv1v",
-  "widgetName": "CheckboxJoints"
+  "widgetId": "wf2k3j2qbc",
+  "widgetName": "CheckboxFonds"
 }

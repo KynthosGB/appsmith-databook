@@ -2,8 +2,8 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 68,
-  "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoApproAppareil.data || [])\n      .find(r => r.appro_code === \"CALORIFUGE\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)      values.push(\"na\");\n    if (row.envoye)  values.push(\"envoye\");\n    return values;\n  })()\n}}\n",
+  "bottomRow": 78,
+  "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoApproAppareil.data || [])\n      .find(r => r.appro_code === \"BERCES\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)      values.push(\"na\");\n    if (row.envoye)  values.push(\"envoye\");\n    return values;\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -46,7 +46,7 @@
   "mobileRightColumn": 25,
   "mobileTopRow": 9,
   "needsErrorInfo": false,
-  "onSelectionChange": "{{JS_SuiviFab.saveApproItem(\"CALORIFUGE\", CheckboxFonds, DateEnvoiFonds)\n}}",
+  "onSelectionChange": "{{JS_SuiviFab.saveApproItem(\"BERCES\", CheckboxFonds, DateEnvoiFonds)\n}}",
   "options": [
     {
       "label": "NA",
@@ -57,16 +57,16 @@
       "value": "envoye"
     }
   ],
-  "originalBottomRow": 68,
-  "originalTopRow": 64,
+  "originalBottomRow": 76,
+  "originalTopRow": 72,
   "parentColumnSpace": 6.015625,
   "parentId": "zs1v3ckhn2",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "rightColumn": 29,
-  "topRow": 64,
+  "topRow": 74,
   "type": "CHECKBOX_GROUP_WIDGET",
   "version": 2,
-  "widgetId": "syq9chsg0l",
-  "widgetName": "CheckboxCalo"
+  "widgetId": "suwlsy9lub",
+  "widgetName": "CheckboxBerces"
 }

@@ -2,12 +2,12 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 84,
+  "bottomRow": 70,
   "boxShadow": "none",
   "closeOnSelection": true,
   "dateFormat": "DD-MM-YYYY",
   "datePickerType": "DATE_PICKER",
-  "defaultDate": "{{\n  (QryInfoApproAppareil.data || [])\n    .find(r => r.appro_code === \"AUTRE\")\n    ?.date || \"\"\n}}\n",
+  "defaultDate": "{{\n  (QryInfoApproAppareil.data || [])\n    .find(r => r.appro_code === \"CALORIFUGE\")\n    ?.date || \"\"\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -55,9 +55,9 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 10,
   "needsErrorInfo": false,
-  "onDateSelected": "{{JS_SuiviFab.saveApproItem(\"AUTRE\", CheckboxAutre, DateEnvoiAutre)\n}}",
-  "originalBottomRow": 84,
-  "originalTopRow": 80,
+  "onDateSelected": "{{JS_SuiviFab.saveApproItem(\"CALORIFUGE\", CheckboxFonds, DateEnvoiFonds)}}",
+  "originalBottomRow": 68,
+  "originalTopRow": 64,
   "parentColumnSpace": 4.1171875,
   "parentId": "zs1v3ckhn2",
   "parentRowSpace": 10,
@@ -66,9 +66,9 @@
   "rightColumn": 62,
   "shortcuts": false,
   "timePrecision": "minute",
-  "topRow": 80,
+  "topRow": 66,
   "type": "DATE_PICKER_WIDGET2",
   "version": 2,
-  "widgetId": "b7b3x9sot9",
-  "widgetName": "DateEnvoiAutre"
+  "widgetId": "czmr5muigp",
+  "widgetName": "DateEnvoiCalo"
 }

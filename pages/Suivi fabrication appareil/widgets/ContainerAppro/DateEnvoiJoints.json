@@ -2,12 +2,12 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 76,
+  "bottomRow": 62,
   "boxShadow": "none",
   "closeOnSelection": true,
   "dateFormat": "DD-MM-YYYY",
   "datePickerType": "DATE_PICKER",
-  "defaultDate": "{{\n  (QryInfoApproAppareil.data || [])\n    .find(r => r.appro_code === \"BERCES\")\n    ?.date || \"\"\n}}\n",
+  "defaultDate": "{{\n  (QryInfoApproAppareil.data || [])\n    .find(r => r.appro_code === \"JOINTS\")\n    ?.date || \"\"\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -55,9 +55,9 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 10,
   "needsErrorInfo": false,
-  "onDateSelected": "{{JS_SuiviFab.saveApproItem(\"BERCES\", CheckboxFonds, DateEnvoiFonds)}}",
-  "originalBottomRow": 76,
-  "originalTopRow": 72,
+  "onDateSelected": "{{JS_SuiviFab.saveApproItem(\"JOINTS\", CheckboxFonds, DateEnvoiFonds)}}",
+  "originalBottomRow": 60,
+  "originalTopRow": 56,
   "parentColumnSpace": 4.1171875,
   "parentId": "zs1v3ckhn2",
   "parentRowSpace": 10,
@@ -66,9 +66,9 @@
   "rightColumn": 62,
   "shortcuts": false,
   "timePrecision": "minute",
-  "topRow": 72,
+  "topRow": 58,
   "type": "DATE_PICKER_WIDGET2",
   "version": 2,
-  "widgetId": "bcsyu1h50k",
-  "widgetName": "DateEnvoiBerces"
+  "widgetId": "3b4hvioyjt",
+  "widgetName": "DateEnvoiJoints"
 }

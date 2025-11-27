@@ -2,12 +2,12 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 16,
+  "bottomRow": 38,
   "boxShadow": "none",
   "closeOnSelection": true,
   "dateFormat": "DD-MM-YYYY",
   "datePickerType": "DATE_PICKER",
-  "defaultDate": "{{\n  (QryInfoApproAppareil.data || [])\n    .find(r => r.appro_code === \"FONDS\")\n    ?.date || \"\"\n}}\n",
+  "defaultDate": "{{\n  (QryInfoApproAppareil.data || [])\n    .find(r => r.appro_code === \"DVAI\")\n    ?.date || \"\"\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -55,7 +55,9 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 10,
   "needsErrorInfo": false,
-  "onDateSelected": "{{JS_SuiviFab.saveApproItem(\"FONDS\", CheckboxFonds, DateEnvoiFonds)}}",
+  "onDateSelected": "{{JS_SuiviFab.saveApproItem(\"DVAI\", CheckboxDVAI, DateEnvoiDVAI)}}",
+  "originalBottomRow": 34,
+  "originalTopRow": 30,
   "parentColumnSpace": 4.1171875,
   "parentId": "zs1v3ckhn2",
   "parentRowSpace": 10,
@@ -64,9 +66,9 @@
   "rightColumn": 62,
   "shortcuts": false,
   "timePrecision": "minute",
-  "topRow": 12,
+  "topRow": 34,
   "type": "DATE_PICKER_WIDGET2",
   "version": 2,
-  "widgetId": "btb6ighh1j",
-  "widgetName": "DateEnvoiFonds"
+  "widgetId": "5com6t9gck",
+  "widgetName": "DateEnvoiDVAI"
 }

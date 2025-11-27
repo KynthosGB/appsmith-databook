@@ -5,7 +5,7 @@ SELECT
   a.delai,
   aff.nom_client AS client,
 
-  -- Stats globales par appareil (à adapter si tu veux d'autres règles)
+  -- Stats globales par appareil
   COUNT(wga.*) AS total_etapes,
   COUNT(*) FILTER (
     WHERE ws.code IN ('TERMINE', 'VALIDE_CLIENT')
@@ -33,15 +33,6 @@ SELECT
       'statut_code',        ws.code,         -- EN_COURS, TERMINE, ATTENTE_CLIENT, ...
       'statut_libelle',     ws.libelle,
       'statut_couleur',     ws.couleur,
-
-      -- Données de suivi
-      'date_debut',         wga.date_debut,
-      'date_fin',           wga.date_fin,
-      'date_envoi_client',  wga.date_envoi_client,
-      'date_retour_client', wga.date_retour_client,
-      'responsable',        wga.responsable,
-      'commentaire',        wga.commentaire,
-      'meta',               wga.meta,
 
       -- Id technique pour UPDATE
       'groupe_appareil_id', wga.id,

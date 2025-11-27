@@ -1,0 +1,3 @@
+UPDATE public.appareils
+SET cloture_suivi_fabrication = true
+WHERE numero_appareil = {{ this.params.numero_appareil }};

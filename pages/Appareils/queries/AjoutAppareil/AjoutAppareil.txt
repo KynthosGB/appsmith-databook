@@ -3,13 +3,14 @@ WITH params AS (
     '{{ appsmith.URL.queryParams.numero_affaire + InputRepereAppareil.text }}'::text AS num_app,
     '{{ appsmith.URL.queryParams.numero_affaire }}'::text                            AS num_aff,
     '{{ InputNomAppareil.text }}'::text                                              AS nom_appareil,
-    '{{ InputRepereAppareil.text }}'::text                                           AS repere
+    '{{ InputRepereAppareil.text }}'::text                                           AS repere,
+    {{ DateDelai.selectedDate ? moment(DateDelai.selectedDate).format("YYYY-MM-DD") : null }}::date AS delai
 ),
 
 -- 1) appareils
 ins_app AS (
-  INSERT INTO public.appareils (numero_appareil, numero_affaire)
-  SELECT num_app, num_aff FROM params
+  INSERT INTO public.appareils (numero_appareil, numero_affaire, delai)
+  SELECT num_app, num_aff, delai FROM params
   ON CONFLICT (numero_appareil) DO NOTHING
   RETURNING 1
 ),

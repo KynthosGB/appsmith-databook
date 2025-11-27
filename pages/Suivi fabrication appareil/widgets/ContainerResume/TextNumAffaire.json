@@ -43,7 +43,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 10,
   "shouldTruncate": false,
-  "text": "{{ \"Affaire : \" + QrySuiviFab_AppareilInfos.data[0].numero_affaire }}",
+  "text": "{{ \"Affaire : \" + QryInfosAppareil.data[0].numero_affaire }}",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 1,

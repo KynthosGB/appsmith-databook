@@ -1,7 +1,7 @@
 export default {
   // Helper : retrouve la ligne pour un groupe (NOTE_CALCUL, PLAN, APPRO...)
   getRowByCode(code) {
-    const rows = QrySuiviFab_AppareilInfos.data || [];
+    const rows = QryInfosAppareil.data || [];
     return rows.find(r => r.groupe_code === code) || null;
   },
 

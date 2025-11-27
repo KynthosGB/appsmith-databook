@@ -1,6 +1,6 @@
 {
   "gitSyncId": "6915b9d6a2ab6852a3eeef70_e0b40095-f627-4c3d-bc3b-62e219dbd2a5",
-  "id": "Suivi fabrication appareil_QrySuiviFab_AppareilInfos",
+  "id": "Suivi fabrication appareil_QryInfosAppareil",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
@@ -27,7 +27,7 @@
         "key": "body"
       }
     ],
-    "name": "QrySuiviFab_AppareilInfos",
+    "name": "QryInfosAppareil",
     "pageId": "Suivi fabrication appareil",
     "runBehaviour": "AUTOMATIC",
     "userSetOnLoad": false

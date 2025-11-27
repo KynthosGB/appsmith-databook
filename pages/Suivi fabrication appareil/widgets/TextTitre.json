@@ -43,7 +43,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 47,
   "shouldTruncate": false,
-  "text": "{{QrySuiviFab_AppareilInfos.data[0].nom_appareil + \"  |  Suivi de fabrication\"}}",
+  "text": "{{QryInfosAppareil.data[0].nom_appareil + \"  |  Suivi de fabrication\"}}",
   "textAlign": "CENTER",
   "textColor": "#231F20",
   "topRow": 3,

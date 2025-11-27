@@ -43,7 +43,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 23,
   "shouldTruncate": false,
-  "text": "{{ \"Client : \" + QrySuiviFab_AppareilInfos.data[0].nom_client }}",
+  "text": "{{ \"Client : \" + QryInfosAppareil.data[0].nom_client }}",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 1,

@@ -1,0 +1,68 @@
+WITH etapes AS (
+  SELECT id, code
+  FROM public.workflow_groupe_etape
+  WHERE code IN (
+    'NOTE_CALCUL',
+    'PLAN',
+    'CAHIER_SOUDAGE',
+    'APPRO',
+    'PREPARATION',
+    'FABRICATION',
+    'CONTROLE',
+    'DOSSIER_CE',
+    'DOSSIER_CONSTRUCTEUR'
+  )
+),
+
+-- 1) insère (si nécessaire) les lignes header par étape
+insert_wga AS (
+  INSERT INTO public.workflow_groupe_appareil (
+    numero_appareil,
+    groupe_id,
+    statut_id,
+    meta
+  )
+  SELECT
+    {{ appsmith.URL.queryParams.numero_affaire + InputRepereAppareil.text }} AS numero_appareil,
+    e.id                             AS groupe_id,
+    (SELECT id FROM public.workflow_statut WHERE code = 'A_FAIRE') AS statut_id,
+    '{}'::jsonb
+  FROM etapes e
+  ON CONFLICT (numero_appareil, groupe_id) DO NOTHING
+  RETURNING id, groupe_id
+),
+
+-- 2) récupère toutes les lignes header (nouvelles + existantes)
+all_wga AS (
+  SELECT iw.id, iw.groupe_id
+  FROM insert_wga iw
+  UNION ALL
+  SELECT wga.id, wga.groupe_id
+  FROM public.workflow_groupe_appareil wga
+  JOIN etapes e ON e.id = wga.groupe_id
+  WHERE wga.numero_appareil = {{ appsmith.URL.queryParams.numero_affaire + InputRepereAppareil.text }}
+),
+
+-- 3) identifie la ligne correspondant à l'étape FABRICATION
+fab_wga AS (
+  SELECT aw.id
+  FROM all_wga aw
+  JOIN public.workflow_groupe_etape e ON e.id = aw.groupe_id
+  WHERE e.code = 'FABRICATION'
+)
+
+-- 4) initialise / met à jour workflow_fabrication avec les heures prévues
+INSERT INTO public.workflow_fabrication (
+  groupe_appareil_id,
+  monteur,
+  heures_prevues,
+  heures_passees
+)
+SELECT
+  fw.id          AS groupe_appareil_id,
+  NULL::text     AS monteur,
+  {{ this.params.heures_prevues }}::numeric AS heures_prevues,
+  NULL::numeric  AS heures_passees
+FROM fab_wga fw
+ON CONFLICT (groupe_appareil_id) DO UPDATE SET
+  heures_prevues = EXCLUDED.heures_prevues;

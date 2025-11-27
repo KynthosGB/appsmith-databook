@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 7,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( JS_SuiviFabAppareil.statutLabelFor() ))(StatutPrepa.options, StatutPrepa.serverSideFiltering) }}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( JS_SuiviFabAppareil.statutCodeFor(\"PREPARATION\")))(StatutPrepa.options, StatutPrepa.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -23,9 +23,16 @@
   "dynamicPropertyPathList": [
     {
       "key": "sourceData"
+    },
+    {
+      "key": "onOptionChange"
     }
   ],
-  "dynamicTriggerPathList": [],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onOptionChange"
+    }
+  ],
   "isDisabled": false,
   "isFilterable": true,
   "isLoading": false,
@@ -46,7 +53,8 @@
   "mobileRightColumn": 20,
   "mobileTopRow": 15,
   "needsErrorInfo": false,
-  "optionLabel": "value",
+  "onOptionChange": "{{ JS_SuiviFab.setStatutForGroupe(\"PREPARATION\", StatutPrepa.selectedOptionValue) }}",
+  "optionLabel": "label",
   "optionValue": "value",
   "parentColumnSpace": 4.43359375,
   "parentId": "ul9pfgfw5o",
@@ -54,12 +62,12 @@
   "placeholderText": "Select option",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 63,
+  "rightColumn": 64,
   "serverSideFiltering": false,
-  "sourceData": "{{QrySuiviFab_Statuts.data.map( (obj) =>{ return  {'label': obj.code, 'value': obj.libelle } })}}",
+  "sourceData": "{{  QrySuiviFab_Statuts.data.map(obj => ({\n    label: obj.libelle,   // ce qu'on affiche : \"À faire\"\n    value: obj.code       // valeur technique : \"A_FAIRE\"\n  }))\n}}",
   "topRow": 0,
   "type": "SELECT_WIDGET",
   "version": 1,
-  "widgetId": "yxcdefhlwb",
+  "widgetId": "gid4z7phsv",
   "widgetName": "StatutPrepa"
 }

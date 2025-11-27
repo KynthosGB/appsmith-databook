@@ -15,5 +15,11 @@ export default {
   statutLabelFor(groupeCode) {
     const step = this.getEtape(groupeCode);
     return step?.statut_libelle || "";
-  }
+  },
+
+  // 🔹 Code du statut (A_FAIRE, EN_COURS, ...)
+  statutCodeFor(groupeCode) {
+    const step = this.getEtape(groupeCode);
+    return step?.statut_code || "";
+  },
 };

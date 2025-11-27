@@ -1,0 +1,3 @@
+UPDATE public.workflow_groupe_appareil
+SET statut_id = {{ this.params.statut_id }}
+WHERE id = {{ this.params.groupe_appareil_id }};

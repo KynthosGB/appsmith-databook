@@ -1,0 +1,28 @@
+INSERT INTO public.workflow_plan (
+  groupe_appareil_id,
+  numero,
+  indice,
+  dessinateur,
+  date_objectif,
+  date_debut,
+  date_premier_envoi,
+  date_fin
+)
+VALUES (
+  {{ this.params.groupe_appareil_id }},
+  {{ this.params.numero }},
+  {{ this.params.indice }},
+  {{ this.params.dessinateur }},
+  {{ this.params.date_objectif }},
+  {{ this.params.date_debut }},
+  {{ this.params.date_premier_envoi }},
+  {{ this.params.date_fin }}
+)
+ON CONFLICT (groupe_appareil_id) DO UPDATE SET
+  numero            = EXCLUDED.numero,
+  indice            = EXCLUDED.indice,
+  dessinateur       = EXCLUDED.dessinateur,
+  date_objectif     = EXCLUDED.date_objectif,
+  date_debut        = EXCLUDED.date_debut,
+  date_premier_envoi= EXCLUDED.date_premier_envoi,
+  date_fin          = EXCLUDED.date_fin;

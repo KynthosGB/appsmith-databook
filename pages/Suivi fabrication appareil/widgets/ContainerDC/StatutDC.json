@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 7,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( JS_SuiviFabAppareil.statutLabelFor() ))(StatutDC.options, StatutDC.serverSideFiltering) }}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( JS_SuiviFabAppareil.statutCodeFor(\"DOSSIER_CONSTRUCTEUR\")))(StatutDC.options, StatutDC.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -23,9 +23,16 @@
   "dynamicPropertyPathList": [
     {
       "key": "sourceData"
+    },
+    {
+      "key": "onOptionChange"
     }
   ],
-  "dynamicTriggerPathList": [],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onOptionChange"
+    }
+  ],
   "isDisabled": false,
   "isFilterable": true,
   "isLoading": false,
@@ -46,7 +53,8 @@
   "mobileRightColumn": 20,
   "mobileTopRow": 15,
   "needsErrorInfo": false,
-  "optionLabel": "value",
+  "onOptionChange": "{{ JS_SuiviFab.setStatutForGroupe(\"DOSSIER_CONSTRUCTEUR\", StatutDC.selectedOptionValue) }}",
+  "optionLabel": "label",
   "optionValue": "value",
   "parentColumnSpace": 4.43359375,
   "parentId": "nd0qxbxj1q",
@@ -56,7 +64,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 63,
   "serverSideFiltering": false,
-  "sourceData": "{{QrySuiviFab_Statuts.data.map( (obj) =>{ return  {'label': obj.code, 'value': obj.libelle } })}}",
+  "sourceData": "{{  QrySuiviFab_Statuts.data.map(obj => ({\n    label: obj.libelle,   // ce qu'on affiche : \"À faire\"\n    value: obj.code       // valeur technique : \"A_FAIRE\"\n  }))\n}}",
   "topRow": 0,
   "type": "SELECT_WIDGET",
   "version": 1,

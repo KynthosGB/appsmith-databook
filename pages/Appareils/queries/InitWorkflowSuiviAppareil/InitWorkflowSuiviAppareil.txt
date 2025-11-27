@@ -19,14 +19,12 @@ insert_wga AS (
   INSERT INTO public.workflow_groupe_appareil (
     numero_appareil,
     groupe_id,
-    statut_id,
-    meta
+    statut_id
   )
   SELECT
     {{ appsmith.URL.queryParams.numero_affaire + InputRepereAppareil.text }} AS numero_appareil,
     e.id                             AS groupe_id,
-    (SELECT id FROM public.workflow_statut WHERE code = 'A_FAIRE') AS statut_id,
-    '{}'::jsonb
+    (SELECT id FROM public.workflow_statut WHERE code = 'A_FAIRE') AS statut_id
   FROM etapes e
   ON CONFLICT (numero_appareil, groupe_id) DO NOTHING
   RETURNING id, groupe_id

@@ -5,7 +5,7 @@
   "bottomRow": 5,
   "boxShadow": "none",
   "closeOnSelection": true,
-  "dateFormat": "MM-DD-YYYY",
+  "dateFormat": "DD-MM-YYYY",
   "datePickerType": "DATE_PICKER",
   "defaultDate": "{{QryInfosAppareil.data[0].delai }}",
   "dynamicBindingPathList": [
@@ -23,11 +23,18 @@
   "dynamicPropertyPathList": [
     {
       "key": "defaultDate"
+    },
+    {
+      "key": "onDateSelected"
     }
   ],
-  "dynamicTriggerPathList": [],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onDateSelected"
+    }
+  ],
   "firstDayOfWeek": 0,
-  "isDisabled": true,
+  "isDisabled": false,
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,
@@ -48,6 +55,7 @@
   "mobileRightColumn": 64,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
+  "onDateSelected": "{{ JS_SuiviFab.saveDelai() }}",
   "parentColumnSpace": 19.3046875,
   "parentId": "73qep8jazp",
   "parentRowSpace": 10,

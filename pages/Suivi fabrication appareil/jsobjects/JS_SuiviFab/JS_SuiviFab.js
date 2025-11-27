@@ -1,66 +1,178 @@
 export default {
-  // Helper : retrouve la ligne pour un groupe (NOTE_CALCUL, PLAN, APPRO...)
+  rows() {
+		return QrySuiviFab_Groupes.data || [];
+	},
+
   getRowByCode(code) {
-    const rows = QryInfosAppareil.data || [];
-    return rows.find(r => r.groupe_code === code) || null;
+    return this.rows().find(r => r.groupe_code === code) || null;
   },
 
-  // Helper générique de sauvegarde
-  save(code, metaPatch = {}, fieldsPatch = {}) {
-    const row = this.getRowByCode(code);
-    if (!row) {
-      console.log("Aucun groupe trouvé pour", code);
-      return;
-    }
+  statutByCode(code) {
+    const rows = QrySuiviFab_Statuts.data || [];
+    return rows.find(s => s.code === code) || null;
+  },
 
-    // meta actuel + modifications
-    const currentMeta = row.meta || {};
-    const newMeta = { ...currentMeta, ...metaPatch };
+  refreshBar() {
+		return QrySuiviFab_Groupes.run();
+	},
 
-    return SaveSuiviFab_Groupe.run({
-      groupe_appareil_id: row.groupe_appareil_id,
+  // --- délai "Livraison le :" ---
 
-      // si tu ne fournis pas la valeur dans fieldsPatch,
-      // on garde la valeur actuelle venant de la requête
-      date_debut:         fieldsPatch.date_debut         ?? row.date_debut,
-      date_fin:           fieldsPatch.date_fin           ?? row.date_fin,
-      date_envoi_client:  fieldsPatch.date_envoi_client  ?? row.date_envoi_client,
-      date_retour_client: fieldsPatch.date_retour_client ?? row.date_retour_client,
-      responsable:        fieldsPatch.responsable        ?? row.responsable,
-      commentaire:        fieldsPatch.commentaire        ?? row.commentaire,
-      statut_id:          fieldsPatch.statut_id          ?? row.statut_id,
+  saveDelai() {
+    const numero_appareil = appsmith.URL.queryParams.numero_appareil;
+    if (!numero_appareil) return;
 
-      meta: newMeta,
-    })
-    .catch(e => {
-      console.log("Erreur SaveSuiviFab", code, e);
-      showAlert("Erreur lors de l'enregistrement du suivi de fabrication", "error");
+    const delai = DateLivraison.selectedDate
+      ? moment(DateLivraison.selectedDate).format("YYYY-MM-DD")
+      : null;
+
+    return SaveSuivi_DelaiAppareil.run({
+      numero_appareil,
+      delai,
+    }).catch(e => {
+      console.log("Erreur save délai", e);
+      showAlert("Erreur lors de l'enregistrement du délai", "error");
     });
   },
 
-  // ---- Exemple concret : bloc NOTE_DE_CALCUL ----
-  saveNoteCalcul() {
-    return this.save(
-      "NOTE_CALCUL",         // groupe_code dans ta requête
+  // --- statuts des groupes ---
 
-      // --- partie meta (jsonb) ---
-      {
-        // à toi de choisir les clés meta, c'est ton modèle
-        numero: InputNumNDC_Numero.text,
-        indice: InputNumNDC_Indice.text,
-      },
+  setStatutForGroupe(groupeCode, statutCode) {
+    const row = this.getRowByCode(groupeCode);
+    const statut = this.statutByCode(statutCode);
+    if (!row || !statut) return;
 
-      // --- partie colonnes "classiques" de la table ---
-      {
-        date_debut: DateNDC_Date.selectedDate
-          ? moment(DateNDC_Date.selectedDate).format("YYYY-MM-DD")
-          : null,
-      }
-    );
+    if (row.statut_id === statut.id) return;
+
+    return SaveSuivi_Header.run({
+      groupe_appareil_id: row.groupe_appareil_id,
+      statut_id: statut.id,
+    }).then(() => this.refreshBar());
   },
 
-  // tu fais la même chose pour les autres blocs :
-  // savePlan() { ... this.save("PLAN", { ... }, { ... }); }
-  // saveAppro() { ... this.save("APPRO", { ... }, { ... }); }
-  // saveFab()  { ... }
+  setEnCoursIfNeeded(groupeCode) {
+    const row = this.getRowByCode(groupeCode);
+    if (!row) return;
+
+    if (row.statut_code === "A_FAIRE") {
+      return this.setStatutForGroupe(groupeCode, "EN_COURS");
+    }
+  },
+	
+	saveNoteCalcul() {
+    const row = this.getRowByCode("NOTE_CALCUL");
+    if (!row) return;
+
+    const numero = NumNDC.text;          // champ "Numéro"
+    const indice = IndiceNDC.text;          // champ "Indice"
+    const dateObj = DateObjectifNDC.selectedDate;     // champ "Date obj."
+    const dateEdition = DateEditionNDC.selectedDate; // champ "Date édition"
+
+    return SaveSuivi_NoteCalcul.run({
+      groupe_appareil_id: row.groupe_appareil_id,
+      numero: numero || null,
+      indice: indice || null,
+      date_objectif: dateObj
+        ? moment(dateObj).format("YYYY-MM-DD")
+        : null,
+      date_edition: dateEdition
+        ? moment(dateEdition).format("YYYY-MM-DD")
+        : null,
+    })
+    .then(() => {
+      showAlert("Infos note de calcul mises à jour ✅", "success");
+    })
+		.catch(e => {
+      console.log("Erreur save note de calcul", e);
+      showAlert("Erreur lors de l'enregistrement de la note de calcul", "error");
+    });
+  },
+	
+	// --- PLAN ---
+  savePlan() {
+    const row = this.getRowByCode("PLAN");
+    if (!row) return;
+
+    // ⚠️ remplace ces noms par les tiens
+    const numero       = NumPlan.text;
+    const indice       = IndicePlan.text;
+    const dessinateur  = Dessinateur.text;
+
+    const dateObj      = DatePlanObjectif.selectedDate;
+    const dateDebut    = DateDebutPlan.selectedDate;
+    const dateEnvoi1   = Date1erEnvoiPlan.selectedDate;
+    const dateFin      = DateFinPlan.selectedDate;
+
+    return SaveSuivi_Plan.run({
+      groupe_appareil_id: row.groupe_appareil_id,
+      numero: numero || null,
+      indice: indice || null,
+      dessinateur: dessinateur || null,
+
+      date_objectif: dateObj
+        ? moment(dateObj).format("YYYY-MM-DD")
+        : null,
+
+      date_debut: dateDebut
+        ? moment(dateDebut).format("YYYY-MM-DD")
+        : null,
+
+      date_premier_envoi: dateEnvoi1
+        ? moment(dateEnvoi1).format("YYYY-MM-DD")
+        : null,
+
+      date_fin: dateFin
+        ? moment(dateFin).format("YYYY-MM-DD")
+        : null,
+    })
+      .then(() => {
+        showAlert("Infos plan mises à jour ✅", "success");
+      })
+      .catch(e => {
+        console.log("Erreur save plan", e);
+        showAlert("Erreur lors de l'enregistrement du plan", "error");
+      });
+  },
+	
+	// --- CAHIER DE SOUDAGE ---
+	saveCahierSoudage() {
+		const row = this.getRowByCode("CAHIER_SOUDAGE");
+		if (!row) return;
+
+		// ⚠️ adapter les noms de widgets :
+		const iwt      = IWT.text;
+		const numero   = InputNumCDS.text;
+		const indice   = InputIndiceCDS.text;
+
+		const dateObj  = DateCDSObjectif.selectedDate;
+		const dateDeb  = DateDebutCDS.selectedDate;
+		const dateFin  = DateFinCDS.selectedDate;
+
+		return SaveSuivi_CahierSoudage.run({
+			groupe_appareil_id: row.groupe_appareil_id,
+
+			iwt: iwt || null,
+			numero: numero || null,
+			indice: indice || null,
+
+			date_objectif: dateObj
+				? moment(dateObj).format("YYYY-MM-DD")
+				: null,
+
+			date_debut: dateDeb
+				? moment(dateDeb).format("YYYY-MM-DD")
+				: null,
+
+			date_fin: dateFin
+				? moment(dateFin).format("YYYY-MM-DD")
+				: null,
+		})
+			.then(() => {
+				showAlert("Cahier de soudage mis à jour ✅", "success");
+			})
+			.catch(e => {
+				console.log("Erreur save cahier de soudage", e);
+				showAlert("Erreur lors de l'enregistrement du cahier de soudage", "error");
+			});
+	},
 };

@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 55,
+  "bottomRow": 43,
   "defaultSelectedValues": [
     "BLUE"
   ],
@@ -53,7 +53,7 @@
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "rightColumn": 30,
-  "topRow": 48,
+  "topRow": 39,
   "type": "CHECKBOX_GROUP_WIDGET",
   "version": 2,
   "widgetId": "dr2imj5pog",

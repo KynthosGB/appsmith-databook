@@ -10,14 +10,6 @@ SELECT
   ws.libelle            AS statut_libelle,
   ws.couleur            AS statut_couleur,
 
-  -- header commun
-  wga.date_debut,
-  wga.date_fin,
-  wga.date_envoi_client,
-  wga.date_retour_client,
-  wga.responsable,
-  wga.commentaire,
-
   -- NOTE_CALCUL
   wnc.numero            AS ndc_numero,
   wnc.indice            AS ndc_indice,
@@ -53,7 +45,6 @@ FROM public.workflow_groupe_appareil      wga
 JOIN public.workflow_groupe_etape         wge ON wge.id = wga.groupe_id
 JOIN public.workflow_statut               ws  ON ws.id  = wga.statut_id
 
--- joins spécifiques par étape
 LEFT JOIN public.workflow_note_calcul      wnc  ON wnc.groupe_appareil_id = wga.id
   AND wge.code = 'NOTE_CALCUL'
 

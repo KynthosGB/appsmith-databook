@@ -1,24 +1,12 @@
 {
-  "gitSyncId": "6915b9d6a2ab6852a3eeef70_4201f598-564b-4c9b-b0bb-906d9e9d4efd",
-  "id": "Suivi fabrication appareil_JS_SuiviFab.save",
+  "gitSyncId": "6915b9d6a2ab6852a3eeef70_7ce70156-0e28-4f36-900a-e64f5abd2c70",
+  "id": "Suivi fabrication appareil_JS_SuiviFab.savePlan",
   "pluginId": "js-plugin",
   "pluginType": "JS",
   "unpublishedAction": {
     "actionConfiguration": {
       "encodeParamsToggle": true,
-      "jsArguments": [
-        {
-          "name": "code"
-        },
-        {
-          "name": "metaPatch",
-          "value": "{{{}}}"
-        },
-        {
-          "name": "fieldsPatch",
-          "value": "{{{}}}"
-        }
-      ],
+      "jsArguments": [],
       "paginationType": "NONE",
       "timeoutInMillisecond": 10000
     },
@@ -34,8 +22,8 @@
         "key": "body"
       }
     ],
-    "fullyQualifiedName": "JS_SuiviFab.save",
-    "name": "save",
+    "fullyQualifiedName": "JS_SuiviFab.savePlan",
+    "name": "savePlan",
     "pageId": "Suivi fabrication appareil",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false

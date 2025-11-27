@@ -1,29 +1,20 @@
 SELECT
-  wga.id                  AS groupe_appareil_id,
-  wge.id                  AS groupe_id,
-  wge.code                AS groupe_code,        -- NOTE_CALCUL, PLAN, APPRO...
-  wge.libelle             AS groupe_libelle,
+  wga.id        AS groupe_appareil_id,
+  wge.id        AS groupe_id,
+  wge.code      AS groupe_code,        -- NOTE_CALCUL, PLAN, APPRO...
+  wge.libelle   AS groupe_libelle,
 
-  ws.id                   AS statut_id,
-  ws.code                 AS statut_code,        -- EN_COURS, TERMINE...
-  ws.libelle              AS statut_libelle,
-  ws.couleur              AS statut_couleur,
-
-  wga.date_debut,
-  wga.date_fin,
-  wga.date_envoi_client,
-  wga.date_retour_client,
-  wga.responsable,
-  wga.commentaire,
-  wga.meta                AS meta,               -- champs spécifiques à l'étape
+  ws.id         AS statut_id,
+  ws.code       AS statut_code,        -- EN_COURS, TERMINE...
+  ws.libelle    AS statut_libelle,
+  ws.couleur    AS statut_couleur,
 
   -- utile pour un affichage rapide de couleur
-  ws.couleur              AS color
+  ws.couleur    AS color
 
-FROM public.workflow_groupe_appareil      wga
-JOIN public.workflow_groupe_etape         wge ON wge.id = wga.groupe_id
-JOIN public.workflow_statut               ws  ON ws.id  = wga.statut_id
+FROM public.workflow_groupe_appareil wga
+JOIN public.workflow_groupe_etape    wge ON wge.id = wga.groupe_id
+JOIN public.workflow_statut          ws  ON ws.id  = wga.statut_id
 
 WHERE wga.numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}'
-
 ORDER BY wge.ordre;

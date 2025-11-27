@@ -5,13 +5,16 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 20,
   "boxShadow": "none",
-  "defaultText": "",
+  "defaultText": "{{QryInfoSuiviFabAppareil.}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "defaultText"
     }
   ],
   "dynamicHeight": "FIXED",
@@ -23,7 +26,7 @@
   "isRequired": false,
   "isVisible": true,
   "key": "jdjyd6pywq",
-  "label": "Heures prévues\n",
+  "label": "Heures prévues",
   "labelAlignment": "left",
   "labelPosition": "Left",
   "labelStyle": "",

@@ -59,7 +59,7 @@
   "placeholderText": "Select option",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 10,
+  "rightColumn": 13,
   "serverSideFiltering": false,
   "sourceData": "{{(QrySuiviFab_ListeAppareils.data || []).map(r => ({\n    label: r.numero_appareil,\n    value: r.numero_appareil\n  }))}}",
   "topRow": 1,

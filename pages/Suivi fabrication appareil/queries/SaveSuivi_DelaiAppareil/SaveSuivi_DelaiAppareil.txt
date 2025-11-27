@@ -1,0 +1,3 @@
+UPDATE public.appareils
+SET delai = {{ this.params.delai }}
+WHERE numero_appareil = {{ this.params.numero_appareil }};

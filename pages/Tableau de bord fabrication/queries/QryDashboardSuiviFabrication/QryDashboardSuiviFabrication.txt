@@ -33,6 +33,24 @@ SELECT
       'statut_code',        ws.code,         -- EN_COURS, TERMINE, ATTENTE_CLIENT, ...
       'statut_libelle',     ws.libelle,
       'statut_couleur',     ws.couleur,
+			
+			-- dates génériques pour l'étape
+      'date_objectif',
+        CASE
+          WHEN wge.code = 'NOTE_CALCUL'     THEN wnc.date_objectif
+          WHEN wge.code = 'PLAN'            THEN wp.date_objectif
+          WHEN wge.code = 'CAHIER_SOUDAGE'  THEN wcs.date_objectif
+          WHEN wge.code = 'PREPARATION'     THEN wprep.date_objectif
+          ELSE NULL
+        END,
+      'date_fin',
+        CASE
+          WHEN wge.code = 'NOTE_CALCUL'     THEN wnc.date_edition
+          WHEN wge.code = 'PLAN'            THEN wp.date_fin
+          WHEN wge.code = 'CAHIER_SOUDAGE'  THEN wcs.date_fin
+          WHEN wge.code = 'PREPARATION'     THEN wprep.date_fin
+          ELSE NULL
+        END,
 
       -- Id technique pour UPDATE
       'groupe_appareil_id', wga.id,
@@ -55,6 +73,12 @@ LEFT JOIN public.workflow_groupe_etape wge
        ON wge.id = wga.groupe_id
 LEFT JOIN public.workflow_statut ws
        ON ws.id = wga.statut_id
+			 
+-- tables de détail
+LEFT JOIN public.workflow_note_calcul     wnc   ON wnc.groupe_appareil_id = wga.id
+LEFT JOIN public.workflow_plan            wp    ON wp.groupe_appareil_id  = wga.id
+LEFT JOIN public.workflow_cahier_soudage  wcs   ON wcs.groupe_appareil_id = wga.id
+LEFT JOIN public.workflow_preparation     wprep ON wprep.groupe_appareil_id = wga.id
 
 WHERE a.cloture_suivi_fabrication = false
 

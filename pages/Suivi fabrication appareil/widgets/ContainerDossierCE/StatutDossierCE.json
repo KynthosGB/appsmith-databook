@@ -62,7 +62,7 @@
   "placeholderText": "Select option",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 64,
+  "rightColumn": 63,
   "serverSideFiltering": false,
   "sourceData": "{{  QrySuiviFab_Statuts.data.map(obj => ({\n    label: obj.libelle,   // ce qu'on affiche : \"À faire\"\n    value: obj.code       // valeur technique : \"A_FAIRE\"\n  }))\n}}",
   "topRow": 0,

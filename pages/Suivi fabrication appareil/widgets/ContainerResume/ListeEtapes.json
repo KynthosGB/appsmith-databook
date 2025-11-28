@@ -166,6 +166,8 @@
     "groupButtonobq2jwpcs8": {
       "buttonColor": "{{JS_SuiviFabAppareil.colorFor(\"NOTE_CALCUL\") }}",
       "buttonType": "SIMPLE",
+      "iconAlign": "right",
+      "iconName": "",
       "id": "groupButtonobq2jwpcs8",
       "index": 0,
       "isDisabled": false,

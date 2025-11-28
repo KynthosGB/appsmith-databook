@@ -44,8 +44,9 @@ export default {
 
   // code statut -> libellé simplifié
   stepStatus(statut_code) {
-    if (["TERMINE", "VALIDE_CLIENT"].includes(statut_code)) return "done";
-    if (["EN_COURS", "ATTENTE_CLIENT"].includes(statut_code)) return "progress";
+    if (["TERMINE", "VALIDE_CLIENT"].includes(statut_code)) return "Terminé";
+    if (["EN_COURS", "ATTENTE_CLIENT", "COMMENTAIRE_A_TRAITER"].includes(statut_code)) return "En cours";
+		if (statut_code === "NON_CONCERNE") return "Non concerné";
     if (statut_code === "A_FAIRE") return "todo";
     return "unknown";
   },

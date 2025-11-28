@@ -1,0 +1,103 @@
+SELECT
+  a.numero_appareil,
+  a.numero_affaire,
+  ca.nom_appareil,
+  a.delai,
+  aff.nom_client AS client,
+
+  -- Stats globales par appareil
+  COUNT(wga.*) AS total_etapes,
+  COUNT(*) FILTER (
+    WHERE ws.code IN ('TERMINE', 'VALIDE_CLIENT')
+  ) AS etapes_faites,
+  COUNT(*) FILTER (
+    WHERE ws.code IN ('EN_COURS', 'ATTENTE_CLIENT')
+  ) AS etapes_en_cours,
+  COUNT(*) FILTER (
+    WHERE ws.code IN ('A_FAIRE')
+  ) AS etapes_a_faire,
+  COUNT(*) FILTER (
+    WHERE ws.code = 'ATTENTE_CLIENT'
+  ) AS nb_en_attente_client,
+
+  -- Détail des grandes étapes pour l'appareil (utilisé dans l'UI)
+  jsonb_agg(
+    jsonb_build_object(
+      -- Groupe (grande étape)
+      'groupe_id',          wge.id,
+      'groupe_code',        wge.code,        -- NOTE_CALCUL, PLAN, APPRO, ...
+      'groupe_libelle',     wge.libelle,
+
+      -- Statut
+      'statut_id',          ws.id,
+      'statut_code',        ws.code,         -- EN_COURS, TERMINE, ATTENTE_CLIENT, ...
+      'statut_libelle',     ws.libelle,
+      'statut_couleur',     ws.couleur,
+			
+			-- dates génériques pour l'étape
+      'date_objectif',
+        CASE
+          WHEN wge.code = 'NOTE_CALCUL'     THEN wnc.date_objectif
+          WHEN wge.code = 'PLAN'            THEN wp.date_objectif
+          WHEN wge.code = 'CAHIER_SOUDAGE'  THEN wcs.date_objectif
+          WHEN wge.code = 'PREPARATION'     THEN wprep.date_objectif
+			    WHEN wge.code = 'APPRO'           THEN wa.date_objectif
+          ELSE NULL
+        END,
+      'date_fin',
+        CASE
+          WHEN wge.code = 'NOTE_CALCUL'     THEN wnc.date_edition
+          WHEN wge.code = 'PLAN'            THEN wp.date_fin
+          WHEN wge.code = 'CAHIER_SOUDAGE'  THEN wcs.date_fin
+          WHEN wge.code = 'PREPARATION'     THEN wprep.date_fin
+			
+					-- APPRO : max(date des items) ou date du jour si aucune
+					WHEN wge.code = 'APPRO' THEN (
+						SELECT COALESCE(MAX(wai.date), CURRENT_DATE)
+						FROM public.workflow_appro_item AS wai
+						WHERE wai.groupe_appareil_id = wga.id
+							AND wai.na = false          -- on ignore les items marqués NA
+					)
+          ELSE NULL
+        END,
+
+      -- Id technique pour UPDATE
+      'groupe_appareil_id', wga.id,
+
+      -- Couleur directe pour l'UI (également = couleur du statut)
+      'color',              ws.couleur
+    )
+    ORDER BY wge.ordre
+  ) AS etapes
+
+FROM public.appareils a
+LEFT JOIN public.affaires aff
+       ON aff.numero_affaire = a.numero_affaire
+LEFT JOIN public.caracteristiques_appareils ca
+       ON ca.numero_appareil = a.numero_appareil
+
+LEFT JOIN public.workflow_groupe_appareil wga
+       ON wga.numero_appareil = a.numero_appareil
+LEFT JOIN public.workflow_groupe_etape wge
+       ON wge.id = wga.groupe_id
+LEFT JOIN public.workflow_statut ws
+       ON ws.id = wga.statut_id
+			 
+-- tables de détail
+LEFT JOIN public.workflow_note_calcul     wnc   ON wnc.groupe_appareil_id = wga.id
+LEFT JOIN public.workflow_plan            wp    ON wp.groupe_appareil_id  = wga.id
+LEFT JOIN public.workflow_cahier_soudage  wcs   ON wcs.groupe_appareil_id = wga.id
+LEFT JOIN public.workflow_preparation     wprep ON wprep.groupe_appareil_id = wga.id
+LEFT JOIN public.workflow_appro           wa    ON wa.groupe_appareil_id = wga.id
+LEFT JOIN public.workflow_appro_item      wai   ON wai.groupe_appareil_id = wga.id
+
+WHERE a.cloture_suivi_fabrication = false
+
+GROUP BY
+  a.numero_appareil,
+  a.numero_affaire,
+  ca.nom_appareil,
+  a.delai,
+  aff.nom_client
+
+ORDER BY a.numero_appareil DESC;

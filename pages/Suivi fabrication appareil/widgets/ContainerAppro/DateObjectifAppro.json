@@ -23,9 +23,16 @@
   "dynamicPropertyPathList": [
     {
       "key": "defaultDate"
+    },
+    {
+      "key": "onDateSelected"
     }
   ],
-  "dynamicTriggerPathList": [],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onDateSelected"
+    }
+  ],
   "firstDayOfWeek": 0,
   "isDisabled": false,
   "isLoading": false,
@@ -48,6 +55,7 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 10,
   "needsErrorInfo": false,
+  "onDateSelected": "{{JS_SuiviFab.saveAppro()}}",
   "originalBottomRow": 71,
   "originalTopRow": 64,
   "parentColumnSpace": 4.1171875,
@@ -57,7 +65,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 62,
   "shortcuts": false,
-  "timePrecision": "minute",
+  "timePrecision": "None",
   "topRow": 7,
   "type": "DATE_PICKER_WIDGET2",
   "version": 2,

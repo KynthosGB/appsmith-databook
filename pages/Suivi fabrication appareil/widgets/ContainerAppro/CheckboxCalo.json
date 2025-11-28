@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 70,
+  "bottomRow": 77,
   "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoApproAppareil.data || [])\n      .find(r => r.appro_code === \"CALORIFUGE\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)      values.push(\"na\");\n    if (row.envoye)  values.push(\"envoye\");\n    return values;\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
@@ -64,7 +64,7 @@
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "rightColumn": 29,
-  "topRow": 66,
+  "topRow": 72,
   "type": "CHECKBOX_GROUP_WIDGET",
   "version": 2,
   "widgetId": "syq9chsg0l",

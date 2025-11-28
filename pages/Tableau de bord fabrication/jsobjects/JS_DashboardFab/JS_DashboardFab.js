@@ -56,7 +56,8 @@ export default {
       prepa_color: this.getColor(r.etapes, "PREPARATION"),
 
       // APPRO (pas de retard calculé)
-      appro: this.getLabel(r.etapes, "APPRO"),
+			appro_delay: this.delayDays(r.etapes, "APPRO"),
+      appro_label: this.getLabel(r.etapes, "APPRO"),
       appro_color: this.getColor(r.etapes, "APPRO"),
 
       // DVAI

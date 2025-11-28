@@ -337,5 +337,31 @@ export default {
 			});
 	},
 
+	  // --- APPRO (date objectif globale) ---
+  saveAppro() {
+    const row = this.getRowByCode("APPRO");
+    if (!row) return;
+
+    // ⚠️ adapte le nom du widget si besoin
+    const dateObj = DateObjectifAppro.selectedDate;
+
+    return SaveSuivi_Appro.run({
+      groupe_appareil_id: row.groupe_appareil_id,
+      date_objectif: dateObj
+        ? moment(dateObj).format("YYYY-MM-DD")
+        : null,
+    })
+      .then(() => {
+        showAlert("Objectif appro mis à jour ✅", "success");
+      })
+      .catch(e => {
+        console.log("Erreur save appro (date objectif)", e);
+        showAlert(
+          "Erreur lors de l'enregistrement de la date objectif appro",
+          "error"
+        );
+      });
+  },
+
 
 };

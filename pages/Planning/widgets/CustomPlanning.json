@@ -3,7 +3,7 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "1",
-  "bottomRow": 101,
+  "bottomRow": 25,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "defaultModel": "{{JSPlanningSuivi.getModel()}}",
   "dynamicBindingPathList": [
@@ -20,7 +20,7 @@
       "key": "defaultModel"
     }
   ],
-  "dynamicHeight": "FIXED",
+  "dynamicHeight": "AUTO_HEIGHT",
   "dynamicPropertyPathList": [],
   "dynamicTriggerPathList": [],
   "events": [],
@@ -44,6 +44,7 @@
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "rightColumn": 63,
+  "shouldScrollContents": true,
   "srcDoc": {
     "css": "@charset \"UTF-8\";\n#root {\n  font-family: system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;\n  font-size: 11px;\n  color: #111827;\n  padding: 8px;\n  overflow-y: auto; /* scroll vertical */\n  overflow-x: hidden; /* pas de scroll horizontal ici */\n}\n\n/* Légende en haut (reste fixe) */\n.planning-legend {\n  margin-bottom: 6px;\n  display: flex;\n  gap: 12px;\n  font-size: 11px;\n  color: #4b5563;\n}\n\n.planning-legend-item {\n  display: flex;\n  align-items: center;\n  gap: 4px;\n}\n\n.planning-legend-color {\n  width: 10px;\n  height: 10px;\n  border-radius: 2px;\n  border: 1px solid #d1d5db;\n}\n\n/* Bloc principal du planning */\n.planning-root {\n  border: 1px solid #d1d5db;\n  border-radius: 6px;\n}\n\n/* Deux colonnes : labels à gauche, calendrier à droite */\n.planning-main {\n  display: flex;\n  align-items: stretch;\n}\n\n/* Colonne gauche : appareils (ne scrolle pas horizontalement) */\n.planning-col-labels {\n  flex: 0 0 220px; /* largeur fixe */\n}\n\n/* Colonne droite : jours (scrolle en horizontal) */\n.planning-col-days {\n  flex: 1;\n  overflow-x: auto;\n  overflow-y: hidden;\n}\n\n/* En-tête \"Appareil\" */\n.planning-header-label {\n  padding: 19px 6px;\n  font-weight: 600;\n  background: #f3f4f6;\n  border-right: 1px solid #d1d5db;\n  border-bottom: 1px solid #d1d5db;\n}\n\n/* Libellé appareil ligne */\n.planning-row-label {\n  padding: 3px 6px;\n  border-right: 1px solid #d1d5db;\n  border-bottom: 1px solid #e5e7eb;\n  background: #f9fafb;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\n/* --- EN-TÊTES CALENDRIER --- */\n/* Bandes Années / Semaines : flex, on gère la largeur en JS */\n.planning-years-header,\n.planning-weeks-header {\n  display: flex;\n}\n\n/* Bande Année */\n.planning-header-year {\n  text-align: center;\n  padding: 2px 0;\n  font-weight: 500;\n  border-right: 1px solid #c5cde6;\n  background: #eef2ff;\n  box-sizing: border-box;\n}\n\n/* Bande Semaine */\n.planning-header-week {\n  text-align: center;\n  padding: 2px 0;\n  font-weight: 500;\n  border-right: 1px solid #e5e7eb;\n  background: #e5e7eb;\n  box-sizing: border-box;\n  border: 1px solid #d7d9db;\n}\n\n/* Ligne d'entête des jours : 1 cellule par jour */\n.planning-days-header {\n  display: grid;\n  grid-auto-flow: column;\n  grid-auto-columns: 24px; /* largeur d'un jour */\n}\n\n/* cellules Jour (dernière ligne d'entête) */\n.planning-header-day {\n  text-align: center;\n  padding: 3px 0;\n  font-weight: 500;\n  border-right: 1px solid #e5e7eb;\n  border-bottom: 1px solid #d1d5db;\n  background: #f9fafb;\n  box-sizing: border-box;\n}\n\n/* --- LIGNES CALENDRIER --- */\n.planning-days-row {\n  display: grid;\n  grid-auto-flow: column;\n  grid-auto-columns: 24px;\n}\n\n/* Cellules jours corps */\n.planning-day-cell {\n  border-right: 1px solid #e5e7eb;\n  border-bottom: 1px solid #e5e7eb;\n  text-align: center;\n  box-sizing: border-box;\n  position: relative; /* pour le drapeau 🚩 */\n  padding: 2px;\n  font-size: 13px;\n}\n\n/* Lettre (P, N, …) */\n.planning-letter {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  height: 100%;\n  font-weight: 600;\n  border-radius: 2px;\n}\n\n/* Drapeau délai */\n.planning-flag {\n  position: absolute;\n  top: 1px;\n  right: 1px;\n  font-size: 11px;\n}",
     "html": "<div id=\"root\"></div>",

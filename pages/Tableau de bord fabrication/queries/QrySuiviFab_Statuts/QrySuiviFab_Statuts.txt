@@ -1,0 +1,7 @@
+SELECT
+  id,
+  code,
+  libelle,
+  couleur
+FROM public.workflow_statut
+ORDER BY ordre;

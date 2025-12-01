@@ -1,0 +1,53 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 11,
+  "dynamicBindingPathList": [
+    {
+      "key": "truncateButtonColor"
+    },
+    {
+      "key": "fontFamily"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "text"
+    }
+  ],
+  "dynamicHeight": "FIXED",
+  "dynamicTriggerPathList": [],
+  "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
+  "fontSize": "0.875rem",
+  "fontStyle": "BOLD",
+  "isLoading": false,
+  "isVisible": true,
+  "key": "f13rwgusbk",
+  "leftColumn": 1,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "minWidth": 450,
+  "mobileBottomRow": 10,
+  "mobileLeftColumn": 1,
+  "mobileRightColumn": 17,
+  "mobileTopRow": 6,
+  "needsErrorInfo": false,
+  "overflow": "NONE",
+  "parentColumnSpace": 23.53125,
+  "parentId": "0",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 26,
+  "shouldTruncate": false,
+  "text": "{{\n(() => {\n  const rows = QrySuiviFab_Statuts.data || [];\n\n  return `\n    <div style=\"\n      display:flex;\n      flex-wrap:nowrap;      /* empêche le retour à la ligne */\n      white-space:nowrap;    /* garantit une seule ligne */\n      align-items:center;\n      column-gap:5px;       /* espace entre chaque bloc */\n    \">\n      ${\n        rows.map(r => `\n          <span style=\"display:inline-flex; align-items:center; font-size:0.7rem;\">\n            <span style=\"\n              width:10px;\n              height:10px;\n              background:${r.couleur};\n              border:1px solid #ccc;\n              border-radius:2px;\n              margin-right:4px;\n            \"></span>\n            <span>${r.libelle}</span>\n          </span>\n        `).join(\"\")\n      }\n    </div>\n  `;\n})()\n}}\n",
+  "textAlign": "LEFT",
+  "textColor": "#231F20",
+  "topRow": 6,
+  "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "type": "TEXT_WIDGET",
+  "version": 1,
+  "widgetId": "u3gn52f1sz",
+  "widgetName": "Text2"
+}

@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 17,
+  "bottomRow": 16,
   "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoControlesAppareil.data || [])\n      .find(r => r.controle_code === \"VISUELS\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)   values.push(\"na\");\n    if (row.fait) values.push(\"fait\");\n    return values;\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {

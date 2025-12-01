@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 29,
+  "bottomRow": 27,
   "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoControlesAppareil.data || [])\n      .find(r => r.controle_code === \"RADIO\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)   values.push(\"na\");\n    if (row.fait) values.push(\"fait\");\n    return values;\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
@@ -64,7 +64,7 @@
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "rightColumn": 31,
-  "topRow": 24,
+  "topRow": 23,
   "type": "CHECKBOX_GROUP_WIDGET",
   "version": 2,
   "widgetId": "q3q5u08x63",

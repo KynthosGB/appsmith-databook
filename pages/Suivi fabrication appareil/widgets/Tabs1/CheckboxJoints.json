@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 29,
+  "bottomRow": 33,
   "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoApproAppareil.data || [])\n      .find(r => r.appro_code === \"JOINTS\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)      values.push(\"na\");\n    if (row.envoye)  values.push(\"envoye\");\n    return values;\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
@@ -57,14 +57,14 @@
       "value": "envoye"
     }
   ],
-  "originalBottomRow": 29,
-  "originalTopRow": 24,
+  "originalBottomRow": 33,
+  "originalTopRow": 26,
   "parentColumnSpace": 6.015625,
   "parentId": "m3y6bzcuko",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "rightColumn": 51,
-  "topRow": 24,
+  "topRow": 26,
   "type": "CHECKBOX_GROUP_WIDGET",
   "version": 2,
   "widgetId": "3208tfdv1v",

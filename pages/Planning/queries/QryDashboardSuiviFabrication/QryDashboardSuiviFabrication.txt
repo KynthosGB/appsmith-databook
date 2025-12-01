@@ -33,31 +33,25 @@ SELECT
       'statut_code',        ws.code,         -- EN_COURS, TERMINE, ATTENTE_CLIENT, ...
       'statut_libelle',     ws.libelle,
       'statut_couleur',     ws.couleur,
-			
-			-- dates génériques pour l'étape
+
+      -- dates génériques pour l'étape
       'date_objectif',
         CASE
           WHEN wge.code = 'NOTE_CALCUL'     THEN wnc.date_objectif
           WHEN wge.code = 'PLAN'            THEN wp.date_objectif
           WHEN wge.code = 'CAHIER_SOUDAGE'  THEN wcs.date_objectif
           WHEN wge.code = 'PREPARATION'     THEN wprep.date_objectif
-			    WHEN wge.code = 'APPRO'           THEN wa.date_objectif
+          WHEN wge.code = 'APPRO'           THEN wa.date_objectif
           ELSE NULL
         END,
+      -- End time = même valeur que date_objectif
       'date_fin',
         CASE
-          WHEN wge.code = 'NOTE_CALCUL'     THEN wnc.date_edition
-          WHEN wge.code = 'PLAN'            THEN wp.date_fin
-          WHEN wge.code = 'CAHIER_SOUDAGE'  THEN wcs.date_fin
-          WHEN wge.code = 'PREPARATION'     THEN wprep.date_fin
-			
-					-- APPRO : max(date des items) ou date du jour si aucune
-					WHEN wge.code = 'APPRO' THEN (
-						SELECT COALESCE(MAX(wai.date), CURRENT_DATE)
-						FROM public.workflow_appro_item AS wai
-						WHERE wai.groupe_appareil_id = wga.id
-							AND wai.na = false          -- on ignore les items marqués NA
-					)
+          WHEN wge.code = 'NOTE_CALCUL'     THEN wnc.date_objectif
+          WHEN wge.code = 'PLAN'            THEN wp.date_objectif
+          WHEN wge.code = 'CAHIER_SOUDAGE'  THEN wcs.date_objectif
+          WHEN wge.code = 'PREPARATION'     THEN wprep.date_objectif
+          WHEN wge.code = 'APPRO'           THEN wa.date_objectif
           ELSE NULL
         END,
 
@@ -82,14 +76,14 @@ LEFT JOIN public.workflow_groupe_etape wge
        ON wge.id = wga.groupe_id
 LEFT JOIN public.workflow_statut ws
        ON ws.id = wga.statut_id
-			 
+
 -- tables de détail
 LEFT JOIN public.workflow_note_calcul     wnc   ON wnc.groupe_appareil_id = wga.id
 LEFT JOIN public.workflow_plan            wp    ON wp.groupe_appareil_id  = wga.id
 LEFT JOIN public.workflow_cahier_soudage  wcs   ON wcs.groupe_appareil_id = wga.id
 LEFT JOIN public.workflow_preparation     wprep ON wprep.groupe_appareil_id = wga.id
 LEFT JOIN public.workflow_appro           wa    ON wa.groupe_appareil_id = wga.id
-LEFT JOIN public.workflow_appro_item      wai   ON wai.groupe_appareil_id = wga.id
+-- ⚠️ plus de JOIN sur workflow_appro_item ici
 
 WHERE a.cloture_suivi_fabrication = false
 

@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 18,
+  "bottomRow": 20,
   "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoApproAppareil.data || [])\n      .find(r => r.appro_code === \"DVAI\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)      values.push(\"na\");\n    if (row.envoye)  values.push(\"envoye\");\n    return values;\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
@@ -57,7 +57,7 @@
       "value": "envoye"
     }
   ],
-  "originalBottomRow": 18,
+  "originalBottomRow": 20,
   "originalTopRow": 13,
   "parentColumnSpace": 6.015625,
   "parentId": "m3y6bzcuko",

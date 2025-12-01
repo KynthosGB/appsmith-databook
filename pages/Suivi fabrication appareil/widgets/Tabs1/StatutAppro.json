@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 6,
+  "bottomRow": 7,
   "boxShadow": "none",
   "defaultOptionValue": "{{ ((options, serverSideFiltering) => (  JS_SuiviFabAppareil.statutCodeFor(\"APPRO\") ))(StatutAppro.options, StatutAppro.serverSideFiltering) }}",
   "dynamicBindingPathList": [

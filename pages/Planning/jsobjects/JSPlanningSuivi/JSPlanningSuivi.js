@@ -86,116 +86,126 @@ export default {
   // ---------- Modèle global pour le widget ----------
 
   getModel() {
-    const rowsRaw = QryDashboardSuiviFabrication.data || [];
-    const events = this.buildEvents();
-    const today = new Date().toISOString().slice(0, 10); // yyyy-mm-dd
+  const rowsRaw = QryDashboardSuiviFabrication.data || [];
+  const events = this.buildEvents();
+  const today = new Date().toISOString().slice(0, 10); // yyyy-mm-dd
 
-    // --- min/max des délais appareils ---
-    let minDelai = null;
-    let maxDelai = null;
-    rowsRaw.forEach((r) => {
-      if (!r.delai) return;
-      const dStr = String(r.delai).slice(0, 10); // yyyy-mm-dd
-      if (!minDelai || dStr < minDelai) minDelai = dStr;
-      if (!maxDelai || dStr > maxDelai) maxDelai = dStr;
-    });
+  // 👇 on prépare la légende à envoyer au widget
+  const legend = (QrySuiviFab_Statuts.data || []).map((s) => ({
+    id: s.id,
+    libelle: s.libelle,
+    couleur: s.couleur,
+  }));
 
-    // --- bornes min/max globales (events + delais) ---
-    let minDate = null;
-    let maxDate = null;
+  // --- min/max des délais appareils ---
+  let minDelai = null;
+  let maxDelai = null;
+  rowsRaw.forEach((r) => {
+    if (!r.delai) return;
+    const dStr = String(r.delai).slice(0, 10); // yyyy-mm-dd
+    if (!minDelai || dStr < minDelai) minDelai = dStr;
+    if (!maxDelai || dStr > maxDelai) maxDelai = dStr;
+  });
 
-    if (events.length) {
-      minDate = events[0].date;
-      maxDate = events[0].date;
-      events.forEach((e) => {
-        if (e.date < minDate) minDate = e.date;
-        if (e.date > maxDate) maxDate = e.date;
-      });
-    }
+  // --- bornes min/max globales (events + delais) ---
+  let minDate = null;
+  let maxDate = null;
 
-    // intégrer les délais
-    if (minDelai && (!minDate || minDelai < minDate)) minDate = minDelai;
-    if (maxDelai && (!maxDate || maxDelai > maxDate)) maxDate = maxDelai;
-
-    // fallback si aucune date nulle part
-    if (!minDate) minDate = today;
-    if (!maxDate) maxDate = today;
-
-    // s'assurer que "today" est inclus
-    if (today < minDate) minDate = today;
-    if (today > maxDate) maxDate = maxDate; // today déjà >= maxDate
-
-    // marge : 2 jours avant, 7 jours après la date max
-    const padBefore = 2;
-    const padAfter = 7;
-
-    const startDate = this.addDaysYMD(minDate, -padBefore);
-    const endDate   = this.addDaysYMD(maxDate, padAfter);
-    const days = this.diffDays(startDate, endDate) + 1;
-
-    // --- cas particulier : aucune étape planifiée ---
-    if (!events.length) {
-      const rows = rowsRaw.map((r) => ({
-        appareil: r.numero_appareil,
-        label: `${r.nom_appareil}`,
-        delai: r.delai ? String(r.delai).slice(0, 10) : null,
-        events: [],
-      }));
-
-      return {
-        rows,
-        startDate,
-        days,
-        today,
-      };
-    }
-
-    // --- groupage par appareil à partir des events ---
-    const rowMap = {};
+  if (events.length) {
+    minDate = events[0].date;
+    maxDate = events[0].date;
     events.forEach((e) => {
-      if (!rowMap[e.appareil]) {
-        rowMap[e.appareil] = {
-          appareil: e.appareil,
-          label: e.appareilLabel,
-          delai: null, // complété après avec rowsRaw
-          events: [],
-        };
-      }
-      rowMap[e.appareil].events.push({
-        date: e.date,
-        lettre: e.lettre,
-        color: e.color,
-        statut: e.statut,
-      });
+      if (e.date < minDate) minDate = e.date;
+      if (e.date > maxDate) maxDate = e.date;
     });
+  }
 
-    // garantir une ligne pour chaque appareil de la requête,
-    // et y associer le délai
-    rowsRaw.forEach((r) => {
-      const app = r.numero_appareil;
-      const delaiStr = r.delai ? String(r.delai).slice(0, 10) : null;
+  // intégrer les délais
+  if (minDelai && (!minDate || minDelai < minDate)) minDate = minDelai;
+  if (maxDelai && (!maxDate || maxDelai > maxDate)) maxDate = maxDelai;
 
-      if (!rowMap[app]) {
-        rowMap[app] = {
-          appareil: app,
-          label: `${r.nom_appareil}`,
-          delai: delaiStr,
-          events: [],
-        };
-      } else if (!rowMap[app].delai) {
-        rowMap[app].delai = delaiStr;
-      }
-    });
+  // fallback si aucune date nulle part
+  if (!minDate) minDate = today;
+  if (!maxDate) maxDate = today;
 
-    const rows = Object.values(rowMap).sort((a, b) =>
-      a.label.localeCompare(b.label),
-    );
+  // s'assurer que "today" est inclus
+  if (today < minDate) minDate = today;
+  if (today > maxDate) maxDate = maxDate; // today déjà >= maxDate
+
+  // marge : 2 jours avant, 7 jours après la date max
+  const padBefore = 2;
+  const padAfter = 7;
+
+  const startDate = this.addDaysYMD(minDate, -padBefore);
+  const endDate   = this.addDaysYMD(maxDate, padAfter);
+  const days = this.diffDays(startDate, endDate) + 1;
+
+  // --- cas particulier : aucune étape planifiée ---
+  if (!events.length) {
+    const rows = rowsRaw.map((r) => ({
+      appareil: r.numero_appareil,
+      label: `${r.nom_appareil}`,
+      delai: r.delai ? String(r.delai).slice(0, 10) : null,
+      events: [],
+    }));
 
     return {
       rows,
       startDate,
       days,
       today,
+      legend,        // 👈 IMPORTANT : on renvoie la légende ici aussi
     };
-  },
+  }
+
+  // --- groupage par appareil à partir des events ---
+  const rowMap = {};
+  events.forEach((e) => {
+    if (!rowMap[e.appareil]) {
+      rowMap[e.appareil] = {
+        appareil: e.appareil,
+        label: e.appareilLabel,
+        delai: null, // complété après avec rowsRaw
+        events: [],
+      };
+    }
+    rowMap[e.appareil].events.push({
+      date: e.date,
+      lettre: e.lettre,
+      color: e.color,
+      statut: e.statut,
+    });
+  });
+
+  // garantir une ligne pour chaque appareil de la requête,
+  // et y associer le délai
+  rowsRaw.forEach((r) => {
+    const app = r.numero_appareil;
+    const delaiStr = r.delai ? String(r.delai).slice(0, 10) : null;
+
+    if (!rowMap[app]) {
+      rowMap[app] = {
+        appareil: app,
+        label: `${r.nom_appareil}`,
+        delai: delaiStr,
+        events: [],
+      };
+    } else if (!rowMap[app].delai) {
+      rowMap[app].delai = delaiStr;
+    }
+  });
+
+  const rows = Object.values(rowMap).sort((a, b) =>
+    a.label.localeCompare(b.label),
+  );
+
+  return {
+    rows,
+    startDate,
+    days,
+    today,
+    legend,        // 👈 et ici aussi
+  };
+},
+
 };

@@ -64,7 +64,7 @@
     "customColumn1",
     "customColumn2"
   ],
-  "columnUpdatedAt": 1764332694926,
+  "columnUpdatedAt": 1764680832564,
   "columnWidthMap": {
     "APPRO": 121,
     "CDS": 105,
@@ -78,8 +78,8 @@
     "appro_color": 117,
     "cds_color": 102,
     "client": 92,
-    "customColumn1": 86,
-    "customColumn2": 110,
+    "customColumn1": 83,
+    "customColumn2": 74,
     "dc_color": 97,
     "delai": 100,
     "dossier_ce_color": 127,
@@ -583,7 +583,7 @@
       "width": 150
     },
     "customColumn2": {
-      "alias": "Clôturer",
+      "alias": "Clôt.",
       "allowCellWrapping": true,
       "allowSameOptionsInNewRow": true,
       "borderRadius": "{{TableDashboardFab.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.borderRadius.appBorderRadius)))}}",
@@ -609,7 +609,7 @@
       "isEditable": false,
       "isSaveVisible": true,
       "isVisible": true,
-      "label": "Clôturer",
+      "label": "Clôt.",
       "labelColor": "#FFFFFF",
       "notation": "standard",
       "onClick": "{{\n(() => {\n  const row = TableDashboardFab.triggeredRow;\n  if (!row) {\n    showAlert(\"Aucun appareil sélectionné\", \"warning\");\n    return;\n  }\n\n  const numero_appareil = row.appareil;  // nom du champ dans ton Table data\n\n  return CloturerAppareilFab.run({ numero_appareil })\n    .then(() => {\n      showAlert(\"Suivi de la fabrication clôturé pour l'appareil \" + numero_appareil + \" ✅\", \"success\");\n      // Rafraîchir le dashboard (l'appareil disparaîtra du tableau)\n      return QryDashboardSuiviFabrication.run();\n    })\n    .catch(e => {\n      console.log(\"Erreur clôture appareil\", e);\n      showAlert(\"Erreur lors de la clôture de l'appareil\", \"error\");\n    });\n})()\n}}\n",
@@ -1371,7 +1371,7 @@
   },
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 63,
+  "rightColumn": 64,
   "searchKey": "",
   "tableData": "{{JS_DashboardFab.buildRows()}}",
   "textSize": "0.75rem",

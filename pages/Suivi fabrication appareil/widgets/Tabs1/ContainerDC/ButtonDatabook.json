@@ -34,7 +34,7 @@
   "mobileRightColumn": 17,
   "mobileTopRow": 8,
   "needsErrorInfo": false,
-  "onClick": "{{navigateTo('Fiche appareil', {}, 'SAME_WINDOW');}}",
+  "onClick": "{{navigateTo('Fiche appareil', {\n  \"numero_appareil\": appsmith.URL.queryParams.numero_appareil\n}, 'NEW_WINDOW');}}",
   "parentColumnSpace": 6.015625,
   "parentId": "nd0qxbxj1q",
   "parentRowSpace": 10,

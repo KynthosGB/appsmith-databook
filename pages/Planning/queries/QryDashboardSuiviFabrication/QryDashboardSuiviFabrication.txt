@@ -44,7 +44,6 @@ SELECT
           WHEN wge.code = 'APPRO'           THEN wa.date_objectif
           ELSE NULL
         END,
-      -- End time = même valeur que date_objectif
       'date_fin',
         CASE
           WHEN wge.code = 'NOTE_CALCUL'     THEN wnc.date_objectif
@@ -52,6 +51,16 @@ SELECT
           WHEN wge.code = 'CAHIER_SOUDAGE'  THEN wcs.date_objectif
           WHEN wge.code = 'PREPARATION'     THEN wprep.date_objectif
           WHEN wge.code = 'APPRO'           THEN wa.date_objectif
+          ELSE NULL
+        END,
+
+      -- Nombre de jours (durée en jours ouvrés pour les étapes concernées)
+      'nombre_jours',
+        CASE
+          WHEN wge.code = 'NOTE_CALCUL'     THEN wnc.nombre_jours
+          WHEN wge.code = 'PLAN'            THEN wp.nombre_jours
+          WHEN wge.code = 'CAHIER_SOUDAGE'  THEN wcs.nombre_jours
+          WHEN wge.code = 'PREPARATION'     THEN wprep.nombre_jours
           ELSE NULL
         END,
 
@@ -83,7 +92,6 @@ LEFT JOIN public.workflow_plan            wp    ON wp.groupe_appareil_id  = wga.
 LEFT JOIN public.workflow_cahier_soudage  wcs   ON wcs.groupe_appareil_id = wga.id
 LEFT JOIN public.workflow_preparation     wprep ON wprep.groupe_appareil_id = wga.id
 LEFT JOIN public.workflow_appro           wa    ON wa.groupe_appareil_id = wga.id
--- ⚠️ plus de JOIN sur workflow_appro_item ici
 
 WHERE a.cloture_suivi_fabrication = false
 

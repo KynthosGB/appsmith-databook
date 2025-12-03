@@ -3,7 +3,7 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "1",
-  "bottomRow": 24,
+  "bottomRow": 23,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "defaultModel": "{{JSPlanningSuivi.getModel()}}",
   "dynamicBindingPathList": [
@@ -37,7 +37,7 @@
   "mobileRightColumn": 42,
   "mobileTopRow": 10,
   "needsErrorInfo": false,
-  "originalBottomRow": 25,
+  "originalBottomRow": 23,
   "originalTopRow": 8,
   "parentColumnSpace": 20.25,
   "parentId": "0",

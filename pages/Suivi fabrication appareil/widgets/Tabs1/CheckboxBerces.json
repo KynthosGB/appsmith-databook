@@ -46,7 +46,7 @@
   "mobileRightColumn": 25,
   "mobileTopRow": 9,
   "needsErrorInfo": false,
-  "onSelectionChange": "{{JS_SuiviFab.saveApproItem(\"BERCES\", CheckboxFonds, DateEnvoiFonds)\n}}",
+  "onSelectionChange": "{{JS_SuiviFab.saveApproItem(\"BERCES\", CheckboxBerces, DateEnvoiBerces)\n}}",
   "options": [
     {
       "label": "NA",

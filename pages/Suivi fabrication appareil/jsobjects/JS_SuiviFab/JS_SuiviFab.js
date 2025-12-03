@@ -243,6 +243,34 @@ export default {
 				showAlert("Erreur lors de l'enregistrement de l'approvisionnement", "error");
 			});
 	},
+	
+	// --- ACHATS : un sous-groupe (Brides, Visseries, etc.) ---
+	saveAchatsItem(code, checkboxGroup) {
+		// récupère la ligne du groupe 'ACHATS' pour l'appareil
+		const row = this.getRowByCode("ACHATS");
+		if (!row) return;
+
+		const selected = checkboxGroup.selectedValues || [];
+		const na   = selected.includes("na");
+		const recu = selected.includes("recu");
+
+		return SaveSuivi_AchatsItem.run({
+			groupe_appareil_id: row.groupe_appareil_id,
+			code,
+			na,
+			recu,
+		})
+			.then(() => this.setEnCoursIfNeeded("ACHATS"))
+			.then(() => this.refreshBar())
+			.then(() => {
+				showAlert("Achats mis à jour ✅", "success");
+			})
+			.catch(e => {
+				console.log("Erreur save achats", e);
+				showAlert("Erreur lors de l'enregistrement des achats", "error");
+			});
+	},
+
 
 	// --- CONTROLE : un sous-groupe (Visuels, Radio, FAT, ...) ---
 	saveControleItem(code, checkboxGroup, datePicker) {
@@ -290,6 +318,7 @@ export default {
 		const dateDebutVal  = DateDebutFab.selectedDate;
 		const dateFinVal    = DateFinFab.selectedDate;
 		const heuresPrevues = Number(HeuresPrevues.text || "") || null;
+		const heuresPrevuesMontage = Number(HeuresPrevuesMontage.text || "") || null;
 		const heuresPassees = Number(HeuresPassees.text || "") || null;
 
 		return SaveSuivi_Fabrication.run({
@@ -305,6 +334,7 @@ export default {
 				: null,
 
 			heures_prevues: heuresPrevues,
+			heures_prevues_montage: heuresPrevuesMontage,
 			heures_passees: heuresPassees,
 		})
 			.then(() => {
@@ -338,30 +368,56 @@ export default {
 	},
 
 	  // --- APPRO (date objectif globale) ---
-  saveAppro() {
-    const row = this.getRowByCode("APPRO");
-    if (!row) return;
+		saveAppro() {
+			const row = this.getRowByCode("APPRO");
+			if (!row) return;
 
-    // ⚠️ adapte le nom du widget si besoin
-    const dateObj = DateObjectifAppro.selectedDate;
+			// ⚠️ adapte le nom du widget si besoin
+			const dateObj = DateObjectifAppro.selectedDate;
 
-    return SaveSuivi_Appro.run({
-      groupe_appareil_id: row.groupe_appareil_id,
-      date_objectif: dateObj
-        ? moment(dateObj).format("YYYY-MM-DD")
-        : null,
-    })
-      .then(() => {
-        showAlert("Objectif appro mis à jour ✅", "success");
-      })
-      .catch(e => {
-        console.log("Erreur save appro (date objectif)", e);
-        showAlert(
-          "Erreur lors de l'enregistrement de la date objectif appro",
-          "error"
-        );
-      });
-  },
+			return SaveSuivi_Appro.run({
+				groupe_appareil_id: row.groupe_appareil_id,
+				date_objectif: dateObj
+					? moment(dateObj).format("YYYY-MM-DD")
+					: null,
+			})
+				.then(() => {
+					showAlert("Objectif appro mis à jour ✅", "success");
+				})
+				.catch(e => {
+					console.log("Erreur save appro (date objectif)", e);
+					showAlert(
+						"Erreur lors de l'enregistrement de la date objectif appro",
+						"error"
+					);
+				});
+		},
+	
+		// --- ACHATS (date objectif globale) ---
+		saveAchats() {
+			const row = this.getRowByCode("ACHATS");
+			if (!row) return;
+
+			// ⚠️ adapte le nom du widget si besoin
+			const dateObj = DateObjectifAchats.selectedDate;
+
+			return SaveSuivi_Achats.run({
+				groupe_appareil_id: row.groupe_appareil_id,
+				date_objectif: dateObj
+					? moment(dateObj).format("YYYY-MM-DD")
+					: null,
+			})
+				.then(() => {
+					showAlert("Objectif achats mis à jour ✅", "success");
+				})
+				.catch(e => {
+					console.log("Erreur save achats (date objectif)", e);
+					showAlert(
+						"Erreur lors de l'enregistrement de la date objectif achats",
+						"error"
+					);
+				});
+		},
 
 
 };

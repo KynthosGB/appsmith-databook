@@ -1,0 +1,3 @@
+SELECT id, categorie
+FROM public.liste_categorie_risque_ce
+ORDER BY id;

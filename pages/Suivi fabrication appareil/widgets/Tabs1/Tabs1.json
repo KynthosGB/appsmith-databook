@@ -1,16 +1,16 @@
 {
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
-  "backgroundColor": "#FFFFFF",
+  "backgroundColor": "#fafafc",
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": 1,
-  "bottomRow": 53,
+  "bottomRow": 132,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "children": [
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 560,
+      "bottomRow": 1070,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": true,
       "detachFromLayout": true,
@@ -56,7 +56,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 280,
+      "bottomRow": 1070,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": true,
       "detachFromLayout": true,
@@ -102,7 +102,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 460,
+      "bottomRow": 1070,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -147,7 +147,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 280,
+      "bottomRow": 1070,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -192,7 +192,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 280,
+      "bottomRow": 1070,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -237,7 +237,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 400,
+      "bottomRow": 1070,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -279,6 +279,96 @@
       "version": 1,
       "widgetId": "tm4r707uhl",
       "widgetName": "Canvas8"
+    },
+    {
+      "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "bottomRow": 1070,
+      "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+      "canExtend": false,
+      "containerStyle": "none",
+      "detachFromLayout": true,
+      "dynamicBindingPathList": [
+        {
+          "key": "borderRadius"
+        },
+        {
+          "key": "boxShadow"
+        }
+      ],
+      "dynamicHeight": "AUTO_HEIGHT",
+      "dynamicTriggerPathList": [],
+      "flexLayers": [],
+      "isLoading": false,
+      "isVisible": true,
+      "key": "f5uj5ym070",
+      "leftColumn": 0,
+      "maxDynamicHeight": 9000,
+      "minDynamicHeight": 4,
+      "minHeight": 290,
+      "minWidth": 450,
+      "mobileBottomRow": 291,
+      "mobileLeftColumn": 0,
+      "mobileRightColumn": 1458.9375,
+      "mobileTopRow": 1,
+      "needsErrorInfo": false,
+      "parentColumnSpace": 1,
+      "parentId": "5me1zg2pbw",
+      "parentRowSpace": 1,
+      "renderMode": "CANVAS",
+      "responsiveBehavior": "fill",
+      "rightColumn": 1458.9375,
+      "tabId": "tabaw88ax9qjg",
+      "tabName": "Prestations externes",
+      "topRow": 1,
+      "type": "CANVAS_WIDGET",
+      "version": 1,
+      "widgetId": "gur4cgnmdx",
+      "widgetName": "Canvas9"
+    },
+    {
+      "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "bottomRow": 1070,
+      "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+      "canExtend": false,
+      "containerStyle": "none",
+      "detachFromLayout": true,
+      "dynamicBindingPathList": [
+        {
+          "key": "borderRadius"
+        },
+        {
+          "key": "boxShadow"
+        }
+      ],
+      "dynamicHeight": "AUTO_HEIGHT",
+      "dynamicTriggerPathList": [],
+      "flexLayers": [],
+      "isLoading": false,
+      "isVisible": true,
+      "key": "f5uj5ym070",
+      "leftColumn": 0,
+      "maxDynamicHeight": 9000,
+      "minDynamicHeight": 4,
+      "minHeight": 290,
+      "minWidth": 450,
+      "mobileBottomRow": 291,
+      "mobileLeftColumn": 0,
+      "mobileRightColumn": 1458.9375,
+      "mobileTopRow": 1,
+      "needsErrorInfo": false,
+      "parentColumnSpace": 1,
+      "parentId": "5me1zg2pbw",
+      "parentRowSpace": 1,
+      "renderMode": "CANVAS",
+      "responsiveBehavior": "fill",
+      "rightColumn": 1458.9375,
+      "tabId": "tabca9p6cvc7v",
+      "tabName": "Achats",
+      "topRow": 1,
+      "type": "CANVAS_WIDGET",
+      "version": 1,
+      "widgetId": "rpa97oiq66",
+      "widgetName": "Canvas10"
     }
   ],
   "defaultTab": "Etudes",
@@ -294,6 +384,7 @@
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicPropertyPathList": [],
   "dynamicTriggerPathList": [],
   "flexVerticalAlignment": "stretch",
   "isCanvas": true,
@@ -309,7 +400,7 @@
   "mobileRightColumn": 25,
   "mobileTopRow": 22,
   "needsErrorInfo": false,
-  "originalBottomRow": 83,
+  "originalBottomRow": 172,
   "originalTopRow": 21,
   "parentColumnSpace": 23.53125,
   "parentId": "0",
@@ -338,6 +429,22 @@
       "positioning": "vertical",
       "widgetId": "kqrrbgvqd4"
     },
+    "tabaw88ax9qjg": {
+      "id": "tabaw88ax9qjg",
+      "index": 6,
+      "isDuplicateLabel": false,
+      "isVisible": true,
+      "label": "Prestations externes",
+      "widgetId": "gur4cgnmdx"
+    },
+    "tabca9p6cvc7v": {
+      "id": "tabca9p6cvc7v",
+      "index": 3,
+      "isDuplicateLabel": false,
+      "isVisible": true,
+      "label": "Achats",
+      "widgetId": "rpa97oiq66"
+    },
     "tabfmq531p5it": {
       "id": "tabfmq531p5it",
       "index": 2,
@@ -348,7 +455,7 @@
     },
     "tabtba17sm0hn": {
       "id": "tabtba17sm0hn",
-      "index": 4,
+      "index": 5,
       "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Contrôle",
@@ -356,7 +463,7 @@
     },
     "tabvj4h6nfb2c": {
       "id": "tabvj4h6nfb2c",
-      "index": 5,
+      "index": 7,
       "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Dossier CE / constructeur",
@@ -364,7 +471,7 @@
     },
     "tabztjepyy0yu": {
       "id": "tabztjepyy0yu",
-      "index": 3,
+      "index": 4,
       "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Fabrication",

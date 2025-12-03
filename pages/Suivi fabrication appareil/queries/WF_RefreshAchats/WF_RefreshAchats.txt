@@ -1,0 +1,6 @@
+{
+  "numero_affaire": {{ QryInfosAppareil.data[0].numero_affaire }},
+  "nom_client": {{ QryInfosAppareil.data[0].nom_client }},
+  "nom_appareil": {{ QryInfosAppareil.data[0].nom_appareil }},
+  "numero_appareil": {{ appsmith.URL.queryParams.numero_appareil }}
+}

@@ -46,7 +46,7 @@
   "mobileRightColumn": 25,
   "mobileTopRow": 9,
   "needsErrorInfo": false,
-  "onSelectionChange": "{{JS_SuiviFab.saveApproItem(\"CALORIFUGE\", CheckboxFonds, DateEnvoiFonds)\n}}",
+  "onSelectionChange": "{{JS_SuiviFab.saveApproItem(\"CALORIFUGE\", CheckboxCalo, DateEnvoiCalo)\n}}",
   "options": [
     {
       "label": "NA",

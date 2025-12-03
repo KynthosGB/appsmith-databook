@@ -4,7 +4,7 @@ SET
   date_livraison          = {{ DateLivraison.selectedDate ? moment(DateLivraison.selectedDate).format("YYYY-MM-DD") : null }},
   type_appareil           = {{ TypeAppareil.text }},
   module_ce               = {{ ModuleCE.text }},
-  categorie_risque_ce     = {{ CategorieRisqueCE.text }},
+  categorie_risque_ce_id     = {{ CategorieRisqueCE.selectedOptionValue }},
   type_fluide             = {{ TypeFluide.text }},
   niveau_risque           = {{ NiveauRisque.text }},
   code_construction_id       = {{ CodeConstruction.selectedOptionValue }},

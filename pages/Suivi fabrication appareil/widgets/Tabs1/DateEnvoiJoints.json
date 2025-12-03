@@ -55,7 +55,7 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 10,
   "needsErrorInfo": false,
-  "onDateSelected": "{{JS_SuiviFab.saveApproItem(\"JOINTS\", CheckboxFonds, DateEnvoiFonds)}}",
+  "onDateSelected": "{{JS_SuiviFab.saveApproItem(\"JOINTS\", CheckboxJoints, DateEnvoiJoints)}}",
   "originalBottomRow": 30,
   "originalTopRow": 26,
   "parentColumnSpace": 4.1171875,

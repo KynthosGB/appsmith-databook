@@ -1,0 +1,12 @@
+SELECT
+  wga.id   AS groupe_appareil_id,
+  wai.code AS achat_code,   -- 'BRIDES','VISSERIES',...
+  wai.na,
+  wai.recu
+FROM public.workflow_groupe_appareil wga
+JOIN public.workflow_groupe_etape   wge
+  ON wge.id = wga.groupe_id
+LEFT JOIN public.workflow_achats_item wai
+  ON wai.groupe_appareil_id = wga.id
+WHERE wga.numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}'
+  AND wge.code = 'ACHATS';

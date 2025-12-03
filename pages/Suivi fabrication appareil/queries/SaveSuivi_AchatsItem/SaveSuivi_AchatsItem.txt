@@ -1,0 +1,15 @@
+INSERT INTO public.workflow_achats_item (
+  groupe_appareil_id,
+  code,
+  na,
+  recu
+) VALUES (
+  {{ this.params.groupe_appareil_id }},
+  {{ this.params.code }},
+  {{ this.params.na }},
+  {{ this.params.recu }}
+)
+ON CONFLICT (groupe_appareil_id, code)
+DO UPDATE SET
+  na   = EXCLUDED.na,
+  recu = EXCLUDED.recu;

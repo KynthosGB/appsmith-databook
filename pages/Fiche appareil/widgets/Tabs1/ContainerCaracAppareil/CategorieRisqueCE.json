@@ -1,11 +1,10 @@
 {
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
-  "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 33,
   "boxShadow": "none",
-  "defaultText": "{{CaracteristiquesAppareils.data[0].categorie_risque_ce ? CaracteristiquesAppareils.data[0].categorie_risque_ce : \"\"}}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( CaracteristiquesAppareils.data[0].categorie_risque_ce_id ? CaracteristiquesAppareils.data[0].categorie_risque_ce_id : 1))(CategorieRisqueCE.options, CategorieRisqueCE.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -14,59 +13,61 @@
       "key": "borderRadius"
     },
     {
-      "key": "defaultText"
+      "key": "sourceData"
+    },
+    {
+      "key": "defaultOptionValue"
     }
   ],
   "dynamicHeight": "FIXED",
   "dynamicPropertyPathList": [
     {
-      "key": "onBlur"
+      "key": "sourceData"
+    },
+    {
+      "key": "onOptionChange"
     }
   ],
   "dynamicTriggerPathList": [
     {
-      "key": "onTextChanged"
-    },
-    {
-      "key": "onBlur"
+      "key": "onOptionChange"
     }
   ],
-  "iconAlign": "left",
-  "inputType": "TEXT",
   "isDisabled": false,
+  "isFilterable": true,
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,
-  "key": "o4jhc0vgp5",
-  "label": "Catégorie de risque CE",
+  "key": "fl80d14t5t",
   "labelAlignment": "left",
   "labelPosition": "Top",
-  "labelStyle": "",
+  "labelText": "Catégorie risque CE",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
   "leftColumn": 17,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 8,
-  "mobileLeftColumn": 1,
-  "mobileRightColumn": 21,
-  "mobileTopRow": 1,
+  "mobileBottomRow": 33,
+  "mobileLeftColumn": 12,
+  "mobileRightColumn": 32,
+  "mobileTopRow": 26,
   "needsErrorInfo": false,
-  "onBlur": "{{ SaveAll.saveAll(); }}",
-  "onTextChanged": "{{TrackerModif.setModifiedTrue();}}",
-  "parentColumnSpace": 8.86328125,
+  "onOptionChange": "{{ SaveAll.saveAll(); }}",
+  "optionLabel": "categorie",
+  "optionValue": "id",
+  "parentColumnSpace": 18.388916015625,
   "parentId": "yto2tqllfl",
   "parentRowSpace": 10,
+  "placeholderText": "Select option",
   "renderMode": "CANVAS",
-  "resetOnSubmit": true,
   "responsiveBehavior": "fill",
   "rightColumn": 32,
-  "shouldAllowAutofill": false,
-  "showStepArrows": false,
+  "serverSideFiltering": false,
+  "sourceData": "{{QryListeCategoriesRisqueCE.data }}",
   "topRow": 26,
-  "type": "INPUT_WIDGET_V2",
-  "version": 2,
-  "widgetId": "8w0gnojoue",
+  "type": "SELECT_WIDGET",
+  "version": 1,
+  "widgetId": "nl123gbq3q",
   "widgetName": "CategorieRisqueCE"
 }

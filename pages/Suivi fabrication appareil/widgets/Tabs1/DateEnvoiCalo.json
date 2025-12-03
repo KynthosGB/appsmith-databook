@@ -55,7 +55,7 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 10,
   "needsErrorInfo": false,
-  "onDateSelected": "{{JS_SuiviFab.saveApproItem(\"CALORIFUGE\", CheckboxFonds, DateEnvoiFonds)}}",
+  "onDateSelected": "{{JS_SuiviFab.saveApproItem(\"CALORIFUGE\", CheckboxCalo, DateEnvoiCalo)}}",
   "originalBottomRow": 43,
   "originalTopRow": 39,
   "parentColumnSpace": 4.1171875,

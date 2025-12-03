@@ -55,7 +55,7 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 10,
   "needsErrorInfo": false,
-  "onDateSelected": "{{JS_SuiviFab.saveApproItem(\"BERCES\", CheckboxFonds, DateEnvoiFonds)}}",
+  "onDateSelected": "{{JS_SuiviFab.saveApproItem(\"BERCES\", CheckboxBerces, DateEnvoiBerces)}}",
   "originalBottomRow": 43,
   "originalTopRow": 39,
   "parentColumnSpace": 4.1171875,

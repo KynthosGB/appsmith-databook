@@ -1,0 +1,9 @@
+SELECT
+  rep,
+  srsm,
+  qte_totale,
+  designation,
+  date_reception
+FROM public.achats_nomenclature_appareil
+WHERE numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}'
+ORDER BY rep, srsm;

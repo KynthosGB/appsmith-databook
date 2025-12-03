@@ -67,11 +67,13 @@ export default {
     const indice = IndiceNDC.text;          // champ "Indice"
     const dateObj = DateObjectifNDC.selectedDate;     // champ "Date obj."
     const dateEdition = DateEditionNDC.selectedDate; // champ "Date édition"
+		const nombreJours = NbJoursNDC.text;          // champ "Nombre jours"
 
     return SaveSuivi_NoteCalcul.run({
       groupe_appareil_id: row.groupe_appareil_id,
       numero: numero || null,
       indice: indice || null,
+			nombre_jours: nombreJours || null,
       date_objectif: dateObj
         ? moment(dateObj).format("YYYY-MM-DD")
         : null,
@@ -102,12 +104,14 @@ export default {
     const dateDebut    = DateDebutPlan.selectedDate;
     const dateEnvoi1   = Date1erEnvoiPlan.selectedDate;
     const dateFin      = DateFinPlan.selectedDate;
+		const nombreJours  = NbJoursPlan.text;          // champ "Nombre jours"
 
     return SaveSuivi_Plan.run({
       groupe_appareil_id: row.groupe_appareil_id,
       numero: numero || null,
       indice: indice || null,
       dessinateur: dessinateur || null,
+			nombre_jours: nombreJours || null,
 
       date_objectif: dateObj
         ? moment(dateObj).format("YYYY-MM-DD")
@@ -147,6 +151,7 @@ export default {
 		const dateObj  = DateCDSObjectif.selectedDate;
 		const dateDeb  = DateDebutCDS.selectedDate;
 		const dateFin  = DateFinCDS.selectedDate;
+		const nombreJours  = NbJoursCDS.text;          // champ "Nombre jours"
 
 		return SaveSuivi_CahierSoudage.run({
 			groupe_appareil_id: row.groupe_appareil_id,
@@ -154,6 +159,7 @@ export default {
 			iwt: iwt || null,
 			numero: numero || null,
 			indice: indice || null,
+			nombre_jours: nombreJours || null,
 
 			date_objectif: dateObj
 				? moment(dateObj).format("YYYY-MM-DD")
@@ -186,11 +192,14 @@ export default {
 		const dateObj     = DatePrepaObjectif.selectedDate;
 		const dateDebut   = DateDebutPrepa.selectedDate;
 		const dateFin     = DateFinPrepa.selectedDate;
+		const nombreJours  = NbJoursPrepa.text;          // champ "Nombre jours"
 
 		return SaveSuivi_Preparation.run({
 			groupe_appareil_id: row.groupe_appareil_id,
 
 			preparateur: preparateur || null,
+			
+			nombre_jours: nombreJours || null,
 
 			date_objectif: dateObj
 				? moment(dateObj).format("YYYY-MM-DD")

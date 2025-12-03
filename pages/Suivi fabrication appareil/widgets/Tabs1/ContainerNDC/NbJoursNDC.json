@@ -1,13 +1,11 @@
 {
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
+  "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 21,
   "boxShadow": "none",
-  "closeOnSelection": true,
-  "dateFormat": "DD-MM-YYYY",
-  "datePickerType": "DATE_PICKER",
-  "defaultDate": "{{QryInfoSuiviFabAppareil.data[0]?.ndc_date_objectif || \"\" }}",
+  "defaultText": "{{\n(QryInfoSuiviFabAppareil.data || [])\n    .find(r => r.groupe_code === \"NOTE_CALCUL\")\n    ?.nombre_jours || \"\"\n}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -16,57 +14,55 @@
       "key": "borderRadius"
     },
     {
-      "key": "defaultDate"
+      "key": "defaultText"
     }
   ],
   "dynamicHeight": "FIXED",
   "dynamicPropertyPathList": [
     {
-      "key": "onDateSelected"
-    },
-    {
-      "key": "defaultDate"
+      "key": "onBlur"
     }
   ],
   "dynamicTriggerPathList": [
     {
-      "key": "onDateSelected"
+      "key": "onBlur"
     }
   ],
-  "firstDayOfWeek": 0,
+  "iconAlign": "left",
+  "inputType": "NUMBER",
   "isDisabled": false,
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,
-  "key": "3g865prui7",
-  "label": "Date obj.",
+  "key": "0zz5zal5tr",
+  "label": "Nb jours",
   "labelAlignment": "left",
   "labelPosition": "Top",
+  "labelStyle": "",
   "labelTextSize": "0.875rem",
-  "labelWidth": "12",
-  "leftColumn": 0,
-  "maxDate": "2121-12-31T18:29:00.000Z",
+  "labelWidth": 5,
+  "leftColumn": 41,
   "maxDynamicHeight": 9000,
-  "minDate": "1920-12-31T18:30:00.000Z",
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 17,
-  "mobileLeftColumn": 1,
-  "mobileRightColumn": 21,
-  "mobileTopRow": 10,
+  "mobileBottomRow": 22,
+  "mobileLeftColumn": 41,
+  "mobileRightColumn": 61,
+  "mobileTopRow": 15,
   "needsErrorInfo": false,
-  "onDateSelected": "{{JS_SuiviFab.saveNoteCalcul()}}",
-  "parentColumnSpace": 4.1171875,
+  "onBlur": "{{JS_SuiviFab.saveNoteCalcul()}}",
+  "parentColumnSpace": 5.4185791015625,
   "parentId": "6a4agc20i9",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
+  "resetOnSubmit": true,
   "responsiveBehavior": "fill",
-  "rightColumn": 40,
-  "shortcuts": false,
-  "timePrecision": "minute",
+  "rightColumn": 63,
+  "shouldAllowAutofill": false,
+  "showStepArrows": false,
   "topRow": 14,
-  "type": "DATE_PICKER_WIDGET2",
+  "type": "INPUT_WIDGET_V2",
   "version": 2,
-  "widgetId": "3dzoterh8q",
-  "widgetName": "DateObjectifNDC"
+  "widgetId": "zcdwfir8xk",
+  "widgetName": "NbJoursNDC"
 }

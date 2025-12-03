@@ -15,6 +15,7 @@ SELECT
   wnc.indice            AS ndc_indice,
   wnc.date_objectif     AS ndc_date_objectif,
   wnc.date_edition      AS ndc_date_edition,
+	wnc.nombre_jours      AS ndc_nombre_jours,
 
   -- PLAN
   wp.numero             AS plan_numero,
@@ -24,6 +25,7 @@ SELECT
 	wp.date_debut         AS plan_date_debut,
   wp.date_premier_envoi AS plan_date_premier_envoi,
 	wp.date_fin           AS plan_date_fin,
+	wp.nombre_jours       AS plan_nombre_jours,
 
   -- CAHIER SOUDAGE
   wcs.iwt           AS cs_iwt,
@@ -32,6 +34,7 @@ SELECT
 	wcs.date_objectif AS cs_date_objectif,
 	wcs.date_debut    AS cs_date_debut,
 	wcs.date_fin      AS cs_date_fin,
+	wcs.nombre_jours  AS cs_nombre_jours,
 	
 	-- APPRO
 	wa.date_objectif AS appro_date_objectif,
@@ -41,6 +44,7 @@ SELECT
   wprep.date_objectif   AS prep_date_objectif,
 	wprep.date_debut      AS prep_date_debut,
 	wprep.date_fin        AS prep_date_fin,
+	wprep.nombre_jours    AS prep_nombre_jours,
 
   -- FABRICATION
   wf.monteur            AS fab_monteur,

@@ -5,7 +5,8 @@ INSERT INTO public.workflow_cahier_soudage (
   indice,
   date_objectif,
   date_debut,
-  date_fin
+  date_fin,
+	nombre_jours
 )
 VALUES (
   {{ this.params.groupe_appareil_id }},
@@ -14,7 +15,8 @@ VALUES (
   {{ this.params.indice }},
   {{ this.params.date_objectif }},
   {{ this.params.date_debut }},
-  {{ this.params.date_fin }}
+  {{ this.params.date_fin }},
+  {{ this.params.nombre_jours }}
 )
 ON CONFLICT (groupe_appareil_id) DO UPDATE SET
   iwt           = EXCLUDED.iwt,
@@ -22,4 +24,5 @@ ON CONFLICT (groupe_appareil_id) DO UPDATE SET
   indice        = EXCLUDED.indice,
   date_objectif = EXCLUDED.date_objectif,
   date_debut    = EXCLUDED.date_debut,
-  date_fin      = EXCLUDED.date_fin;
+  date_fin      = EXCLUDED.date_fin,
+  nombre_jours  = EXCLUDED.nombre_jours;

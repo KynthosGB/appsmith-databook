@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO public.workflow_note_calcul (\n  groupe_appareil_id,\n  numero,\n  indice,\n  date_objectif,\n  date_edition\n)\nVALUES (\n  {{ this.params.groupe_appareil_id }},\n  {{ this.params.numero }},\n  {{ this.params.indice }},\n  {{ this.params.date_objectif }},\n  {{ this.params.date_edition }}\n)\nON CONFLICT (groupe_appareil_id) DO UPDATE SET\n  numero        = EXCLUDED.numero,\n  indice        = EXCLUDED.indice,\n  date_objectif = EXCLUDED.date_objectif,\n  date_edition  = EXCLUDED.date_edition;",
+      "body": "INSERT INTO public.workflow_note_calcul (\n  groupe_appareil_id,\n  numero,\n  indice,\n  date_objectif,\n  date_edition,\n\tnombre_jours\n)\nVALUES (\n  {{ this.params.groupe_appareil_id }},\n  {{ this.params.numero }},\n  {{ this.params.indice }},\n  {{ this.params.date_objectif }},\n  {{ this.params.date_edition }},\n  {{ this.params.nombre_jours }}\n)\nON CONFLICT (groupe_appareil_id) DO UPDATE SET\n  numero        = EXCLUDED.numero,\n  indice        = EXCLUDED.indice,\n  date_objectif = EXCLUDED.date_objectif,\n  date_edition  = EXCLUDED.date_edition,\n  nombre_jours  = EXCLUDED.nombre_jours;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

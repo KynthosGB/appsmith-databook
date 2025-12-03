@@ -6,7 +6,8 @@ INSERT INTO public.workflow_plan (
   date_objectif,
   date_debut,
   date_premier_envoi,
-  date_fin
+  date_fin,
+	nombre_jours
 )
 VALUES (
   {{ this.params.groupe_appareil_id }},
@@ -16,7 +17,8 @@ VALUES (
   {{ this.params.date_objectif }},
   {{ this.params.date_debut }},
   {{ this.params.date_premier_envoi }},
-  {{ this.params.date_fin }}
+  {{ this.params.date_fin }},
+  {{ this.params.nombre_jours }}
 )
 ON CONFLICT (groupe_appareil_id) DO UPDATE SET
   numero            = EXCLUDED.numero,
@@ -25,4 +27,5 @@ ON CONFLICT (groupe_appareil_id) DO UPDATE SET
   date_objectif     = EXCLUDED.date_objectif,
   date_debut        = EXCLUDED.date_debut,
   date_premier_envoi= EXCLUDED.date_premier_envoi,
-  date_fin          = EXCLUDED.date_fin;
+  date_fin          = EXCLUDED.date_fin,
+  nombre_jours      = EXCLUDED.nombre_jours;

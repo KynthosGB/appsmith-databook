@@ -33,13 +33,13 @@
   },
   "columnOrder": [
     "numero_affaire",
-    "customColumn1",
-    "customColumn2",
     "cloture",
     "id",
-    "nom_client"
+    "nom_client",
+    "customColumn1",
+    "customColumn2"
   ],
-  "columnUpdatedAt": 1762527082662,
+  "columnUpdatedAt": 1764747913308,
   "columnWidthMap": {
     "customColumn1": 91,
     "numero_affaire": 685
@@ -188,7 +188,7 @@
       "notation": "standard",
       "onClick": "{{navigateTo('Appareils', {\n  \"numero_affaire\": currentRow.numero_affaire,\n\t\"nom_client\": currentRow.nom_client\n}, 'SAME_WINDOW');}}",
       "originalId": "customColumn1",
-      "sticky": "",
+      "sticky": "right",
       "textSize": "0.875rem",
       "thousandSeparator": true,
       "validation": {},
@@ -227,7 +227,7 @@
       "notation": "standard",
       "onClick": "{{showModal(ModalConfirmationCloture.name);}}",
       "originalId": "customColumn2",
-      "sticky": "",
+      "sticky": "right",
       "textSize": "0.875rem",
       "thousandSeparator": true,
       "validation": {},

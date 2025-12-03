@@ -33,11 +33,11 @@
   },
   "columnOrder": [
     "numero_appareil",
+    "numero_affaire",
     "customColumn1",
-    "customColumn2",
-    "numero_affaire"
+    "customColumn2"
   ],
-  "columnUpdatedAt": 1762503958307,
+  "columnUpdatedAt": 1764747940957,
   "columnWidthMap": {
     "customColumn1": 87,
     "numero_affaire": 1119,
@@ -151,7 +151,7 @@
       "notation": "standard",
       "onClick": "{{navigateTo('Fiche appareil', {\n  \"numero_appareil\": currentRow.numero_appareil,\n\t\"numero_affaire\": currentRow.numero_affaire\n}, 'SAME_WINDOW');}}",
       "originalId": "customColumn1",
-      "sticky": "",
+      "sticky": "right",
       "textSize": "0.875rem",
       "thousandSeparator": true,
       "validation": {},
@@ -190,7 +190,7 @@
       "notation": "standard",
       "onClick": "{{\n  // 1) Supprimer le dossier sur le NAS (remplace API_SupprimerDossier par ton action API n8n)\n  SupprimerAppareil.run({\n    // passe ce dont ton n8n a besoin ; au minimum l'identifiant\n    numero_appareil: ListeAppareils.selectedRow.numero_appareil\n    // ex. numero_affaire, chemin_complet, etc. si ton workflow les attend\n  })\n  // 2) Puis supprimer en base\n  .then(() => DeleteAppareil.run())\n  // 3) Feedback + refresh\n  .then(() => {\n    showAlert('Appareil supprimé', 'success');\n    GetAppareils.run();\n  })\n  .catch((e) => {\n    showAlert('Échec de la suppression : ' + (e?.message || ''), 'error');\n  });\n}}",
       "originalId": "customColumn2",
-      "sticky": "",
+      "sticky": "right",
       "textSize": "0.875rem",
       "thousandSeparator": true,
       "validation": {},

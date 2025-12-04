@@ -1,0 +1,4 @@
+SELECT * FROM public."affaires"
+WHERE cloture = FALSE
+AND numero_affaire = {{ SelectAffaire.selectedOptionValue}}
+ORDER BY numero_affaire DESC;

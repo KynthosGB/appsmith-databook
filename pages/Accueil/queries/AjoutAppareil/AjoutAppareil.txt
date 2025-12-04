@@ -1,7 +1,7 @@
 WITH params AS (
   SELECT
-    '{{ appsmith.URL.queryParams.numero_affaire + InputRepereAppareil.text }}'::text AS num_app,
-    '{{ appsmith.URL.queryParams.numero_affaire }}'::text                            AS num_aff,
+    '{{ ListeAffaires.selectedRow.numero_affaire + InputRepereAppareil.text }}'::text AS num_app,
+    '{{ ListeAffaires.selectedRow.numero_affaire }}'::text                            AS num_aff,
     '{{ InputNomAppareil.text }}'::text                                              AS nom_appareil,
     '{{ InputRepereAppareil.text }}'::text                                           AS repere,
     {{ DateDelai.selectedDate ? moment(DateDelai.selectedDate).format("YYYY-MM-DD") : null }}::date AS delai

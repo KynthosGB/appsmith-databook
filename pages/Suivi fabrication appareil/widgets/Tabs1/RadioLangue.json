@@ -1,0 +1,67 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "alignment": "left",
+  "animateLoading": true,
+  "bottomRow": 4,
+  "boxShadow": "none",
+  "defaultOptionValue": "fr",
+  "dynamicBindingPathList": [
+    {
+      "key": "accentColor"
+    }
+  ],
+  "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicPropertyPathList": [
+    {
+      "key": "onSelectionChange"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onSelectionChange"
+    }
+  ],
+  "flexVerticalAlignment": "start",
+  "isDisabled": false,
+  "isInline": true,
+  "isLoading": false,
+  "isRequired": false,
+  "isVisible": true,
+  "key": "5bnipkgiyk",
+  "label": "Langue du dossier",
+  "labelAlignment": "left",
+  "labelPosition": "Left",
+  "labelTextSize": "0.875rem",
+  "labelWidth": "7",
+  "leftColumn": 36,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "mobileBottomRow": 16,
+  "mobileLeftColumn": 43,
+  "mobileRightColumn": 63,
+  "mobileTopRow": 10,
+  "needsErrorInfo": false,
+  "onSelectionChange": "{{\n  (async () => {\n    const lang = (RadioLangue.selectedOptionValue || 'fr').toLowerCase();\n\n    // 1) mettre à jour l'état local pour re-render immédiat\n    await storeValue('langue_appareil', lang);\n\n    // 2) persister en base\n    await UpdateLangueAppareil.run();\n\n    // 3) rafraîchir la requête des données générales (optionnel mais cohérent)\n    await DonneesGeneralesAffaire.run();\n\n    // 4) pas obligatoire pour la langue, mais ok si tu veux recharger la liste\n    // await GetSommaireAppareil.run();\n  })().catch(e => showAlert('Erreur langue: ' + (e?.message || e), 'error'))\n}}",
+  "options": [
+    {
+      "label": "FR",
+      "value": "fr"
+    },
+    {
+      "label": "EN",
+      "value": "en"
+    }
+  ],
+  "originalBottomRow": 4,
+  "originalTopRow": 0,
+  "parentColumnSpace": 19.8125,
+  "parentId": "r534emvzfe",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "rightColumn": 51,
+  "topRow": 0,
+  "type": "RADIO_GROUP_WIDGET",
+  "version": 1,
+  "widgetId": "83agw0jlxe",
+  "widgetName": "RadioLangue"
+}

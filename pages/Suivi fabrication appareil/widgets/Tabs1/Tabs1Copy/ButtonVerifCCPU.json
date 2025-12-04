@@ -1,0 +1,58 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 4,
+  "boxShadow": "none",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "text"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "v87p6l6x5u",
+  "leftColumn": 0,
+  "minWidth": 120,
+  "mobileBottomRow": 4,
+  "mobileLeftColumn": 39,
+  "mobileRightColumn": 55,
+  "mobileTopRow": 0,
+  "needsErrorInfo": false,
+  "onClick": "{{\n  (async () => {\n    try {\n      const selected = ListeCCPU.selectedRows || [];\n\n      // --- CAS 1 : des lignes sont sélectionnées -> relance uniquement celles-ci ---\n      if (selected.length) {\n        // Appel du workflow n8n spécial \"recheck sélection\"\n        // (la requête HTTP RecheckCCPUSelection doit déjà être configurée côté Appsmith\n        //  avec numero_affaire, nom_appareil + rows = selectedRows)\n        await RecheckCCPUSelection.run();\n\n        // On recharge la liste complète\n        await QryCCPUFull.run();\n\n        showAlert(\n          `Vérification relancée pour ${selected.length} ligne(s) sélectionnée(s)`,\n          \"success\"\n        );\n        return;\n      }\n\n      // --- CAS 2 : aucune ligne sélectionnée -> première vérification complète ---\n      const res = await CheckCCPU.run();\n      const payload = Array.isArray(res) ? res[0] : res;\n\n      await QryCCPUFull.run();\n\n      const count = Number(payload?.notFoundCount ?? 0);\n      if (count > 0) {\n        showAlert(\n          `${count} CCPU nécessitent une vérification manuelle`,\n          \"warning\"\n        );\n      } else {\n        showAlert(\n          \"Tous les CCPU ont été trouvés automatiquement\",\n          \"success\"\n        );\n      }\n    } catch (e) {\n      showAlert(\n        \"Erreur lors de la vérification des CCPU : \" + (e?.message || \"\"),\n        \"error\"\n      );\n    }\n  })()\n}}\n",
+  "parentColumnSpace": 18.880859375,
+  "parentId": "5an5fuaiqr",
+  "parentRowSpace": 10,
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 17,
+  "text": "{{\n  (() => {\n    const sel = ListeCCPU.selectedRows || [];\n    return sel.length\n      ? \"Relancer le scan des CCPU pour la sélection\"\n      : \"Lancer le scan des CCPU\";\n  })()\n}}\n",
+  "topRow": 0,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "7t3omf2f5s",
+  "widgetName": "ButtonVerifCCPU"
+}

@@ -5,12 +5,12 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": 1,
-  "bottomRow": 50,
+  "bottomRow": 553,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "children": [
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 580,
+      "bottomRow": 5270,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": true,
       "detachFromLayout": true,
@@ -56,7 +56,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 250,
+      "bottomRow": 5270,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": true,
       "detachFromLayout": true,
@@ -102,7 +102,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 580,
+      "bottomRow": 5270,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -147,7 +147,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 250,
+      "bottomRow": 5270,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -192,7 +192,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 260,
+      "bottomRow": 5270,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -228,7 +228,7 @@
       "responsiveBehavior": "fill",
       "rightColumn": 1458.9375,
       "tabId": "tabvj4h6nfb2c",
-      "tabName": "Dossier CE / constructeur",
+      "tabName": "Dossier CE",
       "topRow": 1,
       "type": "CANVAS_WIDGET",
       "version": 1,
@@ -237,7 +237,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 400,
+      "bottomRow": 5270,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -282,7 +282,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 250,
+      "bottomRow": 5270,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -327,7 +327,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 1050,
+      "bottomRow": 5270,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -369,6 +369,51 @@
       "version": 1,
       "widgetId": "rpa97oiq66",
       "widgetName": "Canvas10"
+    },
+    {
+      "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "bottomRow": 5270,
+      "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+      "canExtend": false,
+      "containerStyle": "none",
+      "detachFromLayout": true,
+      "dynamicBindingPathList": [
+        {
+          "key": "borderRadius"
+        },
+        {
+          "key": "boxShadow"
+        }
+      ],
+      "dynamicHeight": "AUTO_HEIGHT",
+      "dynamicTriggerPathList": [],
+      "flexLayers": [],
+      "isLoading": false,
+      "isVisible": true,
+      "key": "wrmm1da9xw",
+      "leftColumn": 0,
+      "maxDynamicHeight": 9000,
+      "minDynamicHeight": 4,
+      "minHeight": 320,
+      "minWidth": 450,
+      "mobileBottomRow": 321,
+      "mobileLeftColumn": 0,
+      "mobileRightColumn": 1458.9375,
+      "mobileTopRow": 1,
+      "needsErrorInfo": false,
+      "parentColumnSpace": 1,
+      "parentId": "5me1zg2pbw",
+      "parentRowSpace": 1,
+      "renderMode": "CANVAS",
+      "responsiveBehavior": "fill",
+      "rightColumn": 1458.9375,
+      "tabId": "tabkuzwi4d6d0",
+      "tabName": "Dossier constructeur",
+      "topRow": 1,
+      "type": "CANVAS_WIDGET",
+      "version": 1,
+      "widgetId": "r534emvzfe",
+      "widgetName": "Canvas11"
     }
   ],
   "defaultTab": "Etudes",
@@ -400,8 +445,8 @@
   "mobileRightColumn": 25,
   "mobileTopRow": 22,
   "needsErrorInfo": false,
-  "originalBottomRow": 50,
-  "originalTopRow": 21,
+  "originalBottomRow": 553,
+  "originalTopRow": 22,
   "parentColumnSpace": 23.53125,
   "parentId": "0",
   "parentRowSpace": 10,
@@ -453,6 +498,13 @@
       "label": "Appro",
       "widgetId": "m3y6bzcuko"
     },
+    "tabkuzwi4d6d0": {
+      "id": "tabkuzwi4d6d0",
+      "index": 8,
+      "isVisible": true,
+      "label": "Dossier constructeur",
+      "widgetId": "r534emvzfe"
+    },
     "tabtba17sm0hn": {
       "id": "tabtba17sm0hn",
       "index": 5,
@@ -466,7 +518,7 @@
       "index": 7,
       "isDuplicateLabel": false,
       "isVisible": true,
-      "label": "Dossier CE / constructeur",
+      "label": "Dossier CE",
       "widgetId": "slhhvpvvv1"
     },
     "tabztjepyy0yu": {
@@ -478,7 +530,7 @@
       "widgetId": "ooyjhdx83z"
     }
   },
-  "topRow": 21,
+  "topRow": 22,
   "type": "TABS_WIDGET",
   "version": 3,
   "widgetId": "5me1zg2pbw",

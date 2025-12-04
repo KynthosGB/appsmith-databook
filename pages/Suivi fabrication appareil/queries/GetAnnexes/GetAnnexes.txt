@@ -1,0 +1,13 @@
+SELECT
+  master_id,
+  parent_master_id,
+  level,
+  display_no,
+  include,
+  label_fr,
+  label_en
+FROM public.v_sommaire_appareils
+WHERE numero_appareil = {{ appsmith.URL.queryParams.numero_appareil }}
+  AND (master_id = '8' OR parent_master_id = '8')
+  AND (include = true OR master_id = '8')   -- on prend 8 même si décoché par erreur
+ORDER BY level, display_no;

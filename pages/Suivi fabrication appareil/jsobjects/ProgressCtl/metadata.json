@@ -1,0 +1,16 @@
+{
+  "gitSyncId": "6915b9d6a2ab6852a3eeef70_a079567f-fbc8-4d7c-858c-315ba8b461c2",
+  "id": "Suivi fabrication appareil_ProgressCtl",
+  "unpublishedCollection": {
+    "name": "ProgressCtl",
+    "pageId": "Suivi fabrication appareil",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": [
+      {
+        "name": "intv",
+        "value": "null"
+      }
+    ]
+  }
+}

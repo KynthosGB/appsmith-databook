@@ -1,0 +1,10 @@
+UPDATE public.liste_ccpu_nomenclature_appareil
+SET 
+    src_path      = {{ this.params.src_path }},
+    search_status = 'path_ok'
+WHERE 
+    numero_affaire = {{ DonneesGeneralesAffaire.data[0].numero_affaire }}
+    AND nom_appareil = {{ CaracteristiquesAppareils.data[0].nom_appareil }}
+    AND rep = {{ this.params.rep }}
+    AND srsm = {{ this.params.srsm }}
+    AND code = {{ this.params.code }};

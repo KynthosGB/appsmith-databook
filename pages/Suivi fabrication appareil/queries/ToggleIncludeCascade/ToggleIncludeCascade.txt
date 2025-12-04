@@ -1,0 +1,14 @@
+WITH RECURSIVE tree AS (
+  -- point de départ : le master_id cliqué
+  SELECT s.master_id
+  FROM public.sommaire AS s
+  WHERE s.master_id = {{ this.params.master_id }}
+  UNION ALL
+  SELECT c.master_id
+  FROM public.sommaire AS c
+  JOIN tree t ON c.parent_master_id = t.master_id
+)
+UPDATE public.sommaire_appareils AS a
+SET include = {{ this.params.include }}
+WHERE a.numero_appareil = {{ this.params.numero_appareil }}
+  AND a.master_id IN (SELECT master_id FROM tree);

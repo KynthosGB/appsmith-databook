@@ -1,0 +1,10 @@
+SELECT *
+FROM public.v_sommaire_appareils
+WHERE numero_appareil = {{ appsmith.URL.queryParams.numero_appareil }}
+ORDER BY
+  COALESCE(ch_no, 0),
+  COALESCE(sub_no, 0),
+  COALESCE(sub3_no, 0),
+  COALESCE(sub4_no, 0),
+  COALESCE(sub5_no, 0),
+  master_id;

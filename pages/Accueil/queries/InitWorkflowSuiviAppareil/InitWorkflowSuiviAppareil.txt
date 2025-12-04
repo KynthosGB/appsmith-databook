@@ -6,6 +6,7 @@ WITH etapes AS (
     'PLAN',
     'CAHIER_SOUDAGE',
     'APPRO',
+		'ACHATS',
     'PREPARATION',
     'FABRICATION',
     'CONTROLE',
@@ -22,7 +23,7 @@ insert_wga AS (
     statut_id
   )
   SELECT
-    {{ appsmith.URL.queryParams.numero_affaire + InputRepereAppareil.text }} AS numero_appareil,
+    {{ ListeAffaires.selectedRow.numero_affaire + InputRepereAppareil.text }} AS numero_appareil,
     e.id                             AS groupe_id,
     (SELECT id FROM public.workflow_statut WHERE code = 'A_FAIRE') AS statut_id
   FROM etapes e
@@ -38,7 +39,7 @@ all_wga AS (
   SELECT wga.id, wga.groupe_id
   FROM public.workflow_groupe_appareil wga
   JOIN etapes e ON e.id = wga.groupe_id
-  WHERE wga.numero_appareil = {{ appsmith.URL.queryParams.numero_affaire + InputRepereAppareil.text }}
+  WHERE wga.numero_appareil = {{ ListeAffaires.selectedRow.numero_affaire + InputRepereAppareil.text }}
 ),
 
 -- 3) identifie la ligne correspondant à l'étape FABRICATION

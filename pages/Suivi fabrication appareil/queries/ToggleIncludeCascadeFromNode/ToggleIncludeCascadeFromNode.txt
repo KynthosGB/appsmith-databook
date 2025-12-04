@@ -1,0 +1,19 @@
+-- ToggleIncludeCascadeFromNode
+-- Active/désactive un nœud ET tous ses descendants pour un appareil donné
+-- Params: this.params.numero_appareil, this.params.root_master_id, this.params.include
+
+WITH RECURSIVE tree AS (
+  SELECT s.master_id, s.parent_master_id
+  FROM public.sommaire s
+  WHERE s.master_id = {{ this.params.root_master_id }}
+
+  UNION ALL
+  SELECT c.master_id, c.parent_master_id
+  FROM public.sommaire c
+  JOIN tree t ON c.parent_master_id = t.master_id
+)
+UPDATE public.sommaire_appareils a
+SET include = {{ this.params.include }}
+FROM tree t
+WHERE a.numero_appareil = {{ this.params.numero_appareil }}
+  AND a.master_id      = t.master_id;

@@ -1,0 +1,45 @@
+{
+  "animateLoading": true,
+  "bottomRow": 74,
+  "bottomRowBeforeCollapse": 74,
+  "docUrl": "{{ appsmith.store.ccpuUrl }}",
+  "dynamicBindingPathList": [
+    {
+      "key": "docUrl"
+    },
+    {
+      "key": "isVisible"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "isVisible"
+    }
+  ],
+  "dynamicTriggerPathList": [],
+  "flexVerticalAlignment": "start",
+  "isCanvas": false,
+  "isLoading": false,
+  "isVisible": "{{\n(() => {\n  const url = appsmith.store.ccpuUrl;\n  const rows = ListeCCPU.selectedRows || [];\n\n  // 1) Pas d'URL → invisible\n  if (!url) return false;\n\n  // 2) Pas de sélection → invisible\n  if (!rows.length) return false;\n\n  // 3) Tous les codes identiques ?\n  const codes = Array.from(\n    new Set(rows.map(r => String(r.code || \"\").trim()))\n  );\n  if (codes.length !== 1) return false;\n\n  const selectedCode = codes[0];\n\n  // 4) Vérifier que l'URL contient bien ce code\n  //    → on cherche dans l'URL le code exact (ex : \"...?code=5G230\")\n  if (!url.includes(selectedCode)) return false;\n\n  // 5) Statuts autorisés\n  const validStatuses = [\"found_unique\", \"path_ok\"];\n  const allValid = rows.every(r => validStatuses.includes(r.search_status));\n  if (!allValid) return false;\n\n  // 6) Sinon → visible\n  return true;\n})()\n}}\n",
+  "key": "qx1angimdm",
+  "leftColumn": 35,
+  "mobileBottomRow": 40,
+  "mobileLeftColumn": 0,
+  "mobileRightColumn": 24,
+  "mobileTopRow": 0,
+  "needsErrorInfo": false,
+  "originalBottomRow": 74,
+  "originalTopRow": 5,
+  "parentColumnSpace": 7.107330322265625,
+  "parentId": "5an5fuaiqr",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 64,
+  "topRow": 5,
+  "topRowBeforeCollapse": 5,
+  "type": "DOCUMENT_VIEWER_WIDGET",
+  "version": 1,
+  "widgetId": "mner72g2q3",
+  "widgetName": "DocumentViewer1"
+}

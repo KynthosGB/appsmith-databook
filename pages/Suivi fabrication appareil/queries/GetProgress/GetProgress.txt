@@ -1,0 +1,3 @@
+SELECT percent, step
+FROM public.job_progress
+WHERE job_id = {{ appsmith.store.jobId }};

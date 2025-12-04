@@ -33,6 +33,8 @@
   "mobileTopRow": 18,
   "needsErrorInfo": false,
   "onClick": "{{closeModal(ModalCreerAppareil.name);}}",
+  "originalBottomRow": 36,
+  "originalTopRow": 32,
   "parentId": "vtmmuedw3o",
   "placement": "CENTER",
   "recaptchaType": "V3",

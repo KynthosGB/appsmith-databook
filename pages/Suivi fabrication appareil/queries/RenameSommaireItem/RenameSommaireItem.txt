@@ -1,0 +1,7 @@
+UPDATE public.sommaire_appareils
+SET
+  label_fr_override = CASE WHEN {{ this.params.lang }} = 'fr' THEN {{ this.params.new_label }} ELSE label_fr_override END,
+  label_en_override = CASE WHEN {{ this.params.lang }} = 'en' THEN {{ this.params.new_label }} ELSE label_en_override END,
+  updated_at = now()
+WHERE numero_appareil = {{ appsmith.URL.queryParams.numero_appareil }}
+  AND master_id = {{ this.params.master_id }};

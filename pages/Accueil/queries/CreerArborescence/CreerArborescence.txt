@@ -1,6 +1,6 @@
 {
 	"nom_appareil": "{{InputNomAppareil.text}}",
   "repere_appareil": "{{InputRepereAppareil.text}}",
-	"numero_affaire": "{{ appsmith.URL.queryParams.numero_affaire }}",
-	"nom_client": "{{ appsmith.URL.queryParams.nom_client }}"
+	"numero_affaire": "{{ ListeAffaires.selectedRow.numero_affaire }}",
+	"nom_client": "{{ ListeAffaires.selectedRow.nom_client }}"
 }

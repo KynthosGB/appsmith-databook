@@ -1,0 +1,43 @@
+-- ReindexChaptersForAppareil (v2)
+WITH all_ch AS (
+  SELECT s.master_id,
+         COALESCE(a.chapter_ord_override, s.default_chapter_ord) AS ord
+  FROM public.sommaire s
+  JOIN public.sommaire_appareils a ON a.master_id = s.master_id
+  WHERE a.numero_appareil = {{ this.params.numero_appareil }}
+    AND s.level = 1
+),
+rank_all AS (
+  SELECT master_id,
+         ROW_NUMBER() OVER (ORDER BY ord) AS rn_all
+  FROM all_ch
+),
+rank_active AS (
+  SELECT s.master_id,
+         ROW_NUMBER() OVER (
+           ORDER BY COALESCE(a.chapter_ord_override, s.default_chapter_ord)
+         ) AS rn_active
+  FROM public.sommaire s
+  JOIN public.sommaire_appareils a ON a.master_id = s.master_id
+  WHERE a.numero_appareil = {{ this.params.numero_appareil }}
+    AND s.level = 1
+    AND a.include IS TRUE
+),
+merged AS (
+  SELECT a.master_id,
+         a.include,
+         ra.rn_active,
+         r.rn_all
+  FROM public.sommaire_appareils a
+  JOIN rank_all r  ON r.master_id = a.master_id
+  LEFT JOIN rank_active ra ON ra.master_id = a.master_id
+  WHERE a.numero_appareil = {{ this.params.numero_appareil }}
+)
+UPDATE public.sommaire_appareils AS a
+SET chapter_ord_override = CASE
+      WHEN m.include IS TRUE THEN m.rn_active
+      ELSE 1000 + m.rn_all
+    END
+FROM merged m
+WHERE a.numero_appareil = {{ this.params.numero_appareil }}
+  AND a.master_id = m.master_id;

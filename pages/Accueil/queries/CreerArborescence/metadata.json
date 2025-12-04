@@ -11,7 +11,7 @@
           "value": "application/json"
         }
       ],
-      "body": "{\n\t\"nom_appareil\": \"{{InputNomAppareil.text}}\",\n  \"repere_appareil\": \"{{InputRepereAppareil.text}}\",\n\t\"numero_affaire\": \"{{ appsmith.URL.queryParams.numero_affaire }}\",\n\t\"nom_client\": \"{{ appsmith.URL.queryParams.nom_client }}\"\n}",
+      "body": "{\n\t\"nom_appareil\": \"{{InputNomAppareil.text}}\",\n  \"repere_appareil\": \"{{InputRepereAppareil.text}}\",\n\t\"numero_affaire\": \"{{ ListeAffaires.selectedRow.numero_affaire }}\",\n\t\"nom_client\": \"{{ ListeAffaires.selectedRow.nom_client }}\"\n}",
       "bodyFormData": [],
       "encodeParamsToggle": true,
       "formData": {

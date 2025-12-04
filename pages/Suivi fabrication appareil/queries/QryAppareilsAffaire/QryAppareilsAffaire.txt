@@ -1,0 +1,6 @@
+SELECT 
+  numero_appareil,
+	numero_affaire
+FROM appareils
+WHERE numero_affaire = '260999'
+ORDER BY numero_appareil;

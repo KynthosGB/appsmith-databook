@@ -1,0 +1,45 @@
+{
+  "animateLoading": true,
+  "bottomRow": 73,
+  "bottomRowBeforeCollapse": 74,
+  "docUrl": "{{appsmith.store.ccpuCandidateUrl }}",
+  "dynamicBindingPathList": [
+    {
+      "key": "docUrl"
+    },
+    {
+      "key": "isVisible"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "isVisible"
+    }
+  ],
+  "dynamicTriggerPathList": [],
+  "flexVerticalAlignment": "start",
+  "isCanvas": false,
+  "isLoading": false,
+  "isVisible": "{{\n(() => {\n  const cand = ListeCandidatsCCPU.selectedRow;\n  const url  = appsmith.store.ccpuCandidateUrl;\n\n  // Pas de candidat, pas de path, pas d'URL → invisible\n  if (!cand || !cand.path || !url) return false;\n\n  // Code attendu = code de la première ligne pré-sélectionnée\n  const rows = appsmith.store.ccpuSelectedRows || [];\n  if (!rows.length) return false;\n\n  const expectedCode = String(rows[0].code || \"\").trim();\n  if (!expectedCode) return false;\n\n  // On récupère le paramètre ?code=... dans l'URL\n  const match = url.match(/[?&]code=([^&]+)/);\n  if (!match) return false;\n\n  const urlCode = decodeURIComponent(match[1] || \"\");\n\n  // Si différent → invisible\n  if (urlCode !== expectedCode) return false;\n\n  // Tout est cohérent → visible\n  return true;\n})()\n}}\n",
+  "key": "qx1angimdm",
+  "leftColumn": 37,
+  "mobileBottomRow": 40,
+  "mobileLeftColumn": 0,
+  "mobileRightColumn": 24,
+  "mobileTopRow": 0,
+  "needsErrorInfo": false,
+  "originalBottomRow": 5,
+  "originalTopRow": 5,
+  "parentColumnSpace": 7.107330322265625,
+  "parentId": "fd7gjlatk5",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 64,
+  "topRow": 5,
+  "topRowBeforeCollapse": 5,
+  "type": "DOCUMENT_VIEWER_WIDGET",
+  "version": 1,
+  "widgetId": "0gsotfynwf",
+  "widgetName": "DocumentViewer2"
+}

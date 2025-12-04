@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 19,
+  "bottomRow": 16,
   "boxShadow": "none",
   "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
   "buttonVariant": "PRIMARY",
@@ -12,9 +12,16 @@
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "isDisabled"
     }
   ],
-  "dynamicPropertyPathList": [],
+  "dynamicPropertyPathList": [
+    {
+      "key": "isDisabled"
+    }
+  ],
   "dynamicTriggerPathList": [
     {
       "key": "onClick"
@@ -23,11 +30,11 @@
   "iconAlign": "left",
   "iconName": "add",
   "isDefaultClickDisabled": true,
-  "isDisabled": false,
+  "isDisabled": "{{ !ListeAffaires.selectedRow.numero_affaire }}",
   "isLoading": false,
   "isVisible": true,
   "key": "b4xheta7ln",
-  "leftColumn": 51,
+  "leftColumn": 55,
   "minWidth": 120,
   "mobileBottomRow": 6,
   "mobileLeftColumn": 44,
@@ -35,8 +42,8 @@
   "mobileTopRow": 2,
   "needsErrorInfo": false,
   "onClick": "{{showModal(ModalCreerAppareil.name);}}",
-  "originalBottomRow": 19,
-  "originalTopRow": 15,
+  "originalBottomRow": 16,
+  "originalTopRow": 12,
   "parentColumnSpace": 20.25,
   "parentId": "0",
   "parentRowSpace": 10,
@@ -45,9 +52,9 @@
   "renderMode": "CANVAS",
   "resetFormOnClick": false,
   "responsiveBehavior": "hug",
-  "rightColumn": 59,
+  "rightColumn": 63,
   "text": "Créer un appareil",
-  "topRow": 15,
+  "topRow": 12,
   "type": "BUTTON_WIDGET",
   "version": 1,
   "widgetId": "emmgmc0gi2",

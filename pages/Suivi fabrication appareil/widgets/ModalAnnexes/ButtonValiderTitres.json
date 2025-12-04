@@ -1,0 +1,54 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 59,
+  "boxShadow": "none",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonStyle": "PRIMARY_BUTTON",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    },
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "4l4k1jvbos",
+  "leftColumn": 49,
+  "minWidth": 120,
+  "mobileBottomRow": 22,
+  "mobileLeftColumn": 47,
+  "mobileRightColumn": 63,
+  "mobileTopRow": 18,
+  "needsErrorInfo": false,
+  "onClick": "{{\n  (async () => {\n    const lang   = (appsmith.store.langue_appareil || (RadioLangue.selectedOptionValue || 'fr')).toLowerCase();\n    const rows   = SommaireUI.annexList();      // chapitre 8 + ses sous-chapitres actifs (flatten)\n    const drafts = appsmith.store.annex_drafts || {};\n\n    // util pour récupérer le numéro N (8.1 -> 1, 8.2 -> 2, etc.)\n    const subNo = (r) => Number(String(r.effDisplayNo || r.display_no || \"\").split(\".\").pop());\n\n    // construit la liste des changements *sans* rafraîchir l'UI\n    const changes = rows.map(r => {\n      const prev = SommaireUI.labelFor(r);                // libellé affiché actuellement (avant sauvegarde)\n      const next = drafts[r.master_id] ?? prev;           // libellé saisi dans la modal (si modifié)\n      return (next !== prev)\n        ? { master_id: r.master_id, no: subNo(r), prev_label: prev, new_label: next }\n        : null;\n    }).filter(Boolean);\n\n    if (!changes.length) {\n      closeModal('ModalAnnexes');\n      showAlert('Aucune modification', 'info');\n      return;\n    }\n\n    // 1) MET À JOUR LA DB (labels override) pour chaque item modifié\n    await Promise.all(\n      changes.map(c =>\n        RenameSommaireItem.run({\n          master_id: c.master_id,\n          new_label: c.new_label,\n          lang\n        })\n      )\n    );\n\n    // 2) APPEL N8N : ne lui envoie que {no, label, prev_label}\n    const annexesPayload = changes.map(c => ({\n      no: c.no,\n      label: c.new_label,\n      prev_label: c.prev_label\n    }));\n\n    await RenommerDossiersAnnexes.run({ annexes: annexesPayload });\n\n    // 3) REFRESH + nettoyage\n    await GetSommaireAppareil.run();\n    await storeValue('annex_drafts', null);\n    closeModal('ModalAnnexes');\n    showAlert('Libellés mis à jour et dossiers renommés', 'success');\n  })().catch(e => showAlert('Erreur sauvegarde: ' + (e?.message || e), 'error'))\n}}\n",
+  "parentId": "bye8851h0e",
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 63,
+  "text": "Valider",
+  "topRow": 55,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "gidm3a8yln",
+  "widgetName": "ButtonValiderTitres"
+}

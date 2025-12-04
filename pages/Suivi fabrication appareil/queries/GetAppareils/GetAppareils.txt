@@ -1,0 +1,3 @@
+SELECT numero_appareil, numero_affaire
+FROM public."appareils"
+WHERE numero_affaire = '{{ SelectAffaire.selectedOptionValue }}' ORDER BY numero_appareil ASC;

@@ -11,6 +11,9 @@
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "text"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
@@ -30,13 +33,15 @@
   "mobileRightColumn": 41,
   "mobileTopRow": 1,
   "needsErrorInfo": false,
+  "originalBottomRow": 5,
+  "originalTopRow": 1,
   "overflow": "NONE",
   "parentId": "vtmmuedw3o",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 41,
+  "rightColumn": 54,
   "shouldTruncate": false,
-  "text": "Créer un appareil",
+  "text": "{{ \"Créer un appareil pour l'affaire \" + ListeAffaires.selectedRow.numero_affaire }}",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 1,

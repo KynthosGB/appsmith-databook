@@ -323,7 +323,7 @@ export default {
 		if (!row) return;
 
 		// ⚠️ remplace par les noms réels de tes widgets
-		const monteur       = Monteur.text;
+		const monteur       = Monteur.selectedOptionValue;
 		const dateDebutVal  = DateDebutFab.selectedDate;
 		const dateFinVal    = DateFinFab.selectedDate;
 		const heuresPrevues = Number(HeuresPrevues.text || "") || null;

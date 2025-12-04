@@ -1,0 +1,101 @@
+-- ---------- Variables Appsmith ----------
+-- On réutilise partout le même numéro d'appareil
+-- '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}'
+
+-- 1) Récupérer les id des groupes de workflow liés à l'appareil
+-- (utilisés dans les DELETE suivants)
+-- ⚠️ ce SELECT est répété dans chaque DELETE car Appsmith ne permet pas
+-- de définir une variable SQL avant.
+-- SELECT id FROM public.workflow_groupe_appareil
+-- WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}';
+
+-- 2) Supprimer d'abord toutes les lignes "enfants" qui référencent groupe_appareil_id
+
+DELETE FROM public.workflow_preparation
+WHERE groupe_appareil_id IN (
+  SELECT id FROM public.workflow_groupe_appareil
+  WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}'
+);
+
+DELETE FROM public.workflow_appro
+WHERE groupe_appareil_id IN (
+  SELECT id FROM public.workflow_groupe_appareil
+  WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}'
+);
+
+DELETE FROM public.workflow_appro_item
+WHERE groupe_appareil_id IN (
+  SELECT id FROM public.workflow_groupe_appareil
+  WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}'
+);
+
+DELETE FROM public.workflow_cahier_soudage
+WHERE groupe_appareil_id IN (
+  SELECT id FROM public.workflow_groupe_appareil
+  WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}'
+);
+
+DELETE FROM public.workflow_controle_item
+WHERE groupe_appareil_id IN (
+  SELECT id FROM public.workflow_groupe_appareil
+  WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}'
+);
+
+DELETE FROM public.workflow_dossier_constructeur
+WHERE groupe_appareil_id IN (
+  SELECT id FROM public.workflow_groupe_appareil
+  WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}'
+);
+
+DELETE FROM public.workflow_fabrication
+WHERE groupe_appareil_id IN (
+  SELECT id FROM public.workflow_groupe_appareil
+  WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}'
+);
+
+DELETE FROM public.workflow_groupe_appareil_history
+WHERE groupe_appareil_id IN (
+  SELECT id FROM public.workflow_groupe_appareil
+  WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}'
+);
+
+DELETE FROM public.workflow_note_calcul
+WHERE groupe_appareil_id IN (
+  SELECT id FROM public.workflow_groupe_appareil
+  WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}'
+);
+
+DELETE FROM public.workflow_plan
+WHERE groupe_appareil_id IN (
+  SELECT id FROM public.workflow_groupe_appareil
+  WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}'
+);
+
+-- 3) Supprimer les groupes de workflow de l'appareil
+
+DELETE FROM public.workflow_groupe_appareil
+WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}';
+
+-- 4) Supprimer les lignes CCPU liées à l'appareil
+
+DELETE FROM public.liste_ccpu_nomenclature_appareil
+WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}';
+
+-- 5) D'abord les enfants "classiques" de l'appareil
+
+DELETE FROM public.enceintes_appareils
+WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}';
+
+DELETE FROM public.sommaire_appareils
+WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}';
+
+DELETE FROM public.caracteristiques_appareils
+WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}';
+
+DELETE FROM public.donnees_generales_appareils
+WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}';
+
+-- 6) Enfin le parent
+
+DELETE FROM public.appareils
+WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}';

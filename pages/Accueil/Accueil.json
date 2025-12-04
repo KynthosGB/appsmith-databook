@@ -1,23 +1,23 @@
 {
-  "gitSyncId": "6915b9d6a2ab6852a3eeef70_2fa031cf-ec3f-4f19-8791-8c75478fa5ff",
+  "gitSyncId": "6915b9d6a2ab6852a3eeef70_c5d337aa-ff1b-442b-9e67-45345c26934e",
   "unpublishedPage": {
     "isHidden": false,
     "layouts": [
       {
         "dsl": {
           "backgroundColor": "none",
-          "bottomRow": 500,
+          "bottomRow": 620,
           "canExtend": true,
           "containerStyle": "none",
           "detachFromLayout": true,
           "dynamicBindingPathList": [],
           "leftColumn": 0,
-          "minHeight": 760,
+          "minHeight": 990,
           "parentColumnSpace": 1,
           "parentRowSpace": 1,
           "rightColumn": 1224,
           "snapColumns": 64,
-          "snapRows": 74,
+          "snapRows": 97,
           "topRow": 0,
           "type": "CANVAS_WIDGET",
           "version": 94,
@@ -26,7 +26,7 @@
         }
       }
     ],
-    "name": "Suivi fabrication appareil",
-    "slug": "suivi-fabrication-appareil"
+    "name": "Accueil",
+    "slug": "accueil"
   }
 }

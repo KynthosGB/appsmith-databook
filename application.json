@@ -37,7 +37,7 @@
     },
     {
       "id": "Affaires",
-      "isDefault": true
+      "isDefault": false
     },
     {
       "id": "Fiche appareil",
@@ -54,6 +54,10 @@
     {
       "id": "Planning",
       "isDefault": false
+    },
+    {
+      "id": "Accueil",
+      "isDefault": true
     }
   ],
   "unpublishedAppLayout": {

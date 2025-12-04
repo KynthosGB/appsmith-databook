@@ -3,7 +3,7 @@
   "animateLoading": true,
   "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 28,
+  "bottomRow": 36,
   "boxShadow": "none",
   "defaultText": "{{\n  (QryInfoSuiviFabAppareil.data || [])\n    .find(r => r.groupe_code === \"PLAN\")\n    ?.nombre_jours || \"\"\n}}\n",
   "dynamicBindingPathList": [
@@ -60,7 +60,7 @@
   "rightColumn": 63,
   "shouldAllowAutofill": false,
   "showStepArrows": false,
-  "topRow": 21,
+  "topRow": 29,
   "type": "INPUT_WIDGET_V2",
   "version": 2,
   "widgetId": "dig1ykh9bd",

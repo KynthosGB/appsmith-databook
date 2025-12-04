@@ -11,7 +11,11 @@
       "key": "borderRadius"
     }
   ],
-  "dynamicTriggerPathList": [],
+  "dynamicTriggerPathList": [
+    {
+      "key": "menuItems.menuItem1.onClick"
+    }
+  ],
   "iconAlign": "left",
   "iconName": "menu",
   "isCompact": false,
@@ -24,12 +28,13 @@
   "menuColor": "{{appsmith.theme.colors.primaryColor}}",
   "menuItems": {
     "menuItem1": {
-      "iconName": "add",
+      "iconName": "home",
       "id": "menuItem1",
       "index": 0,
       "isDisabled": false,
       "isVisible": true,
-      "label": "Ajouter un appareil",
+      "label": "Accueil",
+      "onClick": "{{navigateTo('Accueil', {}, 'SAME_WINDOW');}}",
       "widgetId": ""
     },
     "menuItem2": {

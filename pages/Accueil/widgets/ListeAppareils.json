@@ -80,9 +80,6 @@
   "dynamicPropertyPathList": [
     {
       "key": "tableData"
-    },
-    {
-      "key": "primaryColumns.customColumn2.onClick"
     }
   ],
   "dynamicTriggerPathList": [
@@ -188,7 +185,7 @@
       "label": "Supp.",
       "labelColor": "#FFFFFF",
       "notation": "standard",
-      "onClick": "{{\n  // 1) Supprimer le dossier sur le NAS (remplace API_SupprimerDossier par ton action API n8n)\n  SupprimerAppareil.run({\n    // passe ce dont ton n8n a besoin ; au minimum l'identifiant\n    numero_appareil: ListeAppareils.selectedRow.numero_appareil\n    // ex. numero_affaire, chemin_complet, etc. si ton workflow les attend\n  })\n  // 2) Puis supprimer en base\n  .then(() => DeleteAppareil.run())\n  // 3) Feedback + refresh\n  .then(() => {\n    showAlert('Appareil supprimé', 'success');\n    GetAppareils.run();\n  })\n  .catch((e) => {\n    showAlert('Échec de la suppression : ' + (e?.message || ''), 'error');\n  });\n}}",
+      "onClick": "{{showModal(ModalSuppression.name);}}",
       "originalId": "customColumn2",
       "sticky": "right",
       "textSize": "0.875rem",

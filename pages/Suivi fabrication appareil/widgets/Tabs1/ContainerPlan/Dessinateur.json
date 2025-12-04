@@ -1,11 +1,10 @@
 {
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
-  "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 21,
+  "bottomRow": 29,
   "boxShadow": "none",
-  "defaultText": "{{\n  (QryInfoSuiviFabAppareil.data || [])\n    .find(r => r.groupe_code === \"PLAN\")\n    ?.plan_dessinateur || \"\"\n}}\n",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( (QryInfoSuiviFabAppareil.data || [])\n    .find(r => r.groupe_code === \"PLAN\")\n    ?.plan_dessinateur || \"\"\n))(Dessinateur.options, Dessinateur.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -14,54 +13,61 @@
       "key": "borderRadius"
     },
     {
-      "key": "defaultText"
+      "key": "sourceData"
+    },
+    {
+      "key": "defaultOptionValue"
     }
   ],
   "dynamicHeight": "FIXED",
   "dynamicPropertyPathList": [
     {
-      "key": "onBlur"
+      "key": "sourceData"
+    },
+    {
+      "key": "onOptionChange"
     }
   ],
   "dynamicTriggerPathList": [
     {
-      "key": "onBlur"
+      "key": "onOptionChange"
     }
   ],
-  "iconAlign": "left",
-  "inputType": "TEXT",
   "isDisabled": false,
+  "isFilterable": true,
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,
-  "key": "jdjyd6pywq",
-  "label": "Dessinateur",
+  "key": "4vo7ufpidh",
   "labelAlignment": "left",
   "labelPosition": "Top",
-  "labelStyle": "",
+  "labelText": "Dessinateur",
   "labelTextSize": "0.875rem",
-  "labelWidth": "17",
+  "labelWidth": 5,
   "leftColumn": 0,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 7,
-  "mobileLeftColumn": 1,
-  "mobileRightColumn": 21,
-  "mobileTopRow": 0,
+  "mobileBottomRow": 23,
+  "mobileLeftColumn": 14,
+  "mobileRightColumn": 34,
+  "mobileTopRow": 16,
   "needsErrorInfo": false,
-  "onBlur": "{{ JS_SuiviFab.savePlan() }}\n",
-  "parentColumnSpace": 4.1171875,
+  "onOptionChange": "{{ JS_SuiviFab.savePlan() }}",
+  "optionLabel": "label",
+  "optionValue": "label",
+  "parentColumnSpace": 26.67626953125,
   "parentId": "ti4dvltqda",
   "parentRowSpace": 10,
+  "placeholderText": "Select option",
   "renderMode": "CANVAS",
-  "resetOnSubmit": true,
   "responsiveBehavior": "fill",
   "rightColumn": 63,
-  "showStepArrows": false,
-  "topRow": 14,
-  "type": "INPUT_WIDGET_V2",
-  "version": 2,
-  "widgetId": "2tkrgz1493",
+  "serverSideFiltering": false,
+  "sourceData": "{{\n  (GetDessinateur.data || []).map(m => ({\n    label: m.label,   // L. AMELIN\n    value: m.label,   // on stocke le même texte puisque la DB n'accepte que du texte\n  }))\n}}",
+  "topRow": 22,
+  "type": "SELECT_WIDGET",
+  "version": 1,
+  "widgetId": "ufkz1wn6gh",
   "widgetName": "Dessinateur"
 }

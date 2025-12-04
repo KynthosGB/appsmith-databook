@@ -1,0 +1,51 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 29,
+  "boxShadow": "none",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonStyle": "PRIMARY",
+  "buttonVariant": "SECONDARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    },
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "ets17rjxqt",
+  "leftColumn": 1,
+  "minWidth": 120,
+  "mobileBottomRow": 22,
+  "mobileLeftColumn": 31,
+  "mobileRightColumn": 47,
+  "mobileTopRow": 18,
+  "needsErrorInfo": false,
+  "onClick": "{{closeModal(ModalSuppression.name);}}",
+  "originalBottomRow": 24,
+  "originalTopRow": 20,
+  "parentId": "fujm2u4wk4",
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 17,
+  "text": "Fermer",
+  "topRow": 25,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "mcr94ie5q1",
+  "widgetName": "Button2"
+}

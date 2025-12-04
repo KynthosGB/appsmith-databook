@@ -1,0 +1,56 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 29,
+  "boxShadow": "none",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonStyle": "PRIMARY_BUTTON",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    },
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "ets17rjxqt",
+  "leftColumn": 47,
+  "minWidth": 120,
+  "mobileBottomRow": 22,
+  "mobileLeftColumn": 47,
+  "mobileRightColumn": 63,
+  "mobileTopRow": 18,
+  "needsErrorInfo": false,
+  "onClick": "{{\n  // 1) Supprimer le dossier sur le NAS (remplace API_SupprimerDossier par ton action API n8n)\n  SupprimerAppareil.run({\n    // passe ce dont ton n8n a besoin ; au minimum l'identifiant\n    numero_appareil: ListeAppareils.selectedRow.numero_appareil\n    // ex. numero_affaire, chemin_complet, etc. si ton workflow les attend\n  })\n  // 2) Puis supprimer en base\n  .then(() => DeleteAppareil.run())\n  // 3) Feedback + refresh\n  .then(() => {\n\t\tif (ListeAffaires.selectedRow.numero_affaire) {\n      GetAppareils.run();\n    } else {\n      GetAllAppareils.run();\n    }\n    showAlert('Appareil supprimé', 'success');\n    GetAppareils.run();\n  })\n  .catch((e) => {\n    showAlert('Échec de la suppression : ' + (e?.message || ''), 'error');\n  });\n}}",
+  "originalBottomRow": 24,
+  "originalTopRow": 20,
+  "parentId": "fujm2u4wk4",
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 63,
+  "text": "Confirmer",
+  "topRow": 25,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "xj0yokchhn",
+  "widgetName": "Button3"
+}

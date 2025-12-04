@@ -98,7 +98,7 @@ export default {
     // ⚠️ remplace ces noms par les tiens
     const numero       = NumPlan.text;
     const indice       = IndicePlan.text;
-    const dessinateur  = Dessinateur.text;
+    const dessinateur  = Dessinateur.selectedOptionLabel;
 
     const dateObj      = DatePlanObjectif.selectedDate;
     const dateDebut    = DateDebutPlan.selectedDate;

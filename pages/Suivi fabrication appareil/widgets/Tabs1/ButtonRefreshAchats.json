@@ -46,7 +46,7 @@
   "resetFormOnClick": false,
   "responsiveBehavior": "hug",
   "rightColumn": 63,
-  "text": "Actualiser les achats",
+  "text": "Actualiser la liste des achats",
   "topRow": 4,
   "type": "BUTTON_WIDGET",
   "version": 1,

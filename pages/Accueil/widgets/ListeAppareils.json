@@ -146,7 +146,7 @@
       "label": "Choisir",
       "labelColor": "#FFFFFF",
       "notation": "standard",
-      "onClick": "{{navigateTo('Fiche appareil', {\n  \"numero_appareil\": currentRow.numero_appareil,\n  \"numero_affaire\": currentRow.numero_affaire\n}, 'NEW_WINDOW');}}",
+      "onClick": "{{navigateTo('Suivi fabrication appareil', {\n  \"numero_appareil\": currentRow.numero_appareil,\n  \"numero_affaire\": currentRow.numero_affaire\n}, 'NEW_WINDOW');}}",
       "originalId": "customColumn1",
       "sticky": "right",
       "textSize": "0.875rem",

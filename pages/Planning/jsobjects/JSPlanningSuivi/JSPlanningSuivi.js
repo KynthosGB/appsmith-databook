@@ -144,6 +144,7 @@ export default {
   if (!events.length) {
     const rows = rowsRaw.map((r) => ({
       appareil: r.numero_appareil,
+			affaire: r.numero_affaire,
       label: `${r.nom_appareil}`,
       delai: r.delai ? String(r.delai).slice(0, 10) : null,
       events: [],
@@ -164,6 +165,7 @@ export default {
     if (!rowMap[e.appareil]) {
       rowMap[e.appareil] = {
         appareil: e.appareil,
+				affaire: e.affaire,
         label: e.appareilLabel,
         delai: null, // complété après avec rowsRaw
         events: [],
@@ -186,12 +188,16 @@ export default {
     if (!rowMap[app]) {
       rowMap[app] = {
         appareil: app,
+				affaire: r.numero_affaire,
         label: `${r.nom_appareil}`,
         delai: delaiStr,
         events: [],
       };
     } else if (!rowMap[app].delai) {
       rowMap[app].delai = delaiStr;
+    }
+		if (!rowMap[app].affaire) {      // 👈 NOUVEAU
+      rowMap[app].affaire = r.numero_affaire;
     }
   });
 

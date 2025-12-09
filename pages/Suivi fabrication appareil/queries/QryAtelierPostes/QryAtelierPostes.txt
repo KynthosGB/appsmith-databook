@@ -1,0 +1,10 @@
+SELECT
+  ap.*,
+  n.designation
+FROM public.atelier_postes ap
+LEFT JOIN public.liste_ccpu_nomenclature_appareil n
+  ON ap.numero_appareil = n.numero_appareil
+ AND ap.repere          = n.rep
+ AND ap.sous_repere     = n.srsm
+WHERE ap.numero_appareil = '250064A'
+ORDER BY ap.repere, ap.sous_repere;

@@ -5,12 +5,12 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": 1,
-  "bottomRow": 132,
+  "bottomRow": 113,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "children": [
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 1060,
+      "bottomRow": 870,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": true,
       "detachFromLayout": true,
@@ -56,7 +56,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 1060,
+      "bottomRow": 870,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": true,
       "detachFromLayout": true,
@@ -102,7 +102,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 1060,
+      "bottomRow": 870,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -147,7 +147,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 1060,
+      "bottomRow": 870,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -183,7 +183,7 @@
       "responsiveBehavior": "fill",
       "rightColumn": 1458.9375,
       "tabId": "tabztjepyy0yu",
-      "tabName": "Fabrication",
+      "tabName": "Montage",
       "topRow": 1,
       "type": "CANVAS_WIDGET",
       "version": 1,
@@ -192,7 +192,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 1060,
+      "bottomRow": 870,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -237,7 +237,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 1060,
+      "bottomRow": 870,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -282,7 +282,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 1060,
+      "bottomRow": 870,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -318,7 +318,7 @@
       "responsiveBehavior": "fill",
       "rightColumn": 1458.9375,
       "tabId": "tabaw88ax9qjg",
-      "tabName": "Prestations externes",
+      "tabName": "Presta externes",
       "topRow": 1,
       "type": "CANVAS_WIDGET",
       "version": 1,
@@ -327,7 +327,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 1060,
+      "bottomRow": 1050,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -408,7 +408,7 @@
       "responsiveBehavior": "fill",
       "rightColumn": 1458.9375,
       "tabId": "tabkuzwi4d6d0",
-      "tabName": "Dossier constructeur",
+      "tabName": "DC",
       "topRow": 1,
       "type": "CANVAS_WIDGET",
       "version": 1,
@@ -417,7 +417,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 1060,
+      "bottomRow": 1040,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -459,6 +459,51 @@
       "version": 1,
       "widgetId": "5d9mv378b8",
       "widgetName": "Canvas18"
+    },
+    {
+      "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "bottomRow": 870,
+      "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+      "canExtend": false,
+      "containerStyle": "none",
+      "detachFromLayout": true,
+      "dynamicBindingPathList": [
+        {
+          "key": "borderRadius"
+        },
+        {
+          "key": "boxShadow"
+        }
+      ],
+      "dynamicHeight": "AUTO_HEIGHT",
+      "dynamicTriggerPathList": [],
+      "flexLayers": [],
+      "isLoading": false,
+      "isVisible": true,
+      "key": "st98sm6fb1",
+      "leftColumn": 0,
+      "maxDynamicHeight": 9000,
+      "minDynamicHeight": 4,
+      "minHeight": 290,
+      "minWidth": 450,
+      "mobileBottomRow": 291,
+      "mobileLeftColumn": 0,
+      "mobileRightColumn": 1458.9375,
+      "mobileTopRow": 1,
+      "needsErrorInfo": false,
+      "parentColumnSpace": 1,
+      "parentId": "5me1zg2pbw",
+      "parentRowSpace": 1,
+      "renderMode": "CANVAS",
+      "responsiveBehavior": "fill",
+      "rightColumn": 1458.9375,
+      "tabId": "tabh9jnuwcbjs",
+      "tabName": "Fabrication",
+      "topRow": 1,
+      "type": "CANVAS_WIDGET",
+      "version": 1,
+      "widgetId": "x309qzxnke",
+      "widgetName": "Canvas19"
     }
   ],
   "defaultTab": "Etudes",
@@ -490,7 +535,7 @@
   "mobileRightColumn": 25,
   "mobileTopRow": 22,
   "needsErrorInfo": false,
-  "originalBottomRow": 132,
+  "originalBottomRow": 83,
   "originalTopRow": 22,
   "parentColumnSpace": 23.53125,
   "parentId": "0",
@@ -521,17 +566,18 @@
     },
     "tab2c6dcj8thk": {
       "id": "tab2c6dcj8thk",
-      "index": 9,
+      "index": 10,
+      "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Planning",
       "widgetId": "5d9mv378b8"
     },
     "tabaw88ax9qjg": {
       "id": "tabaw88ax9qjg",
-      "index": 6,
+      "index": 7,
       "isDuplicateLabel": false,
       "isVisible": true,
-      "label": "Prestations externes",
+      "label": "Presta externes",
       "widgetId": "gur4cgnmdx"
     },
     "tabca9p6cvc7v": {
@@ -550,16 +596,25 @@
       "label": "Appro",
       "widgetId": "m3y6bzcuko"
     },
+    "tabh9jnuwcbjs": {
+      "id": "tabh9jnuwcbjs",
+      "index": 4,
+      "isDuplicateLabel": false,
+      "isVisible": true,
+      "label": "Fabrication",
+      "widgetId": "x309qzxnke"
+    },
     "tabkuzwi4d6d0": {
       "id": "tabkuzwi4d6d0",
-      "index": 8,
+      "index": 9,
+      "isDuplicateLabel": false,
       "isVisible": true,
-      "label": "Dossier constructeur",
+      "label": "DC",
       "widgetId": "r534emvzfe"
     },
     "tabtba17sm0hn": {
       "id": "tabtba17sm0hn",
-      "index": 5,
+      "index": 6,
       "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Contrôle",
@@ -567,7 +622,7 @@
     },
     "tabvj4h6nfb2c": {
       "id": "tabvj4h6nfb2c",
-      "index": 7,
+      "index": 8,
       "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Dossier CE",
@@ -575,10 +630,10 @@
     },
     "tabztjepyy0yu": {
       "id": "tabztjepyy0yu",
-      "index": 4,
+      "index": 5,
       "isDuplicateLabel": false,
       "isVisible": true,
-      "label": "Fabrication",
+      "label": "Montage",
       "widgetId": "ooyjhdx83z"
     }
   },

@@ -35,7 +35,7 @@
   "isRequired": false,
   "isVisible": true,
   "key": "jdjyd6pywq",
-  "label": "Heures prévues montage",
+  "label": "Heures prévues montage (70% des heures prévues)",
   "labelAlignment": "left",
   "labelPosition": "Top",
   "labelStyle": "",

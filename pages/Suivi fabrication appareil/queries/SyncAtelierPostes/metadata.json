@@ -21,7 +21,7 @@
       "httpMethod": "POST",
       "httpVersion": "HTTP11",
       "paginationType": "NONE",
-      "path": "/webhook-test/appsmith-sync-atelier-postes",
+      "path": "/webhook/appsmith-sync-atelier-postes",
       "pluginSpecifiedTemplates": [
         {
           "value": true

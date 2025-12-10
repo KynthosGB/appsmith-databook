@@ -1,7 +1,10 @@
 SELECT 
     ca.*,
-    lcc.code_construction AS code_construction
+    lcc.code_construction AS code_construction,
+		lcrce.categorie AS categorie_risque_ce
 FROM public.caracteristiques_appareils ca
 LEFT JOIN public.liste_code_construction lcc
     ON ca.code_construction_id = lcc.id
+LEFT JOIN public.liste_categorie_risque_ce lcrce
+    ON ca.categorie_risque_ce_id = lcrce.id
 WHERE ca.numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}';

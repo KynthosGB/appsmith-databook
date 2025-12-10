@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT \n    ca.*,\n    lcc.code_construction AS code_construction\nFROM public.caracteristiques_appareils ca\nLEFT JOIN public.liste_code_construction lcc\n    ON ca.code_construction_id = lcc.id\nWHERE ca.numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}';\n",
+      "body": "SELECT \n    ca.*,\n    lcc.code_construction AS code_construction,\n\t\tlcrce.categorie AS categorie_risque_ce\nFROM public.caracteristiques_appareils ca\nLEFT JOIN public.liste_code_construction lcc\n    ON ca.code_construction_id = lcc.id\nLEFT JOIN public.liste_categorie_risque_ce lcrce\n    ON ca.categorie_risque_ce_id = lcrce.id\nWHERE ca.numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}';\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

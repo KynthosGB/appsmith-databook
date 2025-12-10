@@ -4,7 +4,7 @@
   "borderColor": "",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "1",
-  "bottomRow": 39,
+  "bottomRow": 4,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -37,7 +37,7 @@
   "originalTopRow": 35,
   "overflow": "NONE",
   "parentColumnSpace": 6.015625,
-  "parentId": "m3y6bzcuko",
+  "parentId": "gur4cgnmdx",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
@@ -46,10 +46,10 @@
   "text": "Calorifuge",
   "textAlign": "CENTER",
   "textColor": "#3f3f46",
-  "topRow": 35,
+  "topRow": 0,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "yct2yckjol",
+  "widgetId": "hgf19edbrh",
   "widgetName": "TextCalo"
 }

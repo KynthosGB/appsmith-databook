@@ -39,6 +39,9 @@
     },
     {
       "key": "groupButtons.groupButtonn6gauuaej5.buttonColor"
+    },
+    {
+      "key": "groupButtons.groupButtone937a57m36.buttonColor"
     }
   ],
   "dynamicHeight": "FIXED",
@@ -75,6 +78,9 @@
     },
     {
       "key": "groupButtons.groupButtonn6gauuaej5.buttonColor"
+    },
+    {
+      "key": "groupButtons.groupButtone937a57m36.buttonColor"
     }
   ],
   "dynamicTriggerPathList": [],
@@ -109,11 +115,26 @@
       "variant": "filled",
       "widgetId": "l1ojnm9bxn"
     },
+    "groupButtone937a57m36": {
+      "buttonColor": "{{JS_SuiviFabAppareil.colorFor(\"PRESTA_EXTERNES\") }}",
+      "buttonType": "SIMPLE",
+      "id": "groupButtone937a57m36",
+      "index": 8,
+      "isDisabled": false,
+      "isSeparator": false,
+      "isVisible": true,
+      "itemType": "BUTTON",
+      "label": "PRESTA EXT.",
+      "menuItems": {},
+      "placement": "CENTER",
+      "variant": "filled",
+      "widgetId": "36t4m04e8l"
+    },
     "groupButtonfrdsmhdvmz": {
       "buttonColor": "{{JS_SuiviFabAppareil.colorFor(\"DOSSIER_CE\") }}",
       "buttonType": "SIMPLE",
       "id": "groupButtonfrdsmhdvmz",
-      "index": 8,
+      "index": 9,
       "isDisabled": false,
       "isSeparator": false,
       "isVisible": true,
@@ -143,12 +164,12 @@
       "buttonColor": "{{JS_SuiviFabAppareil.colorFor(\"DOSSIER_CONSTRUCTEUR\") }}",
       "buttonType": "SIMPLE",
       "id": "groupButtonln510cc54m",
-      "index": 9,
+      "index": 10,
       "isDisabled": false,
       "isSeparator": false,
       "isVisible": true,
       "itemType": "BUTTON",
-      "label": "DC",
+      "label": "D.C.",
       "menuItems": {},
       "placement": "CENTER",
       "variant": "filled",

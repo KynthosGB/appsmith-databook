@@ -1,0 +1,72 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 23,
+  "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoPrestaExtAppareil.data || [])\n      .find(r => r.appro_code === \"AGITATION\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)      values.push(\"na\");\n    if (row.envoye)  values.push(\"commande\");\n    return values;\n  })()\n}}\n",
+  "dynamicBindingPathList": [
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "defaultSelectedValues"
+    }
+  ],
+  "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicPropertyPathList": [
+    {
+      "key": "onSelectionChange"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onSelectionChange"
+    }
+  ],
+  "flexVerticalAlignment": "start",
+  "isDisabled": false,
+  "isInline": true,
+  "isLoading": false,
+  "isRequired": false,
+  "isVisible": true,
+  "key": "q70accm5pn",
+  "labelAlignment": "left",
+  "labelPosition": "Top",
+  "labelText": "",
+  "labelTextSize": "0.875rem",
+  "labelWidth": 5,
+  "leftColumn": 43,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "mobileBottomRow": 15,
+  "mobileLeftColumn": 2,
+  "mobileRightColumn": 25,
+  "mobileTopRow": 9,
+  "needsErrorInfo": false,
+  "onSelectionChange": "{{JS_SuiviFab.savePrestaExterneItem(\"AGITATION\", CheckboxAgitation, DateEnvoiAgitation)\n}}",
+  "options": [
+    {
+      "label": "NA",
+      "value": "na"
+    },
+    {
+      "label": "Commandé",
+      "value": "commande"
+    }
+  ],
+  "originalBottomRow": 23,
+  "originalTopRow": 16,
+  "parentColumnSpace": 6.015625,
+  "parentId": "gur4cgnmdx",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "rightColumn": 51,
+  "topRow": 16,
+  "type": "CHECKBOX_GROUP_WIDGET",
+  "version": 2,
+  "widgetId": "z2isedrqeq",
+  "widgetName": "CheckboxAgitation"
+}

@@ -315,6 +315,41 @@ export default {
 				showAlert("Erreur lors de l'enregistrement du contrôle", "error");
 			});
 	},
+	
+	// --- PRESTATIONS EXTERNES : un sous-groupe (Calo, Berces, Plateforme, ...) ---
+	savePrestaExterneItem(code, checkboxGroup, datePicker) {
+		// code = 'PLATEFORME', 'ECHELLE', ...
+		// checkboxGroup = widget CheckboxGroup (NA / Commande)
+		// datePicker = widget DatePicker correspondant
+
+		const row = this.getRowByCode("PRESTA_EXTERNES");
+		if (!row) return;
+
+		const selected = checkboxGroup.selectedValues || [];
+		const na   = selected.includes("na");
+		const commande = selected.includes("commande");
+
+		const date = datePicker.selectedDate
+			? moment(datePicker.selectedDate).format("YYYY-MM-DD")
+			: null;
+
+		return SaveSuivi_PrestaExterneItem.run({
+			groupe_appareil_id: row.groupe_appareil_id,
+			code,
+			na,
+			commande,
+			date,
+		})
+			.then(() => this.setEnCoursIfNeeded("PRESTA_EXTERNES")) // A_FAIRE -> EN_COURS
+			.then(() => this.refreshBar())                   // refresh ButtonGroup
+			.then(() => {
+				showAlert("Prestations externes mises à jour ✅", "success");
+			})
+			.catch(e => {
+				console.log("Erreur save prestations externes", e);
+				showAlert("Erreur lors de l'enregistrement de prestations externes", "error");
+			});
+	},
 
 	// --- FABRICATION ---
 

@@ -1,0 +1,18 @@
+INSERT INTO public.workflow_presta_externe_item (
+  groupe_appareil_id,
+  code,
+  na,
+  commande,
+  date
+)
+VALUES (
+  {{ this.params.groupe_appareil_id }},
+  {{ this.params.code }},      -- 'FONDS','VIROLES',...
+  {{ this.params.na }},
+  {{ this.params.commande }},
+  {{ this.params.date }}
+)
+ON CONFLICT (groupe_appareil_id, code) DO UPDATE SET
+  na     = EXCLUDED.na,
+  commande = EXCLUDED.commande,
+  date   = EXCLUDED.date;

@@ -29,6 +29,8 @@ SET
   hauteur                 = {{ Hauteur.text }},
   largeur                 = {{ Largeur.text }},
   profondeur              = {{ Profondeur.text }},
-  epaisseur               = {{ Epaisseur.text }}
+  epaisseur               = {{ Epaisseur.text }},
+  letal                   = {{ LetalSelect.selectedOptionLabel }},
+  classe_echangeur        = {{ ClasseEchangeur.text }}
 WHERE numero_appareil = {{ appsmith.URL.queryParams.numero_appareil }}
 RETURNING *;

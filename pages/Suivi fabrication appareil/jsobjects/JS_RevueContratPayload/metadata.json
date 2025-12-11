@@ -1,0 +1,11 @@
+{
+  "gitSyncId": "6915b9d6a2ab6852a3eeef70_3ae02d0d-e146-46a7-8b3b-75eb15b573e5",
+  "id": "Suivi fabrication appareil_JS_RevueContratPayload",
+  "unpublishedCollection": {
+    "name": "JS_RevueContratPayload",
+    "pageId": "Suivi fabrication appareil",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": []
+  }
+}

@@ -16,6 +16,7 @@ SET
 	indice_note_calcul    = {{ IndiceNoteCalcul.text }},
   vent                   = {{ Vent.text }},
   unite_vent             = {{ UniteVent.text }},
+	unite_mesure             = {{ UniteMesure.text }},
   seisme                 = {{ Seisme.text }}
 WHERE numero_appareil = {{ appsmith.URL.queryParams.numero_appareil }}
 RETURNING *;

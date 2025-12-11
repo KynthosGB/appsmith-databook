@@ -2,8 +2,8 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 46,
-  "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoControlesAppareil.data || [])\n      .find(r => r.controle_code === \"FAT\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)   values.push(\"na\");\n    if (row.fait) values.push(\"fait\");\n    return values;\n  })()\n}}\n",
+  "bottomRow": 37,
+  "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoControlesAppareil.data || [])\n      .find(r => r.controle_code === \"HELIUM\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)   values.push(\"na\");\n    if (row.fait) values.push(\"fait\");\n    return values;\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -38,7 +38,7 @@
   "labelText": "",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
-  "leftColumn": 1,
+  "leftColumn": 44,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "mobileBottomRow": 15,
@@ -46,7 +46,7 @@
   "mobileRightColumn": 25,
   "mobileTopRow": 9,
   "needsErrorInfo": false,
-  "onSelectionChange": "{{JS_SuiviFab.saveControleItem(\"FAT\", CheckboxCtrlFAT, DateVisiteCtrlFAT)}}",
+  "onSelectionChange": "{{JS_SuiviFab.saveControleItem(\"HELIUM\", CheckboxCtrlHelium, DateFaitCtrlHelium)}}",
   "options": [
     {
       "label": "NA",
@@ -57,16 +57,16 @@
       "value": "fait"
     }
   ],
-  "originalBottomRow": 46,
-  "originalTopRow": 42,
+  "originalBottomRow": 37,
+  "originalTopRow": 33,
   "parentColumnSpace": 6.015625,
   "parentId": "tm4r707uhl",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
-  "rightColumn": 9,
-  "topRow": 42,
+  "rightColumn": 52,
+  "topRow": 33,
   "type": "CHECKBOX_GROUP_WIDGET",
   "version": 2,
-  "widgetId": "sx5m7i6rqv",
-  "widgetName": "CheckboxCtrlFAT"
+  "widgetId": "032691asl5",
+  "widgetName": "CheckboxCtrlHelium"
 }

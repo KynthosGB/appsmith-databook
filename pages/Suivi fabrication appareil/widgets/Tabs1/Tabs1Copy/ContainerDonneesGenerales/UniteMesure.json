@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 36,
   "boxShadow": "none",
-  "defaultText": "{{DonneesGeneralesAffaire.data[0].unite_vent ? DonneesGeneralesAffaire.data[0].unite_vent : \"\"}}",
+  "defaultText": "{{DonneesGeneralesAffaire.data[0].unite_mesure ? DonneesGeneralesAffaire.data[0].unite_mesure : \"\"}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -53,7 +53,7 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 1,
   "needsErrorInfo": false,
-  "onBlur": "",
+  "onBlur": "{{ SaveAll.saveAll(); }}",
   "onTextChanged": "",
   "parentColumnSpace": 8.86328125,
   "parentId": "d7eujmc907",

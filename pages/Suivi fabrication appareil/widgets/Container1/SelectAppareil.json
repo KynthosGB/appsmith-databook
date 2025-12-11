@@ -51,7 +51,7 @@
   "mobileRightColumn": 14,
   "mobileTopRow": 1,
   "needsErrorInfo": false,
-  "onOptionChange": "{{navigateTo('Suivi fabrication appareil', {\n  numero_appareil: SelectAppareil.selectedOptionValue,\n  numero_affaire: SelectAffaire.selectedOptionValue\n}, 'SAME_WINDOW');\nQryInfosAppareil.run();\nQrySuiviFab_Groupes.run();\nQryInfoSuiviFabAppareil.run();\nQryInfoControlesAppareil.run();\nQryInfoApproAppareil.run();\nDonneesGeneralesAffaire.run();\nCaracteristiquesAppareils.run();\nEnceintesAppareil.run();\nGetSommaireAppareil.run();\nQryCCPUFull.run()}}",
+  "onOptionChange": "{{navigateTo('Suivi fabrication appareil', {\n  numero_appareil: SelectAppareil.selectedOptionValue,\n  numero_affaire: SelectAffaire.selectedOptionValue\n}, 'SAME_WINDOW');\nQryInfosAppareil.run();\nQrySuiviFab_Groupes.run();\nQryInfoSuiviFabAppareil.run();\nQryInfoControlesAppareil.run();\nQryInfoApproAppareil.run();\nDonneesGeneralesAffaire.run();\nCaracteristiquesAppareils.run();\nEnceintesAppareil.run();\nGetSommaireAppareil.run();\nQryCCPUFull.run();\nRevueContrat.run()}}",
   "optionLabel": "numero_appareil",
   "optionValue": "numero_appareil",
   "originalBottomRow": 25,

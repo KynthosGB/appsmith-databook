@@ -2,22 +2,28 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 7,
+  "bottomRow": 37,
   "boxShadow": "none",
   "closeOnSelection": true,
   "dateFormat": "DD-MM-YYYY",
   "datePickerType": "DATE_PICKER",
-  "defaultDate": "2025-12-08T12:44:29.448Z",
+  "defaultDate": "{{\n  (QryInfoControlesAppareil.data || [])\n    .find(r => r.controle_code === \"HELIUM\")\n    ?.date || \"\"\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "defaultDate"
     }
   ],
   "dynamicHeight": "FIXED",
   "dynamicPropertyPathList": [
+    {
+      "key": "defaultDate"
+    },
     {
       "key": "onDateSelected"
     }
@@ -32,35 +38,37 @@
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,
-  "key": "iocfii7g2s",
-  "label": "Date devis",
+  "key": "3g865prui7",
+  "label": "",
   "labelAlignment": "left",
   "labelPosition": "Top",
   "labelTextSize": "0.875rem",
-  "labelWidth": "7",
-  "leftColumn": 12,
+  "labelWidth": "12",
+  "leftColumn": 53,
   "maxDate": "2121-12-31T18:29:00.000Z",
   "maxDynamicHeight": 9000,
   "minDate": "1920-12-31T18:30:00.000Z",
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 16,
-  "mobileLeftColumn": 22,
-  "mobileRightColumn": 42,
-  "mobileTopRow": 9,
+  "mobileBottomRow": 17,
+  "mobileLeftColumn": 1,
+  "mobileRightColumn": 21,
+  "mobileTopRow": 10,
   "needsErrorInfo": false,
-  "onDateSelected": "{{SaveRevueContrat.saveField(\"date_devis\", DateDevis.text) }}",
-  "parentColumnSpace": 12.9375,
-  "parentId": "8zhkkfphof",
+  "onDateSelected": "{{JS_SuiviFab.saveControleItem(\"HELIUM\", CheckboxCtrlHelium, DateFaitCtrlHelium)}}",
+  "originalBottomRow": 37,
+  "originalTopRow": 33,
+  "parentColumnSpace": 4.1171875,
+  "parentId": "tm4r707uhl",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 23,
+  "rightColumn": 63,
   "shortcuts": false,
   "timePrecision": "minute",
-  "topRow": 0,
+  "topRow": 33,
   "type": "DATE_PICKER_WIDGET2",
   "version": 2,
-  "widgetId": "6v4kywuum9",
-  "widgetName": "DateDevis"
+  "widgetId": "wb36u8wvb7",
+  "widgetName": "DateFaitCtrlHelium"
 }

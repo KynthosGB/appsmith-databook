@@ -6,6 +6,15 @@ export default {
    */
   async downloadRevueContrat(opts = {}) {
     try {
+      // 0) Rafraîchir les données en base AVANT de construire le payload
+      await Promise.all([
+				SaveRevueContrat.saveField(),
+        DonneesGeneralesAffaire.run(),
+        CaracteristiquesAppareils.run(),
+        RevueContrat.run(),         // ta query SELECT sur revue_de_contrat_appareil
+        EnceintesAppareil.run(),    // optionnel si ça peut changer
+      ]);
+
       // 1) Obtenir le payload (via opts ou via la requête Api_RevueContrat)
       const res = opts.url
         ? {

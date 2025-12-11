@@ -15,7 +15,16 @@
     }
   ],
   "dynamicHeight": "FIXED",
-  "dynamicTriggerPathList": [],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onBlur"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onBlur"
+    }
+  ],
   "iconAlign": "left",
   "inputType": "TEXT",
   "isDisabled": false,
@@ -38,6 +47,7 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 9,
   "needsErrorInfo": false,
+  "onBlur": "{{SaveRevueContrat.saveField(\"numero_appel_doffre\", NumAppelDoffreClient.text) }}",
   "parentColumnSpace": 12.9375,
   "parentId": "8zhkkfphof",
   "parentRowSpace": 10,

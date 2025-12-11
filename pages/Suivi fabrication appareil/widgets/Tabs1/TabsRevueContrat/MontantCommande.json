@@ -1,10 +1,13 @@
 {
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "allowCurrencyChange": false,
   "animateLoading": true,
   "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 10,
+  "bottomRow": 7,
   "boxShadow": "none",
+  "decimals": 0,
+  "defaultCurrencyCode": "EUR",
   "defaultText": "",
   "dynamicBindingPathList": [
     {
@@ -14,7 +17,7 @@
       "key": "borderRadius"
     }
   ],
-  "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicHeight": "FIXED",
   "dynamicPropertyPathList": [
     {
       "key": "onBlur"
@@ -26,12 +29,11 @@
     }
   ],
   "iconAlign": "left",
-  "inputType": "MULTI_LINE_TEXT",
   "isDisabled": false,
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,
-  "key": "skgjv1onqf",
+  "key": "gr3es66q8k",
   "label": "Montant de la commande",
   "labelAlignment": "left",
   "labelPosition": "Top",
@@ -42,26 +44,23 @@
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 7,
+  "mobileBottomRow": 17,
   "mobileLeftColumn": 0,
   "mobileRightColumn": 20,
-  "mobileTopRow": 0,
+  "mobileTopRow": 10,
   "needsErrorInfo": false,
   "onBlur": "{{SaveRevueContrat.saveField(\"montant_commande\", MontantCommande.text) }}",
-  "originalBottomRow": 10,
-  "originalTopRow": 0,
-  "parentColumnSpace": 13.8857421875,
+  "parentColumnSpace": 18.9921875,
   "parentId": "pykhl2qfen",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "resetOnSubmit": true,
   "responsiveBehavior": "fill",
-  "rightColumn": 31,
-  "shouldAllowAutofill": false,
+  "rightColumn": 14,
   "showStepArrows": false,
   "topRow": 0,
-  "type": "INPUT_WIDGET_V2",
-  "version": 2,
-  "widgetId": "e9hjur7rcg",
+  "type": "CURRENCY_INPUT_WIDGET",
+  "version": 1,
+  "widgetId": "cs1kxzmzl1",
   "widgetName": "MontantCommande"
 }

@@ -5,13 +5,16 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 33,
   "boxShadow": "none",
-  "defaultText": "",
+  "defaultText": "{{\n // Si une valeur existe en base → on utilise celle-là\n  RevueContrat.data[0]?.protection_surfaces_externes\n  ||\n  // Sinon on construit automatiquement la liste :\n  CaracteristiquesAppareils.data[0].paroi_exterieure + \" / \" + CaracteristiquesAppareils.data[0].soudure_exterieure\n}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "defaultText"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",

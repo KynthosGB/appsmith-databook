@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "alignment": "left",
   "animateLoading": true,
-  "bottomRow": 4,
+  "bottomRow": 18,
   "boxShadow": "none",
   "defaultOptionValue": "fr",
   "dynamicBindingPathList": [
@@ -32,8 +32,8 @@
   "labelAlignment": "left",
   "labelPosition": "Left",
   "labelTextSize": "0.875rem",
-  "labelWidth": "7",
-  "leftColumn": 36,
+  "labelWidth": "18",
+  "leftColumn": 2,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "mobileBottomRow": 16,
@@ -44,24 +44,24 @@
   "onSelectionChange": "{{\n  (async () => {\n    const lang = (RadioLangue.selectedOptionValue || 'fr').toLowerCase();\n\n    // 1) mettre à jour l'état local pour re-render immédiat\n    await storeValue('langue_appareil', lang);\n\n    // 2) persister en base\n    await UpdateLangueAppareil.run();\n\n    // 3) rafraîchir la requête des données générales (optionnel mais cohérent)\n    await DonneesGeneralesAffaire.run();\n\n    // 4) pas obligatoire pour la langue, mais ok si tu veux recharger la liste\n    // await GetSommaireAppareil.run();\n  })().catch(e => showAlert('Erreur langue: ' + (e?.message || e), 'error'))\n}}",
   "options": [
     {
-      "label": "FR",
+      "label": "Français",
       "value": "fr"
     },
     {
-      "label": "EN",
+      "label": "Anglais",
       "value": "en"
     }
   ],
-  "originalBottomRow": 4,
-  "originalTopRow": 0,
+  "originalBottomRow": 20,
+  "originalTopRow": 14,
   "parentColumnSpace": 19.8125,
-  "parentId": "r534emvzfe",
+  "parentId": "joa5ue879n",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
-  "rightColumn": 51,
-  "topRow": 0,
+  "rightColumn": 45,
+  "topRow": 14,
   "type": "RADIO_GROUP_WIDGET",
   "version": 1,
-  "widgetId": "83agw0jlxe",
+  "widgetId": "8skhq3rpji",
   "widgetName": "RadioLangue"
 }

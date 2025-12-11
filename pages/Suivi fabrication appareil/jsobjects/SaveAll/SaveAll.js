@@ -8,10 +8,9 @@ export default {
       await UpdateCaracteristiques.run();
 			
       await GetSommaireAppareil.run();
-
+			
       // 3) UI feedback & rafraîchissement
       showAlert('Enregistré', 'success');
-      TrackerModif?.resetModified?.(); // si présent
       return true;
     } catch (e) {
       showAlert(e?.message || "Échec de l'enregistrement", "error");

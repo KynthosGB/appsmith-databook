@@ -11,13 +11,20 @@
       "key": "borderRadius"
     }
   ],
-  "dynamicPropertyPathList": [],
+  "dynamicPropertyPathList": [
+    {
+      "key": "menuItems.menuItemtqwh0zdtbo.onClick"
+    }
+  ],
   "dynamicTriggerPathList": [
     {
       "key": "menuItems.menuItem1.onClick"
     },
     {
       "key": "menuItems.menuItem2.onClick"
+    },
+    {
+      "key": "menuItems.menuItemtqwh0zdtbo.onClick"
     }
   ],
   "iconAlign": "left",
@@ -50,6 +57,16 @@
       "label": "Générer la revue de contrat",
       "onClick": "{{showModal(ModalRevueContrat.name);}}",
       "widgetId": ""
+    },
+    "menuItemtqwh0zdtbo": {
+      "iconName": "folder-close",
+      "id": "menuItemtqwh0zdtbo",
+      "index": 2,
+      "isDisabled": false,
+      "isVisible": true,
+      "label": "Générer le dossier constructeur",
+      "onClick": "{{\n  // 1️⃣ stop tout ancien polling (sécurité)\n  ProgressCtl.stopPolling();\n\n  // 2️⃣ réinitialise toutes les valeurs de la modal\n  storeValue('jobId', null);\n  storeValue('missingCodes', []);\n  storeValue('notFoundCount', 0);\n  storeValue('progressSnapshot', { percent: 0, step: \"En attente du lancement de la création\" });\n\n  // 3️⃣ force un dernier rafraîchissement vide\n  GetProgress.run();\n\n  // 4️⃣ ouvre la modal\n  showModal(ModalGenerationDossier.name);\n}}",
+      "widgetId": "4ljimgtr6l"
     }
   },
   "menuItemsSource": "STATIC",

@@ -1,6 +1,6 @@
 {
   "gitSyncId": "6915b9d6a2ab6852a3eeef70_c1431481-99cd-41be-8946-16d5374d6c23",
-  "id": "Suivi fabrication appareil_QryInfosRevueContrat",
+  "id": "Suivi fabrication appareil_RevueContrat",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
@@ -27,9 +27,9 @@
         "key": "body"
       }
     ],
-    "name": "QryInfosRevueContrat",
+    "name": "RevueContrat",
     "pageId": "Suivi fabrication appareil",
-    "runBehaviour": "MANUAL",
-    "userSetOnLoad": false
+    "runBehaviour": "AUTOMATIC",
+    "userSetOnLoad": true
   }
 }

@@ -17,7 +17,16 @@
     }
   ],
   "dynamicHeight": "FIXED",
-  "dynamicTriggerPathList": [],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onDateSelected"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onDateSelected"
+    }
+  ],
   "firstDayOfWeek": 0,
   "isDisabled": false,
   "isLoading": false,
@@ -40,6 +49,10 @@
   "mobileRightColumn": 42,
   "mobileTopRow": 9,
   "needsErrorInfo": false,
+  "onBlur": "{{}}",
+  "onDateSelected": "{{SaveRevueContrat.saveField(\"date_livraison_prev\", DateLivraisonPrev.text) }}",
+  "originalBottomRow": 18,
+  "originalTopRow": 11,
   "parentColumnSpace": 12.9375,
   "parentId": "pykhl2qfen",
   "parentRowSpace": 10,

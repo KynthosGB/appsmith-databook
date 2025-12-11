@@ -15,7 +15,16 @@
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
-  "dynamicTriggerPathList": [],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onBlur"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onBlur"
+    }
+  ],
   "iconAlign": "left",
   "inputType": "MULTI_LINE_TEXT",
   "isDisabled": false,
@@ -38,6 +47,7 @@
   "mobileRightColumn": 20,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
+  "onBlur": "{{SaveRevueContrat.saveField(\"protection_appareil\", ProtectionAppareil.text) }}",
   "originalBottomRow": 21,
   "originalTopRow": 11,
   "parentColumnSpace": 13.8857421875,

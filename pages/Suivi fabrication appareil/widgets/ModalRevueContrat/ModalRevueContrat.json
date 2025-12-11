@@ -64,7 +64,7 @@
   "leftColumn": 13,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 24,
-  "minHeight": 600,
+  "minHeight": 240,
   "mobileBottomRow": 23,
   "mobileLeftColumn": 13,
   "mobileRightColumn": 37,
@@ -81,5 +81,5 @@
   "version": 2,
   "widgetId": "kj6q4ulg56",
   "widgetName": "ModalRevueContrat",
-  "width": 526
+  "width": 392
 }

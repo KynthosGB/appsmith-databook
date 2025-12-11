@@ -1,5 +1,5 @@
 {
-	"langue": 'fr',
+	"langue": {{LangueRDC.selectedOptionValue}},
   "nom_client": {{DonneesGeneralesAffaire.data[0].nom_client}},
   "numero_affaire": {{CaracteristiquesAppareils.data[0].numero_affaire}},
   "reference_client": {{CaracteristiquesAppareils.data[0].reference_client}},
@@ -7,7 +7,9 @@
   "repere_appareil": {{CaracteristiquesAppareils.data[0].repere_appareil}},
   "date_creation_dossier": {{moment(DonneesGeneralesAffaire.data[0].date_creation_dossier).format("DD/MM/YYYY")}},
   "file_name": {{"RC" + CaracteristiquesAppareils.data[0].numero_affaire + CaracteristiquesAppareils.data[0].repere_appareil}},
-	"numero_devis": 
+  "revue_de_contrat": {{RevueContrat.data[0]}},
+	
+	"enceintes": {{EnceintesAppareil.data}},
 
   /* Toutes les colonnes des 2 tables envoyées telles quelles */
   "donnees_generales_appareil": {{DonneesGeneralesAffaire.data[0]}},

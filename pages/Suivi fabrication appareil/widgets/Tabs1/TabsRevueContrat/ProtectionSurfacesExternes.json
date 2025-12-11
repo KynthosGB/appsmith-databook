@@ -15,7 +15,16 @@
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
-  "dynamicTriggerPathList": [],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onBlur"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onBlur"
+    }
+  ],
   "iconAlign": "left",
   "inputType": "MULTI_LINE_TEXT",
   "isDisabled": false,
@@ -38,7 +47,8 @@
   "mobileRightColumn": 20,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "originalBottomRow": 31,
+  "onBlur": "{{SaveRevueContrat.saveField(\"protection_surfaces_externes\", ProtectionSurfacesExternes.text) }}",
+  "originalBottomRow": 33,
   "originalTopRow": 21,
   "parentColumnSpace": 13.8857421875,
   "parentId": "fcny14t3r7",

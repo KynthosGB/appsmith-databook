@@ -1,0 +1,57 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "alignment": "left",
+  "animateLoading": true,
+  "bottomRow": 13,
+  "boxShadow": "none",
+  "defaultOptionValue": "fr",
+  "dynamicBindingPathList": [
+    {
+      "key": "accentColor"
+    }
+  ],
+  "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicTriggerPathList": [],
+  "flexVerticalAlignment": "start",
+  "isDisabled": false,
+  "isInline": true,
+  "isLoading": false,
+  "isRequired": false,
+  "isVisible": true,
+  "key": "b6gx74w96c",
+  "label": "Choisisser la langue :",
+  "labelAlignment": "left",
+  "labelPosition": "Top",
+  "labelTextSize": "0.875rem",
+  "labelWidth": "26",
+  "leftColumn": 1,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "mobileBottomRow": 18,
+  "mobileLeftColumn": 8,
+  "mobileRightColumn": 28,
+  "mobileTopRow": 12,
+  "needsErrorInfo": false,
+  "options": [
+    {
+      "label": "Français",
+      "value": "fr"
+    },
+    {
+      "label": "Anglais",
+      "value": "en"
+    }
+  ],
+  "originalBottomRow": 13,
+  "originalTopRow": 7,
+  "parentColumnSpace": 8.03125,
+  "parentId": "r90246qlvq",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "rightColumn": 40,
+  "topRow": 7,
+  "type": "RADIO_GROUP_WIDGET",
+  "version": 1,
+  "widgetId": "3yytcypw4v",
+  "widgetName": "LangueRDC"
+}

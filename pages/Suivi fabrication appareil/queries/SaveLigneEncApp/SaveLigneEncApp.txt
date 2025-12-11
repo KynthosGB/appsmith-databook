@@ -1,120 +1,37 @@
 UPDATE public.enceintes_appareils
 SET
-  numero = {{
-    TableEnceintesAppareil.updatedRow.numero
-      ?? TableEnceintesAppareil.triggeredRow.numero
-  }},
+  numero                         = {{ this.params.numero }},
+  pression_min                   = {{ this.params.pression_min }},
+  pression_max                   = {{ this.params.pression_max }},
+  pression_min_calculee          = {{ this.params.pression_min_calculee }},
+  pression_max_calculee          = {{ this.params.pression_max_calculee }},
 
-  pression_min = {{
-    TableEnceintesAppareil.updatedRow.pression_min
-      ?? TableEnceintesAppareil.triggeredRow.pression_min
-  }},
-  pression_max = {{
-    TableEnceintesAppareil.updatedRow.pression_max
-      ?? TableEnceintesAppareil.triggeredRow.pression_max
-  }},
-  pression_min_calculee = {{
-    TableEnceintesAppareil.updatedRow.pression_min_calculee
-      ?? TableEnceintesAppareil.triggeredRow.pression_min_calculee
-  }},
-  pression_max_calculee = {{
-    TableEnceintesAppareil.updatedRow.pression_max_calculee
-      ?? TableEnceintesAppareil.triggeredRow.pression_max_calculee
-  }},
+  temperature_min                = {{ this.params.temperature_min }},
+  temperature_max                = {{ this.params.temperature_max }},
+  temperature_min_calculee       = {{ this.params.temperature_min_calculee }},
+  temperature_max_calculee       = {{ this.params.temperature_max_calculee }},
 
-  temperature_min = {{
-    TableEnceintesAppareil.updatedRow.temperature_min
-      ?? TableEnceintesAppareil.triggeredRow.temperature_min
-  }},
-  temperature_max = {{
-    TableEnceintesAppareil.updatedRow.temperature_max
-      ?? TableEnceintesAppareil.triggeredRow.temperature_max
-  }},
-  temperature_min_calculee = {{
-    TableEnceintesAppareil.updatedRow.temperature_min_calculee
-      ?? TableEnceintesAppareil.triggeredRow.temperature_min_calculee
-  }},
-  temperature_max_calculee = {{
-    TableEnceintesAppareil.updatedRow.temperature_max_calculee
-      ?? TableEnceintesAppareil.triggeredRow.temperature_max_calculee
-  }},
+  delta_temperature              = {{ this.params.delta_temperature }},
+  pression_epreuve               = {{ this.params.pression_epreuve }},
 
-  delta_temperature = {{
-    TableEnceintesAppareil.updatedRow.delta_temperature
-      ?? TableEnceintesAppareil.triggeredRow.delta_temperature
-  }},
-  pression_epreuve = {{
-    TableEnceintesAppareil.updatedRow.pression_epreuve
-      ?? TableEnceintesAppareil.triggeredRow.pression_epreuve
-  }},
+  date_epreuve                   = {{ this.params.date_epreuve }},
 
-  date_epreuve = {{
-    (TableEnceintesAppareil.updatedRow.date_epreuve
-      ?? TableEnceintesAppareil.triggeredRow.date_epreuve)
-      ?? null
-  }},
+  pression_declenchement_securite = {{ this.params.pression_declenchement_securite }},
+  densite                        = {{ this.params.densite }},
+  poids_essai                    = {{ this.params.poids_essai }},
+  nature_fluide                  = {{ this.params.nature_fluide }},
+  capacite                       = {{ this.params.capacite }},
+  nuance                         = {{ this.params.nuance }},
+  epaisseur_calorifique          = {{ this.params.epaisseur_calorifique }},
 
-  pression_declenchement_securite = {{
-    TableEnceintesAppareil.updatedRow.pression_declenchement_securite
-      ?? TableEnceintesAppareil.triggeredRow.pression_declenchement_securite
-  }},
-  densite = {{
-    TableEnceintesAppareil.updatedRow.densite
-      ?? TableEnceintesAppareil.triggeredRow.densite
-  }},
-  poids_essai = {{
-    TableEnceintesAppareil.updatedRow.poids_essai
-      ?? TableEnceintesAppareil.triggeredRow.poids_essai
-  }},
-  nature_fluide = {{
-    TableEnceintesAppareil.updatedRow.nature_fluide
-      ?? TableEnceintesAppareil.triggeredRow.nature_fluide
-  }},
-  capacite = {{
-    TableEnceintesAppareil.updatedRow.capacite
-      ?? TableEnceintesAppareil.triggeredRow.capacite
-  }},
-  nuance = {{
-    TableEnceintesAppareil.updatedRow.nuance
-      ?? TableEnceintesAppareil.triggeredRow.nuance
-  }},
-  epaisseur_calorifique = {{
-    TableEnceintesAppareil.updatedRow.epaisseur_calorifique
-      ?? TableEnceintesAppareil.triggeredRow.epaisseur_calorifique
-  }},
+  explosif                       = {{ this.params.explosif }},
+  inflammable                    = {{ this.params.inflammable }},
+  toxique                        = {{ this.params.toxique }},
+  oxydant                        = {{ this.params.oxydant }},
 
-  explosif = {{
-    TableEnceintesAppareil.updatedRow.explosif
-      ?? TableEnceintesAppareil.triggeredRow.explosif
-  }},
-  inflammable = {{
-    TableEnceintesAppareil.updatedRow.inflammable
-      ?? TableEnceintesAppareil.triggeredRow.inflammable
-  }},
-  toxique = {{
-    TableEnceintesAppareil.updatedRow.toxique
-      ?? TableEnceintesAppareil.triggeredRow.toxique
-  }},
-  oxydant = {{
-    TableEnceintesAppareil.updatedRow.oxydant
-      ?? TableEnceintesAppareil.triggeredRow.oxydant
-  }},
-
-  type_appareil = {{
-    TableEnceintesAppareil.updatedRow.type_appareil
-      ?? TableEnceintesAppareil.triggeredRow.type_appareil
-  }},
-  epaisseur_corrosion = {{
-    TableEnceintesAppareil.updatedRow.epaisseur_corrosion
-      ?? TableEnceintesAppareil.triggeredRow.epaisseur_corrosion
-  }},
-  poids_a_vide = {{
-    TableEnceintesAppareil.updatedRow.poids_a_vide
-      ?? TableEnceintesAppareil.triggeredRow.poids_a_vide
-  }},
-  poids_de_service = {{
-    TableEnceintesAppareil.updatedRow.poids_de_service
-      ?? TableEnceintesAppareil.triggeredRow.poids_de_service
-  }}
-WHERE id = {{ TableEnceintesAppareil.triggeredRow.id }}
+  type_appareil                  = {{ this.params.type_appareil }},
+  epaisseur_corrosion            = {{ this.params.epaisseur_corrosion }},
+  poids_a_vide                   = {{ this.params.poids_a_vide }},
+  poids_de_service               = {{ this.params.poids_de_service }}
+WHERE id = {{ this.params.id }}
 RETURNING *;

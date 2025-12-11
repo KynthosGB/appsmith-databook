@@ -3,7 +3,7 @@
   "animateLoading": true,
   "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 23,
+  "bottomRow": 21,
   "boxShadow": "none",
   "defaultText": "{{\n  // Si une valeur existe en base → on utilise celle-là\n  RevueContrat.data[0]?.protection_surfaces_internes\n  ||\n  // Sinon on construit automatiquement la liste :\n  CaracteristiquesAppareils.data[0].paroi_interieure + \" / \" + CaracteristiquesAppareils.data[0].soudure_interieure\n}}",
   "dynamicBindingPathList": [
@@ -35,7 +35,7 @@
   "isRequired": false,
   "isVisible": true,
   "key": "skgjv1onqf",
-  "label": "Protection de ssurfaces internes (peinture, polissage, grain pour le polissage, électro-polissage)",
+  "label": "Protection de surfaces internes (peinture, polissage, grain pour le polissage, électro-polissage)",
   "labelAlignment": "left",
   "labelPosition": "Top",
   "labelStyle": "",

@@ -35,7 +35,7 @@
   "isRequired": false,
   "isVisible": true,
   "key": "skgjv1onqf",
-  "label": "Nature du fluide utilisé",
+  "label": "Nature du fluide utilisé pour les épreuves",
   "labelAlignment": "left",
   "labelPosition": "Top",
   "labelStyle": "",

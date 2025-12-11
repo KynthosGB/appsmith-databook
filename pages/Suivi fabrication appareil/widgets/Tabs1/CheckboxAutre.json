@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 45,
+  "bottomRow": 46,
   "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoApproAppareil.data || [])\n      .find(r => r.appro_code === \"AUTRE\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)      values.push(\"na\");\n    if (row.envoye)  values.push(\"envoye\");\n    return values;\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
@@ -57,14 +57,14 @@
       "value": "envoye"
     }
   ],
-  "originalBottomRow": 45,
-  "originalTopRow": 38,
+  "originalBottomRow": 46,
+  "originalTopRow": 39,
   "parentColumnSpace": 6.015625,
   "parentId": "m3y6bzcuko",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "rightColumn": 9,
-  "topRow": 38,
+  "topRow": 39,
   "type": "CHECKBOX_GROUP_WIDGET",
   "version": 2,
   "widgetId": "yqafmeurer",

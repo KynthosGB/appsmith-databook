@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 17,
+  "bottomRow": 20,
   "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoControlesAppareil.data || [])\n      .find(r => r.controle_code === \"EPREUVES\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)   values.push(\"na\");\n    if (row.fait) values.push(\"fait\");\n    return values;\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
@@ -38,7 +38,7 @@
   "labelText": "",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
-  "leftColumn": 44,
+  "leftColumn": 43,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "mobileBottomRow": 15,
@@ -57,13 +57,13 @@
       "value": "fait"
     }
   ],
-  "originalBottomRow": 17,
+  "originalBottomRow": 20,
   "originalTopRow": 13,
   "parentColumnSpace": 6.015625,
   "parentId": "tm4r707uhl",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
-  "rightColumn": 52,
+  "rightColumn": 50,
   "topRow": 13,
   "type": "CHECKBOX_GROUP_WIDGET",
   "version": 2,

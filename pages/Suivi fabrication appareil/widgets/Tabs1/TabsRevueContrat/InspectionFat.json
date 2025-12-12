@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 21,
   "boxShadow": "none",
-  "defaultText": "{{ RevueContrat.data[0].inspection_fat || (CheckboxCtrlFAT.selectedValues.includes(\"na\") ? \"Non\" : \"\") }}\n",
+  "defaultText": "{{(CheckboxCtrlFAT.selectedValues.includes(\"na\") ? \"Non\" : \"Oui\") }}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

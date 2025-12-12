@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 21,
   "boxShadow": "none",
-  "defaultText": "{{RevueContrat.data[0].contrainte_transport || \"\" }}",
+  "defaultText": "{{RevueContrat.data[0].contrainte_transport || \"Non\" }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

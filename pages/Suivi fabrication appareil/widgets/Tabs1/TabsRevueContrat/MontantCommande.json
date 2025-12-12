@@ -8,13 +8,16 @@
   "boxShadow": "none",
   "decimals": 0,
   "defaultCurrencyCode": "EUR",
-  "defaultText": "",
+  "defaultText": "{{RevueContrat.data[0].montant_commande || 0 }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "defaultText"
     }
   ],
   "dynamicHeight": "FIXED",

@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 51,
   "boxShadow": "none",
-  "defaultText": "{{ RevueContrat.data[0].agitation || (CheckboxAgitation.selectedValues.includes(\"na\") ? \"Non\" : \"\") }}",
+  "defaultText": "{{ (CheckboxAgitation.selectedValues.includes(\"na\") ? \"Non\" : \"Oui\") }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

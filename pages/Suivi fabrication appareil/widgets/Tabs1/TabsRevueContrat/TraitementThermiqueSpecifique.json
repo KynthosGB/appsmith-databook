@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 21,
   "boxShadow": "none",
-  "defaultText": "{{\n  // Si une valeur existe en base → on utilise celle-là\n  RevueContrat.data[0]?.traitement_thermique_specifique\n  ||\n  // Sinon on construit automatiquement la liste :\n  CaracteristiquesAppareils.data[0].traitement_thermique === true ? \"Oui\" : \"\"\n}}",
+  "defaultText": "{{ CaracteristiquesAppareils.data[0].traitement_thermique === true ? \"Oui\" : \"\"\n}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

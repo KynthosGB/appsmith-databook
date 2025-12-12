@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 31,
   "boxShadow": "none",
-  "defaultText": "{{ RevueContrat.data[0].test_helium || (CheckboxCtrlHelium.selectedValues.includes(\"na\") ? \"Non\" : \"\") }}",
+  "defaultText": "{{(CheckboxCtrlHelium.selectedValues.includes(\"na\") ? \"Non\" : \"Oui\") }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

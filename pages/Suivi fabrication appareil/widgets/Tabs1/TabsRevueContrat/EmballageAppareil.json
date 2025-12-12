@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 31,
   "boxShadow": "none",
-  "defaultText": "{{RevueContrat.data[0].emballage_appareil || \"\" }}",
+  "defaultText": "{{RevueContrat.data[0].emballage_appareil || \"NA\" }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

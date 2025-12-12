@@ -586,7 +586,7 @@
   "mobileTopRow": 22,
   "needsErrorInfo": false,
   "onTabSelected": "{{JS_TabsSelection.onTabSelected() }}",
-  "originalBottomRow": 86,
+  "originalBottomRow": 132,
   "originalTopRow": 22,
   "parentColumnSpace": 23.53125,
   "parentId": "0",

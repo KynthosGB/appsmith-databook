@@ -42,6 +42,7 @@ SELECT
           WHEN wge.code = 'CAHIER_SOUDAGE'  THEN wcs.date_objectif
           WHEN wge.code = 'PREPARATION'     THEN wprep.date_objectif
           WHEN wge.code = 'APPRO'           THEN wa.date_objectif
+			    WHEN wge.code = 'ACHATS'          THEN wach.date_objectif
           ELSE NULL
         END,
       'date_fin',
@@ -51,6 +52,7 @@ SELECT
           WHEN wge.code = 'CAHIER_SOUDAGE'  THEN wcs.date_objectif
           WHEN wge.code = 'PREPARATION'     THEN wprep.date_objectif
           WHEN wge.code = 'APPRO'           THEN wa.date_objectif
+			    WHEN wge.code = 'ACHATS'          THEN wach.date_objectif
           ELSE NULL
         END,
 
@@ -92,6 +94,7 @@ LEFT JOIN public.workflow_plan            wp    ON wp.groupe_appareil_id  = wga.
 LEFT JOIN public.workflow_cahier_soudage  wcs   ON wcs.groupe_appareil_id = wga.id
 LEFT JOIN public.workflow_preparation     wprep ON wprep.groupe_appareil_id = wga.id
 LEFT JOIN public.workflow_appro           wa    ON wa.groupe_appareil_id = wga.id
+LEFT JOIN public.workflow_achats          wach  ON wach.groupe_appareil_id = wga.id
 
 WHERE a.cloture_suivi_fabrication = false
 AND a.numero_affaire = '{{ SelectAffaire.selectedOptionValue }}'

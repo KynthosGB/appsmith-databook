@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 34,
+  "bottomRow": 33,
   "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoControlesAppareil.data || [])\n      .find(r => r.controle_code === \"ULTRASON\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)   values.push(\"na\");\n    if (row.fait) values.push(\"fait\");\n    return values;\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
@@ -57,14 +57,14 @@
       "value": "fait"
     }
   ],
-  "originalBottomRow": 34,
-  "originalTopRow": 27,
+  "originalBottomRow": 33,
+  "originalTopRow": 26,
   "parentColumnSpace": 6.015625,
   "parentId": "tm4r707uhl",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "rightColumn": 50,
-  "topRow": 27,
+  "topRow": 26,
   "type": "CHECKBOX_GROUP_WIDGET",
   "version": 2,
   "widgetId": "oxzbgjqq6v",

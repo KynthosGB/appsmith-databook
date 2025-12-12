@@ -56,7 +56,7 @@
   "mobileTopRow": 10,
   "needsErrorInfo": false,
   "onDateSelected": "{{JS_SuiviFab.savePrestaExterneItem(\"AGITATION\", CheckboxAgitation, DateEnvoiAgitation)\n}}",
-  "originalBottomRow": 20,
+  "originalBottomRow": 23,
   "originalTopRow": 16,
   "parentColumnSpace": 4.1171875,
   "parentId": "gur4cgnmdx",

@@ -56,7 +56,7 @@
   "mobileTopRow": 10,
   "needsErrorInfo": false,
   "onDateSelected": "{{JS_SuiviFab.saveApproItem(\"AUTRE\", CheckboxAutre, DateEnvoiAutre)\n}}",
-  "originalBottomRow": 43,
+  "originalBottomRow": 46,
   "originalTopRow": 39,
   "parentColumnSpace": 4.1171875,
   "parentId": "m3y6bzcuko",

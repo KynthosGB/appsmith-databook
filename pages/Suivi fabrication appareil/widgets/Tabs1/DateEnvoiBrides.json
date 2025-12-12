@@ -56,7 +56,7 @@
   "mobileTopRow": 10,
   "needsErrorInfo": false,
   "onDateSelected": "{{JS_SuiviFab.saveApproItem(\"BRIDES\", CheckboxBrides, DateEnvoiBrides)}}",
-  "originalBottomRow": 31,
+  "originalBottomRow": 34,
   "originalTopRow": 27,
   "parentColumnSpace": 4.1171875,
   "parentId": "m3y6bzcuko",

@@ -1,6 +1,6 @@
 {
   "animateLoading": true,
-  "bottomRow": 74,
+  "bottomRow": 5,
   "bottomRowBeforeCollapse": 74,
   "docUrl": "{{ appsmith.store.ccpuUrl }}",
   "dynamicBindingPathList": [

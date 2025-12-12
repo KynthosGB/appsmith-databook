@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 10,
   "boxShadow": "none",
-  "defaultText": "{{ RevueContrat.data[0].controle_ressuage_pourcentage || Ressuage.text }}",
+  "defaultText": "{{ Ressuage.text }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

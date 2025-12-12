@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 10,
   "boxShadow": "none",
-  "defaultText": "{{\n  // Si une valeur existe en base → on utilise celle-là\n  RevueContrat.data[0]?.nature_et_etat_fluide\n  ||\n  // Sinon on construit automatiquement la liste :\n  CaracteristiquesAppareils.data\n    ?.map(ca => `${ca.type_fluide} / ${ca.niveau_risque}`)\n    .join(\"\\n\")\n}}",
+  "defaultText": "{{ CaracteristiquesAppareils.data\n    ?.map(ca => `${ca.type_fluide} Groupe ${ca.niveau_risque}`)\n    .join(\"\\n\")\n}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

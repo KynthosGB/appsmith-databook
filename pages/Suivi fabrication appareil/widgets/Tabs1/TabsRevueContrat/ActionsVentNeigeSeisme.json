@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 21,
   "boxShadow": "none",
-  "defaultText": "{{\n  // Si une valeur existe en base → on utilise celle-là\n  RevueContrat.data[0]?.actions_vent_neige_seisme\n  ||\n  // Sinon on construit automatiquement la liste :\n  DonneesGeneralesAffaire.data\n    ?.map(dga => `${dga.vent} / ${dga.seisme}`)\n    .join(\"\\n\")\n}}",
+  "defaultText": "{{\n  DonneesGeneralesAffaire.data\n    ?.map(dga => `${dga.vent} / ${dga.seisme}`)\n    .join(\"\\n\")\n}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

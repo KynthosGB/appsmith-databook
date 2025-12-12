@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 10,
   "boxShadow": "none",
-  "defaultText": "{{\n  // Si une valeur existe en base → on utilise celle-là\n  RevueContrat.data[0]?.valeur_surepaisseur_corrosion\n  ||\n  // Sinon on construit automatiquement la liste :\n  EnceintesAppareil.data\n    ?.map(e => `${e.type_appareil} : ${e.epaisseur_corrosion}` +\"mm\")\n    .join(\"\\n\")\n}}\n",
+  "defaultText": "{{\n  EnceintesAppareil.data\n    ?.map(e => `${e.type_appareil} : ${e.epaisseur_corrosion}` +\"mm\")\n    .join(\"\\n\")\n}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

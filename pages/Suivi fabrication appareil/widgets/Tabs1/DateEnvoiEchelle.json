@@ -56,7 +56,7 @@
   "mobileTopRow": 10,
   "needsErrorInfo": false,
   "onDateSelected": "{{JS_SuiviFab.savePrestaExterneItem(\"ECHELLE\", CheckboxEchelle, DateEnvoiEchelle)\n}}",
-  "originalBottomRow": 23,
+  "originalBottomRow": 20,
   "originalTopRow": 16,
   "parentColumnSpace": 4.1171875,
   "parentId": "gur4cgnmdx",

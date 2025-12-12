@@ -56,7 +56,7 @@
   "mobileTopRow": 10,
   "needsErrorInfo": false,
   "onDateSelected": "{{JS_SuiviFab.savePrestaExterneItem(\"TRANSPORT\", CheckboxTransport, DateEnvoiTransport)\n}}",
-  "originalBottomRow": 36,
+  "originalBottomRow": 33,
   "originalTopRow": 29,
   "parentColumnSpace": 4.1171875,
   "parentId": "gur4cgnmdx",

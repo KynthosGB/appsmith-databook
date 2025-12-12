@@ -51,7 +51,7 @@
   "mobileRightColumn": 14,
   "mobileTopRow": 1,
   "needsErrorInfo": false,
-  "onOptionChange": "{{GetAppareils.run({\n  \"numero_affaire\": SelectAffaire.selectedOptionValue\n});\nQryDashboardSuiviFabrication.run()}}",
+  "onOptionChange": "",
   "optionLabel": "numero_affaire",
   "optionValue": "numero_affaire",
   "originalBottomRow": 26,

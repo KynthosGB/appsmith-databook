@@ -142,9 +142,6 @@
     },
     {
       "key": "primaryColumns.EditActions1.isDiscardDisabled"
-    },
-    {
-      "key": "primaryColumns.EditActions1.onSave"
     }
   ],
   "dynamicTriggerPathList": [
@@ -208,7 +205,7 @@
       "isVisible": true,
       "label": "Action",
       "notation": "standard",
-      "onSave": "{{ QrySaveAlertRule.run() }}",
+      "onSave": "{{QrySaveAlertRule.run().then(() => {\n  showAlert('Enregistré', 'success');\n});\nQryListAlertRules.run()}}",
       "originalId": "EditActions1",
       "saveActionLabel": "Enreg.",
       "saveBorderRadius": "{{TableAlertRules.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.borderRadius.appBorderRadius)))}}",

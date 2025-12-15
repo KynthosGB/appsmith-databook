@@ -36,28 +36,43 @@ export default {
   },
 
   // --- statuts des groupes ---
-
   setStatutForGroupe(groupeCode, statutCode) {
-    const row = this.getRowByCode(groupeCode);
-    const statut = this.statutByCode(statutCode);
-    if (!row || !statut) return;
+		const row = this.getRowByCode(groupeCode);
+		const statut = this.statutByCode(statutCode);
+		if (!row || !statut) return;
 
-    if (row.statut_id === statut.id) return;
+		const oldStatutCode = row.statut_code;   // AVANT update
+		const newStatutCode = statutCode;
 
-    return SaveSuivi_Header.run({
-      groupe_appareil_id: row.groupe_appareil_id,
-      statut_id: statut.id,
-    }).then(() => this.refreshBar());
-  },
+		// évite de spam si pas de changement
+		if (row.statut_id === statut.id) return;
 
-  setEnCoursIfNeeded(groupeCode) {
-    const row = this.getRowByCode(groupeCode);
-    if (!row) return;
+		return SaveSuivi_Header.run({
+			groupe_appareil_id: row.groupe_appareil_id,
+			statut_id: statut.id,
+		})
+		.then(() => {
+			// 1) refresh UI
+			this.refreshBar();
 
-    if (row.statut_code === "A_FAIRE") {
-      return this.setStatutForGroupe(groupeCode, "EN_COURS");
-    }
-  },
+			// 2) webhook alerte (après succès DB)
+			return SendSlackAlert.run({
+				step_code: groupeCode,              // ex: "PLAN"
+				old_status_code: oldStatutCode,     // ex: "A_FAIRE"
+				new_status_code: newStatutCode,     // ex: "EN_COURS"
+				groupe_appareil_id: row.groupe_appareil_id,
+				numero_affaire: appsmith.URL.queryParams.numero_affaire || null,
+				numero_appareil: appsmith.URL.queryParams.numero_appareil || null,
+				url: appsmith.URL.fullPath || null
+			});
+		})
+		.catch((e) => {
+			showAlert("Erreur sauvegarde statut", "error");
+			console.log(e);
+			throw e;
+		});
+	},
+
 	
 	saveNoteCalcul() {
     const row = this.getRowByCode("NOTE_CALCUL");

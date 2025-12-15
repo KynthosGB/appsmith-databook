@@ -1,0 +1,9 @@
+{
+  "step_code": "{{ this.params.step_code }}",
+  "old_status_code": "{{ this.params.old_status_code }}",
+  "new_status_code": "{{ this.params.new_status_code }}",
+  "groupe_appareil_id": "{{ this.params.groupe_appareil_id }}",
+  "numero_affaire": "{{ this.params.numero_affaire }}",
+  "numero_appareil": "{{ this.params.numero_appareil }}",
+  "url": "{{ this.params.url }}"
+}

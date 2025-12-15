@@ -1,0 +1,1 @@
+SELECT * FROM auth."audit_log_entries" LIMIT 10;

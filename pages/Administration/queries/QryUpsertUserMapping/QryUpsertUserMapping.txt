@@ -1,0 +1,17 @@
+INSERT INTO public.user_mapping (
+  everwin_user_id,
+  slack_user_id,
+  is_enabled,
+  updated_at
+)
+VALUES (
+  '{{ this.params.everwinUserId }}',
+  '{{ this.params.newSlackUserId }}',
+  true,
+  now()
+)
+ON CONFLICT (everwin_user_id)
+DO UPDATE SET
+  slack_user_id = EXCLUDED.slack_user_id,
+  is_enabled    = true,
+  updated_at    = now();

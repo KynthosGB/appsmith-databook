@@ -1,0 +1,3 @@
+SELECT code, libelle
+FROM public.workflow_statut
+ORDER BY ordre;

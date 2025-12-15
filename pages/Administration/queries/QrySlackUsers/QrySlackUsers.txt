@@ -1,0 +1,4 @@
+SELECT slack_user_id, display_name
+FROM public.slack_users
+WHERE is_active = true
+ORDER BY display_name;

@@ -58,6 +58,10 @@
     {
       "id": "Accueil",
       "isDefault": true
+    },
+    {
+      "id": "Administration",
+      "isDefault": false
     }
   ],
   "unpublishedAppLayout": {

@@ -1,0 +1,13 @@
+SELECT
+  eu.everwin_user_id,
+  eu.display_name AS employe,
+  um.slack_user_id,              -- 👈 champ réel pour le Select
+  su.display_name AS slack_display_name,
+  COALESCE(um.is_enabled, false) AS mapping_enabled
+FROM public.everwin_users eu
+LEFT JOIN public.user_mapping um
+  ON um.everwin_user_id = eu.everwin_user_id
+LEFT JOIN public.slack_users su
+  ON su.slack_user_id = um.slack_user_id
+WHERE eu.is_active = true
+ORDER BY eu.display_name;

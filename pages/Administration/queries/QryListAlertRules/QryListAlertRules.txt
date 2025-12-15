@@ -1,0 +1,25 @@
+SELECT
+  ar.id,
+
+  ar.step_code,
+  wge.libelle AS step_label,
+
+  ar.status_code,
+  ws.libelle AS status_label,
+
+  ar.target_type,
+  ar.target_everwin_user_id,
+  eu.display_name AS target_everwin_name,
+
+  ar.enabled,
+  ar.description,
+  ar.throttle_minutes,
+  ar.only_on_change
+FROM public.alert_rules ar
+LEFT JOIN public.workflow_groupe_etape wge
+  ON wge.code = ar.step_code
+LEFT JOIN public.workflow_statut ws
+  ON ws.code = ar.status_code
+LEFT JOIN public.everwin_users eu
+  ON eu.everwin_user_id = ar.target_everwin_user_id
+ORDER BY wge.ordre, ws.ordre, eu.display_name;

@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 15,
+  "bottomRow": 16,
   "boxShadow": "none",
   "defaultOptionValue": "{{ ((options, serverSideFiltering) => (  GetInfosAffaires.data?.[0]?.everwin_user_id ?? null ))(SelectChargeAffaires.options, SelectChargeAffaires.serverSideFiltering) }}",
   "dynamicBindingPathList": [
@@ -67,7 +67,7 @@
   "rightColumn": 31,
   "serverSideFiltering": false,
   "sourceData": "{{\n  (QryEverwinUsers.data || [])\n.filter(u => (u.pole || '').toLowerCase() === 'commercial' || 'Responsable marketing')\n.map(u => ({\n    label: u.display_name,\n    value: u.everwin_user_id,\n  }))\n}}",
-  "topRow": 11,
+  "topRow": 12,
   "type": "SELECT_WIDGET",
   "version": 1,
   "widgetId": "olnsq4mqb4",

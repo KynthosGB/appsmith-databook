@@ -11,7 +11,7 @@
           "name": "code"
         },
         {
-          "name": "checkboxGroup"
+          "name": "radioGroup"
         },
         {
           "name": "datePicker"

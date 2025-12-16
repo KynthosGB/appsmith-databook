@@ -1,6 +1,6 @@
 {
-  "gitSyncId": "6915b9d6a2ab6852a3eeef70_a64aeeb9-fa5b-4a86-8e2b-867a7e826497",
-  "id": "Suivi fabrication appareil_JS_SuiviFab.saveAchatsItem",
+  "gitSyncId": "6915b9d6a2ab6852a3eeef70_f7610b03-70e2-4d45-b414-7fc47cf058f1",
+  "id": "Suivi fabrication appareil_JS_SuiviFab.emitAlertEvent",
   "pluginId": "js-plugin",
   "pluginType": "JS",
   "unpublishedAction": {
@@ -8,10 +8,7 @@
       "encodeParamsToggle": true,
       "jsArguments": [
         {
-          "name": "code"
-        },
-        {
-          "name": "radioGroup"
+          "name": "payload"
         }
       ],
       "paginationType": "NONE",
@@ -29,8 +26,8 @@
         "key": "body"
       }
     ],
-    "fullyQualifiedName": "JS_SuiviFab.saveAchatsItem",
-    "name": "saveAchatsItem",
+    "fullyQualifiedName": "JS_SuiviFab.emitAlertEvent",
+    "name": "emitAlertEvent",
     "pageId": "Suivi fabrication appareil",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false

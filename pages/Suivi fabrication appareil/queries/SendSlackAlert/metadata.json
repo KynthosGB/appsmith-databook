@@ -11,7 +11,7 @@
           "value": "application/json"
         }
       ],
-      "body": "{\n  \"step_code\": \"{{ this.params.step_code }}\",\n  \"old_status_code\": \"{{ this.params.old_status_code }}\",\n  \"new_status_code\": \"{{ this.params.new_status_code }}\",\n  \"groupe_appareil_id\": \"{{ this.params.groupe_appareil_id }}\",\n  \"numero_affaire\": \"{{ this.params.numero_affaire }}\",\n  \"numero_appareil\": \"{{ this.params.numero_appareil }}\",\n  \"url\": \"{{ this.params.url }}\"\n}\n",
+      "body": "{\n  \"event_type\": \"{{ this.params.event_type }}\",\n  \"step_code\": \"{{ this.params.step_code }}\",\n  \"old_status_code\": \"{{ this.params.old_status_code }}\",\n  \"new_status_code\": \"{{ this.params.new_status_code }}\",\n  \"event_key\": \"{{ this.params.event_key }}\",\n  \"event_value\": \"{{ this.params.event_value }}\",\n  \"numero_affaire\": \"{{ appsmith.URL.queryParams.numero_affaire }}\",\n  \"numero_appareil\": \"{{ appsmith.URL.queryParams.numero_appareil }}\",\n  \"url\": \"{{ this.params.url }}\"\n}\n",
       "bodyFormData": [],
       "encodeParamsToggle": true,
       "formData": {

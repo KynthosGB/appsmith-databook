@@ -1,4 +1,5 @@
 export default {
+
   rows() {
 		return QrySuiviFab_Groupes.data || [];
 	},
@@ -14,6 +15,37 @@ export default {
 
   refreshBar() {
 		return QrySuiviFab_Groupes.run();
+	},
+	
+	emitAlertEvent(payload) {
+		return SendSlackAlert.run({
+			numero_affaire: appsmith.URL.queryParams.numero_affaire || null,
+			numero_appareil: appsmith.URL.queryParams.numero_appareil || null,
+			url: appsmith.URL.fullPath || null,
+			...payload,
+		}).catch((e) => {
+			// On ne bloque pas la sauvegarde si Slack/n8n échoue
+			console.log("Slack event failed", e);
+		});
+	},
+
+	/**
+	 * Récupère l'état "avant" d'un item (Appro/Achats/Contrôle/Presta) depuis les queries.
+	 * ⚠️ Adapte les noms des queries et les champs selon ton modèle.
+	 */
+	getItemState(groupCode, itemCode) {
+		// Mets ici tes queries de data si elles existent.
+		// Exemple (à adapter) :
+		const sourcesByGroup = {
+			APPRO: (QryInfoApproAppareil.data || []),
+			ACHATS: (QryInfoAchatsAppareil.data || []),
+			CONTROLE: (QryInfoControlesAppareil.data || []),
+			PRESTA_EXTERNES: (QryInfoPrestaExtAppareil.data || []),
+		};
+
+		const rows = sourcesByGroup[groupCode] || [];
+		const row = rows.find(r => r.code === itemCode) || null;
+		return row;
 	},
 
   // --- délai "Livraison le :" ---
@@ -55,15 +87,11 @@ export default {
 			// 1) refresh UI
 			this.refreshBar();
 
-			// 2) webhook alerte (après succès DB)
-			return SendSlackAlert.run({
-				step_code: groupeCode,              // ex: "PLAN"
-				old_status_code: oldStatutCode,     // ex: "A_FAIRE"
-				new_status_code: newStatutCode,     // ex: "EN_COURS"
-				groupe_appareil_id: row.groupe_appareil_id,
-				numero_affaire: appsmith.URL.queryParams.numero_affaire || null,
-				numero_appareil: appsmith.URL.queryParams.numero_appareil || null,
-				url: appsmith.URL.fullPath || null
+			return this.emitAlertEvent({
+				event_type: "STATUS_CHANGED",
+				step_code: groupeCode,
+				old_status_code: oldStatutCode,
+				new_status_code: newStatutCode,
 			});
 		})
 		.catch((e) => {
@@ -238,13 +266,19 @@ export default {
 	},
 	
 	// --- APPRO : un sous-groupe (Fonds, Virolés, etc.) ---
-	saveApproItem(code, checkboxGroup, datePicker) {
+	saveApproItem(code, radioGroup, datePicker) {
 		const row = this.getRowByCode("APPRO");
 		if (!row) return;
 
-		const selected = checkboxGroup.selectedValues || [];
-		const na     = selected.includes("na");
-		const envoye = selected.includes("envoye");
+		// état AVANT (depuis data)
+		const before = this.getItemState("APPRO", code);
+		const wasEnvoye = !!before?.envoye;
+
+		// RadioGroup -> une seule valeur (string)
+		const value = radioGroup.selectedOptionValue || null;
+
+		const na     = value === "na";
+		const envoye = value === "envoye";
 
 		const date = datePicker.selectedDate
 			? moment(datePicker.selectedDate).format("YYYY-MM-DD")
@@ -257,26 +291,39 @@ export default {
 			envoye,
 			date,
 		})
-			.then(() => this.setEnCoursIfNeeded("APPRO"))
 			.then(() => this.refreshBar())
 			.then(() => {
 				showAlert("Appro mis à jour ✅", "success");
+
+				// notif uniquement si transition false -> true
+				if (!wasEnvoye && envoye) {
+					return this.emitAlertEvent({
+						event_type: "APPRO_SENT",
+						event_key: code,        // FONDS / VIROLES / BRIDES ...
+						event_value: "true",
+					});
+				}
 			})
 			.catch(e => {
 				console.log("Erreur save appro", e);
 				showAlert("Erreur lors de l'enregistrement de l'approvisionnement", "error");
 			});
 	},
+
+
 	
 	// --- ACHATS : un sous-groupe (Brides, Visseries, etc.) ---
-	saveAchatsItem(code, checkboxGroup) {
-		// récupère la ligne du groupe 'ACHATS' pour l'appareil
+	saveAchatsItem(code, radioGroup) {
 		const row = this.getRowByCode("ACHATS");
 		if (!row) return;
 
-		const selected = checkboxGroup.selectedValues || [];
-		const na   = selected.includes("na");
-		const recu = selected.includes("recu");
+		const before = this.getItemState("ACHATS", code);
+		const wasRecu = !!before?.recu;
+
+		const value = radioGroup.selectedOptionValue || null;
+
+		const na   = value === "na";
+		const recu = value === "recu";
 
 		return SaveSuivi_AchatsItem.run({
 			groupe_appareil_id: row.groupe_appareil_id,
@@ -284,10 +331,17 @@ export default {
 			na,
 			recu,
 		})
-			.then(() => this.setEnCoursIfNeeded("ACHATS"))
 			.then(() => this.refreshBar())
 			.then(() => {
 				showAlert("Achats mis à jour ✅", "success");
+
+				if (!wasRecu && recu) {
+					return this.emitAlertEvent({
+						event_type: "ACHATS_RECU",
+						event_key: code, // BRIDES / VISSERIES / JOINTS / ...
+						event_value: "true",
+					});
+				}
 			})
 			.catch(e => {
 				console.log("Erreur save achats", e);
@@ -297,17 +351,17 @@ export default {
 
 
 	// --- CONTROLE : un sous-groupe (Visuels, Radio, FAT, ...) ---
-	saveControleItem(code, checkboxGroup, datePicker) {
-		// code = 'VISUELS', 'RADIO', 'FAT', ...
-		// checkboxGroup = widget CheckboxGroup (NA / Fait)
-		// datePicker = widget DatePicker correspondant
-
+	saveControleItem(code, radioGroup, datePicker) {
 		const row = this.getRowByCode("CONTROLE");
 		if (!row) return;
 
-		const selected = checkboxGroup.selectedValues || [];
-		const na   = selected.includes("na");
-		const fait = selected.includes("fait");
+		const before = this.getItemState("CONTROLE", code);
+		const wasFait = !!before?.fait;
+
+		const value = radioGroup.selectedOptionValue || null;
+
+		const na   = value === "na";
+		const fait = value === "fait";
 
 		const date = datePicker.selectedDate
 			? moment(datePicker.selectedDate).format("YYYY-MM-DD")
@@ -320,29 +374,38 @@ export default {
 			fait,
 			date,
 		})
-			.then(() => this.setEnCoursIfNeeded("CONTROLE")) // A_FAIRE -> EN_COURS
-			.then(() => this.refreshBar())                   // refresh ButtonGroup
+			.then(() => this.refreshBar())
 			.then(() => {
 				showAlert("Contrôle mis à jour ✅", "success");
+
+				if (!wasFait && fait) {
+					return this.emitAlertEvent({
+						event_type: "CONTROLE_FAIT",
+						event_key: code, // VISUELS / RADIO / FAT ...
+						event_value: "true",
+					});
+				}
 			})
 			.catch(e => {
 				console.log("Erreur save contrôle", e);
 				showAlert("Erreur lors de l'enregistrement du contrôle", "error");
 			});
 	},
+
+
 	
 	// --- PRESTATIONS EXTERNES : un sous-groupe (Calo, Berces, Plateforme, ...) ---
-	savePrestaExterneItem(code, checkboxGroup, datePicker) {
-		// code = 'PLATEFORME', 'ECHELLE', ...
-		// checkboxGroup = widget CheckboxGroup (NA / Commande)
-		// datePicker = widget DatePicker correspondant
-
+	savePrestaExterneItem(code, radioGroup, datePicker) {
 		const row = this.getRowByCode("PRESTA_EXTERNES");
 		if (!row) return;
 
-		const selected = checkboxGroup.selectedValues || [];
-		const na   = selected.includes("na");
-		const commande = selected.includes("commande");
+		const before = this.getItemState("PRESTA_EXTERNES", code);
+		const wasCommande = !!before?.commande;
+
+		const value = radioGroup.selectedOptionValue || null;
+
+		const na       = value === "na";
+		const commande = value === "commande";
 
 		const date = datePicker.selectedDate
 			? moment(datePicker.selectedDate).format("YYYY-MM-DD")
@@ -355,16 +418,25 @@ export default {
 			commande,
 			date,
 		})
-			.then(() => this.setEnCoursIfNeeded("PRESTA_EXTERNES")) // A_FAIRE -> EN_COURS
-			.then(() => this.refreshBar())                   // refresh ButtonGroup
+			.then(() => this.refreshBar())
 			.then(() => {
 				showAlert("Prestations externes mises à jour ✅", "success");
+
+				if (!wasCommande && commande) {
+					return this.emitAlertEvent({
+						event_type: "PRESTA_COMMANDEE",
+						event_key: code, // PLATEFORME / ECHELLE / ...
+						event_value: "true",
+					});
+				}
 			})
 			.catch(e => {
 				console.log("Erreur save prestations externes", e);
 				showAlert("Erreur lors de l'enregistrement de prestations externes", "error");
 			});
 	},
+
+
 
 	// --- FABRICATION ---
 

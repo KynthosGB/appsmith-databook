@@ -1,9 +1,11 @@
 {
+  "event_type": "{{ this.params.event_type }}",
   "step_code": "{{ this.params.step_code }}",
   "old_status_code": "{{ this.params.old_status_code }}",
   "new_status_code": "{{ this.params.new_status_code }}",
-  "groupe_appareil_id": "{{ this.params.groupe_appareil_id }}",
-  "numero_affaire": "{{ this.params.numero_affaire }}",
-  "numero_appareil": "{{ this.params.numero_appareil }}",
+  "event_key": "{{ this.params.event_key }}",
+  "event_value": "{{ this.params.event_value }}",
+  "numero_affaire": "{{ appsmith.URL.queryParams.numero_affaire }}",
+  "numero_appareil": "{{ appsmith.URL.queryParams.numero_appareil }}",
   "url": "{{ this.params.url }}"
 }

@@ -1,18 +1,16 @@
 {
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "alignment": "left",
   "animateLoading": true,
-  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 19,
-  "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoControlesAppareil.data || [])\n      .find(r => r.controle_code === \"DIMENSIONNELS\");\n    if (!row) return [];\n\n    const values = [];\n    if (row.na)   values.push(\"na\");\n    if (row.fait) values.push(\"fait\");\n    return values;\n  })()\n}}\n",
+  "bottomRow": 18,
+  "boxShadow": "none",
+  "defaultOptionValue": "{{\n  (() => {\n    const row = (QryInfoControlesAppareil.data || [])\n      .find(r => r.controle_code === \"DIMENSIONNELS\");\n    if (!row) return null;\n\n    if (row.na)   return \"na\";\n    if (row.fait) return \"fait\";\n\n    return null;\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
     },
     {
-      "key": "borderRadius"
-    },
-    {
-      "key": "defaultSelectedValues"
+      "key": "defaultOptionValue"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
@@ -32,21 +30,21 @@
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,
-  "key": "q70accm5pn",
+  "key": "axq46o8em9",
+  "label": "",
   "labelAlignment": "left",
   "labelPosition": "Top",
-  "labelText": "",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
   "leftColumn": 22,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
-  "mobileBottomRow": 15,
-  "mobileLeftColumn": 2,
-  "mobileRightColumn": 25,
-  "mobileTopRow": 9,
+  "mobileBottomRow": 27,
+  "mobileLeftColumn": 1,
+  "mobileRightColumn": 21,
+  "mobileTopRow": 21,
   "needsErrorInfo": false,
-  "onSelectionChange": "{{JS_SuiviFab.saveControleItem(\"DIMENSIONNELS\", CheckboxCtrlDim, DateFaitCtrlDim)}}",
+  "onSelectionChange": "{{JS_SuiviFab.saveControleItem(\"DIMENSIONNELS\", CheckboxCtrlDim, DateFaitCtrlDim)\n}}",
   "options": [
     {
       "label": "NA",
@@ -57,16 +55,16 @@
       "value": "fait"
     }
   ],
-  "originalBottomRow": 19,
+  "originalBottomRow": 18,
   "originalTopRow": 12,
-  "parentColumnSpace": 6.015625,
+  "parentColumnSpace": 19.3046875,
   "parentId": "tm4r707uhl",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
-  "rightColumn": 29,
+  "rightColumn": 30,
   "topRow": 12,
-  "type": "CHECKBOX_GROUP_WIDGET",
-  "version": 2,
-  "widgetId": "p3kj9za0tg",
+  "type": "RADIO_GROUP_WIDGET",
+  "version": 1,
+  "widgetId": "149t5oi1gf",
   "widgetName": "CheckboxCtrlDim"
 }

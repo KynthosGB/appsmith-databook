@@ -37,7 +37,7 @@
     "dynamicBindingPathList": [],
     "name": "GetChargeAffaires",
     "pageId": "Suivi fabrication appareil",
-    "runBehaviour": "AUTOMATIC",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

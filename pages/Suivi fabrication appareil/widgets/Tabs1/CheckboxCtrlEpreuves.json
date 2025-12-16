@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "alignment": "left",
   "animateLoading": true,
-  "bottomRow": 18,
+  "bottomRow": 16,
   "boxShadow": "none",
   "defaultOptionValue": "{{\n  (() => {\n    const row = (QryInfoControlesAppareil.data || [])\n      .find(r => r.controle_code === \"EPREUVES\");\n    if (!row) return null;\n\n    if (row.na)   return \"na\";\n    if (row.fait) return \"fait\";\n\n    return null;\n  })()\n}}\n",
   "dynamicBindingPathList": [

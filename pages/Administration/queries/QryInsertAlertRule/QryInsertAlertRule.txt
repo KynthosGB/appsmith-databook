@@ -35,17 +35,18 @@ VALUES (
 
   CASE
     WHEN '{{ TableAlertRules.newRow.event_type ?? "STATUS_CHANGED" }}' <> 'STATUS_CHANGED'
-      THEN 'true'
+      THEN NULLIF('{{ TableAlertRules.newRow.event_value ?? "" }}', '')
     ELSE NULL
   END,
 
   '{{ TableAlertRules.newRow.target_type ?? "DM" }}',
 
   CASE
-    WHEN '{{ TableAlertRules.newRow.target_type ?? "DM" }}' = 'DM'
-      THEN NULLIF('{{ TableAlertRules.newRow.target_everwin_user_id ?? "" }}', '')
-    ELSE NULL
-  END,
+		WHEN '{{ TableAlertRules.newRow.target_type ?? "DM" }}' = 'DM'
+		 AND NULLIF('{{ TableAlertRules.newRow.status_code ?? "" }}','') <> 'ATTENTE_CLIENT'
+			THEN NULLIF('{{ TableAlertRules.newRow.target_everwin_user_id ?? "" }}', '')
+		ELSE NULL
+	END,
 
   CASE
     WHEN '{{ TableAlertRules.newRow.target_type ?? "DM" }}' = 'CHANNEL'

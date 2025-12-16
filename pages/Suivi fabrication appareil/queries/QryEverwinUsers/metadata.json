@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6915b9d6a2ab6852a3eeef70_396a6520-9c5e-457a-8335-29069b32f975",
-  "id": "Suivi fabrication appareil_SaveSuivi_ChargeAffAppareil",
+  "gitSyncId": "6915b9d6a2ab6852a3eeef70_cf0ce8e6-a88f-4c59-8dc4-57427e5a39b4",
+  "id": "Suivi fabrication appareil_QryEverwinUsers",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "UPDATE public.affaires\nSET everwin_user_id = {{ this.params.everwin_user_id }}\nWHERE numero_affaire = {{ this.params.numero_affaire }};",
+      "body": "SELECT\n  *\nFROM public.everwin_users\nWHERE is_active = true\nORDER BY everwin_user_id;\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,14 +22,10 @@
       "name": "Databook - Neon",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [
-      {
-        "key": "body"
-      }
-    ],
-    "name": "SaveSuivi_ChargeAffAppareil",
+    "dynamicBindingPathList": [],
+    "name": "QryEverwinUsers",
     "pageId": "Suivi fabrication appareil",
-    "runBehaviour": "MANUAL",
+    "runBehaviour": "AUTOMATIC",
     "userSetOnLoad": false
   }
 }

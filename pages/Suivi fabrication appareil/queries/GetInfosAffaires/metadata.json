@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n  a.*\nFROM public.affaires a\nWHERE a.cloture = FALSE\nAND a.numero_affaire = {{ SelectAffaire.selectedOptionValue }}\nORDER BY a.numero_affaire DESC;\n",
+      "body": "SELECT\n  a.*\nFROM public.affaires a\nLEFT JOIN public.everwin_users eu\n  ON eu.everwin_user_id = a.everwin_user_id\nWHERE a.cloture = FALSE\nAND a.numero_affaire = {{ SelectAffaire.selectedOptionValue }}\nORDER BY a.numero_affaire DESC;\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

@@ -50,7 +50,7 @@
     "id",
     "EditActions1"
   ],
-  "columnUpdatedAt": 1765886910330,
+  "columnUpdatedAt": 1765894405301,
   "columnWidthMap": {
     "description": 156,
     "enabled": 118,
@@ -59,7 +59,7 @@
     "status_code": 182,
     "step_code": 121,
     "target_everwin_name": 186,
-    "target_everwin_user_id": 139
+    "target_everwin_user_id": 177
   },
   "customIsLoading": false,
   "customIsLoadingValue": "",
@@ -164,10 +164,13 @@
       "key": "primaryColumns.target_everwin_user_id.selectOptions"
     },
     {
+      "key": "primaryColumns.event_key.validation.isColumnEditableCellRequired"
+    },
+    {
       "key": "primaryColumns.target_everwin_user_id.isCellVisible"
     },
     {
-      "key": "primaryColumns.event_key.validation.isColumnEditableCellRequired"
+      "key": "primaryColumns.EditActions1.isDiscardDisabled"
     }
   ],
   "dynamicPropertyPathList": [
@@ -200,6 +203,12 @@
     },
     {
       "key": "primaryColumns.event_key.validation.isColumnEditableCellRequired"
+    },
+    {
+      "key": "primaryColumns.EditActions1.isSaveDisabled"
+    },
+    {
+      "key": "primaryColumns.EditActions1.isDiscardDisabled"
     }
   ],
   "dynamicTriggerPathList": [
@@ -262,10 +271,10 @@
       "isCellVisible": true,
       "isDerived": true,
       "isDisabled": false,
-      "isDiscardDisabled": false,
+      "isDiscardDisabled": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (\n  !TableAlertRules.isAddRowInProgress\n  && !TableAlertRules.isRowEditing\n)) : \n  !TableAlertRules.isAddRowInProgress\n  && !TableAlertRules.isRowEditing\n })()}}",
       "isDiscardVisible": true,
       "isEditable": false,
-      "isSaveDisabled": false,
+      "isSaveDisabled": "",
       "isSaveVisible": true,
       "isVisible": true,
       "label": "Action",
@@ -668,7 +677,7 @@
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "columnType": "select",
-      "computedValue": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"target_everwin_user_id\"])) : target_everwin_user_id })()}}",
+      "computedValue": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( currentRow.target_everwin_user_id ? String(currentRow.target_everwin_user_id) : undefined )) :  currentRow.target_everwin_user_id ? String(currentRow.target_everwin_user_id) : undefined  })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -677,7 +686,7 @@
       "id": "target_everwin_user_id",
       "index": 9,
       "isCellEditable": true,
-      "isCellVisible": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( currentRow.target_type === \"DM\" )) :  currentRow.target_type === \"DM\"  })()}}",
+      "isCellVisible": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (\n(TableAlertRules.isAddRowInProgress\n    ? TableAlertRules.newRow.status_code\n    : currentRow.status_code\n  ) !== \"ATTENTE_CLIENT\"\n)) : \n(TableAlertRules.isAddRowInProgress\n    ? TableAlertRules.newRow.status_code\n    : currentRow.status_code\n  ) !== \"ATTENTE_CLIENT\"\n })()}}",
       "isDerived": false,
       "isDisabled": false,
       "isDiscardVisible": true,
@@ -687,7 +696,8 @@
       "label": "Personnel",
       "notation": "standard",
       "originalId": "target_everwin_user_id",
-      "selectOptions": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( QryEverwinUsers.data.map(u => ({ label: u.display_name, value: u.everwin_user_id })) )) :  QryEverwinUsers.data.map(u => ({ label: u.display_name, value: u.everwin_user_id }))  })()}}",
+      "selectOptions": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (\n  (QryEverwinUsers.data || []).map(u => ({\n    label: u.display_name,\n    value: String(u.everwin_user_id),\n  }))\n)) : \n  (QryEverwinUsers.data || []).map(u => ({\n    label: u.display_name,\n    value: String(u.everwin_user_id),\n  }))\n })()}}",
+      "sortBy": "value",
       "sticky": "",
       "textSize": "0.75rem",
       "thousandSeparator": true,
@@ -760,7 +770,7 @@
   },
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 64,
+  "rightColumn": 63,
   "searchKey": "",
   "showInlineEditingOptionDropdown": true,
   "tableData": "{{QryListAlertRules.data}}",

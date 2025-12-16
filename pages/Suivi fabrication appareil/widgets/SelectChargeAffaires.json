@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 15,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( GetInfosAffaires.data[0].charge_affaire))(SelectChargeAffaires.options, SelectChargeAffaires.serverSideFiltering) }}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => (  GetInfosAffaires.data?.[0]?.everwin_user_id ?? null ))(SelectChargeAffaires.options, SelectChargeAffaires.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -66,7 +66,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 31,
   "serverSideFiltering": false,
-  "sourceData": "{{\n  (GetChargeAffaires.data || []).map(m => ({\n    label: m.label,   // L. AMELIN\n    value: m.label,   // on stocke le même texte puisque la DB n'accepte que du texte\n  }))\n}}",
+  "sourceData": "{{\n  (QryEverwinUsers.data || [])\n.filter(u => (u.pole || '').toLowerCase() === 'commercial' || 'Responsable marketing')\n.map(u => ({\n    label: u.display_name,\n    value: u.everwin_user_id,\n  }))\n}}",
   "topRow": 11,
   "type": "SELECT_WIDGET",
   "version": 1,

@@ -41,11 +41,40 @@ SET
     ELSE NULL
   END,
 
-  enabled = {{ TableAlertRules.updatedRow.enabled ?? TableAlertRules.triggeredRow.enabled }},
-  only_on_change = {{ TableAlertRules.updatedRow.only_on_change ?? TableAlertRules.triggeredRow.only_on_change }},
-  throttle_minutes = {{ TableAlertRules.updatedRow.throttle_minutes ?? TableAlertRules.triggeredRow.throttle_minutes ?? 0 }},
+  enabled = {{
+		(() => {
+			const v = TableAlertRules.updatedRow.enabled ?? TableAlertRules.triggeredRow.enabled;
+			if (v === true || v === false) return v;
+			if (v === "true") return true;
+			if (v === "false") return false;
+			return true; // défaut
+		})()
+	}},
+
+	only_on_change = {{
+		(() => {
+			const v = TableAlertRules.updatedRow.only_on_change ?? TableAlertRules.triggeredRow.only_on_change;
+			if (v === true || v === false) return v;
+			if (v === "true") return true;
+			if (v === "false") return false;
+			return true; // défaut
+		})()
+	}},
+
+  throttle_minutes = {{
+		(() => {
+			const v = TableAlertRules.updatedRow.throttle_minutes ?? TableAlertRules.triggeredRow.throttle_minutes;
+			const n = Number(v);
+			return Number.isFinite(n) ? n : 0;
+		})()
+	}},
+
 
   description = '{{ ((TableAlertRules.updatedRow.description ?? TableAlertRules.triggeredRow.description) || "").replaceAll("'", "''") }}',
   updated_at = now()
 
-WHERE id = '{{ TableAlertRules.updatedRow.id ?? TableAlertRules.triggeredRow.id }}';
+WHERE id = {{
+  TableAlertRules.updatedRow?.id
+  ?? TableAlertRules.triggeredRow?.id
+}};
+

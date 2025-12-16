@@ -1,6 +1,8 @@
 SELECT
   a.*
 FROM public.affaires a
+LEFT JOIN public.everwin_users eu
+  ON eu.everwin_user_id = a.everwin_user_id
 WHERE a.cloture = FALSE
 AND a.numero_affaire = {{ SelectAffaire.selectedOptionValue }}
 ORDER BY a.numero_affaire DESC;

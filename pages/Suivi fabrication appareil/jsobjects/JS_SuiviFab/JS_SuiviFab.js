@@ -60,7 +60,11 @@ export default {
     return SaveSuivi_DelaiAppareil.run({
       numero_appareil,
       delai,
-    }).catch(e => {
+    })
+		.then(() => {
+      showAlert("Délai mis à jour", "success");
+     })
+		.catch(e => {
       console.log("Erreur save délai", e);
       showAlert("Erreur lors de l'enregistrement du délai", "error");
     });
@@ -70,12 +74,16 @@ export default {
     const numero_affaire = appsmith.URL.queryParams.numero_affaire;
     if (!numero_affaire) return;
 
-    const charge_affaires = SelectChargeAffaires.selectedOptionValue;
+    const everwin_user_id = SelectChargeAffaires.selectedOptionValue;
 
     return SaveSuivi_ChargeAffAppareil.run({
       numero_affaire,
-      charge_affaires,
-    }).catch(e => {
+      everwin_user_id,
+    })
+		.then(() => {
+        showAlert("Chargé d'affaires mis à jour", "success");
+      })
+		.catch(e => {
       console.log("Erreur save chargé d'affaires", e);
       showAlert("Erreur lors de l'enregistrement du chargé d'affaires", "error");
     });

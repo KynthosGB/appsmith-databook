@@ -1,12 +1,51 @@
 UPDATE public.alert_rules
 SET
-  step_code = '{{ TableAlertRules.updatedRow.step_code }}',
-  status_code = '{{ TableAlertRules.updatedRow.status_code }}',
-  target_type = 'DM',
-  target_everwin_user_id = '{{ TableAlertRules.updatedRow.target_everwin_user_id }}',
-  enabled = {{ TableAlertRules.updatedRow.enabled }},
-  description = '{{ (TableAlertRules.updatedRow.description || "").replaceAll("'", "''") }}',
-  throttle_minutes = {{ TableAlertRules.updatedRow.throttle_minutes }},
-  only_on_change = {{ TableAlertRules.updatedRow.only_on_change }},
+  event_type = '{{ TableAlertRules.updatedRow.event_type ?? TableAlertRules.triggeredRow.event_type }}',
+
+  step_code = CASE
+    WHEN '{{ TableAlertRules.updatedRow.event_type ?? TableAlertRules.triggeredRow.event_type }}' = 'STATUS_CHANGED'
+      THEN NULLIF('{{ TableAlertRules.updatedRow.step_code ?? TableAlertRules.triggeredRow.step_code }}','')
+    ELSE NULL
+  END,
+
+  status_code = CASE
+    WHEN '{{ TableAlertRules.updatedRow.event_type ?? TableAlertRules.triggeredRow.event_type }}' = 'STATUS_CHANGED'
+      THEN NULLIF('{{ TableAlertRules.updatedRow.status_code ?? TableAlertRules.triggeredRow.status_code }}','')
+    ELSE NULL
+  END,
+
+  event_key = CASE
+    WHEN '{{ TableAlertRules.updatedRow.event_type ?? TableAlertRules.triggeredRow.event_type }}' <> 'STATUS_CHANGED'
+      THEN NULLIF('{{ TableAlertRules.updatedRow.event_key ?? TableAlertRules.triggeredRow.event_key }}','')
+    ELSE NULL
+  END,
+
+  -- comme tu as décidé: toujours true (et caché)
+  event_value = CASE
+    WHEN '{{ TableAlertRules.updatedRow.event_type ?? TableAlertRules.triggeredRow.event_type }}' <> 'STATUS_CHANGED'
+      THEN 'true'
+    ELSE NULL
+  END,
+
+  target_type = '{{ TableAlertRules.updatedRow.target_type ?? TableAlertRules.triggeredRow.target_type ?? "DM" }}',
+
+  target_everwin_user_id = CASE
+    WHEN '{{ TableAlertRules.updatedRow.target_type ?? TableAlertRules.triggeredRow.target_type ?? "DM" }}' = 'DM'
+      THEN NULLIF('{{ TableAlertRules.updatedRow.target_everwin_user_id ?? TableAlertRules.triggeredRow.target_everwin_user_id }}','')
+    ELSE NULL
+  END,
+
+  target_slack_channel_id = CASE
+    WHEN '{{ TableAlertRules.updatedRow.target_type ?? TableAlertRules.triggeredRow.target_type ?? "DM" }}' = 'CHANNEL'
+      THEN NULLIF('{{ TableAlertRules.updatedRow.target_slack_channel_id ?? TableAlertRules.triggeredRow.target_slack_channel_id }}','')
+    ELSE NULL
+  END,
+
+  enabled = {{ TableAlertRules.updatedRow.enabled ?? TableAlertRules.triggeredRow.enabled }},
+  only_on_change = {{ TableAlertRules.updatedRow.only_on_change ?? TableAlertRules.triggeredRow.only_on_change }},
+  throttle_minutes = {{ TableAlertRules.updatedRow.throttle_minutes ?? TableAlertRules.triggeredRow.throttle_minutes ?? 0 }},
+
+  description = '{{ ((TableAlertRules.updatedRow.description ?? TableAlertRules.triggeredRow.description) || "").replaceAll("'", "''") }}',
   updated_at = now()
-WHERE id = {{ TableAlertRules.updatedRow.id }};
+
+WHERE id = '{{ TableAlertRules.updatedRow.id ?? TableAlertRules.triggeredRow.id }}';

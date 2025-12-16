@@ -25,6 +25,12 @@
     },
     {
       "key": "menuItems.menuItemtqwh0zdtbo.onClick"
+    },
+    {
+      "key": "menuItems.menuItem3ksq8t6h4z.onClick"
+    },
+    {
+      "key": "menuItems.menuItemns7yvrbl1t.onClick"
     }
   ],
   "iconAlign": "left",
@@ -57,6 +63,24 @@
       "label": "Générer la revue de contrat",
       "onClick": "{{showModal(ModalRevueContrat.name);}}",
       "widgetId": ""
+    },
+    "menuItem3ksq8t6h4z": {
+      "id": "menuItem3ksq8t6h4z",
+      "index": 3,
+      "isDisabled": false,
+      "isVisible": true,
+      "label": "Tableau de bord BE",
+      "onClick": "{{navigateTo('Tableau de bord fabrication', {}, 'NEW_WINDOW');}}",
+      "widgetId": "ty4ek9esbw"
+    },
+    "menuItemns7yvrbl1t": {
+      "id": "menuItemns7yvrbl1t",
+      "index": 4,
+      "isDisabled": false,
+      "isVisible": true,
+      "label": "Planning général",
+      "onClick": "{{navigateTo('Planning', {}, 'NEW_WINDOW');}}",
+      "widgetId": "wc3kd5uw9n"
     },
     "menuItemtqwh0zdtbo": {
       "iconName": "folder-close",

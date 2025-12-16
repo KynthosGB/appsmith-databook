@@ -1,10 +1,11 @@
 {
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "allowAddNewRow": true,
   "animateLoading": true,
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "1",
-  "bottomRow": 50,
+  "bottomRow": 53,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "cachedTableData": {},
   "canFreezeColumn": true,
@@ -32,24 +33,33 @@
     }
   },
   "columnOrder": [
-    "id",
+    "event_type",
     "step_code",
     "status_code",
+    "description",
     "target_everwin_user_id",
+    "enabled",
+    "event_key",
     "step_label",
     "status_label",
+    "event_value",
     "target_type",
     "target_everwin_name",
-    "enabled",
-    "description",
     "throttle_minutes",
     "only_on_change",
+    "id",
     "EditActions1"
   ],
-  "columnUpdatedAt": 1765811128893,
+  "columnUpdatedAt": 1765886910330,
   "columnWidthMap": {
-    "description": 342,
-    "enabled": 125
+    "description": 156,
+    "enabled": 118,
+    "event_key": 136,
+    "event_type": 202,
+    "status_code": 182,
+    "step_code": 121,
+    "target_everwin_name": 186,
+    "target_everwin_user_id": 139
   },
   "customIsLoading": false,
   "customIsLoadingValue": "",
@@ -76,6 +86,9 @@
       "key": "primaryColumns.id.computedValue"
     },
     {
+      "key": "primaryColumns.event_type.computedValue"
+    },
+    {
       "key": "primaryColumns.step_code.computedValue"
     },
     {
@@ -86,6 +99,12 @@
     },
     {
       "key": "primaryColumns.status_label.computedValue"
+    },
+    {
+      "key": "primaryColumns.event_key.computedValue"
+    },
+    {
+      "key": "primaryColumns.event_value.computedValue"
     },
     {
       "key": "primaryColumns.target_type.computedValue"
@@ -118,19 +137,37 @@
       "key": "primaryColumns.EditActions1.discardBorderRadius"
     },
     {
-      "key": "primaryColumns.EditActions1.isSaveDisabled"
-    },
-    {
-      "key": "primaryColumns.EditActions1.isDiscardDisabled"
+      "key": "primaryColumns.event_type.selectOptions"
     },
     {
       "key": "primaryColumns.step_code.selectOptions"
     },
     {
+      "key": "primaryColumns.step_code.isCellVisible"
+    },
+    {
       "key": "primaryColumns.status_code.selectOptions"
     },
     {
+      "key": "primaryColumns.status_code.isCellVisible"
+    },
+    {
+      "key": "primaryColumns.event_key.isCellVisible"
+    },
+    {
+      "key": "primaryColumns.event_key.selectOptions"
+    },
+    {
+      "key": "primaryColumns.event_value.isCellVisible"
+    },
+    {
       "key": "primaryColumns.target_everwin_user_id.selectOptions"
+    },
+    {
+      "key": "primaryColumns.target_everwin_user_id.isCellVisible"
+    },
+    {
+      "key": "primaryColumns.event_key.validation.isColumnEditableCellRequired"
     }
   ],
   "dynamicPropertyPathList": [
@@ -138,15 +175,42 @@
       "key": "tableData"
     },
     {
-      "key": "primaryColumns.EditActions1.isSaveDisabled"
+      "key": "primaryColumns.step_code.isCellVisible"
     },
     {
-      "key": "primaryColumns.EditActions1.isDiscardDisabled"
+      "key": "primaryColumns.status_code.isCellVisible"
+    },
+    {
+      "key": "primaryColumns.event_key.isCellVisible"
+    },
+    {
+      "key": "primaryColumns.event_value.isCellVisible"
+    },
+    {
+      "key": "primaryColumns.target_everwin_user_id.isCellVisible"
+    },
+    {
+      "key": "primaryColumns.EditActions1.onSave"
+    },
+    {
+      "key": "textSize"
+    },
+    {
+      "key": "onAddNewRowSave"
+    },
+    {
+      "key": "primaryColumns.event_key.validation.isColumnEditableCellRequired"
     }
   ],
   "dynamicTriggerPathList": [
     {
       "key": "primaryColumns.EditActions1.onSave"
+    },
+    {
+      "key": "onAddNewRowSave"
+    },
+    {
+      "key": "primaryColumns.EditActions1.onDiscard"
     }
   ],
   "enableClientSideSearch": true,
@@ -160,8 +224,8 @@
   "isVisibleDownload": false,
   "isVisibleFilters": false,
   "isVisiblePagination": true,
-  "isVisibleSearch": true,
-  "key": "tuziduy7m6",
+  "isVisibleSearch": false,
+  "key": "lmgu9hnxyz",
   "label": "Data",
   "leftColumn": 0,
   "minWidth": 450,
@@ -170,6 +234,7 @@
   "mobileRightColumn": 34,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
+  "onAddNewRowSave": "{{\n  QryInsertAlertRule.run()\n    .then(() => {\n      showAlert(\"Règle ajoutée ✅\", \"success\");\n      QryListAlertRules.run();  // refresh table\n    })\n    .catch((e) => {\n      console.log(e);\n      showAlert(\"Erreur lors de l'ajout ❌\", \"error\");\n      QryListAlertRules.run();\n    })\n}}",
   "parentColumnSpace": 19.3046875,
   "parentId": "bqq0ngs4zl",
   "parentRowSpace": 10,
@@ -184,7 +249,7 @@
       "computedValue": "",
       "currencyCode": "USD",
       "decimals": 0,
-      "discardActionLabel": "Annul.",
+      "discardActionLabel": "Suppr.",
       "discardBorderRadius": "{{TableAlertRules.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.borderRadius.appBorderRadius)))}}",
       "discardButtonColor": "#F22B2B",
       "discardButtonVariant": "TERTIARY",
@@ -197,21 +262,23 @@
       "isCellVisible": true,
       "isDerived": true,
       "isDisabled": false,
-      "isDiscardDisabled": "{{TableAlertRules.processedTableData.map((currentRow, currentIndex) => ( !TableAlertRules.updatedRowIndices.includes(currentIndex)))}}",
+      "isDiscardDisabled": false,
       "isDiscardVisible": true,
       "isEditable": false,
-      "isSaveDisabled": "{{TableAlertRules.processedTableData.map((currentRow, currentIndex) => ( !TableAlertRules.updatedRowIndices.includes(currentIndex)))}}",
+      "isSaveDisabled": false,
       "isSaveVisible": true,
       "isVisible": true,
       "label": "Action",
       "notation": "standard",
-      "onSave": "{{QrySaveAlertRule.run().then(() => {\n  showAlert('Enregistré', 'success');\n});\nQryListAlertRules.run()}}",
+      "onDiscard": "{{QryDeleteAlertRule.run({\n  id: TableAlertRules.triggeredRow.id\n}).then(() => {\n  showAlert('Règle supprimée', 'success');\n}).catch(() => {\n  showAlert('Erreur lors de la suppression', 'error');\n});\nQryListAlertRules.run()}}",
+      "onSave": "{{\n  QrySaveAlertRule.run()\n    .then(() => {\n      showAlert(\"Règle enregistrée ✅\", \"success\");\n      QryListAlertRules.run();        // ta requête qui alimente la table\n    })\n    .catch((e) => {\n      console.log(e);\n      showAlert(\"Erreur lors de l'enregistrement ❌\", \"error\");\n      QryListAlertRules.run();        // refresh quand même\n    })\n}}\n",
       "originalId": "EditActions1",
       "saveActionLabel": "Enreg.",
       "saveBorderRadius": "{{TableAlertRules.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.borderRadius.appBorderRadius)))}}",
       "saveButtonColor": "{{TableAlertRules.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.colors.primaryColor)))}}",
       "saveIconAlign": "left",
       "sticky": "right",
+      "textSize": "0.75rem",
       "thousandSeparator": true,
       "validation": {},
       "width": 150
@@ -228,7 +295,7 @@
       "enableSort": true,
       "horizontalAlignment": "LEFT",
       "id": "description",
-      "index": 9,
+      "index": 12,
       "isCellEditable": true,
       "isCellVisible": true,
       "isDerived": false,
@@ -237,11 +304,11 @@
       "isEditable": true,
       "isSaveVisible": true,
       "isVisible": true,
-      "label": "description",
+      "label": "Description",
       "notation": "standard",
       "originalId": "description",
       "sticky": "",
-      "textSize": "0.875rem",
+      "textSize": "0.75rem",
       "thousandSeparator": true,
       "validation": {},
       "verticalAlignment": "CENTER",
@@ -259,7 +326,7 @@
       "enableSort": true,
       "horizontalAlignment": "LEFT",
       "id": "enabled",
-      "index": 8,
+      "index": 11,
       "isCellEditable": true,
       "isCellVisible": true,
       "isDerived": false,
@@ -268,11 +335,109 @@
       "isEditable": true,
       "isSaveVisible": true,
       "isVisible": true,
-      "label": "Activer",
+      "label": "Activer ?",
       "notation": "standard",
       "originalId": "enabled",
       "sticky": "",
-      "textSize": "0.875rem",
+      "textSize": "0.75rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "event_key": {
+      "alias": "event_key",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "columnType": "select",
+      "computedValue": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"event_key\"])) : currentRow[\"event_key\"] })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "id": "event_key",
+      "index": 6,
+      "isCellEditable": true,
+      "isCellVisible": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (\n(TableAlertRules.isAddRowInProgress\n    ? TableAlertRules.newRow.event_type\n    : currentRow.event_type\n  ) !== \"STATUS_CHANGED\"\n)) : \n(TableAlertRules.isAddRowInProgress\n    ? TableAlertRules.newRow.event_type\n    : currentRow.event_type\n  ) !== \"STATUS_CHANGED\"\n })()}}",
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": true,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Item",
+      "notation": "standard",
+      "originalId": "event_key",
+      "selectOptions": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (\n  (\n    (TableAlertRules.isAddRowInProgress\n      ? TableAlertRules.newRow.event_type\n      : currentRow.event_type\n    ) === \"APPRO_SENT\"\n  )\n    ? [\n        { label: \"Fonds\", value: \"FONDS\" },\n        { label: \"Viroles\", value: \"VIROLES\" },\n        { label: \"DVAI\", value: \"DVAI\" },\n        { label: \"Visseries\", value: \"VISSERIES\" },\n        { label: \"Joints\", value: \"JOINTS\" },\n        { label: \"Autre\", value: \"AUTRE\" },\n        { label: \"Brides\", value: \"BRIDES\" }\n      ]\n  : (\n      (TableAlertRules.isAddRowInProgress\n        ? TableAlertRules.newRow.event_type\n        : currentRow.event_type\n      ) === \"ACHATS_RECU\"\n    )\n    ? [\n        { label: \"Brides\", value: \"BRIDES\" },\n        { label: \"Visseries\", value: \"VISSERIES\" }\n      ]\n  : (\n      (TableAlertRules.isAddRowInProgress\n        ? TableAlertRules.newRow.event_type\n        : currentRow.event_type\n      ) === \"CONTROLE_FAIT\"\n    )\n    ? [\n        { label: \"Visuels\", value: \"VISUELS\" },\n        { label: \"Radio\", value: \"RADIO\" },\n        { label: \"FAT\", value: \"FAT\" },\n        { label: \"Dimensionnels\", value: \"DIMENSIONNELS\" },\n        { label: \"Epreuvres\", value: \"EPREUVES\" },\n        { label: \"Ressuage\", value: \"RESSUAGE\" },\n        { label: \"Ultrason\", value: \"ULTRASON\" },\n        { label: \"PMI\", value: \"PMI\" },\n        { label: \"Points zéro\", value: \"POINTZERO\" },\n        { label: \"Helium\", value: \"HELIUM\" }\n      ]\n  : (\n      (TableAlertRules.isAddRowInProgress\n        ? TableAlertRules.newRow.event_type\n        : currentRow.event_type\n      ) === \"PRESTA_COMMANDEE\"\n    )\n    ? [\n        { label: \"Plateforme\", value: \"PLATEFORME\" },\n        { label: \"Échelle\", value: \"ECHELLE\" },\n        { label: \"Calorifuge\", value: \"CALORIFUGE\" },\n        { label: \"Berces\", value: \"BERCES\" },\n        { label: \"Tubes échangeurs\", value: \"TUBESECHANGEUR\" },\n        { label: \"Agitation\", value: \"AGITATION\" },\n        { label: \"Transport\", value: \"TRANSPORT\" }\n      ]\n    : []\n)) : \n  (\n    (TableAlertRules.isAddRowInProgress\n      ? TableAlertRules.newRow.event_type\n      : currentRow.event_type\n    ) === \"APPRO_SENT\"\n  )\n    ? [\n        { label: \"Fonds\", value: \"FONDS\" },\n        { label: \"Viroles\", value: \"VIROLES\" },\n        { label: \"DVAI\", value: \"DVAI\" },\n        { label: \"Visseries\", value: \"VISSERIES\" },\n        { label: \"Joints\", value: \"JOINTS\" },\n        { label: \"Autre\", value: \"AUTRE\" },\n        { label: \"Brides\", value: \"BRIDES\" }\n      ]\n  : (\n      (TableAlertRules.isAddRowInProgress\n        ? TableAlertRules.newRow.event_type\n        : currentRow.event_type\n      ) === \"ACHATS_RECU\"\n    )\n    ? [\n        { label: \"Brides\", value: \"BRIDES\" },\n        { label: \"Visseries\", value: \"VISSERIES\" }\n      ]\n  : (\n      (TableAlertRules.isAddRowInProgress\n        ? TableAlertRules.newRow.event_type\n        : currentRow.event_type\n      ) === \"CONTROLE_FAIT\"\n    )\n    ? [\n        { label: \"Visuels\", value: \"VISUELS\" },\n        { label: \"Radio\", value: \"RADIO\" },\n        { label: \"FAT\", value: \"FAT\" },\n        { label: \"Dimensionnels\", value: \"DIMENSIONNELS\" },\n        { label: \"Epreuvres\", value: \"EPREUVES\" },\n        { label: \"Ressuage\", value: \"RESSUAGE\" },\n        { label: \"Ultrason\", value: \"ULTRASON\" },\n        { label: \"PMI\", value: \"PMI\" },\n        { label: \"Points zéro\", value: \"POINTZERO\" },\n        { label: \"Helium\", value: \"HELIUM\" }\n      ]\n  : (\n      (TableAlertRules.isAddRowInProgress\n        ? TableAlertRules.newRow.event_type\n        : currentRow.event_type\n      ) === \"PRESTA_COMMANDEE\"\n    )\n    ? [\n        { label: \"Plateforme\", value: \"PLATEFORME\" },\n        { label: \"Échelle\", value: \"ECHELLE\" },\n        { label: \"Calorifuge\", value: \"CALORIFUGE\" },\n        { label: \"Berces\", value: \"BERCES\" },\n        { label: \"Tubes échangeurs\", value: \"TUBESECHANGEUR\" },\n        { label: \"Agitation\", value: \"AGITATION\" },\n        { label: \"Transport\", value: \"TRANSPORT\" }\n      ]\n    : []\n })()}}",
+      "sortBy": "label",
+      "sticky": "",
+      "textSize": "0.75rem",
+      "thousandSeparator": true,
+      "validation": {
+        "isColumnEditableCellRequired": "{{\n  (\n    (isNewRow, currentIndex, currentRow) => (\n\n  (TableAlertRules.isAddRowInProgress\n    ? TableAlertRules.newRow.event_type\n    : currentRow.event_type\n  ) !== \"STATUS_CHANGED\"\n\n    ))\n    (\n      TableAlertRules.isAddRowInProgress,\n      TableAlertRules.isAddRowInProgress ? -1 : TableAlertRules.editableCell.index,\n      TableAlertRules.isAddRowInProgress ? TableAlertRules.newRow : (TableAlertRules.processedTableData[TableAlertRules.editableCell.__originalIndex__] ||\n        Object.keys(TableAlertRules.processedTableData[0])\n          .filter(key => [\"__originalIndex__\", \"__primaryKey__\"].indexOf(key) === -1)\n          .reduce((prev, curr) => {\n            prev[curr] = \"\";\n            return prev;\n          }, {}))\n    )\n  }}\n  "
+      },
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "event_type": {
+      "alias": "event_type",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "columnType": "select",
+      "computedValue": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"event_type\"])) : event_type })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "id": "event_type",
+      "index": 1,
+      "isCellEditable": true,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": true,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Type d'évènement",
+      "notation": "standard",
+      "originalId": "event_type",
+      "selectOptions": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (\n  [\n    { label: \"Changement de statut\", value: \"STATUS_CHANGED\" },\n    { label: \"Appro - Envoyé\", value: \"APPRO_SENT\" },\n    { label: \"Contrôle - Fait\", value: \"CONTROLE_FAIT\" },\n    { label: \"Presta externes - Commandée\", value: \"PRESTA_COMMANDEE\" }\n  ]\n)) : \n  [\n    { label: \"Changement de statut\", value: \"STATUS_CHANGED\" },\n    { label: \"Appro - Envoyé\", value: \"APPRO_SENT\" },\n    { label: \"Contrôle - Fait\", value: \"CONTROLE_FAIT\" },\n    { label: \"Presta externes - Commandée\", value: \"PRESTA_COMMANDEE\" }\n  ]\n })()}}",
+      "sticky": "",
+      "textSize": "0.75rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "event_value": {
+      "alias": "event_value",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "columnType": "text",
+      "computedValue": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ('true')) : 'true' })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "id": "event_value",
+      "index": 7,
+      "isCellEditable": false,
+      "isCellVisible": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( currentRow.event_type !== \"STATUS_CHANGED\" )) :  currentRow.event_type !== \"STATUS_CHANGED\"  })()}}",
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": false,
+      "label": "event_value",
+      "notation": "standard",
+      "originalId": "event_value",
+      "sticky": "",
+      "textSize": "0.75rem",
       "thousandSeparator": true,
       "validation": {},
       "verticalAlignment": "CENTER",
@@ -303,7 +468,7 @@
       "notation": "standard",
       "originalId": "id",
       "sticky": "",
-      "textSize": "0.875rem",
+      "textSize": "0.75rem",
       "thousandSeparator": true,
       "validation": {},
       "verticalAlignment": "CENTER",
@@ -321,7 +486,7 @@
       "enableSort": true,
       "horizontalAlignment": "LEFT",
       "id": "only_on_change",
-      "index": 11,
+      "index": 14,
       "isCellEditable": false,
       "isCellVisible": true,
       "isDerived": false,
@@ -334,7 +499,7 @@
       "notation": "standard",
       "originalId": "only_on_change",
       "sticky": "",
-      "textSize": "0.875rem",
+      "textSize": "0.75rem",
       "thousandSeparator": true,
       "validation": {},
       "verticalAlignment": "CENTER",
@@ -352,9 +517,9 @@
       "enableSort": true,
       "horizontalAlignment": "LEFT",
       "id": "status_code",
-      "index": 3,
+      "index": 4,
       "isCellEditable": true,
-      "isCellVisible": true,
+      "isCellVisible": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (\n  (TableAlertRules.isAddRowInProgress\n    ? TableAlertRules.newRow.event_type\n    : currentRow.event_type\n  ) === \"STATUS_CHANGED\"\n)) : \n  (TableAlertRules.isAddRowInProgress\n    ? TableAlertRules.newRow.event_type\n    : currentRow.event_type\n  ) === \"STATUS_CHANGED\"\n })()}}",
       "isDerived": false,
       "isDisabled": false,
       "isDiscardVisible": true,
@@ -364,9 +529,10 @@
       "label": "Statut",
       "notation": "standard",
       "originalId": "status_code",
-      "selectOptions": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( QryWorkflowStatuts.data.map(s => ({ label: s.libelle, value: s.code })) )) :  QryWorkflowStatuts.data.map(s => ({ label: s.libelle, value: s.code }))  })()}}",
+      "selectOptions": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (\n  (QryWorkflowStatuts.data || [])\n    .map(s => ({ label: s.libelle, value: s.code }))\n)) : \n  (QryWorkflowStatuts.data || [])\n    .map(s => ({ label: s.libelle, value: s.code }))\n })()}}",
+      "sortBy": "value",
       "sticky": "",
-      "textSize": "0.875rem",
+      "textSize": "0.75rem",
       "thousandSeparator": true,
       "validation": {},
       "verticalAlignment": "CENTER",
@@ -384,7 +550,7 @@
       "enableSort": true,
       "horizontalAlignment": "LEFT",
       "id": "status_label",
-      "index": 4,
+      "index": 5,
       "isCellEditable": false,
       "isCellVisible": true,
       "isDerived": false,
@@ -397,7 +563,7 @@
       "notation": "standard",
       "originalId": "status_label",
       "sticky": "",
-      "textSize": "0.875rem",
+      "textSize": "0.75rem",
       "thousandSeparator": true,
       "validation": {},
       "verticalAlignment": "CENTER",
@@ -415,9 +581,9 @@
       "enableSort": true,
       "horizontalAlignment": "LEFT",
       "id": "step_code",
-      "index": 1,
+      "index": 2,
       "isCellEditable": true,
-      "isCellVisible": true,
+      "isCellVisible": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (\n  (TableAlertRules.isAddRowInProgress\n    ? TableAlertRules.newRow.event_type\n    : currentRow.event_type\n  ) === \"STATUS_CHANGED\"\n)) : \n  (TableAlertRules.isAddRowInProgress\n    ? TableAlertRules.newRow.event_type\n    : currentRow.event_type\n  ) === \"STATUS_CHANGED\"\n })()}}",
       "isDerived": false,
       "isDisabled": false,
       "isDiscardVisible": true,
@@ -429,7 +595,7 @@
       "originalId": "step_code",
       "selectOptions": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( QryWorkflowEtapes.data.map(e => ({ label: e.libelle, value: e.code })) )) :  QryWorkflowEtapes.data.map(e => ({ label: e.libelle, value: e.code }))  })()}}",
       "sticky": "",
-      "textSize": "0.875rem",
+      "textSize": "0.75rem",
       "thousandSeparator": true,
       "validation": {},
       "verticalAlignment": "CENTER",
@@ -447,7 +613,7 @@
       "enableSort": true,
       "horizontalAlignment": "LEFT",
       "id": "step_label",
-      "index": 2,
+      "index": 3,
       "isCellEditable": false,
       "isCellVisible": true,
       "isDerived": false,
@@ -460,7 +626,7 @@
       "notation": "standard",
       "originalId": "step_label",
       "sticky": "",
-      "textSize": "0.875rem",
+      "textSize": "0.75rem",
       "thousandSeparator": true,
       "validation": {},
       "verticalAlignment": "CENTER",
@@ -478,7 +644,7 @@
       "enableSort": true,
       "horizontalAlignment": "LEFT",
       "id": "target_everwin_name",
-      "index": 7,
+      "index": 10,
       "isCellEditable": false,
       "isCellVisible": true,
       "isDerived": false,
@@ -491,7 +657,7 @@
       "notation": "standard",
       "originalId": "target_everwin_name",
       "sticky": "",
-      "textSize": "0.875rem",
+      "textSize": "0.75rem",
       "thousandSeparator": true,
       "validation": {},
       "verticalAlignment": "CENTER",
@@ -509,21 +675,21 @@
       "enableSort": true,
       "horizontalAlignment": "LEFT",
       "id": "target_everwin_user_id",
-      "index": 6,
+      "index": 9,
       "isCellEditable": true,
-      "isCellVisible": true,
+      "isCellVisible": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( currentRow.target_type === \"DM\" )) :  currentRow.target_type === \"DM\"  })()}}",
       "isDerived": false,
       "isDisabled": false,
       "isDiscardVisible": true,
       "isEditable": true,
       "isSaveVisible": true,
       "isVisible": true,
-      "label": "Employé",
+      "label": "Personnel",
       "notation": "standard",
       "originalId": "target_everwin_user_id",
       "selectOptions": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( QryEverwinUsers.data.map(u => ({ label: u.display_name, value: u.everwin_user_id })) )) :  QryEverwinUsers.data.map(u => ({ label: u.display_name, value: u.everwin_user_id }))  })()}}",
       "sticky": "",
-      "textSize": "0.875rem",
+      "textSize": "0.75rem",
       "thousandSeparator": true,
       "validation": {},
       "verticalAlignment": "CENTER",
@@ -534,14 +700,14 @@
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"target_type\"])) : target_type })()}}",
+      "computedValue": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ('DM')) : 'DM' })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
       "enableSort": true,
       "horizontalAlignment": "LEFT",
       "id": "target_type",
-      "index": 5,
+      "index": 8,
       "isCellEditable": false,
       "isCellVisible": true,
       "isDerived": false,
@@ -554,7 +720,7 @@
       "notation": "standard",
       "originalId": "target_type",
       "sticky": "",
-      "textSize": "0.875rem",
+      "textSize": "0.75rem",
       "thousandSeparator": true,
       "validation": {},
       "verticalAlignment": "CENTER",
@@ -572,7 +738,7 @@
       "enableSort": true,
       "horizontalAlignment": "LEFT",
       "id": "throttle_minutes",
-      "index": 10,
+      "index": 13,
       "isCellEditable": false,
       "isCellVisible": true,
       "isDerived": false,
@@ -585,7 +751,7 @@
       "notation": "standard",
       "originalId": "throttle_minutes",
       "sticky": "",
-      "textSize": "0.875rem",
+      "textSize": "0.75rem",
       "thousandSeparator": true,
       "validation": {},
       "verticalAlignment": "CENTER",
@@ -598,12 +764,12 @@
   "searchKey": "",
   "showInlineEditingOptionDropdown": true,
   "tableData": "{{QryListAlertRules.data}}",
-  "textSize": "0.875rem",
+  "textSize": "0.75rem",
   "topRow": 0,
   "totalRecordsCount": 0,
   "type": "TABLE_WIDGET_V2",
   "version": 2,
   "verticalAlignment": "CENTER",
-  "widgetId": "441irnhiyn",
+  "widgetId": "74e6ho0cvf",
   "widgetName": "TableAlertRules"
 }

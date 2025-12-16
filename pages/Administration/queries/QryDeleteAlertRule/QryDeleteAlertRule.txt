@@ -1,0 +1,2 @@
+DELETE FROM public.alert_rules
+WHERE id = {{ this.params.id }};

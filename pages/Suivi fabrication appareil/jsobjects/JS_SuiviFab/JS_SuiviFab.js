@@ -49,7 +49,6 @@ export default {
 	},
 
   // --- délai "Livraison le :" ---
-
   saveDelai() {
     const numero_appareil = appsmith.URL.queryParams.numero_appareil;
     if (!numero_appareil) return;
@@ -64,6 +63,21 @@ export default {
     }).catch(e => {
       console.log("Erreur save délai", e);
       showAlert("Erreur lors de l'enregistrement du délai", "error");
+    });
+  },
+	
+	saveChargeAffaires() {
+    const numero_affaire = appsmith.URL.queryParams.numero_affaire;
+    if (!numero_affaire) return;
+
+    const charge_affaires = SelectChargeAffaires.selectedOptionValue;
+
+    return SaveSuivi_ChargeAffAppareil.run({
+      numero_affaire,
+      charge_affaires,
+    }).catch(e => {
+      console.log("Erreur save chargé d'affaires", e);
+      showAlert("Erreur lors de l'enregistrement du chargé d'affaires", "error");
     });
   },
 

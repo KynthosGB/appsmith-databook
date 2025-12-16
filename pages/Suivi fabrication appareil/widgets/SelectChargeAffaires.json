@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 15,
   "boxShadow": "none",
-  "defaultOptionValue": "GREEN",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( GetInfosAffaires.data[0].charge_affaire))(SelectChargeAffaires.options, SelectChargeAffaires.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -14,15 +14,25 @@
     },
     {
       "key": "sourceData"
+    },
+    {
+      "key": "defaultOptionValue"
     }
   ],
   "dynamicHeight": "FIXED",
   "dynamicPropertyPathList": [
     {
       "key": "sourceData"
+    },
+    {
+      "key": "onOptionChange"
     }
   ],
-  "dynamicTriggerPathList": [],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onOptionChange"
+    }
+  ],
   "isDisabled": false,
   "isFilterable": true,
   "isLoading": false,
@@ -33,7 +43,7 @@
   "labelPosition": "Left",
   "labelText": "Chargé d'affaires",
   "labelTextSize": "0.875rem",
-  "labelWidth": "7",
+  "labelWidth": "6",
   "leftColumn": 15,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
@@ -43,8 +53,9 @@
   "mobileRightColumn": 35,
   "mobileTopRow": 11,
   "needsErrorInfo": false,
+  "onOptionChange": "{{JS_SuiviFab.saveChargeAffaires() }}",
   "optionLabel": "label",
-  "optionValue": "id",
+  "optionValue": "value",
   "originalBottomRow": 15,
   "originalTopRow": 11,
   "parentColumnSpace": 20.25,
@@ -53,9 +64,9 @@
   "placeholderText": "Select option",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 33,
+  "rightColumn": 31,
   "serverSideFiltering": false,
-  "sourceData": "{{GetChargeAffaires.data}}",
+  "sourceData": "{{\n  (GetChargeAffaires.data || []).map(m => ({\n    label: m.label,   // L. AMELIN\n    value: m.label,   // on stocke le même texte puisque la DB n'accepte que du texte\n  }))\n}}",
   "topRow": 11,
   "type": "SELECT_WIDGET",
   "version": 1,

@@ -1,4 +1,6 @@
-SELECT * FROM public."affaires"
-WHERE cloture = FALSE
-AND numero_affaire = {{ SelectAffaire.selectedOptionValue}}
-ORDER BY numero_affaire DESC;
+SELECT
+  a.*
+FROM public.affaires a
+WHERE a.cloture = FALSE
+AND a.numero_affaire = {{ SelectAffaire.selectedOptionValue }}
+ORDER BY a.numero_affaire DESC;

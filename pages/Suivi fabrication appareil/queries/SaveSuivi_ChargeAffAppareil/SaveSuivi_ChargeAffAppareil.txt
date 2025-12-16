@@ -1,0 +1,3 @@
+UPDATE public.affaires
+SET charge_affaire = {{ this.params.charge_affaires }}
+WHERE numero_affaire = {{ this.params.numero_affaire }};

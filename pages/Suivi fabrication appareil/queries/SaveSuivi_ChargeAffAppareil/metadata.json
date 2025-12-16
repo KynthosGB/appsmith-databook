@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6915b9d6a2ab6852a3eeef70_436f76e4-6ef7-4835-9f45-45f24cdbde52",
-  "id": "Suivi fabrication appareil_GetInfosAffaires",
+  "gitSyncId": "6915b9d6a2ab6852a3eeef70_396a6520-9c5e-457a-8335-29069b32f975",
+  "id": "Suivi fabrication appareil_SaveSuivi_ChargeAffAppareil",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n  a.*\nFROM public.affaires a\nWHERE a.cloture = FALSE\nAND a.numero_affaire = {{ SelectAffaire.selectedOptionValue }}\nORDER BY a.numero_affaire DESC;\n",
+      "body": "UPDATE public.affaires\nSET charge_affaire = {{ this.params.charge_affaires }}\nWHERE numero_affaire = {{ this.params.numero_affaire }};",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -27,9 +27,9 @@
         "key": "body"
       }
     ],
-    "name": "GetInfosAffaires",
+    "name": "SaveSuivi_ChargeAffAppareil",
     "pageId": "Suivi fabrication appareil",
-    "runBehaviour": "AUTOMATIC",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

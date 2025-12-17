@@ -468,7 +468,7 @@
       "allowSameOptionsInNewRow": true,
       "cellBackground": "{{(() => { const tableData = TableDashboardFab.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( currentRow.appro_color )) :  currentRow.appro_color  })()}}",
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = TableDashboardFab.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( currentRow.appro_delay\n    ? currentRow.appro_delay + \" j de retard\"\n    : \"\" )) :  currentRow.appro_delay\n    ? currentRow.appro_delay + \" j de retard\"\n    : \"\"  })()}}",
+      "computedValue": "{{(() => { const tableData = TableDashboardFab.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ('')) : '' })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,

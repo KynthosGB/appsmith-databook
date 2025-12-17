@@ -1,0 +1,16 @@
+SELECT
+  id,
+  numero_affaire,
+  numero_appareil,
+  sent_at,
+  received_at,
+  from_email,
+  subject,
+  body_preview,
+  body_html,
+  mailbox
+FROM public.client_emails
+WHERE
+  numero_affaire = {{ appsmith.URL.queryParams.numero_affaire }}
+ORDER BY received_at DESC NULLS LAST, sent_at DESC NULLS LAST
+LIMIT 200;

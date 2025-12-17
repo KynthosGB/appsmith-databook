@@ -459,6 +459,51 @@
       "version": 1,
       "widgetId": "pykhl2qfen",
       "widgetName": "Canvas30"
+    },
+    {
+      "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "bottomRow": 1690,
+      "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+      "canExtend": false,
+      "containerStyle": "none",
+      "detachFromLayout": true,
+      "dynamicBindingPathList": [
+        {
+          "key": "borderRadius"
+        },
+        {
+          "key": "boxShadow"
+        }
+      ],
+      "dynamicHeight": "AUTO_HEIGHT",
+      "dynamicTriggerPathList": [],
+      "flexLayers": [],
+      "isLoading": false,
+      "isVisible": true,
+      "key": "esxgcz3v1b",
+      "leftColumn": 0,
+      "maxDynamicHeight": 9000,
+      "minDynamicHeight": 4,
+      "minHeight": 370,
+      "minWidth": 450,
+      "mobileBottomRow": 371,
+      "mobileLeftColumn": 0,
+      "mobileRightColumn": 828,
+      "mobileTopRow": 1,
+      "needsErrorInfo": false,
+      "parentColumnSpace": 1,
+      "parentId": "qghw2wtw2x",
+      "parentRowSpace": 1,
+      "renderMode": "CANVAS",
+      "responsiveBehavior": "fill",
+      "rightColumn": 828,
+      "tabId": "tabz8qqxdw9xj",
+      "tabName": "Données de l'appareil",
+      "topRow": 1,
+      "type": "CANVAS_WIDGET",
+      "version": 1,
+      "widgetId": "kiv3m5prqr",
+      "widgetName": "Canvas32"
     }
   ],
   "defaultTab": "Données géométriques",
@@ -474,7 +519,16 @@
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
-  "dynamicTriggerPathList": [],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onTabSelected"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onTabSelected"
+    }
+  ],
   "flexVerticalAlignment": "stretch",
   "isCanvas": true,
   "isLoading": false,
@@ -489,6 +543,7 @@
   "mobileRightColumn": 25,
   "mobileTopRow": 17,
   "needsErrorInfo": false,
+  "onTabSelected": "{{JS_TabsSelection2.onTabSelected() }}",
   "originalBottomRow": 45,
   "originalTopRow": 8,
   "parentColumnSpace": 12.9375,
@@ -502,14 +557,16 @@
   "tabsObj": {
     "tab0tae8zpbjw": {
       "id": "tab0tae8zpbjw",
-      "index": 4,
+      "index": 5,
+      "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Soudage",
       "widgetId": "qkdty2favh"
     },
     "tab1": {
       "id": "tab1",
-      "index": 0,
+      "index": 1,
+      "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Données géométriques",
       "positioning": "vertical",
@@ -517,7 +574,8 @@
     },
     "tab2": {
       "id": "tab2",
-      "index": 1,
+      "index": 2,
+      "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Matériaux",
       "positioning": "vertical",
@@ -525,52 +583,67 @@
     },
     "tab5xz6se25gb": {
       "id": "tab5xz6se25gb",
-      "index": 7,
+      "index": 8,
+      "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Livraison",
       "widgetId": "mjmcvyyyb0"
     },
     "tabaimvqdvyon": {
       "id": "tabaimvqdvyon",
-      "index": 5,
+      "index": 6,
+      "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Inspection",
       "widgetId": "o90hni6s7e"
     },
     "tabav9f1aqzi2": {
       "id": "tabav9f1aqzi2",
-      "index": 9,
+      "index": 10,
+      "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Données commerciales",
       "widgetId": "pykhl2qfen"
     },
     "tabjnkbj82kmr": {
       "id": "tabjnkbj82kmr",
-      "index": 6,
+      "index": 7,
+      "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Exigences du client",
       "widgetId": "a6kgngzqsd"
     },
     "tabme6rowdb59": {
       "id": "tabme6rowdb59",
-      "index": 3,
+      "index": 4,
+      "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Fabrication",
       "widgetId": "fcny14t3r7"
     },
     "tabqpf4ramega": {
       "id": "tabqpf4ramega",
-      "index": 8,
+      "index": 9,
+      "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Prestastions sur site",
       "widgetId": "hbvcn2ylds"
     },
     "tabxf5lze4qzk": {
       "id": "tabxf5lze4qzk",
-      "index": 2,
+      "index": 3,
+      "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Calcul",
       "widgetId": "huxe7uwisl"
+    },
+    "tabz8qqxdw9xj": {
+      "id": "tabz8qqxdw9xj",
+      "index": 0,
+      "isDuplicateLabel": false,
+      "isVisible": true,
+      "label": "Données de l'appareil",
+      "widgetId": "kiv3m5prqr"
     }
   },
   "topRow": 8,

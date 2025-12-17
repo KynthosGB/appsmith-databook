@@ -3,9 +3,9 @@
   "animateLoading": true,
   "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 31,
+  "bottomRow": 49,
   "boxShadow": "none",
-  "defaultText": "{{\"Soudure extérieure : \" +  CaracteristiquesAppareils.data[0].paroi_exterieure + \" / Paroi extérieure : \" + CaracteristiquesAppareils.data[0].soudure_exterieure\n}}",
+  "defaultText": "{{CaracteristiquesAppareils.data[0].paroi_exterieure ? CaracteristiquesAppareils.data[0].paroi_exterieure : \"\"}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -17,7 +17,7 @@
       "key": "defaultText"
     }
   ],
-  "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicHeight": "FIXED",
   "dynamicPropertyPathList": [
     {
       "key": "onBlur"
@@ -25,46 +25,48 @@
   ],
   "dynamicTriggerPathList": [
     {
+      "key": "onTextChanged"
+    },
+    {
       "key": "onBlur"
     }
   ],
   "iconAlign": "left",
-  "inputType": "MULTI_LINE_TEXT",
+  "inputType": "TEXT",
   "isDisabled": false,
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,
-  "key": "skgjv1onqf",
-  "label": "Protection de surfaces externes (peinture, polissage, grain pour le polissage, électro-polissage)",
+  "key": "o4jhc0vgp5",
+  "label": "Paroi extérieure",
   "labelAlignment": "left",
   "labelPosition": "Top",
   "labelStyle": "",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
-  "leftColumn": 0,
+  "leftColumn": 33,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 7,
-  "mobileLeftColumn": 0,
-  "mobileRightColumn": 20,
-  "mobileTopRow": 0,
+  "mobileBottomRow": 8,
+  "mobileLeftColumn": 1,
+  "mobileRightColumn": 21,
+  "mobileTopRow": 1,
   "needsErrorInfo": false,
-  "onBlur": "{{SaveRevueContrat.saveField(\"protection_surfaces_externes\", ProtectionSurfacesExternes.text) }}",
-  "originalBottomRow": 33,
-  "originalTopRow": 21,
-  "parentColumnSpace": 13.8857421875,
-  "parentId": "fcny14t3r7",
+  "onBlur": "{{ SaveAll.saveAll(); }}",
+  "onTextChanged": "{{TrackerModif.setModifiedTrue();}}",
+  "parentColumnSpace": 8.86328125,
+  "parentId": "j6m362cmom",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "resetOnSubmit": true,
   "responsiveBehavior": "fill",
-  "rightColumn": 31,
+  "rightColumn": 48,
   "shouldAllowAutofill": false,
   "showStepArrows": false,
-  "topRow": 21,
+  "topRow": 42,
   "type": "INPUT_WIDGET_V2",
   "version": 2,
-  "widgetId": "ifdea9b49x",
-  "widgetName": "ProtectionSurfacesExternes"
+  "widgetId": "cau25p0sfi",
+  "widgetName": "ParoiExterieure"
 }

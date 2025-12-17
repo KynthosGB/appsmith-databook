@@ -1,6 +1,6 @@
 INSERT INTO public.workflow_cahier_soudage (
   groupe_appareil_id,
-  iwt,
+  iwt_id,
   numero,
   indice,
   date_objectif,
@@ -10,7 +10,7 @@ INSERT INTO public.workflow_cahier_soudage (
 )
 VALUES (
   {{ this.params.groupe_appareil_id }},
-  {{ this.params.iwt }},
+  {{ this.params.iwt_id }},
   {{ this.params.numero }},
   {{ this.params.indice }},
   {{ this.params.date_objectif }},
@@ -19,7 +19,7 @@ VALUES (
   {{ this.params.nombre_jours }}
 )
 ON CONFLICT (groupe_appareil_id) DO UPDATE SET
-  iwt           = EXCLUDED.iwt,
+  iwt_id        = EXCLUDED.iwt_id,
   numero        = EXCLUDED.numero,
   indice        = EXCLUDED.indice,
   date_objectif = EXCLUDED.date_objectif,

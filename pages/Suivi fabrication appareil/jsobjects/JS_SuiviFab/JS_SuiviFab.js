@@ -209,7 +209,7 @@ export default {
 		if (!row) return;
 
 		// ⚠️ adapter les noms de widgets :
-		const iwt      = IWT.text;
+		const iwt_id   = IWT.selectedOptionValue;
 		const numero   = NumCDS.text;
 		const indice   = IndiceCDS.text;
 
@@ -221,7 +221,7 @@ export default {
 		return SaveSuivi_CahierSoudage.run({
 			groupe_appareil_id: row.groupe_appareil_id,
 
-			iwt: iwt || null,
+			iwt_id: iwt_id || null,
 			numero: numero || null,
 			indice: indice || null,
 			nombre_jours: nombreJours || null,

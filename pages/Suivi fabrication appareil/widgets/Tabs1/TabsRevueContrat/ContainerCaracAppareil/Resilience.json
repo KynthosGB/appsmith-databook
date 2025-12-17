@@ -1,0 +1,58 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "alignWidget": "LEFT",
+  "animateLoading": true,
+  "bottomRow": 70,
+  "boxShadow": "none",
+  "defaultSwitchState": "{{CaracteristiquesAppareils.data[0].resilience}}",
+  "dynamicBindingPathList": [
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "defaultSwitchState"
+    }
+  ],
+  "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicPropertyPathList": [
+    {
+      "key": "defaultSwitchState"
+    },
+    {
+      "key": "onChange"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onChange"
+    }
+  ],
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "7sq4ln4bap",
+  "label": "Resilience",
+  "labelPosition": "Left",
+  "leftColumn": 13,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "mobileBottomRow": 70,
+  "mobileLeftColumn": 33,
+  "mobileRightColumn": 45,
+  "mobileTopRow": 66,
+  "needsErrorInfo": false,
+  "onChange": "{{ SaveAll.saveAll(); }}",
+  "originalBottomRow": 70,
+  "originalTopRow": 66,
+  "parentColumnSpace": 19.3046875,
+  "parentId": "j6m362cmom",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 20,
+  "topRow": 66,
+  "type": "SWITCH_WIDGET",
+  "version": 1,
+  "widgetId": "8mb94aioky",
+  "widgetName": "Resilience"
+}

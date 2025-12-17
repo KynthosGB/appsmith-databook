@@ -36,10 +36,10 @@
     "event_type",
     "step_code",
     "status_code",
-    "description",
-    "target_everwin_user_id",
-    "enabled",
     "event_key",
+    "target_everwin_user_id",
+    "description",
+    "enabled",
     "step_label",
     "status_label",
     "event_value",
@@ -49,7 +49,7 @@
     "id",
     "EditActions1"
   ],
-  "columnUpdatedAt": 1765964187623,
+  "columnUpdatedAt": 1765969020594,
   "columnWidthMap": {
     "description": 156,
     "enabled": 118,

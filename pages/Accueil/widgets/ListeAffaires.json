@@ -36,10 +36,12 @@
     "cloture",
     "id",
     "nom_client",
+    "charge_affaire",
+    "everwin_user_id",
     "customColumn1",
     "customColumn2"
   ],
-  "columnUpdatedAt": 1764747913308,
+  "columnUpdatedAt": 1765969206780,
   "columnWidthMap": {
     "customColumn1": 106,
     "numero_affaire": 685
@@ -83,6 +85,12 @@
     },
     {
       "key": "primaryColumns.customColumn2.boxShadow"
+    },
+    {
+      "key": "primaryColumns.charge_affaire.computedValue"
+    },
+    {
+      "key": "primaryColumns.everwin_user_id.computedValue"
     }
   ],
   "dynamicPropertyPathList": [
@@ -129,6 +137,40 @@
   "parentRowSpace": 10,
   "primaryColumnId": "id",
   "primaryColumns": {
+    "charge_affaire": {
+      "alias": "charge_affaire",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
+      "columnType": "text",
+      "computedValue": "{{(() => { const tableData = ListeAffaires.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"charge_affaire\"])) : charge_affaire })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "fontStyle": "",
+      "horizontalAlignment": "LEFT",
+      "id": "charge_affaire",
+      "index": 4,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "charge_affaire",
+      "notation": "standard",
+      "originalId": "charge_affaire",
+      "sticky": "",
+      "textColor": "",
+      "textSize": "0.7rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
     "cloture": {
       "alias": "cloture",
       "allowCellWrapping": false,
@@ -233,6 +275,40 @@
       "onClick": "{{showModal(ModalConfirmationCloture.name);}}",
       "originalId": "customColumn2",
       "sticky": "right",
+      "textSize": "0.7rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "everwin_user_id": {
+      "alias": "everwin_user_id",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
+      "columnType": "text",
+      "computedValue": "{{(() => { const tableData = ListeAffaires.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"everwin_user_id\"])) : everwin_user_id })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "fontStyle": "",
+      "horizontalAlignment": "LEFT",
+      "id": "everwin_user_id",
+      "index": 5,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "everwin_user_id",
+      "notation": "standard",
+      "originalId": "everwin_user_id",
+      "sticky": "",
+      "textColor": "",
       "textSize": "0.7rem",
       "thousandSeparator": true,
       "validation": {},

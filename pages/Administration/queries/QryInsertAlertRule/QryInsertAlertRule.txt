@@ -4,9 +4,7 @@ INSERT INTO public.alert_rules (
   status_code,
   event_key,
   event_value,
-  target_type,
   target_everwin_user_id,
-  target_slack_channel_id,
   enabled,
   only_on_change,
   throttle_minutes,
@@ -35,23 +33,15 @@ VALUES (
 
   CASE
     WHEN '{{ TableAlertRules.newRow.event_type ?? "STATUS_CHANGED" }}' <> 'STATUS_CHANGED'
-      THEN NULLIF('{{ TableAlertRules.newRow.event_value ?? "" }}', '')
+      THEN 'true'
     ELSE NULL
   END,
 
-  '{{ TableAlertRules.newRow.target_type ?? "DM" }}',
-
   CASE
-		WHEN '{{ TableAlertRules.newRow.target_type ?? "DM" }}' = 'DM'
-		 AND NULLIF('{{ TableAlertRules.newRow.status_code ?? "" }}','') <> 'ATTENTE_CLIENT'
-			THEN NULLIF('{{ TableAlertRules.newRow.target_everwin_user_id ?? "" }}', '')
-		ELSE NULL
-	END,
-
-  CASE
-    WHEN '{{ TableAlertRules.newRow.target_type ?? "DM" }}' = 'CHANNEL'
-      THEN NULLIF('{{ TableAlertRules.newRow.target_slack_channel_id ?? "" }}', '')
-    ELSE NULL
+    WHEN '{{ TableAlertRules.newRow.event_type ?? "STATUS_CHANGED" }}' = 'STATUS_CHANGED'
+     AND NULLIF('{{ TableAlertRules.newRow.status_code ?? "" }}','') = 'ATTENTE_CLIENT'
+      THEN NULL
+    ELSE NULLIF('{{ TableAlertRules.newRow.target_everwin_user_id ?? "" }}', '')
   END,
 
   {{ TableAlertRules.newRow.enabled ?? true }},

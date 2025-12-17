@@ -21,7 +21,7 @@
       "httpMethod": "POST",
       "httpVersion": "HTTP11",
       "paginationType": "NONE",
-      "path": "/webhook-test/appsmith-send-slack-alert",
+      "path": "/webhook/appsmith-send-slack-alert",
       "pluginSpecifiedTemplates": [
         {
           "value": true

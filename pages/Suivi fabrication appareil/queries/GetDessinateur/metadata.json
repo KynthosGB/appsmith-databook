@@ -37,7 +37,7 @@
     "dynamicBindingPathList": [],
     "name": "GetDessinateur",
     "pageId": "Suivi fabrication appareil",
-    "runBehaviour": "AUTOMATIC",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

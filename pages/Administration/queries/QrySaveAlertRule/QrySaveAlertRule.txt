@@ -20,61 +20,49 @@ SET
     ELSE NULL
   END,
 
-  -- comme tu as décidé: toujours true (et caché)
   event_value = CASE
     WHEN '{{ TableAlertRules.updatedRow.event_type ?? TableAlertRules.triggeredRow.event_type }}' <> 'STATUS_CHANGED'
       THEN 'true'
     ELSE NULL
   END,
 
-  target_type = '{{ TableAlertRules.updatedRow.target_type ?? TableAlertRules.triggeredRow.target_type ?? "DM" }}',
-
   target_everwin_user_id = CASE
-    WHEN '{{ TableAlertRules.updatedRow.target_type ?? TableAlertRules.triggeredRow.target_type ?? "DM" }}' = 'DM'
-      THEN NULLIF('{{ TableAlertRules.updatedRow.target_everwin_user_id ?? TableAlertRules.triggeredRow.target_everwin_user_id }}','')
-    ELSE NULL
-  END,
-
-  target_slack_channel_id = CASE
-    WHEN '{{ TableAlertRules.updatedRow.target_type ?? TableAlertRules.triggeredRow.target_type ?? "DM" }}' = 'CHANNEL'
-      THEN NULLIF('{{ TableAlertRules.updatedRow.target_slack_channel_id ?? TableAlertRules.triggeredRow.target_slack_channel_id }}','')
-    ELSE NULL
+    WHEN
+      '{{ TableAlertRules.updatedRow.event_type ?? TableAlertRules.triggeredRow.event_type }}' = 'STATUS_CHANGED'
+      AND NULLIF('{{ TableAlertRules.updatedRow.status_code ?? TableAlertRules.triggeredRow.status_code }}','') = 'ATTENTE_CLIENT'
+    THEN NULL
+    ELSE NULLIF('{{ TableAlertRules.updatedRow.target_everwin_user_id ?? TableAlertRules.triggeredRow.target_everwin_user_id }}','')
   END,
 
   enabled = {{
-		(() => {
-			const v = TableAlertRules.updatedRow.enabled ?? TableAlertRules.triggeredRow.enabled;
-			if (v === true || v === false) return v;
-			if (v === "true") return true;
-			if (v === "false") return false;
-			return true; // défaut
-		})()
-	}},
+    (() => {
+      const v = TableAlertRules.updatedRow.enabled ?? TableAlertRules.triggeredRow.enabled;
+      if (v === true || v === false) return v;
+      if (v === "true") return true;
+      if (v === "false") return false;
+      return true;
+    })()
+  }},
 
-	only_on_change = {{
-		(() => {
-			const v = TableAlertRules.updatedRow.only_on_change ?? TableAlertRules.triggeredRow.only_on_change;
-			if (v === true || v === false) return v;
-			if (v === "true") return true;
-			if (v === "false") return false;
-			return true; // défaut
-		})()
-	}},
+  only_on_change = {{
+    (() => {
+      const v = TableAlertRules.updatedRow.only_on_change ?? TableAlertRules.triggeredRow.only_on_change;
+      if (v === true || v === false) return v;
+      if (v === "true") return true;
+      if (v === "false") return false;
+      return true;
+    })()
+  }},
 
   throttle_minutes = {{
-		(() => {
-			const v = TableAlertRules.updatedRow.throttle_minutes ?? TableAlertRules.triggeredRow.throttle_minutes;
-			const n = Number(v);
-			return Number.isFinite(n) ? n : 0;
-		})()
-	}},
-
+    (() => {
+      const v = TableAlertRules.updatedRow.throttle_minutes ?? TableAlertRules.triggeredRow.throttle_minutes;
+      const n = Number(v);
+      return Number.isFinite(n) ? n : 0;
+    })()
+  }},
 
   description = '{{ ((TableAlertRules.updatedRow.description ?? TableAlertRules.triggeredRow.description) || "").replaceAll("'", "''") }}',
   updated_at = now()
 
-WHERE id = {{
-  TableAlertRules.updatedRow?.id
-  ?? TableAlertRules.triggeredRow?.id
-}};
-
+WHERE id = '{{ (TableAlertRules.updatedRow?.id ?? TableAlertRules.triggeredRow?.id) }}'::uuid;

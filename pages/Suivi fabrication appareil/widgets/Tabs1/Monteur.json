@@ -64,7 +64,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 13,
   "serverSideFiltering": false,
-  "sourceData": "{{\n  (GetMonteurs.data || []).map(m => ({\n    label: m.label,   // L. AMELIN\n    value: m.label,   // on stocke le même texte puisque la DB n'accepte que du texte\n  }))\n}}",
+  "sourceData": "{{\n  (QryEverwinUsers.data || [])\n.filter(u => (u.pole || '').toLowerCase() === 'montage')\n.map(u => ({\n    label: u.display_name,\n    value: u.everwin_user_id,\n  }))\n}}",
   "topRow": 8,
   "type": "SELECT_WIDGET",
   "version": 1,

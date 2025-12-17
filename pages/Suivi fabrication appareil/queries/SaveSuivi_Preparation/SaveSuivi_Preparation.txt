@@ -1,6 +1,6 @@
 INSERT INTO public.workflow_preparation (
   groupe_appareil_id,
-  preparateur,
+  preparateur_id,
   date_objectif,
   date_debut,
   date_fin,
@@ -8,14 +8,14 @@ INSERT INTO public.workflow_preparation (
 )
 VALUES (
   {{ this.params.groupe_appareil_id }},
-  {{ this.params.preparateur }},
+  {{ this.params.preparateur_id }},
   {{ this.params.date_objectif }},
   {{ this.params.date_debut }},
   {{ this.params.date_fin }},
   {{ this.params.nombre_jours }}
 )
 ON CONFLICT (groupe_appareil_id) DO UPDATE SET
-  preparateur   = EXCLUDED.preparateur,
+  preparateur_id   = EXCLUDED.preparateur_id,
   date_objectif = EXCLUDED.date_objectif,
   date_debut    = EXCLUDED.date_debut,
   date_fin      = EXCLUDED.date_fin,

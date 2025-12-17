@@ -11,7 +11,6 @@ SELECT
   ar.event_key,
   ar.event_value,
 
-  ar.target_type,
   ar.target_everwin_user_id,
   eu.display_name AS target_everwin_name,
 

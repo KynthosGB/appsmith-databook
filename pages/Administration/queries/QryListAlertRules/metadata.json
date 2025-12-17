@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n  ar.id,\n  ar.event_type,\n\n  ar.step_code,\n  wge.libelle AS step_label,\n\n  ar.status_code,\n  ws.libelle AS status_label,\n\n  ar.event_key,\n  ar.event_value,\n\n  ar.target_type,\n  ar.target_everwin_user_id,\n  eu.display_name AS target_everwin_name,\n\n  ar.enabled,\n  ar.description,\n  ar.throttle_minutes,\n  ar.only_on_change\nFROM public.alert_rules ar\nLEFT JOIN public.workflow_groupe_etape wge ON wge.code = ar.step_code\nLEFT JOIN public.workflow_statut ws ON ws.code = ar.status_code\nLEFT JOIN public.everwin_users eu ON eu.everwin_user_id = ar.target_everwin_user_id\nORDER BY ar.event_type, wge.ordre NULLS LAST, ws.ordre NULLS LAST, eu.display_name NULLS LAST;\n",
+      "body": "SELECT\n  ar.id,\n  ar.event_type,\n\n  ar.step_code,\n  wge.libelle AS step_label,\n\n  ar.status_code,\n  ws.libelle AS status_label,\n\n  ar.event_key,\n  ar.event_value,\n\n  ar.target_everwin_user_id,\n  eu.display_name AS target_everwin_name,\n\n  ar.enabled,\n  ar.description,\n  ar.throttle_minutes,\n  ar.only_on_change\nFROM public.alert_rules ar\nLEFT JOIN public.workflow_groupe_etape wge ON wge.code = ar.step_code\nLEFT JOIN public.workflow_statut ws ON ws.code = ar.status_code\nLEFT JOIN public.everwin_users eu ON eu.everwin_user_id = ar.target_everwin_user_id\nORDER BY ar.event_type, wge.ordre NULLS LAST, ws.ordre NULLS LAST, eu.display_name NULLS LAST;\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

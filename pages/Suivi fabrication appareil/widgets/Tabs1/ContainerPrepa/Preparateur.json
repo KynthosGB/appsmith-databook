@@ -1,11 +1,10 @@
 {
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
-  "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 15,
   "boxShadow": "none",
-  "defaultText": "{{\n  (QryInfoSuiviFabAppareil.data || [])\n    .find(r => r.groupe_code === \"PREPARATION\")\n    ?.prep_preparateur || \"\"\n}}\n",
+  "defaultOptionValue": "GREEN",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -14,56 +13,58 @@
       "key": "borderRadius"
     },
     {
-      "key": "defaultText"
+      "key": "sourceData"
     }
   ],
   "dynamicHeight": "FIXED",
   "dynamicPropertyPathList": [
     {
-      "key": "onBlur"
+      "key": "sourceData"
+    },
+    {
+      "key": "onOptionChange"
     }
   ],
   "dynamicTriggerPathList": [
     {
-      "key": "onBlur"
+      "key": "onOptionChange"
     }
   ],
-  "iconAlign": "left",
-  "inputType": "TEXT",
   "isDisabled": false,
+  "isFilterable": true,
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,
-  "key": "jdjyd6pywq",
-  "label": "Préparateur",
+  "key": "0rp4nkc0bz",
   "labelAlignment": "left",
   "labelPosition": "Top",
-  "labelStyle": "",
+  "labelText": "Préparateur",
   "labelTextSize": "0.875rem",
-  "labelWidth": "17",
+  "labelWidth": 5,
   "leftColumn": 1,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 7,
+  "mobileBottomRow": 23,
   "mobileLeftColumn": 1,
   "mobileRightColumn": 21,
-  "mobileTopRow": 0,
+  "mobileTopRow": 16,
   "needsErrorInfo": false,
-  "onBlur": "{{ JS_SuiviFab.savePreparation() }}\n",
-  "originalBottomRow": 82,
-  "originalTopRow": 75,
-  "parentColumnSpace": 4.1171875,
+  "onOptionChange": "{{ JS_SuiviFab.savePreparation() }}",
+  "optionLabel": "label",
+  "optionValue": "value",
+  "parentColumnSpace": 7.0648651123046875,
   "parentId": "ul9pfgfw5o",
   "parentRowSpace": 10,
+  "placeholderText": "Select option",
   "renderMode": "CANVAS",
-  "resetOnSubmit": true,
   "responsiveBehavior": "fill",
   "rightColumn": 63,
-  "showStepArrows": false,
+  "serverSideFiltering": false,
+  "sourceData": "{{\n  (QryEverwinUsers.data || [])\n    .filter(u =>\n      ['dessinateur', 'responsable be'].includes(\n        (u.pole || '').toLowerCase()\n      )\n    )\n    .map(u => ({\n      label: u.display_name,\n      value: u.everwin_user_id,\n    }))\n}}\n",
   "topRow": 8,
-  "type": "INPUT_WIDGET_V2",
-  "version": 2,
-  "widgetId": "y84yc8t6ep",
+  "type": "SELECT_WIDGET",
+  "version": 1,
+  "widgetId": "7kuq8j5erq",
   "widgetName": "Preparateur"
 }

@@ -108,6 +108,7 @@ export default {
 		.then(() => {
 			// 1) refresh UI
 			this.refreshBar();
+			showAlert("Mise à jour effectuée ✅", "success");
 
 			return this.emitAlertEvent({
 				event_type: "STATUS_CHANGED",
@@ -163,7 +164,7 @@ export default {
     // ⚠️ remplace ces noms par les tiens
     const numero       = NumPlan.text;
     const indice       = IndicePlan.text;
-    const dessinateur  = Dessinateur.selectedOptionLabel;
+    const dessinateur_id  = Dessinateur.selectedOptionValue;
 
     const dateObj      = DatePlanObjectif.selectedDate;
     const dateDebut    = DateDebutPlan.selectedDate;
@@ -175,7 +176,7 @@ export default {
       groupe_appareil_id: row.groupe_appareil_id,
       numero: numero || null,
       indice: indice || null,
-      dessinateur: dessinateur || null,
+      dessinateur_id: dessinateur_id || null,
 			nombre_jours: nombreJours || null,
 
       date_objectif: dateObj
@@ -253,7 +254,7 @@ export default {
 		if (!row) return;
 
 		// ⚠️ adapter les noms de widgets :
-		const preparateur = Preparateur.text;
+		const preparateur_id = Preparateur.selectedOptionValue;
 		const dateObj     = DatePrepaObjectif.selectedDate;
 		const dateDebut   = DateDebutPrepa.selectedDate;
 		const dateFin     = DateFinPrepa.selectedDate;
@@ -262,7 +263,7 @@ export default {
 		return SaveSuivi_Preparation.run({
 			groupe_appareil_id: row.groupe_appareil_id,
 
-			preparateur: preparateur || null,
+			preparateur_id: preparateur_id || null,
 			
 			nombre_jours: nombreJours || null,
 
@@ -467,7 +468,7 @@ export default {
 		if (!row) return;
 
 		// ⚠️ remplace par les noms réels de tes widgets
-		const monteur       = Monteur.selectedOptionValue;
+		const monteur_id       = Monteur.selectedOptionValue;
 		const dateDebutVal  = DateDebutFab.selectedDate;
 		const dateFinVal    = DateFinFab.selectedDate;
 		const heuresPrevues = Number(HeuresPrevues.text || "") || null;
@@ -476,7 +477,7 @@ export default {
 
 		return SaveSuivi_Fabrication.run({
 			groupe_appareil_id: row.groupe_appareil_id,
-			monteur: monteur || null,
+			monteur_id: monteur_id || null,
 
 			date_debut: dateDebutVal
 				? moment(dateDebutVal).format("YYYY-MM-DD")

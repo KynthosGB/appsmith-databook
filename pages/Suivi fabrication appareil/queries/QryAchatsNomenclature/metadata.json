@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n  rep,\n  srsm,\n  qte_totale,\n  designation,\n  date_reception\nFROM public.achats_nomenclature_appareil\nWHERE numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}'\nORDER BY rep, srsm;\n",
+      "body": "SELECT\n  rep,\n  srsm,\n  qte_totale,\n  designation,\n  date_reception,\n\tdate_commande,\n\tnumero_demande\nFROM public.achats_nomenclature_appareil\nWHERE numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}'\nORDER BY rep, srsm;\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

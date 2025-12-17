@@ -20,7 +20,7 @@ SELECT
   -- PLAN
   wp.numero             AS plan_numero,
   wp.indice             AS plan_indice,
-  wp.dessinateur        AS plan_dessinateur,
+  wp.dessinateur_id     AS plan_dessinateur_id,
   wp.date_objectif      AS plan_date_objectif,
 	wp.date_debut         AS plan_date_debut,
   wp.date_premier_envoi AS plan_date_premier_envoi,
@@ -28,7 +28,7 @@ SELECT
 	wp.nombre_jours       AS plan_nombre_jours,
 
   -- CAHIER SOUDAGE
-  wcs.iwt           AS cs_iwt,
+  wcs.iwt_id        AS cs_iwt_id,
 	wcs.numero        AS cs_numero,
 	wcs.indice        AS cs_indice,
 	wcs.date_objectif AS cs_date_objectif,
@@ -40,14 +40,14 @@ SELECT
 	wa.date_objectif AS appro_date_objectif,
 
   -- PREPARATION
-  wprep.preparateur     AS prep_preparateur,
+  wprep.preparateur_id  AS prep_preparateur_id,
   wprep.date_objectif   AS prep_date_objectif,
 	wprep.date_debut      AS prep_date_debut,
 	wprep.date_fin        AS prep_date_fin,
 	wprep.nombre_jours    AS prep_nombre_jours,
 
   -- FABRICATION
-  wf.monteur                    AS fab_monteur,
+  wf.monteur_id                 AS fab_monteur_id,
   wf.heures_prevues             AS fab_heures_prevues,
 	wf.heures_prevues_montage     AS fab_heures_prevues_montage,
   wf.heures_passees             AS fab_heures_passees,

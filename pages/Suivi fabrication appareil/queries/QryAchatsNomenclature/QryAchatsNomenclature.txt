@@ -3,7 +3,9 @@ SELECT
   srsm,
   qte_totale,
   designation,
-  date_reception
+  date_reception,
+	date_commande,
+	numero_demande
 FROM public.achats_nomenclature_appareil
 WHERE numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}'
 ORDER BY rep, srsm;

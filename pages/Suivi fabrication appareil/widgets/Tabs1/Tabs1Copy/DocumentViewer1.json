@@ -1,6 +1,6 @@
 {
   "animateLoading": true,
-  "bottomRow": 5,
+  "bottomRow": 74,
   "bottomRowBeforeCollapse": 74,
   "docUrl": "{{ appsmith.store.ccpuUrl }}",
   "dynamicBindingPathList": [
@@ -28,7 +28,7 @@
   "mobileRightColumn": 24,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "originalBottomRow": 74,
+  "originalBottomRow": 5,
   "originalTopRow": 5,
   "parentColumnSpace": 7.107330322265625,
   "parentId": "5an5fuaiqr",

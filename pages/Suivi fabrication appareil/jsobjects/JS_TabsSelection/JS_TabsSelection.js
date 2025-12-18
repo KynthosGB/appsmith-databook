@@ -1,6 +1,6 @@
 export default {
   onTabSelected() {
-    const label = Tabs1.selectedTab || Tabs1.selectedTabLabel;
+    const label = Tabs1.selectedTab;
 
     if (label === "Revue de contrat") {
       CaracteristiquesAppareils.run();
@@ -10,6 +10,9 @@ export default {
     }
 		if (label === "Planning") {
       QryDashboardSuiviFabrication.run();
+    }
+		if (label === "Echanges client") {
+      QryClientEmails.run();
     }
 		
   }

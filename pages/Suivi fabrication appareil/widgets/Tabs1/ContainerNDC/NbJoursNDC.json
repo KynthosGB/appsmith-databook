@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 21,
   "boxShadow": "none",
-  "defaultText": "{{\n(QryInfoSuiviFabAppareil.data || [])\n    .find(r => r.groupe_code === \"NOTE_CALCUL\")\n    ?.nombre_jours || \"\"\n}}",
+  "defaultText": "{{\n(QryInfoSuiviFabAppareil.data || [])\n    .find(r => r.groupe_code === \"NOTE_CALCUL\")\n    ?.ndc_nombre_jours || \"\"\n}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

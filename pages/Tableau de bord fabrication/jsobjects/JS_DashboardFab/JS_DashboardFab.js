@@ -16,16 +16,21 @@ export default {
   },
 
   // Calcul du retard en jours
-  delayDays(etapes, groupCode) {
-    const s = this.getStep(etapes, groupCode);
-    if (!s || !s.date_objectif || !s.date_fin) return "";
+	delayDays(etapes, groupCode) {
+		const s = this.getStep(etapes, groupCode);
+		if (!s || !s.date_objectif) return "";
 
-    const obj = moment(s.date_objectif);
-    const fin = moment(s.date_fin);
+		const obj = moment(s.date_objectif).startOf("day");
+		if (!obj.isValid()) return "";
 
-    const diff = fin.diff(obj, "days");
-    return diff > 0 ? diff : "";
-  },
+		// Si date_fin est vide → on prend aujourd'hui
+		const fin = (s.date_fin ? moment(s.date_fin) : moment()).startOf("day");
+		if (!fin.isValid()) return "";
+
+		const diff = fin.diff(obj, "days");
+		return diff > 0 ? diff : "";
+	},
+
 
   // ----------------------------------------
   // Fonction principale appelée dans le widget

@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 15,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( (QryInfoSuiviFabAppareil.data || [])\n    .find(r => r.groupe_code === \"PREPARATION\")\n    ?.prepa_preparateur_id || \"\"\n))(Preparateur.options, Preparateur.serverSideFiltering) }}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( (QryInfoSuiviFabAppareil.data || [])\n    .find(r => r.groupe_code === \"PREPARATION\")\n    ?.prep_preparateur_id || \"\"\n))(Preparateur.options, Preparateur.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

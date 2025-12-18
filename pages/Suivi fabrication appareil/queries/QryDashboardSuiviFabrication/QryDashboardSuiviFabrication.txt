@@ -71,7 +71,7 @@ SELECT
 
           -- ✅ FABRICATION = 70% des heures prévues / 7.5h par jour
           WHEN wge.code = 'FABRICATION' THEN
-            CEIL( (COALESCE(wfab.heures_prevues_montage, 0) * 0.70) / 7.5 )::int
+            CEIL( (COALESCE(wfab.heures_prevues, 0) * 0.70) / 7.5 )::int
           ELSE NULL
         END,
 

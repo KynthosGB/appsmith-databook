@@ -7,7 +7,7 @@
   "closeOnSelection": true,
   "dateFormat": "DD-MM-YYYY",
   "datePickerType": "DATE_PICKER",
-  "defaultDate": "{{\n (QryInfoSuiviFabAppareil.data || [])\n    .find(r => r.groupe_code === \"ACHATS\")\n    ?.appro_date_objectif || \"\"\n}}",
+  "defaultDate": "{{\n (QryInfoSuiviFabAppareil.data || [])\n    .find(r => r.groupe_code === \"ACHATS\")\n    ?.achats_date_objectif || \"\"\n}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

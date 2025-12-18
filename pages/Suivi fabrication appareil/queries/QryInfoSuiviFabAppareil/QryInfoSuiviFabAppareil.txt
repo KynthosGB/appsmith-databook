@@ -38,6 +38,9 @@ SELECT
 	
 	-- APPRO
 	wa.date_objectif AS appro_date_objectif,
+	
+		-- ACHATS
+	wach.date_objectif AS achats_date_objectif,
 
   -- PREPARATION
   wprep.preparateur_id  AS prep_preparateur_id,
@@ -72,6 +75,9 @@ LEFT JOIN public.workflow_cahier_soudage   wcs  ON wcs.groupe_appareil_id = wga.
 	
 LEFT JOIN public.workflow_appro wa ON wa.groupe_appareil_id = wga.id
   AND wge.code = 'APPRO'
+	
+LEFT JOIN public.workflow_achats wach ON wach.groupe_appareil_id = wga.id
+  AND wge.code = 'ACHATS'
 
 LEFT JOIN public.workflow_preparation      wprep ON wprep.groupe_appareil_id = wga.id
   AND wge.code = 'PREPARATION'

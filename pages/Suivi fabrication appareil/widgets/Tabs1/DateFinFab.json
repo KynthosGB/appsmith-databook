@@ -39,7 +39,7 @@
   "isRequired": false,
   "isVisible": true,
   "key": "3g865prui7",
-  "label": "Date fin",
+  "label": "Date fin réelle",
   "labelAlignment": "left",
   "labelPosition": "Top",
   "labelTextSize": "0.875rem",

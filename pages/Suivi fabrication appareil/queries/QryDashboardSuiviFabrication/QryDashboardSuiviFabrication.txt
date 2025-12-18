@@ -43,7 +43,7 @@ SELECT
           WHEN wge.code = 'ACHATS'          THEN wach.date_objectif
 
           -- ✅ FABRICATION : objectif = fin calculée (marge 2 semaines)
-          WHEN wge.code = 'FABRICATION'     THEN (a.delai::date - INTERVAL '14 days')::date
+          WHEN wge.code = 'FABRICATION' THEN fab.fab_date_fin
           ELSE NULL
         END,
 
@@ -57,7 +57,7 @@ SELECT
           WHEN wge.code = 'ACHATS'          THEN wach.date_objectif
 
           -- ✅ FABRICATION : fin = délai - 2 semaines
-          WHEN wge.code = 'FABRICATION'     THEN (a.delai::date - INTERVAL '14 days')::date
+          WHEN wge.code = 'FABRICATION' THEN fab.fab_date_fin
           ELSE NULL
         END,
 
@@ -70,8 +70,7 @@ SELECT
           WHEN wge.code = 'PREPARATION'     THEN wprep.nombre_jours
 
           -- ✅ FABRICATION = 70% des heures prévues / 7.5h par jour
-          WHEN wge.code = 'FABRICATION' THEN
-            CEIL( (COALESCE(wfab.heures_prevues, 0) * 0.70) / 7.5 )::int
+          WHEN wge.code = 'FABRICATION' THEN fab.fab_jours_total
           ELSE NULL
         END,
 
@@ -104,6 +103,24 @@ LEFT JOIN public.workflow_achats          wach  ON wach.groupe_appareil_id = wga
 
 -- ✅ ajout FABRICATION (heures prévues montage ici)
 LEFT JOIN public.workflow_fabrication     wfab  ON wfab.groupe_appareil_id = wga.id
+LEFT JOIN LATERAL (
+  SELECT
+    /* 1) Fin = veille du délai, ajustée hors week-end */
+    (
+      CASE
+        WHEN EXTRACT(ISODOW FROM (a.delai::date - INTERVAL '1 day')) = 6 THEN (a.delai::date - INTERVAL '2 day')::date  -- samedi -> vendredi
+        WHEN EXTRACT(ISODOW FROM (a.delai::date - INTERVAL '1 day')) = 7 THEN (a.delai::date - INTERVAL '3 day')::date  -- dimanche -> vendredi
+        ELSE (a.delai::date - INTERVAL '1 day')::date
+      END
+    ) AS fab_date_fin,
+
+    /* 2) Durée "heures" en jours ouvrés (base) */
+    CEIL( (COALESCE(wfab.heures_prevues, 0) * 0.70) / 7.5 )::int AS fab_jours_base,
+
+    /* 3) Durée totale pour le Gantt = base + 14 jours (marge au début) */
+    (CEIL( (COALESCE(wfab.heures_prevues, 0) * 0.70) / 7.5 )::int + 10) AS fab_jours_total
+) fab ON TRUE
+
 
 WHERE a.cloture_suivi_fabrication = false
   AND a.numero_affaire = '{{ SelectAffaire.selectedOptionValue }}'

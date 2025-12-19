@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 41,
   "boxShadow": "none",
-  "defaultText": "{{ RevueContrat.data[0].controle_ultrason || (CheckboxCtrlUltrason.selectedValues.includes(\"na\") ? \"Non\" : \"\") }}",
+  "defaultText": "{{ RevueContrat.data[0].controle_ultrason || (CheckboxCtrlUltrason.selectedOptionValue == \"na\" ? \"Non\" : \"\") }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

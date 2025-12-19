@@ -4,17 +4,20 @@
   "animateLoading": true,
   "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 7,
+  "bottomRow": 15,
   "boxShadow": "none",
   "decimals": 0,
   "defaultCurrencyCode": "EUR",
-  "defaultText": "",
+  "defaultText": "{{RevueContrat.data[0].montant_commande ? RevueContrat.data[0].montant_commande : \"\"}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "defaultText"
     }
   ],
   "dynamicHeight": "FIXED",
@@ -56,9 +59,9 @@
   "renderMode": "CANVAS",
   "resetOnSubmit": true,
   "responsiveBehavior": "fill",
-  "rightColumn": 14,
+  "rightColumn": 11,
   "showStepArrows": false,
-  "topRow": 0,
+  "topRow": 8,
   "type": "CURRENCY_INPUT_WIDGET",
   "version": 1,
   "widgetId": "cs1kxzmzl1",

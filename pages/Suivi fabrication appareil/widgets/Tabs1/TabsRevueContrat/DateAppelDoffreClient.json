@@ -2,12 +2,12 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 15,
+  "bottomRow": 23,
   "boxShadow": "none",
   "closeOnSelection": true,
   "dateFormat": "DD-MM-YYYY",
   "datePickerType": "DATE_PICKER",
-  "defaultDate": "{{RevueContrat.data[0].date_livraison_prev ? RevueContrat.data[0].date_livraison_prev : \"\"}}",
+  "defaultDate": "{{RevueContrat.data[0].date_appel_doffre ? RevueContrat.data[0].date_appel_doffre : \"\"}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -39,7 +39,7 @@
   "isRequired": false,
   "isVisible": true,
   "key": "iocfii7g2s",
-  "label": "Date livraison prévisionnelle",
+  "label": "Date appel d'offre",
   "labelAlignment": "left",
   "labelPosition": "Top",
   "labelTextSize": "0.875rem",
@@ -55,10 +55,7 @@
   "mobileRightColumn": 42,
   "mobileTopRow": 9,
   "needsErrorInfo": false,
-  "onBlur": "{{}}",
-  "onDateSelected": "{{SaveRevueContrat.saveField(\"date_livraison_prev\", DateLivraisonPrev.text) }}",
-  "originalBottomRow": 23,
-  "originalTopRow": 16,
+  "onDateSelected": "{{SaveRevueContrat.saveField(\"date_appel_doffre\", DateAppelDoffreClient.text) }}",
   "parentColumnSpace": 12.9375,
   "parentId": "pykhl2qfen",
   "parentRowSpace": 10,
@@ -67,9 +64,9 @@
   "rightColumn": 24,
   "shortcuts": false,
   "timePrecision": "minute",
-  "topRow": 8,
+  "topRow": 16,
   "type": "DATE_PICKER_WIDGET2",
   "version": 2,
-  "widgetId": "egkdqzdc1t",
-  "widgetName": "DateLivraisonPrev"
+  "widgetId": "9kup0vv62q",
+  "widgetName": "DateAppelDoffreClient"
 }

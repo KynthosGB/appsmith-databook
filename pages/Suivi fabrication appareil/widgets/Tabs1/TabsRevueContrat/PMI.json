@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 31,
   "boxShadow": "none",
-  "defaultText": "{{ RevueContrat.data[0].pmi || (CheckboxCtrlPMI.selectedValues.includes(\"na\") ? \"Non\" : \"\") }}",
+  "defaultText": "{{ RevueContrat.data[0].pmi || (CheckboxCtrlPMI.selectedOptionValue == \"na\" ? \"Non\" : \"\") }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

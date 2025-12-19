@@ -51,7 +51,7 @@
   "mobileTopRow": 0,
   "needsErrorInfo": false,
   "onBlur": "{{SaveRevueContrat.saveField(\"protection_surfaces_externes\", ProtectionSurfacesExternes.text) }}",
-  "originalBottomRow": 33,
+  "originalBottomRow": 31,
   "originalTopRow": 21,
   "parentColumnSpace": 13.8857421875,
   "parentId": "fcny14t3r7",

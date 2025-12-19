@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 21,
   "boxShadow": "none",
-  "defaultText": "{{(CheckboxCtrlFAT.selectedValues.includes(\"na\") ? \"Non\" : \"\") }}\n",
+  "defaultText": "{{(CheckboxCtrlFAT.selectedOptionValue == \"na\" ? \"Non\" : \"\") }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

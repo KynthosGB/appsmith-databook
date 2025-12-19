@@ -146,7 +146,7 @@ VALUES (
   {{ MontageSite.text }},
   {{ DechargementSite.text }},
 
-  {{ MontantCommande.text }},
+  {{ MontantCommande.value }},
   {{ NbHeuresDevis.text }},
   {{ DateLivraisonPrev.selectedDate ? moment(DateLivraisonPrev.selectedDate).format("YYYY-MM-DD") : null }},
   {{ PenaliteRetard.text }}

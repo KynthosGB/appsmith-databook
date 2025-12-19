@@ -41,7 +41,7 @@
     "customColumn1",
     "customColumn2"
   ],
-  "columnUpdatedAt": 1765969206780,
+  "columnUpdatedAt": 1766141934011,
   "columnWidthMap": {
     "customColumn1": 106,
     "numero_affaire": 685
@@ -159,7 +159,7 @@
       "isDiscardVisible": true,
       "isEditable": false,
       "isSaveVisible": true,
-      "isVisible": true,
+      "isVisible": false,
       "label": "charge_affaire",
       "notation": "standard",
       "originalId": "charge_affaire",
@@ -303,7 +303,7 @@
       "isDiscardVisible": true,
       "isEditable": false,
       "isSaveVisible": true,
-      "isVisible": true,
+      "isVisible": false,
       "label": "everwin_user_id",
       "notation": "standard",
       "originalId": "everwin_user_id",

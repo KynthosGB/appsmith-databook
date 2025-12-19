@@ -53,13 +53,13 @@ fab_wga AS (
 -- 4) initialise / met à jour workflow_fabrication avec les heures prévues
 INSERT INTO public.workflow_fabrication (
   groupe_appareil_id,
-  monteur,
+  monteur_id,
   heures_prevues,
   heures_passees
 )
 SELECT
   fw.id          AS groupe_appareil_id,
-  NULL::text     AS monteur,
+  NULL::text     AS monteur_id,
   {{ this.params.heures_prevues }}::numeric AS heures_prevues,
   NULL::numeric  AS heures_passees
 FROM fab_wga fw

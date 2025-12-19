@@ -83,10 +83,22 @@ WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || curr
 
 -- 5) D'abord les enfants "classiques" de l'appareil
 
+DELETE FROM public.achats_nomenclature_appareil
+WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}';
+
+DELETE FROM public.revue_de_contrat_appareil
+WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}';
+
+DELETE FROM public.atelier_postes
+WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}';
+
 DELETE FROM public.enceintes_appareils
 WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}';
 
 DELETE FROM public.sommaire_appareils
+WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}';
+
+DELETE FROM public.sommaire_custom_appareils
 WHERE numero_appareil = '{{ ListeAppareils.triggeredRow?.numero_appareil || currentRow.numero_appareil }}';
 
 DELETE FROM public.caracteristiques_appareils

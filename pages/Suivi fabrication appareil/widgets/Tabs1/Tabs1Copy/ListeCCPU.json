@@ -140,7 +140,7 @@
   "horizontalAlignment": "LEFT",
   "inlineEditingSaveOption": "ROW_LEVEL",
   "isLoading": false,
-  "isSortable": false,
+  "isSortable": true,
   "isVisible": true,
   "isVisibleDownload": false,
   "isVisibleFilters": false,

@@ -1,0 +1,68 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "animateLoading": true,
+  "autoFocus": false,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 7,
+  "boxShadow": "none",
+  "defaultText": "{{\n (QryInfoSuiviFabAppareil.data || [])\n    .find(r => r.groupe_code === \"FABRICATION\")\n    ?.fab_nombre_jours_marge ?? \"\"\n}}\n",
+  "dynamicBindingPathList": [
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "defaultText"
+    }
+  ],
+  "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [
+    {
+      "key": "onBlur"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onBlur"
+    }
+  ],
+  "iconAlign": "left",
+  "inputType": "TEXT",
+  "isDisabled": false,
+  "isLoading": false,
+  "isRequired": false,
+  "isVisible": true,
+  "key": "jdjyd6pywq",
+  "label": "Nombre jours de marge",
+  "labelAlignment": "left",
+  "labelPosition": "Top",
+  "labelStyle": "",
+  "labelTextSize": "0.875rem",
+  "labelWidth": "27",
+  "leftColumn": 40,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "minWidth": 450,
+  "mobileBottomRow": 7,
+  "mobileLeftColumn": 1,
+  "mobileRightColumn": 21,
+  "mobileTopRow": 0,
+  "needsErrorInfo": false,
+  "onBlur": "{{ JS_SuiviFab.saveFabrication() }}",
+  "parentColumnSpace": 4.1171875,
+  "parentId": "ooyjhdx83z",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "resetOnSubmit": true,
+  "responsiveBehavior": "fill",
+  "rightColumn": 52,
+  "showStepArrows": false,
+  "tooltip": "Nombre de jours ouvrés de sécurité pour la fabrication de l'appareil",
+  "topRow": 0,
+  "type": "INPUT_WIDGET_V2",
+  "version": 2,
+  "widgetId": "9j0vz0jmbs",
+  "widgetName": "NombreJoursMarge"
+}

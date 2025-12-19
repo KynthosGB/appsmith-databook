@@ -55,12 +55,16 @@ INSERT INTO public.workflow_fabrication (
   groupe_appareil_id,
   monteur_id,
   heures_prevues,
+	heures_prevues_montage,
+	nombre_jours_marge_fab,
   heures_passees
 )
 SELECT
   fw.id          AS groupe_appareil_id,
   NULL::text     AS monteur_id,
   {{ this.params.heures_prevues }}::numeric AS heures_prevues,
+	{{ this.params.heures_prevues_montage }}::numeric AS heures_prevues_montage,
+	{{ this.params.nombre_jours_marge }}     AS nombre_jours_marge,
   NULL::numeric  AS heures_passees
 FROM fab_wga fw
 ON CONFLICT (groupe_appareil_id) DO UPDATE SET

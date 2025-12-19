@@ -53,6 +53,7 @@ SELECT
   wf.monteur_id                 AS fab_monteur_id,
   wf.heures_prevues             AS fab_heures_prevues,
 	wf.heures_prevues_montage     AS fab_heures_prevues_montage,
+	wf.nombre_jours_marge_fab     AS fab_nombre_jours_marge,
   wf.heures_passees             AS fab_heures_passees,
 	wf.date_debut                 AS fab_date_debut,
 	wf.date_fin                   AS fab_date_fin,

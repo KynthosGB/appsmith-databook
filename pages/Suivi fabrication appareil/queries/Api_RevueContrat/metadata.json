@@ -46,7 +46,7 @@
     ],
     "name": "Api_RevueContrat",
     "pageId": "Suivi fabrication appareil",
-    "runBehaviour": "AUTOMATIC",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": true
   }
 }

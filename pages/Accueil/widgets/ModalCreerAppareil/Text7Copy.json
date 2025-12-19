@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 40,
+  "bottomRow": 42,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -43,7 +43,7 @@
   "text": "En confirmant, les actions suivantes seront effectuées :\n- Création du dossier de l'appareil sur le réseau\n- Création de la nomenclature vierge dans le dossier \"Plan\"\n- Création de l'appareil dans l'application",
   "textAlign": "LEFT",
   "textColor": "#231F20",
-  "topRow": 32,
+  "topRow": 34,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

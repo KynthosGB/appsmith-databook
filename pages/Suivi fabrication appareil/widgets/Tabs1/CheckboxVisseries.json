@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "alignment": "left",
   "animateLoading": true,
-  "bottomRow": 30,
+  "bottomRow": 32,
   "boxShadow": "none",
   "defaultOptionValue": "S{{\n  (() => {\n    const row = (QryInfoApproAppareil.data || [])\n      .find(r => r.appro_code === \"VISSERIES\");\n    if (!row) return null;\n\n    if (row.na) return \"na\";\n    if (row.envoye) return \"envoye\";\n\n    return null;\n  })()\n}}\n",
   "dynamicBindingPathList": [
@@ -55,7 +55,7 @@
       "value": "envoye"
     }
   ],
-  "originalBottomRow": 32,
+  "originalBottomRow": 30,
   "originalTopRow": 26,
   "parentColumnSpace": 19.3046875,
   "parentId": "m3y6bzcuko",

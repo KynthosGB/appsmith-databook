@@ -1,0 +1,6 @@
+UPDATE public.achats_nomenclature_appareil
+SET
+  validation_manuelle = true,
+  date_reception = COALESCE(date_reception, CURRENT_DATE),
+  updated_at = now()
+WHERE id = ANY ({{ this.params.ids }}::bigint[]);

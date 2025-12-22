@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6915b9d6a2ab6852a3eeef70_865e45c1-8e44-479c-b437-d28621d97100",
-  "id": "Suivi fabrication appareil_QryAchatsNomenclature",
+  "gitSyncId": "6915b9d6a2ab6852a3eeef70_5409c968-26a3-46e7-9b7d-e736a95dde2b",
+  "id": "Suivi fabrication appareil_QryForceReceptionAchats",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n  id,\n  rep,\n  srsm,\n  qte_totale,\n  designation,\n  date_reception,\n\tdate_commande,\n\tnumero_demande\nFROM public.achats_nomenclature_appareil\nWHERE numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}'\nORDER BY rep, srsm;\n",
+      "body": "UPDATE public.achats_nomenclature_appareil\nSET\n  validation_manuelle = true,\n  date_reception = COALESCE(date_reception, CURRENT_DATE),\n  updated_at = now()\nWHERE id = ANY ({{ this.params.ids }}::bigint[]);\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -27,9 +27,9 @@
         "key": "body"
       }
     ],
-    "name": "QryAchatsNomenclature",
+    "name": "QryForceReceptionAchats",
     "pageId": "Suivi fabrication appareil",
-    "runBehaviour": "AUTOMATIC",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

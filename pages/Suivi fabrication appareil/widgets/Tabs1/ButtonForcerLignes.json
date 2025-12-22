@@ -12,11 +12,17 @@
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "isDisabled"
     }
   ],
   "dynamicPropertyPathList": [
     {
       "key": "onClick"
+    },
+    {
+      "key": "isDisabled"
     }
   ],
   "dynamicTriggerPathList": [
@@ -25,18 +31,18 @@
     }
   ],
   "isDefaultClickDisabled": true,
-  "isDisabled": false,
+  "isDisabled": "{{ (Table1.selectedRows || []).length === 0 }}",
   "isLoading": false,
   "isVisible": true,
   "key": "4ticqchby5",
-  "leftColumn": 50,
+  "leftColumn": 34,
   "minWidth": 120,
   "mobileBottomRow": 4,
   "mobileLeftColumn": 47,
   "mobileRightColumn": 63,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "onClick": "{{ \n  WF_RefreshAchats.run()\n    .then(() => QryAchatsNomenclature.run())\n    .then(() => showAlert(\"Achats mis à jour depuis la nomenclature ✅\", \"success\"))\n    .catch(() => showAlert(\"Erreur lors de la mise à jour des achats\", \"error\"))\n}}",
+  "onClick": "{{\n  (() => {\n    const ids = (Table1.selectedRows || [])\n      .map(r => r.id)\n      .filter(Boolean);\n\n    if (!ids.length) {\n      showAlert(\"Sélectionne au moins une ligne.\", \"warning\");\n      return;\n    }\n\n    return QryForceReceptionAchats.run({ ids })\n      .then(() => {\n        showAlert(`Lignes validées : ${ids.length}`, \"success\");\n        return QryAchatsNomenclature.run();\n      })\n      .catch(e => showAlert(e?.message || \"Erreur\", \"error\"));\n  })()\n}}\n",
   "parentColumnSpace": 19.3046875,
   "parentId": "rpa97oiq66",
   "parentRowSpace": 10,
@@ -45,11 +51,11 @@
   "renderMode": "CANVAS",
   "resetFormOnClick": false,
   "responsiveBehavior": "hug",
-  "rightColumn": 64,
-  "text": "Actualiser la liste des achats",
+  "rightColumn": 49,
+  "text": "Forcer les lignes sélectionnées",
   "topRow": 0,
   "type": "BUTTON_WIDGET",
   "version": 1,
-  "widgetId": "85a6e0zdfy",
-  "widgetName": "ButtonRefreshAchats"
+  "widgetId": "gdtzfbr28c",
+  "widgetName": "ButtonForcerLignes"
 }

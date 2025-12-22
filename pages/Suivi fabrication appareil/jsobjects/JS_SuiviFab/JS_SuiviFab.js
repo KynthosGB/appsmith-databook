@@ -290,11 +290,11 @@ export default {
 	
 	// --- APPRO : un sous-groupe (Fonds, Virolés, etc.) ---
 	saveApproItem(code, radioGroup, datePicker) {
-		const row = this.getRowByCode("APPRO");
+		const row = this.getRowByCode("BESOINS");
 		if (!row) return;
 
 		// état AVANT (depuis data)
-		const before = this.getItemState("APPRO", code);
+		const before = this.getItemState("BESOINS", code);
 		const wasEnvoye = !!before?.envoye;
 
 		// RadioGroup -> une seule valeur (string)
@@ -525,7 +525,7 @@ export default {
 
 	  // --- APPRO (date objectif globale) ---
 		saveAppro() {
-			const row = this.getRowByCode("APPRO");
+			const row = this.getRowByCode("BESOINS");
 			if (!row) return;
 
 			// ⚠️ adapte le nom du widget si besoin

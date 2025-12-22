@@ -53,7 +53,7 @@
   "mobileRightColumn": 20,
   "mobileTopRow": 15,
   "needsErrorInfo": false,
-  "onOptionChange": "{{JS_SuiviFab.setStatutForGroupe(\"APPRO\", StatutAppro.selectedOptionValue)}}",
+  "onOptionChange": "{{JS_SuiviFab.setStatutForGroupe(\"BESOINS\", StatutAppro.selectedOptionValue)}}",
   "optionLabel": "label",
   "optionValue": "value",
   "parentColumnSpace": 4.43359375,

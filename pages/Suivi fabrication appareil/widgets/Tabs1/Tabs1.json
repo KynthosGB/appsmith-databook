@@ -138,7 +138,7 @@
       "responsiveBehavior": "fill",
       "rightColumn": 1458.9375,
       "tabId": "tabfmq531p5it",
-      "tabName": "Appro",
+      "tabName": "Besoins",
       "topRow": 1,
       "type": "CANVAS_WIDGET",
       "version": 1,
@@ -507,7 +507,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 1060,
+      "bottomRow": 1750,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -721,7 +721,7 @@
   "mobileTopRow": 22,
   "needsErrorInfo": false,
   "onTabSelected": "{{JS_TabsSelection.onTabSelected() }}",
-  "originalBottomRow": 130,
+  "originalBottomRow": 74,
   "originalTopRow": 23,
   "parentColumnSpace": 23.53125,
   "parentId": "0",
@@ -786,7 +786,7 @@
       "index": 3,
       "isDuplicateLabel": false,
       "isVisible": true,
-      "label": "Appro",
+      "label": "Besoins",
       "widgetId": "m3y6bzcuko"
     },
     "tabh9jnuwcbjs": {

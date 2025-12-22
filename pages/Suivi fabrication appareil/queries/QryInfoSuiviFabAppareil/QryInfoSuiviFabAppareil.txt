@@ -75,7 +75,7 @@ LEFT JOIN public.workflow_cahier_soudage   wcs  ON wcs.groupe_appareil_id = wga.
   AND wge.code = 'CAHIER_SOUDAGE'
 	
 LEFT JOIN public.workflow_appro wa ON wa.groupe_appareil_id = wga.id
-  AND wge.code = 'APPRO'
+  AND wge.code = 'BESOINS'
 	
 LEFT JOIN public.workflow_achats wach ON wach.groupe_appareil_id = wga.id
   AND wge.code = 'ACHATS'

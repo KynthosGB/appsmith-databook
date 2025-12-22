@@ -43,7 +43,7 @@ SELECT
           WHEN wge.code = 'PLAN'            THEN wp.date_objectif
           WHEN wge.code = 'CAHIER_SOUDAGE'  THEN wcs.date_objectif
           WHEN wge.code = 'PREPARATION'     THEN wprep.date_objectif
-          WHEN wge.code = 'APPRO'           THEN wa.date_objectif
+          WHEN wge.code = 'BESOINS'           THEN wa.date_objectif
           WHEN wge.code = 'ACHATS'          THEN wach.date_objectif
 
           -- ✅ FABRICATION : objectif = fin calculée (marge 2 semaines)
@@ -57,7 +57,7 @@ SELECT
           WHEN wge.code = 'PLAN'            THEN wp.date_objectif
           WHEN wge.code = 'CAHIER_SOUDAGE'  THEN wcs.date_objectif
           WHEN wge.code = 'PREPARATION'     THEN wprep.date_objectif
-          WHEN wge.code = 'APPRO'           THEN wa.date_objectif
+          WHEN wge.code = 'BESOINS'           THEN wa.date_objectif
           WHEN wge.code = 'ACHATS'          THEN wach.date_objectif
 
           -- ✅ FABRICATION : fin = délai - 2 semaines

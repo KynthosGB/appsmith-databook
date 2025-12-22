@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n  wga.id         AS groupe_appareil_id,\n  wai.code       AS appro_code,       -- 'FONDS','VIROLES',...\n  wai.na,\n  wai.envoye,\n  wai.date\nFROM public.workflow_groupe_appareil wga\nJOIN public.workflow_groupe_etape   wge ON wge.id = wga.groupe_id\nLEFT JOIN public.workflow_appro_item wai ON wai.groupe_appareil_id = wga.id\nWHERE wga.numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}'\n  AND wge.code = 'APPRO';\n",
+      "body": "SELECT\n  wga.id         AS groupe_appareil_id,\n  wai.code       AS appro_code,       -- 'FONDS','VIROLES',...\n  wai.na,\n  wai.envoye,\n  wai.date\nFROM public.workflow_groupe_appareil wga\nJOIN public.workflow_groupe_etape   wge ON wge.id = wga.groupe_id\nLEFT JOIN public.workflow_appro_item wai ON wai.groupe_appareil_id = wga.id\nWHERE wga.numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}'\n  AND wge.code = 'BESOINS';\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

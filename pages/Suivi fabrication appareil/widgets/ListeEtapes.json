@@ -146,7 +146,7 @@
       "widgetId": "c8pjk3jkv3"
     },
     "groupButtonglm3o60iyu": {
-      "buttonColor": "{{JS_SuiviFabAppareil.colorFor(\"APPRO\") }}",
+      "buttonColor": "{{JS_SuiviFabAppareil.colorFor(\"BESOINS\") }}",
       "buttonType": "SIMPLE",
       "id": "groupButtonglm3o60iyu",
       "index": 3,
@@ -154,7 +154,7 @@
       "isSeparator": false,
       "isVisible": true,
       "itemType": "BUTTON",
-      "label": "APPRO",
+      "label": "BESOINS",
       "menuItems": {},
       "placement": "CENTER",
       "variant": "filled",

@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 7,
   "boxShadow": "none",
-  "defaultText": "{{\n (QryInfoSuiviFabAppareil.data || [])\n    .find(r => r.groupe_code === \"FABRICATION\")\n    ?.fab_nombre_jours_marge ?? \"\"\n}}\n",
+  "defaultText": "{{\n (QryInfoSuiviFabAppareil.data || [])\n    .find(r => r.groupe_code === \"FABRICATION\")\n    ?.fab_nombre_jours_marge_fab ?? \"\"\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

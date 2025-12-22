@@ -474,6 +474,7 @@ export default {
 		const heuresPrevues = Number(HeuresPrevues.text || "") || null;
 		const heuresPrevuesMontage = Number(HeuresPrevuesMontage.text || "") || null;
 		const heuresPassees = Number(HeuresPassees.text || "") || null;
+		const nbJoursMargeFab = NombreJoursMarge.text;
 
 		return SaveSuivi_Fabrication.run({
 			groupe_appareil_id: row.groupe_appareil_id,
@@ -490,6 +491,7 @@ export default {
 			heures_prevues: heuresPrevues,
 			heures_prevues_montage: heuresPrevuesMontage,
 			heures_passees: heuresPassees,
+			nombre_jours_marge_fab: nbJoursMargeFab,
 		})
 			.then(() => {
 				showAlert("Fabrication mise à jour ✅", "success");

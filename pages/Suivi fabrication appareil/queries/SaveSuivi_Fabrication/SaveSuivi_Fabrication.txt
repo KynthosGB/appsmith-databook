@@ -5,7 +5,8 @@ INSERT INTO public.workflow_fabrication (
   date_fin,
   heures_prevues,
 	heures_prevues_montage,
-  heures_passees
+  heures_passees,
+	nombre_jours_marge_fab
 )
 VALUES (
   {{ this.params.groupe_appareil_id }},
@@ -14,7 +15,8 @@ VALUES (
   {{ this.params.date_fin }},
   {{ this.params.heures_prevues }},
 	{{ this.params.heures_prevues_montage }},
-  {{ this.params.heures_passees }}
+  {{ this.params.heures_passees }},
+	{{ this.params.nombre_jours_marge_fab }}
 )
 ON CONFLICT (groupe_appareil_id) DO UPDATE SET
   monteur_id     = EXCLUDED.monteur_id,
@@ -22,4 +24,5 @@ ON CONFLICT (groupe_appareil_id) DO UPDATE SET
   date_fin       = EXCLUDED.date_fin,
   heures_prevues = EXCLUDED.heures_prevues,
 	heures_prevues_montage = EXCLUDED.heures_prevues_montage,
-  heures_passees = EXCLUDED.heures_passees;
+  heures_passees = EXCLUDED.heures_passees,
+	nombre_jours_marge_fab = EXCLUDED.nombre_jours_marge_fab;

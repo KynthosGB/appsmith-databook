@@ -23,6 +23,10 @@ SELECT
   -- Détail des grandes étapes pour l'appareil (utilisé dans l'UI)
   jsonb_agg(
     jsonb_build_object(
+			'debug_fab_base', CASE WHEN wge.code='FABRICATION' THEN fab.fab_jours_base END,
+			'debug_fab_marge', CASE WHEN wge.code='FABRICATION' THEN COALESCE(NULLIF(btrim(wfab.nombre_jours_marge_fab), '')::int, 0) END,
+			'debug_fab_total', CASE WHEN wge.code='FABRICATION' THEN fab.fab_jours_total END,
+
       'groupe_id',          wge.id,
       'groupe_code',        wge.code,
       'groupe_libelle',     wge.libelle,
@@ -117,8 +121,13 @@ LEFT JOIN LATERAL (
     /* 2) Durée "heures" en jours ouvrés (base) */
     CEIL( (COALESCE(wfab.heures_prevues, 0) * 0.70) / 7.5 )::int AS fab_jours_base,
 
-    /* 3) Durée totale pour le Gantt = base + 14 jours (marge au début) */
-    (CEIL( (COALESCE(wfab.heures_prevues, 0) * 0.70) / 7.5 )::int + 10) AS fab_jours_total
+    /* 3) Durée totale pour le Gantt = base + X jours (marge au début) */
+    (
+			CEIL( (COALESCE(wfab.heures_prevues, 0) * 0.70) / 7.5 )::int
+			+ COALESCE(NULLIF(btrim(wfab.nombre_jours_marge_fab), '')::int, 0)
+		) AS fab_jours_total
+
+
 ) fab ON TRUE
 
 

@@ -506,7 +506,7 @@
       "widgetName": "Canvas32"
     }
   ],
-  "defaultTab": "Données géométriques",
+  "defaultTab": "Données de l'appareil",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

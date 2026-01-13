@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 10,
   "boxShadow": "none",
-  "defaultText": "{{\n  EnceintesAppareil.data\n    ?.map(e => {\n\n      // Bloc min (pression + température)\n      const hasMin = e.pression_min_calculee < 0;\n\n      const minBlock = hasMin\n        ? `${e.pression_min_calculee} bar(s) / ${e.temperature_max_calculee}°C, `\n        : \"\";   // rien si pression_min_calculee >= 0\n\n      // Bloc max (toujours affiché)\n      const maxBlock = `${e.pression_max_calculee} bar(s) / ${e.temperature_max_calculee}°C`;\n\n      return `${e.type_appareil} : ${minBlock}${maxBlock}`;\n    })\n    .join(\"\\n\")\n}}\n",
+  "defaultText": "{{\n  (() => {\n    const valeurBase = RevueContrat.data[0].couple_temp_press;\n\n    if (valeurBase !== null && valeurBase !== undefined && valeurBase !== \"\") {\n      return valeurBase;\n    }\n\n    const fromEnceintes = (EnceintesAppareil.data || [])\n      .map(e => {\n        const hasMin = (e.pression_min_calculee ?? 0) < 0;\n\n        const minBlock = hasMin\n          ? `${e.pression_min_calculee} bar(s) / ${e.temperature_max_calculee}°C, `\n          : \"\";\n\n        const maxBlock = `${e.pression_max_calculee} bar(s) / ${e.temperature_max_calculee}°C`;\n\n        return `${e.type_appareil} : ${minBlock}${maxBlock}`;\n      })\n      .join(\"\\n\");\n\n    return fromEnceintes || \"\";\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

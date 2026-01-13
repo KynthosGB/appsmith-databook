@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 10,
   "boxShadow": "none",
-  "defaultText": "{{\n  EnceintesAppareil.data\n    ?.map(e => `${e.type_appareil} : ${e.nuance}`)\n    .join(\"\\n\")\n}}\n",
+  "defaultText": "{{\n  (() => {\n    const valeurBase = RevueContrat.data[0].materiaux_appareils;\n\n    // 1️⃣ Si une valeur existe en base → on la garde\n    if (valeurBase && valeurBase.trim() !== \"\") {\n      return valeurBase;\n    }\n\n    // 2️⃣ Sinon, on tente le préremplissage via les enceintes\n    const fromEnceintes = (EnceintesAppareil.data || [])\n      .map(e => `${e.type_appareil} : ${e.nuance}`)\n      .join(\"\\n\");\n\n    return fromEnceintes || \"\";\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

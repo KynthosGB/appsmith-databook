@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 21,
   "boxShadow": "none",
-  "defaultText": "{{\n  EnceintesAppareil.data\n    ?.map(e =>\n      `${e.type_appareil} : ` + (e.pression_min ? `${e.pression_min} bar /` : \"\") + ` ${e.pression_max} bar`)\n    .join(\"\\n\")\n}}",
+  "defaultText": "{{\n  (() => {\n    const valeurBase = RevueContrat.data[0].press_min_max;\n\n    if (valeurBase !== null && valeurBase !== undefined && valeurBase !== \"\") {\n      return valeurBase;\n    }\n\n    const fromEnceintes = (EnceintesAppareil.data || [])\n      .map(e => {\n        const minPart =\n          (e.pression_min !== null && e.pression_min !== undefined && e.pression_min !== \"\")\n            ? `${e.pression_min} bar / `\n            : \"\";\n        return `${e.type_appareil} : ${minPart}${e.pression_max} bar`;\n      })\n      .join(\"\\n\");\n\n    return fromEnceintes || \"\";\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

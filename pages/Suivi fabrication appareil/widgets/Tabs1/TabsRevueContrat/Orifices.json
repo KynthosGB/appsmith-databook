@@ -3,7 +3,7 @@
   "animateLoading": true,
   "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 22,
+  "bottomRow": 20,
   "boxShadow": "none",
   "defaultText": "{{RevueContrat.data[0].orifices ? RevueContrat.data[0].orifices : \"\"}}",
   "dynamicBindingPathList": [
@@ -51,7 +51,7 @@
   "mobileTopRow": 0,
   "needsErrorInfo": false,
   "onBlur": "{{SaveRevueContrat.saveField(\"orifices\", Orifices.text) }}",
-  "originalBottomRow": 20,
+  "originalBottomRow": 22,
   "originalTopRow": 10,
   "parentColumnSpace": 13.8857421875,
   "parentId": "nzj9uepedc",

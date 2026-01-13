@@ -5,11 +5,12 @@ WITH etapes AS (
     'NOTE_CALCUL',
     'PLAN',
     'CAHIER_SOUDAGE',
-    'APPRO',
-		'ACHATS',
     'PREPARATION',
+    'BESOINS',
+    'ACHATS',
     'FABRICATION',
     'CONTROLE',
+    'PRESTA_EXTERNES',
     'DOSSIER_CE',
     'DOSSIER_CONSTRUCTEUR'
   )

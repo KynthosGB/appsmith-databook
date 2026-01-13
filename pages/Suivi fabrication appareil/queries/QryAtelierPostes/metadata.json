@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n  ap.*,\n  n.designation\nFROM public.atelier_postes ap\nLEFT JOIN public.liste_ccpu_nomenclature_appareil n\n  ON ap.numero_appareil = n.numero_appareil\n AND ap.repere          = n.rep\n AND ap.sous_repere     = n.srsm\nWHERE ap.numero_appareil = '250014A'\nORDER BY ap.repere, ap.sous_repere;\n",
+      "body": "SELECT\n  ap.*,\n  n.designation\nFROM public.atelier_postes ap\nLEFT JOIN public.liste_ccpu_nomenclature_appareil n\n  ON ap.numero_appareil = n.numero_appareil\n AND ap.repere          = n.rep\n AND ap.sous_repere     = n.srsm\nWHERE ap.numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}'\nORDER BY ap.repere, ap.sous_repere;\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,7 +22,11 @@
       "name": "Databook - Neon",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [],
+    "dynamicBindingPathList": [
+      {
+        "key": "body"
+      }
+    ],
     "name": "QryAtelierPostes",
     "pageId": "Suivi fabrication appareil",
     "runBehaviour": "AUTOMATIC",

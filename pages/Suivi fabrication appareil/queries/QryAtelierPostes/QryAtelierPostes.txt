@@ -6,5 +6,5 @@ LEFT JOIN public.liste_ccpu_nomenclature_appareil n
   ON ap.numero_appareil = n.numero_appareil
  AND ap.repere          = n.rep
  AND ap.sous_repere     = n.srsm
-WHERE ap.numero_appareil = '250014A'
+WHERE ap.numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}'
 ORDER BY ap.repere, ap.sous_repere;

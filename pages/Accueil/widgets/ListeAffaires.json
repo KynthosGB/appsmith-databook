@@ -38,10 +38,9 @@
     "nom_client",
     "charge_affaire",
     "everwin_user_id",
-    "customColumn1",
     "customColumn2"
   ],
-  "columnUpdatedAt": 1766141934011,
+  "columnUpdatedAt": 1768293364467,
   "columnWidthMap": {
     "customColumn1": 111,
     "numero_affaire": 685
@@ -102,9 +101,6 @@
     }
   ],
   "dynamicTriggerPathList": [
-    {
-      "key": "primaryColumns.customColumn1.onClick"
-    },
     {
       "key": "primaryColumns.customColumn2.onClick"
     }
@@ -199,43 +195,6 @@
       "originalId": "cloture",
       "sticky": "",
       "textColor": "",
-      "textSize": "0.8rem",
-      "thousandSeparator": true,
-      "validation": {},
-      "verticalAlignment": "CENTER",
-      "width": 150
-    },
-    "customColumn1": {
-      "alias": "Choisir",
-      "allowCellWrapping": false,
-      "allowSameOptionsInNewRow": true,
-      "buttonLabel": "Action",
-      "buttonStyle": "rgb(3, 179, 101)",
-      "columnType": "iconButton",
-      "computedValue": "",
-      "currencyCode": "USD",
-      "customAlias": "",
-      "decimals": 0,
-      "enableFilter": true,
-      "enableSort": true,
-      "horizontalAlignment": "LEFT",
-      "iconName": "arrow-right",
-      "id": "customColumn1",
-      "index": 1,
-      "isCellEditable": false,
-      "isCellVisible": true,
-      "isDerived": true,
-      "isDisabled": false,
-      "isDiscardVisible": true,
-      "isEditable": false,
-      "isSaveVisible": true,
-      "isVisible": true,
-      "label": "Choisir",
-      "labelColor": "#FFFFFF",
-      "notation": "standard",
-      "onClick": "{{navigateTo('Appareils', {\n  \"numero_affaire\": currentRow.numero_affaire,\n\t\"nom_client\": currentRow.nom_client\n}, 'SAME_WINDOW');}}",
-      "originalId": "customColumn1",
-      "sticky": "right",
       "textSize": "0.8rem",
       "thousandSeparator": true,
       "validation": {},

@@ -3,7 +3,7 @@
   "animateLoading": true,
   "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 20,
+  "bottomRow": 22,
   "boxShadow": "none",
   "defaultText": "{{RevueContrat.data[0].orifices ? RevueContrat.data[0].orifices : \"\"}}",
   "dynamicBindingPathList": [

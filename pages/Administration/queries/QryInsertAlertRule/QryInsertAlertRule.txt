@@ -45,7 +45,7 @@ VALUES (
     ELSE NULLIF('{{ TableAlertRules.newRow.target_everwin_user_id ?? "" }}', '')
   END,
 	
-	{{ TableAlertRules.newRow.notify_charge_affaire ?? false }},
+	{{ TableAlertRules.newRow.notify_charge_affaires ?? false }},
   {{ TableAlertRules.newRow.enabled ?? true }},
   {{ TableAlertRules.newRow.only_on_change ?? true }},
   {{ TableAlertRules.newRow.throttle_minutes ?? 0 }},

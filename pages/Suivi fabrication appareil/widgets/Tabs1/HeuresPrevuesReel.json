@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 15,
   "boxShadow": "none",
-  "defaultText": "{{\n  (QryInfoSuiviFabAppareil.data || [])\n    .find(r => r.groupe_code === \"FABRICATION\")\n    ?.fab_heures_passees ?? \"\"\n}}\n",
+  "defaultText": "{{\n  (() => {\n    // 🔁 Remplace par les noms EXACTS de tes DatePickers\n    const start = DateDebutFab.selectedDate;\n    const end   = DateFinFab.selectedDate;\n\n    if (!start || !end) return \"\";\n\n    let d1 = new Date(start);\n    let d2 = new Date(end);\n\n    // Sécurise l'ordre\n    if (d1 > d2) [d1, d2] = [d2, d1];\n\n    // Normalisation à minuit UTC\n    d1 = new Date(Date.UTC(d1.getFullYear(), d1.getMonth(), d1.getDate()));\n    d2 = new Date(Date.UTC(d2.getFullYear(), d2.getMonth(), d2.getDate()));\n\n    let workingDays = 0;\n\n    // Jours ouvrés INCLUSIFS (début et fin inclus)\n    for (let d = new Date(d1); d <= d2; d.setUTCDate(d.getUTCDate() + 1)) {\n      const day = d.getUTCDay(); // 0=dim, 6=sam\n      if (day !== 0 && day !== 6) workingDays++;\n    }\n\n    const HOURS_PER_DAY = 7.5;\n\n    return workingDays * HOURS_PER_DAY;\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -18,11 +18,7 @@
     }
   ],
   "dynamicHeight": "FIXED",
-  "dynamicPropertyPathList": [
-    {
-      "key": "onBlur"
-    }
-  ],
+  "dynamicPropertyPathList": [],
   "dynamicTriggerPathList": [
     {
       "key": "onBlur"
@@ -35,13 +31,13 @@
   "isRequired": false,
   "isVisible": true,
   "key": "jdjyd6pywq",
-  "label": "Heures passées\n",
+  "label": "Heures prévues sur dates réelles",
   "labelAlignment": "left",
   "labelPosition": "Top",
   "labelStyle": "",
   "labelTextSize": "0.875rem",
   "labelWidth": "27",
-  "leftColumn": 40,
+  "leftColumn": 27,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
@@ -50,20 +46,18 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "onBlur": "{{ JS_SuiviFab.saveFabrication() }}\n",
-  "originalBottomRow": 46,
-  "originalTopRow": 42,
+  "onBlur": "",
   "parentColumnSpace": 4.1171875,
   "parentId": "ooyjhdx83z",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "resetOnSubmit": true,
   "responsiveBehavior": "fill",
-  "rightColumn": 52,
+  "rightColumn": 39,
   "showStepArrows": false,
   "topRow": 8,
   "type": "INPUT_WIDGET_V2",
   "version": 2,
-  "widgetId": "qian4r2cpx",
-  "widgetName": "HeuresPassees"
+  "widgetId": "cujtetsos3",
+  "widgetName": "HeuresPrevuesReel"
 }

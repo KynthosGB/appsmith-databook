@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 21,
   "boxShadow": "none",
-  "defaultText": "{{ CaracteristiquesAppareils.data[0].traitement_thermique === true ? \"Oui\" : \"\"\n}}",
+  "defaultText": "{{\n  (() => {\n    const valeurBase = RevueContrat.data?.[0]?.traitement_thermique_specifique;\n\n    // 1️⃣ Si une valeur existe en base → priorité\n    if (valeurBase !== null && valeurBase !== undefined && valeurBase !== \"\") {\n      return valeurBase;\n    }\n\n    // 2️⃣ Sinon, préremplissage depuis les caractéristiques appareil\n    const hasTT = CaracteristiquesAppareils.data?.[0]?.traitement_thermique === true;\n\n    return hasTT ? \"Oui\" : \"N/A\";\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

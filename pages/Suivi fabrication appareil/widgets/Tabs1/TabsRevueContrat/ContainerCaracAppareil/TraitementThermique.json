@@ -42,7 +42,7 @@
   "mobileTopRow": 66,
   "needsErrorInfo": false,
   "onChange": "{{ SaveAll.saveAll(); }}",
-  "originalBottomRow": 71,
+  "originalBottomRow": 70,
   "originalTopRow": 66,
   "parentColumnSpace": 19.3046875,
   "parentId": "j6m362cmom",

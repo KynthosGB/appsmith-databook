@@ -5,6 +5,7 @@ INSERT INTO public.alert_rules (
   event_key,
   event_value,
   target_everwin_user_id,
+	notify_charge_affaires,
   enabled,
   only_on_change,
   throttle_minutes,
@@ -43,7 +44,8 @@ VALUES (
       THEN NULL
     ELSE NULLIF('{{ TableAlertRules.newRow.target_everwin_user_id ?? "" }}', '')
   END,
-
+	
+	{{ TableAlertRules.newRow.notify_charge_affaire ?? false }},
   {{ TableAlertRules.newRow.enabled ?? true }},
   {{ TableAlertRules.newRow.only_on_change ?? true }},
   {{ TableAlertRules.newRow.throttle_minutes ?? 0 }},

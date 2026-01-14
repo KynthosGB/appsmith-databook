@@ -39,6 +39,7 @@
     "event_key",
     "target_everwin_user_id",
     "description",
+    "notify_charge_affaires",
     "enabled",
     "step_label",
     "status_label",
@@ -49,7 +50,7 @@
     "id",
     "EditActions1"
   ],
-  "columnUpdatedAt": 1765969020594,
+  "columnUpdatedAt": 1768383733937,
   "columnWidthMap": {
     "description": 156,
     "enabled": 118,
@@ -167,6 +168,12 @@
     },
     {
       "key": "primaryColumns.EditActions1.isDiscardDisabled"
+    },
+    {
+      "key": "primaryColumns.notify_charge_affaires.computedValue"
+    },
+    {
+      "key": "primaryColumns.notify_charge_affaires.isCellVisible"
     }
   ],
   "dynamicPropertyPathList": [
@@ -205,6 +212,9 @@
     },
     {
       "key": "primaryColumns.EditActions1.isDiscardDisabled"
+    },
+    {
+      "key": "primaryColumns.notify_charge_affaires.isCellVisible"
     }
   ],
   "dynamicTriggerPathList": [
@@ -473,6 +483,40 @@
       "notation": "standard",
       "originalId": "id",
       "sticky": "",
+      "textSize": "0.85rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "notify_charge_affaires": {
+      "alias": "notify_charge_affaires",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
+      "columnType": "checkbox",
+      "computedValue": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"notify_charge_affaires\"])) : notify_charge_affaires })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "fontStyle": "",
+      "horizontalAlignment": "LEFT",
+      "id": "notify_charge_affaires",
+      "index": 11,
+      "isCellEditable": true,
+      "isCellVisible": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( currentRow.event_type !== \"STATUS_CHANGED\" )) :  currentRow.event_type !== \"STATUS_CHANGED\"  })()}}",
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": true,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Alerter le C.A.",
+      "notation": "standard",
+      "originalId": "notify_charge_affaires",
+      "sticky": "",
+      "textColor": "",
       "textSize": "0.85rem",
       "thousandSeparator": true,
       "validation": {},

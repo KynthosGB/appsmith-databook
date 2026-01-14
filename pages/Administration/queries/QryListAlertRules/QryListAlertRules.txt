@@ -15,6 +15,7 @@ SELECT
   eu.display_name AS target_everwin_name,
 
   ar.enabled,
+	ar.notify_charge_affaires,
   ar.description,
   ar.throttle_minutes,
   ar.only_on_change

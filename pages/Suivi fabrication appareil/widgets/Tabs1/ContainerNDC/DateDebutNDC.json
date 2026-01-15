@@ -2,12 +2,12 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 36,
+  "bottomRow": 28,
   "boxShadow": "none",
   "closeOnSelection": true,
   "dateFormat": "DD-MM-YYYY",
   "datePickerType": "DATE_PICKER",
-  "defaultDate": "{{QryInfoSuiviFabAppareil.data[0]?.ndc_date_edition || \"\" }}",
+  "defaultDate": "{{QryInfoSuiviFabAppareil.data[0]?.ndc_date_debut || \"\" }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -39,7 +39,7 @@
   "isRequired": false,
   "isVisible": true,
   "key": "3g865prui7",
-  "label": "Date édition",
+  "label": "Date début",
   "labelAlignment": "left",
   "labelPosition": "Top",
   "labelTextSize": "0.875rem",
@@ -64,9 +64,9 @@
   "rightColumn": 63,
   "shortcuts": false,
   "timePrecision": "minute",
-  "topRow": 29,
+  "topRow": 21,
   "type": "DATE_PICKER_WIDGET2",
   "version": 2,
-  "widgetId": "vq3wzqi17j",
-  "widgetName": "DateEditionNDC"
+  "widgetId": "k59ozq14ta",
+  "widgetName": "DateDebutNDC"
 }

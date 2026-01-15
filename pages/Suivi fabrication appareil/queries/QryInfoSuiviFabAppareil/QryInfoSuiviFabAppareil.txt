@@ -14,6 +14,7 @@ SELECT
   wnc.numero            AS ndc_numero,
   wnc.indice            AS ndc_indice,
   wnc.date_objectif     AS ndc_date_objectif,
+  wnc.date_debut      AS ndc_date_debut,
   wnc.date_edition      AS ndc_date_edition,
 	wnc.nombre_jours      AS ndc_nombre_jours,
 

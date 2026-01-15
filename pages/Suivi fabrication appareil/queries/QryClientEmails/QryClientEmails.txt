@@ -11,6 +11,6 @@ SELECT
   mailbox
 FROM public.client_emails
 WHERE
-  numero_affaire = {{ appsmith.URL.queryParams.numero_affaire }}
+  numero_appareil = {{ appsmith.URL.queryParams.numero_appareil }}
 ORDER BY received_at DESC NULLS LAST, sent_at DESC NULLS LAST
 LIMIT 200;

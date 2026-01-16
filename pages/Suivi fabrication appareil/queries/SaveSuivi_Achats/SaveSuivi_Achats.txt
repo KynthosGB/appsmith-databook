@@ -1,10 +1,13 @@
 INSERT INTO public.workflow_achats (
   groupe_appareil_id,
-  date_objectif
+  date_objectif,
+	date_fin
 )
 VALUES (
   {{ this.params.groupe_appareil_id }},
-  {{ this.params.date_objectif }}
+  {{ this.params.date_objectif }},
+	{{ this.params.date_fin }}
 )
 ON CONFLICT (groupe_appareil_id) DO UPDATE SET
-  date_objectif = EXCLUDED.date_objectif;
+  date_objectif = EXCLUDED.date_objectif
+	date_fin = EXCLUDED.date_fin;

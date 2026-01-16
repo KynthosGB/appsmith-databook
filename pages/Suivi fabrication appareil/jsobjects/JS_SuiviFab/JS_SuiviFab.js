@@ -475,6 +475,8 @@ export default {
 		const monteur_id       = Monteur.selectedOptionValue;
 		const dateDebutVal  = DateDebutFab.selectedDate;
 		const dateFinVal    = DateFinFab.selectedDate;
+		const dateDebutReelle  = DateDebutReelleFab.selectedDate;
+		const dateFinReelle    = DateFinReelleFab.selectedDate;
 		const heuresPrevues = Number(HeuresPrevues.text || "") || null;
 		const heuresPrevuesMontage = Number(HeuresPrevuesMontage.text || "") || null;
 		const heuresPassees = Number(HeuresPassees.text || "") || null;
@@ -490,6 +492,14 @@ export default {
 
 			date_fin: dateFinVal
 				? moment(dateFinVal).format("YYYY-MM-DD")
+				: null,
+			
+			date_debut_reelle: dateDebutReelle
+				? moment(dateDebutReelle).format("YYYY-MM-DD")
+				: null,
+
+			date_fin_reelle: dateFinReelle
+				? moment(dateFinReelle).format("YYYY-MM-DD")
 				: null,
 
 			heures_prevues: heuresPrevues,
@@ -534,11 +544,15 @@ export default {
 
 			// ⚠️ adapte le nom du widget si besoin
 			const dateObj = DateObjectifAppro.selectedDate;
+			const dateFin = DateFinAppro.selectedDate;
 
 			return SaveSuivi_Appro.run({
 				groupe_appareil_id: row.groupe_appareil_id,
 				date_objectif: dateObj
 					? moment(dateObj).format("YYYY-MM-DD")
+					: null,
+				date_fin: dateFin
+					? moment(dateFin).format("YYYY-MM-DD")
 					: null,
 			})
 				.then(() => {
@@ -560,11 +574,15 @@ export default {
 
 			// ⚠️ adapte le nom du widget si besoin
 			const dateObj = DateObjectifAchats.selectedDate;
+			const dateFin = DateFinAchats.selectedDate;
 
 			return SaveSuivi_Achats.run({
 				groupe_appareil_id: row.groupe_appareil_id,
 				date_objectif: dateObj
 					? moment(dateObj).format("YYYY-MM-DD")
+					: null,
+				date_fin: dateFin
+					? moment(dateFin).format("YYYY-MM-DD")
 					: null,
 			})
 				.then(() => {

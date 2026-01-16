@@ -45,7 +45,7 @@ SELECT
       -- ✅ FABRICATION : début = date début réelle (fallback si null)
       'date_debut',
         CASE
-          WHEN wge.code = 'FABRICATION' THEN fab.fab_date_debut
+          WHEN wge.code = 'FABRICATION'     THEN fab.fab_date_debut
           ELSE NULL
         END,
 
@@ -60,6 +60,39 @@ SELECT
 
           -- ✅ FABRICATION : fin = date fin réelle (fallback si null)
           WHEN wge.code = 'FABRICATION'     THEN fab.fab_date_fin
+          ELSE NULL
+        END,
+			
+			-- ✅ DATES RÉELLES POUR BASELINE
+      'date_debut_reel',
+        CASE
+          WHEN wge.code = 'NOTE_CALCUL'     THEN wnc.date_debut
+          WHEN wge.code = 'PLAN'            THEN wp.date_debut
+          WHEN wge.code = 'CAHIER_SOUDAGE'  THEN wcs.date_debut
+          WHEN wge.code = 'PREPARATION'     THEN wprep.date_debut
+
+          -- Besoins / Achats = jalons => pas de début réel
+          WHEN wge.code = 'BESOINS'         THEN NULL
+          WHEN wge.code = 'ACHATS'          THEN NULL
+
+          -- Fabrication (colonnes spécifiques)
+          WHEN wge.code = 'FABRICATION'     THEN wfab.date_debut_reelle
+          ELSE NULL
+        END,
+
+      'date_fin_reel',
+        CASE
+          WHEN wge.code = 'NOTE_CALCUL'     THEN wnc.date_edition
+          WHEN wge.code = 'PLAN'            THEN wp.date_fin
+          WHEN wge.code = 'CAHIER_SOUDAGE'  THEN wcs.date_fin
+          WHEN wge.code = 'PREPARATION'     THEN wprep.date_fin
+
+          -- jalons
+          WHEN wge.code = 'BESOINS'         THEN wa.date_fin
+          WHEN wge.code = 'ACHATS'          THEN wach.date_fin
+
+          -- Fabrication
+          WHEN wge.code = 'FABRICATION'     THEN wfab.date_fin_reelle
           ELSE NULL
         END,
 

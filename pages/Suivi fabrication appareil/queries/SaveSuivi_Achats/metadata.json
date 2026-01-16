@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO public.workflow_achats (\n  groupe_appareil_id,\n  date_objectif,\n\tdate_fin\n)\nVALUES (\n  {{ this.params.groupe_appareil_id }},\n  {{ this.params.date_objectif }},\n\t{{ this.params.date_fin }}\n)\nON CONFLICT (groupe_appareil_id) DO UPDATE SET\n  date_objectif = EXCLUDED.date_objectif\n\tdate_fin = EXCLUDED.date_fin;\n",
+      "body": "INSERT INTO public.workflow_achats (\n  groupe_appareil_id,\n  date_objectif,\n\tdate_fin\n)\nVALUES (\n  {{ this.params.groupe_appareil_id }},\n  {{ this.params.date_objectif }},\n\t{{ this.params.date_fin }}\n)\nON CONFLICT (groupe_appareil_id) DO UPDATE SET\n  date_objectif = EXCLUDED.date_objectif,\n\tdate_fin = EXCLUDED.date_fin;\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

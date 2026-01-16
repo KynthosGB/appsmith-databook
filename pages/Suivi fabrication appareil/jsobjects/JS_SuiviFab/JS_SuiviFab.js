@@ -132,7 +132,7 @@ export default {
     const numero = NumNDC.text;          // champ "Numéro"
     const indice = IndiceNDC.text;          // champ "Indice"
     const dateObj = DateObjectifNDC.selectedDate;     // champ "Date obj."
-    const dateDebut = DateDebutNDC.selectedDate; // champ "Date édition"
+    const dateDebut = DateDebutNDC.selectedDate; // champ "Date début"
     const dateEdition = DateEditionNDC.selectedDate; // champ "Date édition"
 		const nombreJours = NbJoursNDC.text;          // champ "Nombre jours"
 

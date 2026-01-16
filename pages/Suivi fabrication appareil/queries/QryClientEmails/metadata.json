@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n  id,\n  numero_affaire,\n  numero_appareil,\n  sent_at,\n  received_at,\n  from_email,\n  subject,\n  body_preview,\n  body_html,\n  mailbox\nFROM public.client_emails\nWHERE\n  numero_appareil = {{ appsmith.URL.queryParams.numero_appareil }}\nORDER BY received_at DESC NULLS LAST, sent_at DESC NULLS LAST\nLIMIT 200;\n",
+      "body": "SELECT\n  id,\n  numero_affaire,\n  numero_appareil,\n  sent_at,\n  received_at,\n  from_email,\n  subject,\n  body_preview,\n  body_html,\n\tbody_html_resolved_b64,\n  mailbox\nFROM public.client_emails\nWHERE\n  numero_appareil = {{ appsmith.URL.queryParams.numero_appareil }}\nORDER BY received_at DESC NULLS LAST, sent_at DESC NULLS LAST\nLIMIT 200;\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

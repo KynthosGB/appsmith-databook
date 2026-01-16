@@ -3,6 +3,7 @@ INSERT INTO public.workflow_note_calcul (
   numero,
   indice,
   date_objectif,
+	date_debut,
   date_edition,
 	nombre_jours
 )
@@ -11,6 +12,7 @@ VALUES (
   {{ this.params.numero }},
   {{ this.params.indice }},
   {{ this.params.date_objectif }},
+	{{ this.params.date_debut }},
   {{ this.params.date_edition }},
   {{ this.params.nombre_jours }}
 )
@@ -18,5 +20,6 @@ ON CONFLICT (groupe_appareil_id) DO UPDATE SET
   numero        = EXCLUDED.numero,
   indice        = EXCLUDED.indice,
   date_objectif = EXCLUDED.date_objectif,
+	date_debut  = EXCLUDED.date_debut,
   date_edition  = EXCLUDED.date_edition,
   nombre_jours  = EXCLUDED.nombre_jours;

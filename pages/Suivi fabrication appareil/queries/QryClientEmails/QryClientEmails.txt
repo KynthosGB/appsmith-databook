@@ -8,6 +8,7 @@ SELECT
   subject,
   body_preview,
   body_html,
+	body_html_resolved_b64,
   mailbox
 FROM public.client_emails
 WHERE

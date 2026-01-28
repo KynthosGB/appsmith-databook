@@ -11,15 +11,23 @@
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "isVisible"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicPropertyPathList": [
+    {
+      "key": "isVisible"
+    }
+  ],
   "dynamicTriggerPathList": [],
   "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
   "fontSize": "1rem",
   "fontStyle": "BOLD",
   "isLoading": false,
-  "isVisible": true,
+  "isVisible": "{{!appsmith.URL.queryParams.numero_appareil?.endsWith(\"Z\")}}",
   "key": "v73l77sdw8",
   "leftColumn": 1,
   "maxDynamicHeight": 9000,

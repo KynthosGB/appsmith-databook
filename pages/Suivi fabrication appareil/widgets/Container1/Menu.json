@@ -9,11 +9,23 @@
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "menuItems.menuItem2.isVisible"
+    },
+    {
+      "key": "menuItems.menuItemtqwh0zdtbo.isVisible"
     }
   ],
   "dynamicPropertyPathList": [
     {
       "key": "menuItems.menuItemtqwh0zdtbo.onClick"
+    },
+    {
+      "key": "menuItems.menuItem2.isVisible"
+    },
+    {
+      "key": "menuItems.menuItemtqwh0zdtbo.isVisible"
     }
   ],
   "dynamicTriggerPathList": [
@@ -59,7 +71,7 @@
       "id": "menuItem2",
       "index": 1,
       "isDisabled": false,
-      "isVisible": true,
+      "isVisible": "{{!appsmith.URL.queryParams.numero_appareil?.endsWith(\"Z\")}}",
       "label": "Générer la revue de contrat",
       "onClick": "{{showModal(ModalRevueContrat.name);}}",
       "widgetId": ""
@@ -87,7 +99,7 @@
       "id": "menuItemtqwh0zdtbo",
       "index": 2,
       "isDisabled": false,
-      "isVisible": true,
+      "isVisible": "{{!appsmith.URL.queryParams.numero_appareil?.endsWith(\"Z\")}}",
       "label": "Générer le dossier constructeur",
       "onClick": "{{\n  // 1️⃣ stop tout ancien polling (sécurité)\n  ProgressCtl.stopPolling();\n\n  // 2️⃣ réinitialise toutes les valeurs de la modal\n  storeValue('jobId', null);\n  storeValue('missingCodes', []);\n  storeValue('notFoundCount', 0);\n  storeValue('progressSnapshot', { percent: 0, step: \"En attente du lancement de la création\" });\n\n  // 3️⃣ force un dernier rafraîchissement vide\n  GetProgress.run();\n\n  // 4️⃣ ouvre la modal\n  showModal(ModalGenerationDossier.name);\n}}",
       "widgetId": "4ljimgtr6l"

@@ -5,12 +5,12 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": 1,
-  "bottomRow": 67,
+  "bottomRow": 88,
   "boxShadow": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
   "children": [
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 580,
+      "bottomRow": 600,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": true,
       "detachFromLayout": true,
@@ -56,7 +56,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 390,
+      "bottomRow": 600,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": true,
       "detachFromLayout": true,
@@ -102,7 +102,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 460,
+      "bottomRow": 600,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -147,7 +147,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 390,
+      "bottomRow": 600,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -192,7 +192,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 390,
+      "bottomRow": 600,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -237,7 +237,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 580,
+      "bottomRow": 600,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -282,7 +282,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 390,
+      "bottomRow": 600,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -597,7 +597,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 390,
+      "bottomRow": 600,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -642,7 +642,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 390,
+      "bottomRow": 600,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -693,12 +693,93 @@
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "tabsObj.tabmq869p9u4b.isVisible"
+    },
+    {
+      "key": "tabsObj.tab2.isVisible"
+    },
+    {
+      "key": "tabsObj.tabfmq531p5it.isVisible"
+    },
+    {
+      "key": "tabsObj.tabca9p6cvc7v.isVisible"
+    },
+    {
+      "key": "tabsObj.tabztjepyy0yu.isVisible"
+    },
+    {
+      "key": "tabsObj.tabtba17sm0hn.isVisible"
+    },
+    {
+      "key": "tabsObj.tabaw88ax9qjg.isVisible"
+    },
+    {
+      "key": "tabsObj.tabvj4h6nfb2c.isVisible"
+    },
+    {
+      "key": "tabsObj.tabkuzwi4d6d0.isVisible"
+    },
+    {
+      "key": "tabsObj.tab2c6dcj8thk.isVisible"
+    },
+    {
+      "key": "tabsObj.tabjhhablt0z3.isVisible"
+    },
+    {
+      "key": "tabsObj.tab1rkabdt5m6.isVisible"
+    },
+    {
+      "key": "tabsObj.tabwbqtec01vi.isVisible"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
   "dynamicPropertyPathList": [
     {
       "key": "onTabSelected"
+    },
+    {
+      "key": "tabsObj.tabmq869p9u4b.isVisible"
+    },
+    {
+      "key": "tabsObj.tab2.isVisible"
+    },
+    {
+      "key": "tabsObj.tabfmq531p5it.isVisible"
+    },
+    {
+      "key": "tabsObj.tabca9p6cvc7v.isVisible"
+    },
+    {
+      "key": "tabsObj.tabh9jnuwcbjs.isVisible"
+    },
+    {
+      "key": "tabsObj.tabztjepyy0yu.isVisible"
+    },
+    {
+      "key": "tabsObj.tabtba17sm0hn.isVisible"
+    },
+    {
+      "key": "tabsObj.tabaw88ax9qjg.isVisible"
+    },
+    {
+      "key": "tabsObj.tabvj4h6nfb2c.isVisible"
+    },
+    {
+      "key": "tabsObj.tabkuzwi4d6d0.isVisible"
+    },
+    {
+      "key": "tabsObj.tab2c6dcj8thk.isVisible"
+    },
+    {
+      "key": "tabsObj.tabjhhablt0z3.isVisible"
+    },
+    {
+      "key": "tabsObj.tab1rkabdt5m6.isVisible"
+    },
+    {
+      "key": "tabsObj.tabwbqtec01vi.isVisible"
     }
   ],
   "dynamicTriggerPathList": [
@@ -721,7 +802,7 @@
   "mobileTopRow": 22,
   "needsErrorInfo": false,
   "onTabSelected": "{{JS_TabsSelection.onTabSelected() }}",
-  "originalBottomRow": 77,
+  "originalBottomRow": 67,
   "originalTopRow": 24,
   "parentColumnSpace": 23.53125,
   "parentId": "0",
@@ -744,7 +825,7 @@
     "tab1rkabdt5m6": {
       "id": "tab1rkabdt5m6",
       "index": 13,
-      "isVisible": true,
+      "isVisible": "{{!appsmith.URL.queryParams.numero_appareil?.endsWith(\"Z\")}}",
       "label": "FNC",
       "widgetId": "lmet1pdutg"
     },
@@ -752,7 +833,7 @@
       "id": "tab2",
       "index": 2,
       "isDuplicateLabel": false,
-      "isVisible": true,
+      "isVisible": "{{!appsmith.URL.queryParams.numero_appareil?.endsWith(\"Z\")}}",
       "label": "Cahier de soudage",
       "positioning": "vertical",
       "widgetId": "kqrrbgvqd4"
@@ -761,7 +842,7 @@
       "id": "tab2c6dcj8thk",
       "index": 11,
       "isDuplicateLabel": false,
-      "isVisible": true,
+      "isVisible": "{{!appsmith.URL.queryParams.numero_appareil?.endsWith(\"Z\")}}",
       "label": "Planning",
       "widgetId": "5d9mv378b8"
     },
@@ -769,7 +850,7 @@
       "id": "tabaw88ax9qjg",
       "index": 8,
       "isDuplicateLabel": false,
-      "isVisible": true,
+      "isVisible": "{{!appsmith.URL.queryParams.numero_appareil?.endsWith(\"Z\")}}",
       "label": "Presta externes",
       "widgetId": "gur4cgnmdx"
     },
@@ -777,7 +858,7 @@
       "id": "tabca9p6cvc7v",
       "index": 4,
       "isDuplicateLabel": false,
-      "isVisible": true,
+      "isVisible": "{{!appsmith.URL.queryParams.numero_appareil?.endsWith(\"Z\")}}",
       "label": "Achats",
       "widgetId": "rpa97oiq66"
     },
@@ -785,7 +866,7 @@
       "id": "tabfmq531p5it",
       "index": 3,
       "isDuplicateLabel": false,
-      "isVisible": true,
+      "isVisible": "{{!appsmith.URL.queryParams.numero_appareil?.endsWith(\"Z\")}}",
       "label": "Besoins",
       "widgetId": "m3y6bzcuko"
     },
@@ -793,14 +874,14 @@
       "id": "tabh9jnuwcbjs",
       "index": 5,
       "isDuplicateLabel": false,
-      "isVisible": true,
+      "isVisible": "true",
       "label": "Suivi Labflow",
       "widgetId": "x309qzxnke"
     },
     "tabjhhablt0z3": {
       "id": "tabjhhablt0z3",
       "index": 12,
-      "isVisible": true,
+      "isVisible": "{{!appsmith.URL.queryParams.numero_appareil?.endsWith(\"Z\")}}",
       "label": "Echanges client",
       "widgetId": "mi05gvsqv3"
     },
@@ -808,7 +889,7 @@
       "id": "tabkuzwi4d6d0",
       "index": 10,
       "isDuplicateLabel": false,
-      "isVisible": true,
+      "isVisible": "{{!appsmith.URL.queryParams.numero_appareil?.endsWith(\"Z\")}}",
       "label": "DC",
       "widgetId": "r534emvzfe"
     },
@@ -816,7 +897,7 @@
       "id": "tabmq869p9u4b",
       "index": 0,
       "isDuplicateLabel": false,
-      "isVisible": true,
+      "isVisible": "{{!appsmith.URL.queryParams.numero_appareil?.endsWith(\"Z\")}}",
       "label": "Revue de contrat",
       "widgetId": "8zhkkfphof"
     },
@@ -824,7 +905,7 @@
       "id": "tabtba17sm0hn",
       "index": 7,
       "isDuplicateLabel": false,
-      "isVisible": true,
+      "isVisible": "{{!appsmith.URL.queryParams.numero_appareil?.endsWith(\"Z\")}}",
       "label": "Contrôle",
       "widgetId": "tm4r707uhl"
     },
@@ -832,14 +913,14 @@
       "id": "tabvj4h6nfb2c",
       "index": 9,
       "isDuplicateLabel": false,
-      "isVisible": true,
+      "isVisible": "{{!appsmith.URL.queryParams.numero_appareil?.endsWith(\"Z\")}}",
       "label": "Dossier CE",
       "widgetId": "slhhvpvvv1"
     },
     "tabwbqtec01vi": {
       "id": "tabwbqtec01vi",
       "index": 14,
-      "isVisible": true,
+      "isVisible": "{{!appsmith.URL.queryParams.numero_appareil?.endsWith(\"Z\")}}",
       "label": "Bilan",
       "widgetId": "ltc0v38hm8"
     },
@@ -847,7 +928,7 @@
       "id": "tabztjepyy0yu",
       "index": 6,
       "isDuplicateLabel": false,
-      "isVisible": true,
+      "isVisible": "{{!appsmith.URL.queryParams.numero_appareil?.endsWith(\"Z\")}}",
       "label": "Fab",
       "widgetId": "ooyjhdx83z"
     }

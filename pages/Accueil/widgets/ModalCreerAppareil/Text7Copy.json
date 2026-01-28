@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 42,
+  "bottomRow": 44,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -30,7 +30,7 @@
   "mobileRightColumn": 17,
   "mobileTopRow": 26,
   "needsErrorInfo": false,
-  "originalBottomRow": 42,
+  "originalBottomRow": 44,
   "originalTopRow": 34,
   "overflow": "NONE",
   "parentColumnSpace": 9.6875,
@@ -40,7 +40,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 63,
   "shouldTruncate": false,
-  "text": "En confirmant, les actions suivantes seront effectuées :\n- Création du dossier de l'appareil sur le réseau\n- Création de la nomenclature vierge dans le dossier \"Plan\"\n- Création de l'appareil dans l'application",
+  "text": "En confirmant, les actions suivantes seront effectuées :\n- Création du dossier de l'appareil sur le réseau\n- Création de la nomenclature vierge dans le dossier \"Plan\"\n- Copie des trames de plans (A0, A1, A2, A3 et A4)\n- Création de l'appareil dans l'application",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 34,

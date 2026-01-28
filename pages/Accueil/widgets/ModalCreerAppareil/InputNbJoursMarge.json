@@ -3,7 +3,7 @@
   "animateLoading": true,
   "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 25,
+  "bottomRow": 26,
   "boxShadow": "none",
   "defaultText": "",
   "dynamicBindingPathList": [
@@ -49,7 +49,7 @@
   "rightColumn": 63,
   "showStepArrows": false,
   "tooltip": "Nombre de jours ouvrés à prévoir en plus par sécurité pour la fabrication de l'appareil",
-  "topRow": 21,
+  "topRow": 22,
   "type": "INPUT_WIDGET_V2",
   "version": 2,
   "widgetId": "j9sw5f28np",

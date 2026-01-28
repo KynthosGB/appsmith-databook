@@ -1,0 +1,51 @@
+WITH params AS (
+  SELECT
+    '{{ this.params.numero_appareil }}'::text AS num_app,
+    '{{ this.params.numero_affaire }}'::text  AS num_aff,
+    '{{ this.params.nom_appareil }}'::text    AS nom_appareil,
+    '{{ this.params.repere_appareil }}'::text AS repere,
+    NULL::date AS delai
+),
+
+-- 1) appareils
+ins_app AS (
+  INSERT INTO public.appareils (numero_appareil, numero_affaire, delai)
+  SELECT num_app, num_aff, delai
+  FROM params
+  ON CONFLICT (numero_appareil) DO NOTHING
+  RETURNING 1
+),
+
+-- 2) caractéristiques
+ins_carac AS (
+  INSERT INTO public.caracteristiques_appareils
+         (numero_appareil, numero_affaire, nom_appareil, repere_appareil)
+  SELECT
+    p.num_app,
+    p.num_aff,
+    p.num_aff || p.repere || ' - ' || p.nom_appareil,
+    p.repere
+  FROM params p
+  ON CONFLICT (numero_appareil) DO NOTHING
+  RETURNING 1
+),
+
+-- 3) données générales
+ins_dg AS (
+  INSERT INTO public.donnees_generales_appareils
+         (numero_appareil, numero_affaire, nom_client, nom_affaire)
+  SELECT
+    p.num_app,
+    p.num_aff,
+    a.nom_client,
+    p.num_aff
+  FROM params p
+  JOIN public.affaires a ON a.numero_affaire = p.num_aff
+  ON CONFLICT (numero_appareil) DO NOTHING
+  RETURNING 1
+)
+
+SELECT
+  (SELECT COALESCE(COUNT(*), 0) FROM ins_app)   AS app_inserted,
+  (SELECT COALESCE(COUNT(*), 0) FROM ins_carac) AS carac_inserted,
+  (SELECT COALESCE(COUNT(*), 0) FROM ins_dg)    AS dg_inserted;

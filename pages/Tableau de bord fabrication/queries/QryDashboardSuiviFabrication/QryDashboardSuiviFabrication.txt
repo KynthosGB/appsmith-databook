@@ -93,7 +93,9 @@ LEFT JOIN public.workflow_appro           wa    ON wa.groupe_appareil_id = wga.i
 LEFT JOIN public.workflow_appro_item      wai   ON wai.groupe_appareil_id = wga.id
 LEFT JOIN public.workflow_achats          wach  ON wa.groupe_appareil_id = wga.id
 
-WHERE a.cloture_suivi_fabrication = false
+WHERE
+a.cloture_suivi_fabrication = false
+AND a.numero_appareil NOT LIKE '%Z'
 
 GROUP BY
   a.numero_appareil,

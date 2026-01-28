@@ -208,6 +208,7 @@ LEFT JOIN LATERAL (
 
 WHERE a.cloture_suivi_fabrication = false
   AND a.numero_affaire = '{{ SelectAffaire.selectedOptionValue }}'
+	AND a.numero_appareil NOT LIKE '%Z'
 
 GROUP BY
   a.numero_appareil,

@@ -174,6 +174,7 @@ LEFT JOIN LATERAL (
 ) fab ON TRUE
 
 WHERE a.cloture_suivi_fabrication = false
+AND a.numero_appareil NOT LIKE '%Z'
 
 GROUP BY
   a.numero_appareil,

@@ -1,6 +1,6 @@
 {
   "gitSyncId": "6915b9d6a2ab6852a3eeef70_54259a97-bdd9-443f-b27c-e7f0e52307d8",
-  "id": "Tableau de bord fabrication_QryDashboardSuiviFabrication",
+  "id": "Tableau de bord BE_QryDashboardSuiviFabrication",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
@@ -24,7 +24,7 @@
     },
     "dynamicBindingPathList": [],
     "name": "QryDashboardSuiviFabrication",
-    "pageId": "Tableau de bord fabrication",
+    "pageId": "Tableau de bord BE",
     "runBehaviour": "AUTOMATIC",
     "userSetOnLoad": false
   }

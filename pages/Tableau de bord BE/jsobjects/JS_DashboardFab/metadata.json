@@ -1,9 +1,9 @@
 {
   "gitSyncId": "6915b9d6a2ab6852a3eeef70_f9bf979c-84b8-47ea-aa35-0c7338a87f8a",
-  "id": "Tableau de bord fabrication_JS_DashboardFab",
+  "id": "Tableau de bord BE_JS_DashboardFab",
   "unpublishedCollection": {
     "name": "JS_DashboardFab",
-    "pageId": "Tableau de bord fabrication",
+    "pageId": "Tableau de bord BE",
     "pluginId": "js-plugin",
     "pluginType": "JS",
     "variables": []

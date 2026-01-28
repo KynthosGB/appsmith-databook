@@ -1,6 +1,6 @@
 {
   "gitSyncId": "6915b9d6a2ab6852a3eeef70_7f85cf2d-cc6f-47cb-9f86-ba391492991c",
-  "id": "Tableau de bord fabrication_CloturerAppareilFab",
+  "id": "Tableau de bord BE_CloturerAppareilFab",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
@@ -28,7 +28,7 @@
       }
     ],
     "name": "CloturerAppareilFab",
-    "pageId": "Tableau de bord fabrication",
+    "pageId": "Tableau de bord BE",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }

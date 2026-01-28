@@ -37,15 +37,23 @@ export default {
 		// Mets ici tes queries de data si elles existent.
 		// Exemple (à adapter) :
 		const sourcesByGroup = {
-			APPRO: (QryInfoApproAppareil.data || []),
+			BESOINS: (QryInfoApproAppareil.data || []),
 			ACHATS: (QryInfoAchatsAppareil.data || []),
 			CONTROLE: (QryInfoControlesAppareil.data || []),
 			PRESTA_EXTERNES: (QryInfoPrestaExtAppareil.data || []),
 		};
 
 		const rows = sourcesByGroup[groupCode] || [];
-		const row = rows.find(r => r.code === itemCode) || null;
-		return row;
+		// clé de recherche selon le groupe
+		const keyByGroup = {
+			BESOINS: "appro_code",
+			ACHATS: "achats_code",
+			CONTROLE: "controle_code",
+			PRESTA_EXTERNES: "presta_code",
+		};
+
+		const key = keyByGroup[groupCode] || "code";
+		return rows.find(r => r[key] === itemCode) || null;
 	},
 
   // --- délai "Livraison le :" ---
@@ -293,19 +301,16 @@ export default {
 	},
 	
 	// --- APPRO : un sous-groupe (Fonds, Virolés, etc.) ---
-	saveApproItem(code, radioGroup, datePicker) {
+	saveApproItem(code, checkboxGroup, datePicker) {
 		const row = this.getRowByCode("BESOINS");
 		if (!row) return;
 
-		// état AVANT (depuis data)
 		const before = this.getItemState("BESOINS", code);
 		const wasEnvoye = !!before?.envoye;
 
-		// RadioGroup -> une seule valeur (string)
-		const value = radioGroup.selectedOptionValue || null;
-
-		const na     = value === "na";
-		const envoye = value === "envoye";
+		const selected = checkboxGroup.selectedValues || [];
+		const na     = selected.includes("na");
+		const envoye = selected.includes("envoye");
 
 		const date = datePicker.selectedDate
 			? moment(datePicker.selectedDate).format("YYYY-MM-DD")
@@ -321,12 +326,10 @@ export default {
 			.then(() => this.refreshBar())
 			.then(() => {
 				showAlert("Appro mis à jour ✅", "success");
-
-				// notif uniquement si transition false -> true
 				if (!wasEnvoye && envoye) {
 					return this.emitAlertEvent({
 						event_type: "APPRO_SENT",
-						event_key: code,        // FONDS / VIROLES / BRIDES ...
+						event_key: code,
 						event_value: "true",
 					});
 				}
@@ -336,6 +339,7 @@ export default {
 				showAlert("Erreur lors de l'enregistrement de l'approvisionnement", "error");
 			});
 	},
+
 
 
 	
@@ -378,17 +382,16 @@ export default {
 
 
 	// --- CONTROLE : un sous-groupe (Visuels, Radio, FAT, ...) ---
-	saveControleItem(code, radioGroup, datePicker) {
+	saveControleItem(code, checkboxGroup, datePicker) {
 		const row = this.getRowByCode("CONTROLE");
 		if (!row) return;
 
 		const before = this.getItemState("CONTROLE", code);
 		const wasFait = !!before?.fait;
 
-		const value = radioGroup.selectedOptionValue || null;
-
-		const na   = value === "na";
-		const fait = value === "fait";
+		const selected = checkboxGroup.selectedValues || [];
+		const na   = selected.includes("na");
+		const fait = selected.includes("fait");
 
 		const date = datePicker.selectedDate
 			? moment(datePicker.selectedDate).format("YYYY-MM-DD")
@@ -404,11 +407,10 @@ export default {
 			.then(() => this.refreshBar())
 			.then(() => {
 				showAlert("Contrôle mis à jour ✅", "success");
-
 				if (!wasFait && fait) {
 					return this.emitAlertEvent({
 						event_type: "CONTROLE_FAIT",
-						event_key: code, // VISUELS / RADIO / FAT ...
+						event_key: code,
 						event_value: "true",
 					});
 				}
@@ -420,19 +422,17 @@ export default {
 	},
 
 
-	
 	// --- PRESTATIONS EXTERNES : un sous-groupe (Calo, Berces, Plateforme, ...) ---
-	savePrestaExterneItem(code, radioGroup, datePicker) {
+	savePrestaExterneItem(code, checkboxGroup, datePicker) {
 		const row = this.getRowByCode("PRESTA_EXTERNES");
 		if (!row) return;
 
 		const before = this.getItemState("PRESTA_EXTERNES", code);
 		const wasCommande = !!before?.commande;
 
-		const value = radioGroup.selectedOptionValue || null;
-
-		const na       = value === "na";
-		const commande = value === "commande";
+		const selected = checkboxGroup.selectedValues || [];
+		const na       = selected.includes("na");
+		const commande = selected.includes("commande");
 
 		const date = datePicker.selectedDate
 			? moment(datePicker.selectedDate).format("YYYY-MM-DD")
@@ -448,11 +448,10 @@ export default {
 			.then(() => this.refreshBar())
 			.then(() => {
 				showAlert("Prestations externes mises à jour ✅", "success");
-
 				if (!wasCommande && commande) {
 					return this.emitAlertEvent({
 						event_type: "PRESTA_COMMANDEE",
-						event_key: code, // PLATEFORME / ECHELLE / ...
+						event_key: code,
 						event_value: "true",
 					});
 				}
@@ -462,8 +461,6 @@ export default {
 				showAlert("Erreur lors de l'enregistrement de prestations externes", "error");
 			});
 	},
-
-
 
 	// --- FABRICATION ---
 

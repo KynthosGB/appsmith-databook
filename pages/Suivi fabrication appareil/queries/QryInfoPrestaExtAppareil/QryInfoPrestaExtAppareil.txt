@@ -1,6 +1,6 @@
 SELECT
   wga.id         AS groupe_appareil_id,
-  wai.code       AS appro_code,       -- 'FONDS','VIROLES',...
+  wai.code       AS presta_code,       -- 'FONDS','VIROLES',...
   wai.na,
   wai.commande,
   wai.date

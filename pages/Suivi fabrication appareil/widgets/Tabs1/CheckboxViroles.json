@@ -1,16 +1,18 @@
 {
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
-  "alignment": "left",
   "animateLoading": true,
-  "bottomRow": 19,
-  "boxShadow": "none",
-  "defaultOptionValue": "S{{\n  (() => {\n    const row = (QryInfoApproAppareil.data || [])\n      .find(r => r.appro_code === \"VIROLES\");\n    if (!row) return null;\n\n    if (row.na) return \"na\";\n    if (row.envoye) return \"envoye\";\n\n    return null;\n  })()\n}}\n",
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 20,
+  "defaultSelectedValues": "S{{\n  (() => {\n    const row = (QryInfoApproAppareil.data || [])\n      .find(r => r.appro_code === \"VIROLES\");\n    if (!row) return null;\n\n    if (row.na) return \"na\";\n    if (row.envoye) return \"envoye\";\n\n    return null;\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
     },
     {
-      "key": "defaultOptionValue"
+      "key": "borderRadius"
+    },
+    {
+      "key": "defaultSelectedValues"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
@@ -30,19 +32,19 @@
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,
-  "key": "axq46o8em9",
-  "label": "",
+  "key": "rc77u30kw9",
   "labelAlignment": "left",
   "labelPosition": "Top",
+  "labelText": "",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
   "leftColumn": 22,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
-  "mobileBottomRow": 27,
-  "mobileLeftColumn": 1,
-  "mobileRightColumn": 21,
-  "mobileTopRow": 21,
+  "mobileBottomRow": 26,
+  "mobileLeftColumn": 0,
+  "mobileRightColumn": 16,
+  "mobileTopRow": 20,
   "needsErrorInfo": false,
   "onSelectionChange": "{{JS_SuiviFab.saveApproItem(\"VIROLES\", CheckboxViroles, DateEnvoiViroles)\n}}",
   "options": [
@@ -55,16 +57,16 @@
       "value": "envoye"
     }
   ],
-  "originalBottomRow": 19,
+  "originalBottomRow": 20,
   "originalTopRow": 13,
-  "parentColumnSpace": 19.3046875,
+  "parentColumnSpace": 19.9375,
   "parentId": "m3y6bzcuko",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "rightColumn": 30,
   "topRow": 13,
-  "type": "RADIO_GROUP_WIDGET",
-  "version": 1,
-  "widgetId": "jk6ywukkpy",
+  "type": "CHECKBOX_GROUP_WIDGET",
+  "version": 2,
+  "widgetId": "v4atq0pmnw",
   "widgetName": "CheckboxViroles"
 }

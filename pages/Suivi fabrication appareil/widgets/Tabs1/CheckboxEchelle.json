@@ -1,16 +1,18 @@
 {
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
-  "alignment": "left",
   "animateLoading": true,
-  "bottomRow": 22,
-  "boxShadow": "none",
-  "defaultOptionValue": "{{\n  (() => {\n    const row = (QryInfoPrestaExtAppareil.data || [])\n      .find(r => r.appro_code === \"ECHELLE\");\n    if (!row) return null;\n\n    if (row.na)     return \"na\";\n    if (row.envoye) return \"commande\";\n\n    return null;\n  })()\n}}\n",
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 24,
+  "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoPrestaExtAppareil.data || [])\n      .find(r => r.appro_code === \"ECHELLE\");\n    if (!row) return null;\n\n    if (row.na)     return \"na\";\n    if (row.envoye) return \"commande\";\n\n    return null;\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
     },
     {
-      "key": "defaultOptionValue"
+      "key": "borderRadius"
+    },
+    {
+      "key": "defaultSelectedValues"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
@@ -30,19 +32,19 @@
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,
-  "key": "axq46o8em9",
-  "label": "",
+  "key": "rc77u30kw9",
   "labelAlignment": "left",
   "labelPosition": "Top",
+  "labelText": "",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
   "leftColumn": 22,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
-  "mobileBottomRow": 27,
-  "mobileLeftColumn": 1,
-  "mobileRightColumn": 21,
-  "mobileTopRow": 21,
+  "mobileBottomRow": 17,
+  "mobileLeftColumn": 0,
+  "mobileRightColumn": 9,
+  "mobileTopRow": 11,
   "needsErrorInfo": false,
   "onSelectionChange": "{{JS_SuiviFab.savePrestaExterneItem(\"ECHELLE\", CheckboxEchelle, DateEnvoiEchelle)\n}}",
   "options": [
@@ -55,16 +57,16 @@
       "value": "commande"
     }
   ],
-  "originalBottomRow": 22,
-  "originalTopRow": 16,
-  "parentColumnSpace": 19.3046875,
+  "originalBottomRow": 24,
+  "originalTopRow": 17,
+  "parentColumnSpace": 19.9375,
   "parentId": "gur4cgnmdx",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "rightColumn": 30,
-  "topRow": 16,
-  "type": "RADIO_GROUP_WIDGET",
-  "version": 1,
-  "widgetId": "pa8bho1vt2",
+  "topRow": 17,
+  "type": "CHECKBOX_GROUP_WIDGET",
+  "version": 2,
+  "widgetId": "i0hd5o36j8",
   "widgetName": "CheckboxEchelle"
 }

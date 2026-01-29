@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT numero_appareil, numero_affaire\nFROM public.\"appareils\" \nORDER BY numero_appareil ASC;\n\n",
+      "body": "SELECT numero_appareil, numero_affaire\nFROM public.\"appareils\"\nWHERE numero_appareil NOT LIKE '%Z'\nORDER BY numero_appareil ASC;\n\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

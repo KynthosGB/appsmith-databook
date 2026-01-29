@@ -1,4 +1,6 @@
 SELECT numero_appareil, numero_affaire
 FROM public."appareils"
-WHERE numero_affaire = '{{ ListeAffaires.selectedRow.numero_affaire }}' ORDER BY numero_appareil ASC;
+WHERE numero_affaire = '{{ ListeAffaires.selectedRow.numero_affaire }}'
+AND numero_appareil NOT LIKE '%Z'
+ORDER BY numero_appareil ASC;
 

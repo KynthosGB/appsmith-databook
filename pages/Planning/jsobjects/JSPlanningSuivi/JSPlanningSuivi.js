@@ -37,7 +37,8 @@ export default {
       case "PLAN":           return "P";
       case "CAHIER_SOUDAGE": return "C";
       case "PREPARATION":    return "R";
-      case "APPRO":          return "A";
+      case "BESOINS":        return "B";
+			case "ACHATS":         return "A";
       default:               return "?";
     }
   },

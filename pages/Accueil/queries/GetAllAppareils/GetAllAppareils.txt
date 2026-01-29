@@ -1,4 +1,5 @@
 SELECT numero_appareil, numero_affaire
-FROM public."appareils" 
+FROM public."appareils"
+WHERE numero_appareil NOT LIKE '%Z'
 ORDER BY numero_appareil ASC;
 

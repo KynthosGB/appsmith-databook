@@ -15,7 +15,22 @@
     }
   ],
   "dynamicHeight": "FIXED",
-  "dynamicTriggerPathList": [],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onBlur"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onBlur"
+    },
+    {
+      "key": "onFocus"
+    },
+    {
+      "key": "onTextChanged"
+    }
+  ],
   "iconAlign": "left",
   "inputType": "TEXT",
   "isDisabled": false,
@@ -38,6 +53,9 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 6,
   "needsErrorInfo": false,
+  "onBlur": "{{ JSTransformText.applyTo(InputNomClient) }}",
+  "onFocus": "",
+  "onTextChanged": "",
   "parentColumnSpace": 6.9375,
   "parentId": "fg4h5kwjyc",
   "parentRowSpace": 10,

@@ -30,6 +30,7 @@
   "labelTextSize": "0.875rem",
   "labelWidth": "18",
   "leftColumn": 1,
+  "maxChars": "6",
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,

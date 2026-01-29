@@ -18,7 +18,19 @@
     }
   ],
   "dynamicHeight": "FIXED",
-  "dynamicTriggerPathList": [],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onBlur"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onTextChanged"
+    },
+    {
+      "key": "onBlur"
+    }
+  ],
   "iconAlign": "left",
   "inputType": "TEXT",
   "isDisabled": false,
@@ -41,6 +53,8 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 6,
   "needsErrorInfo": false,
+  "onBlur": "{{ JSTransformText.applyTo(InputNomAppareil) }}",
+  "onTextChanged": "",
   "originalBottomRow": 10,
   "originalTopRow": 6,
   "parentColumnSpace": 6.9375,

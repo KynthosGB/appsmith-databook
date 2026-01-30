@@ -96,6 +96,7 @@ LEFT JOIN public.workflow_achats          wach  ON wa.groupe_appareil_id = wga.i
 WHERE
 a.cloture_suivi_fabrication = false
 AND a.numero_appareil NOT LIKE '%Z'
+AND a.numero_affaire != '260999'
 
 GROUP BY
   a.numero_appareil,

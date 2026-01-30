@@ -82,7 +82,7 @@
       "isDisabled": false,
       "isVisible": true,
       "label": "Tableau de bord BE",
-      "onClick": "{{navigateTo('Tableau de bord fabrication', {}, 'NEW_WINDOW');}}",
+      "onClick": "{{navigateTo('Tableau de bord BE', {}, 'NEW_WINDOW');}}",
       "widgetId": "ty4ek9esbw"
     },
     "menuItemns7yvrbl1t": {

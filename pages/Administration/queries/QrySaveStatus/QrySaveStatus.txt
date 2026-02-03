@@ -1,0 +1,11 @@
+UPDATE public.workflow_statut
+SET
+  code = '{{ TableStatuts.updatedRow.code }}',
+
+  libelle = '{{ TableStatuts.updatedRow.libelle }}',
+
+  couleur = '{{ TableStatuts.updatedRow.couleur }}',
+
+  ordre = '{{ TableStatuts.updatedRow.ordre }}'
+	
+WHERE id = '{{ (TableStatuts.updatedRow?.id ?? TableStatuts.triggeredRow?.id) }}';

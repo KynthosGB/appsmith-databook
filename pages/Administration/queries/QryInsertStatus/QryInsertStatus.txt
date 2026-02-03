@@ -1,0 +1,13 @@
+INSERT INTO public.workflow_statut (
+  code,
+	libelle,
+	couleur,
+	ordre
+)
+VALUES (
+  '{{ TableStatuts.newRow.code }}',
+	'{{ TableStatuts.newRow.libelle }}',
+	'{{ TableStatuts.newRow.couleur }}',
+	'{{ TableStatuts.newRow.ordre }}'
+)
+RETURNING id;

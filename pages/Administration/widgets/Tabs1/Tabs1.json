@@ -98,6 +98,51 @@
       "version": 1,
       "widgetId": "bqq0ngs4zl",
       "widgetName": "Canvas5"
+    },
+    {
+      "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "bottomRow": 1080,
+      "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+      "canExtend": false,
+      "containerStyle": "none",
+      "detachFromLayout": true,
+      "dynamicBindingPathList": [
+        {
+          "key": "borderRadius"
+        },
+        {
+          "key": "boxShadow"
+        }
+      ],
+      "dynamicHeight": "AUTO_HEIGHT",
+      "dynamicTriggerPathList": [],
+      "flexLayers": [],
+      "isLoading": false,
+      "isVisible": true,
+      "key": "ji93em0cr9",
+      "leftColumn": 0,
+      "maxDynamicHeight": 9000,
+      "minDynamicHeight": 4,
+      "minHeight": 1120,
+      "minWidth": 450,
+      "mobileBottomRow": 1121,
+      "mobileLeftColumn": 0,
+      "mobileRightColumn": 1255.5,
+      "mobileTopRow": 1,
+      "needsErrorInfo": false,
+      "parentColumnSpace": 1,
+      "parentId": "nv41gx3o97",
+      "parentRowSpace": 1,
+      "renderMode": "CANVAS",
+      "responsiveBehavior": "fill",
+      "rightColumn": 1255.5,
+      "tabId": "tabl049hp54kz",
+      "tabName": "Statuts",
+      "topRow": 1,
+      "type": "CANVAS_WIDGET",
+      "version": 1,
+      "widgetId": "ecxdgm6bdt",
+      "widgetName": "Canvas7"
     }
   ],
   "defaultTab": "Mapping Everwin/Slack",
@@ -153,6 +198,13 @@
       "isVisible": true,
       "label": "Règles des alertes Slack",
       "widgetId": "bqq0ngs4zl"
+    },
+    "tabl049hp54kz": {
+      "id": "tabl049hp54kz",
+      "index": 2,
+      "isVisible": true,
+      "label": "Statuts",
+      "widgetId": "ecxdgm6bdt"
     }
   },
   "topRow": 11,

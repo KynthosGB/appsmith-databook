@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6915b9d6a2ab6852a3eeef70_0cabf8c4-7f8b-4b13-848f-e1c509df0e31",
-  "id": "Administration_QryWorkflowStatuts",
+  "gitSyncId": "6915b9d6a2ab6852a3eeef70_e8be7008-2b80-4c17-80fc-745f118ad5e0",
+  "id": "Administration_QryDeleteStatus",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT id, code, libelle, couleur, ordre\nFROM public.workflow_statut\nORDER BY ordre;\n",
+      "body": "DELETE FROM public.workflow_statut\nWHERE id = {{ this.params.id }};\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,10 +22,14 @@
       "name": "Databook - Neon",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [],
-    "name": "QryWorkflowStatuts",
+    "dynamicBindingPathList": [
+      {
+        "key": "body"
+      }
+    ],
+    "name": "QryDeleteStatus",
     "pageId": "Administration",
-    "runBehaviour": "AUTOMATIC",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

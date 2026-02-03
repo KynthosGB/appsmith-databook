@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6915b9d6a2ab6852a3eeef70_0cabf8c4-7f8b-4b13-848f-e1c509df0e31",
-  "id": "Administration_QryWorkflowStatuts",
+  "gitSyncId": "6915b9d6a2ab6852a3eeef70_76ccea05-0131-443f-8261-40bde336db89",
+  "id": "Administration_QryInsertStatus",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT id, code, libelle, couleur, ordre\nFROM public.workflow_statut\nORDER BY ordre;\n",
+      "body": "INSERT INTO public.workflow_statut (\n  code,\n\tlibelle,\n\tcouleur,\n\tordre\n)\nVALUES (\n  '{{ TableStatuts.newRow.code }}',\n\t'{{ TableStatuts.newRow.libelle }}',\n\t'{{ TableStatuts.newRow.couleur }}',\n\t'{{ TableStatuts.newRow.ordre }}'\n)\nRETURNING id;\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,10 +22,14 @@
       "name": "Databook - Neon",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [],
-    "name": "QryWorkflowStatuts",
+    "dynamicBindingPathList": [
+      {
+        "key": "body"
+      }
+    ],
+    "name": "QryInsertStatus",
     "pageId": "Administration",
-    "runBehaviour": "AUTOMATIC",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

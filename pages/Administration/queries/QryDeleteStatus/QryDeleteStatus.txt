@@ -1,0 +1,2 @@
+DELETE FROM public.workflow_statut
+WHERE id = {{ this.params.id }};

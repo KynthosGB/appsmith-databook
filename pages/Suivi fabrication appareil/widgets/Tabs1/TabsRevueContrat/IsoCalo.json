@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 41,
   "boxShadow": "none",
-  "defaultText": "{{ RevueContrat.data[0].isolation_calorifugeage || (CheckboxCalo.selectedOptionValue == \"na\" ? \"Non\" : \"\") }}",
+  "defaultText": "{{ (CheckboxCalo.selectedValues.includes(\"na\") ? \"NA\" : \"\") }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

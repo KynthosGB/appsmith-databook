@@ -419,7 +419,7 @@
       "label": "Type d'évènement",
       "notation": "standard",
       "originalId": "event_type",
-      "selectOptions": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (\n  [\n    { label: \"Changement de statut\", value: \"STATUS_CHANGED\" },\n    { label: \"Appro - Envoyé\", value: \"APPRO_SENT\" },\n    { label: \"Contrôle - Fait\", value: \"CONTROLE_FAIT\" },\n    { label: \"Presta externes - Commandée\", value: \"PRESTA_COMMANDEE\" }\n  ]\n)) : \n  [\n    { label: \"Changement de statut\", value: \"STATUS_CHANGED\" },\n    { label: \"Appro - Envoyé\", value: \"APPRO_SENT\" },\n    { label: \"Contrôle - Fait\", value: \"CONTROLE_FAIT\" },\n    { label: \"Presta externes - Commandée\", value: \"PRESTA_COMMANDEE\" }\n  ]\n })()}}",
+      "selectOptions": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (\n  [\n    { label: \"Changement de statut\", value: \"STATUS_CHANGED\" },\n    { label: \"Besoins - Envoyé\", value: \"APPRO_SENT\" },\n    { label: \"Contrôle - Fait\", value: \"CONTROLE_FAIT\" },\n    { label: \"Presta ext. - Commandée\", value: \"PRESTA_COMMANDEE\" }\n  ]\n)) : \n  [\n    { label: \"Changement de statut\", value: \"STATUS_CHANGED\" },\n    { label: \"Besoins - Envoyé\", value: \"APPRO_SENT\" },\n    { label: \"Contrôle - Fait\", value: \"CONTROLE_FAIT\" },\n    { label: \"Presta ext. - Commandée\", value: \"PRESTA_COMMANDEE\" }\n  ]\n })()}}",
       "sticky": "",
       "textSize": "0.85rem",
       "thousandSeparator": true,

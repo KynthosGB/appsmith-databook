@@ -52,10 +52,11 @@
   ],
   "columnUpdatedAt": 1768383733937,
   "columnWidthMap": {
-    "description": 156,
+    "description": 123,
     "enabled": 118,
     "event_key": 136,
     "event_type": 202,
+    "notify_charge_affaires": 160,
     "status_code": 202,
     "step_code": 121,
     "target_everwin_name": 186,
@@ -171,9 +172,6 @@
     },
     {
       "key": "primaryColumns.notify_charge_affaires.computedValue"
-    },
-    {
-      "key": "primaryColumns.notify_charge_affaires.isCellVisible"
     }
   ],
   "dynamicPropertyPathList": [
@@ -505,7 +503,7 @@
       "id": "notify_charge_affaires",
       "index": 11,
       "isCellEditable": true,
-      "isCellVisible": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( currentRow.event_type !== \"STATUS_CHANGED\" )) :  currentRow.event_type !== \"STATUS_CHANGED\"  })()}}",
+      "isCellVisible": "true",
       "isDerived": false,
       "isDisabled": false,
       "isDiscardVisible": true,

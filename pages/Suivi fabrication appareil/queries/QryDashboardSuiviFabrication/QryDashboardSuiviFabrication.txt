@@ -48,6 +48,12 @@ SELECT
           WHEN wge.code = 'FABRICATION'     THEN fab.fab_date_debut
           ELSE NULL
         END,
+			
+			'date_1er_envoi_reel',
+				CASE
+					WHEN wge.code = 'PLAN' THEN wp.date_premier_envoi
+					ELSE NULL
+				END,
 
       'date_fin',
         CASE

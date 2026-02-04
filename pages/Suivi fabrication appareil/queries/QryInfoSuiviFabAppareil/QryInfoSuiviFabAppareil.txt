@@ -39,9 +39,11 @@ SELECT
 	
 	-- APPRO
 	wa.date_objectif AS appro_date_objectif,
+	wa.date_fin AS appro_date_fin,
 	
 		-- ACHATS
 	wach.date_objectif AS achats_date_objectif,
+	wach.date_fin AS achats_date_fin,
 
   -- PREPARATION
   wprep.preparateur_id  AS prep_preparateur_id,

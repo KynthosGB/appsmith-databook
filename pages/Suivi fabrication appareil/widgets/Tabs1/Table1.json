@@ -46,9 +46,10 @@
   ],
   "columnUpdatedAt": 1770299010855,
   "columnWidthMap": {
-    "commentaire": 338,
-    "customColumn1": 182,
+    "commentaire": 508,
+    "customColumn1": 173,
     "designation": 296,
+    "id": 309,
     "qte_totale": 93,
     "rep": 68,
     "srsm": 62

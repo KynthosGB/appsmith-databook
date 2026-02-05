@@ -165,9 +165,6 @@
       "key": "primaryColumns.event_key.validation.isColumnEditableCellRequired"
     },
     {
-      "key": "primaryColumns.target_everwin_user_id.isCellVisible"
-    },
-    {
       "key": "primaryColumns.EditActions1.isDiscardDisabled"
     },
     {
@@ -189,9 +186,6 @@
     },
     {
       "key": "primaryColumns.event_value.isCellVisible"
-    },
-    {
-      "key": "primaryColumns.target_everwin_user_id.isCellVisible"
     },
     {
       "key": "primaryColumns.EditActions1.onSave"
@@ -724,7 +718,6 @@
       "id": "target_everwin_user_id",
       "index": 9,
       "isCellEditable": true,
-      "isCellVisible": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (\n(TableAlertRules.isAddRowInProgress\n    ? TableAlertRules.newRow.status_code\n    : currentRow.status_code\n  ) !== \"ATTENTE_CLIENT\"\n)) : \n(TableAlertRules.isAddRowInProgress\n    ? TableAlertRules.newRow.status_code\n    : currentRow.status_code\n  ) !== \"ATTENTE_CLIENT\"\n })()}}",
       "isDerived": false,
       "isDisabled": false,
       "isDiscardVisible": true,

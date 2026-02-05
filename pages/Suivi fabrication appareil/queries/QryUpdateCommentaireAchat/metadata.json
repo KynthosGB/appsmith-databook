@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6915b9d6a2ab6852a3eeef70_865e45c1-8e44-479c-b437-d28621d97100",
-  "id": "Suivi fabrication appareil_QryAchatsNomenclature",
+  "gitSyncId": "698497148f78fa2f094e5944_ef22f4c6-9d3f-4687-bbc3-db5bb7313fcd",
+  "id": "Suivi fabrication appareil_QryUpdateCommentaireAchat",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n  id,\n  rep,\n  srsm,\n  qte_totale,\n  designation,\n  date_reception,\n\tdate_commande,\n\tnumero_demande,\n\tcommentaire\nFROM public.achats_nomenclature_appareil\nWHERE numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}'\nORDER BY rep, srsm;\n",
+      "body": "UPDATE public.achats_nomenclature_appareil\nSET\n  commentaire = {{ this.params.commentaire }},\n  updated_at = now()\nWHERE id = {{ this.params.id }};\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -27,9 +27,9 @@
         "key": "body"
       }
     ],
-    "name": "QryAchatsNomenclature",
+    "name": "QryUpdateCommentaireAchat",
     "pageId": "Suivi fabrication appareil",
-    "runBehaviour": "AUTOMATIC",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

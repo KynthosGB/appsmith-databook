@@ -6,7 +6,8 @@ SELECT
   designation,
   date_reception,
 	date_commande,
-	numero_demande
+	numero_demande,
+	commentaire
 FROM public.achats_nomenclature_appareil
 WHERE numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}'
 ORDER BY rep, srsm;

@@ -1,0 +1,5 @@
+UPDATE public.achats_nomenclature_appareil
+SET
+  commentaire = {{ this.params.commentaire }},
+  updated_at = now()
+WHERE id = {{ this.params.id }};

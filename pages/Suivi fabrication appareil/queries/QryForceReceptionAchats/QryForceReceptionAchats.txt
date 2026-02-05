@@ -1,6 +1,18 @@
 UPDATE public.achats_nomenclature_appareil
 SET
   validation_manuelle = true,
-  date_reception = COALESCE(date_reception, CURRENT_DATE),
+
+  date_commande = CASE
+    WHEN {{ this.params.action }} = 'commande'
+      THEN COALESCE(date_commande, CURRENT_DATE)
+    ELSE date_commande
+  END,
+
+  date_reception = CASE
+    WHEN {{ this.params.action }} = 'recu'
+      THEN COALESCE(date_reception, CURRENT_DATE)
+    ELSE date_reception
+  END,
+
   updated_at = now()
 WHERE id = ANY ({{ this.params.ids }}::bigint[]);

@@ -24,6 +24,8 @@
       "key": "onClick"
     }
   ],
+  "iconAlign": "right",
+  "iconName": "refresh",
   "isDefaultClickDisabled": true,
   "isDisabled": false,
   "isLoading": false,

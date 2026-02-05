@@ -53,9 +53,7 @@
   "customIsLoadingValue": "",
   "defaultPageSize": 0,
   "defaultSelectedRowIndex": 0,
-  "defaultSelectedRowIndices": [
-    0
-  ],
+  "defaultSelectedRowIndices": "",
   "delimiter": ",",
   "dynamicBindingPathList": [
     {
@@ -138,6 +136,7 @@
   "parentColumnSpace": 19.3046875,
   "parentId": "rpa97oiq66",
   "parentRowSpace": 10,
+  "primaryColumnId": "id",
   "primaryColumns": {
     "customColumn1": {
       "alias": "Etat",

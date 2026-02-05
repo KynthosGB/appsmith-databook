@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "UPDATE public.achats_nomenclature_appareil\nSET\n  validation_manuelle = true,\n  date_reception = COALESCE(date_reception, CURRENT_DATE),\n  updated_at = now()\nWHERE id = ANY ({{ this.params.ids }}::bigint[]);\n",
+      "body": "UPDATE public.achats_nomenclature_appareil\nSET\n  validation_manuelle = true,\n\n  date_commande = CASE\n    WHEN {{ this.params.action }} = 'commande'\n      THEN COALESCE(date_commande, CURRENT_DATE)\n    ELSE date_commande\n  END,\n\n  date_reception = CASE\n    WHEN {{ this.params.action }} = 'recu'\n      THEN COALESCE(date_reception, CURRENT_DATE)\n    ELSE date_reception\n  END,\n\n  updated_at = now()\nWHERE id = ANY ({{ this.params.ids }}::bigint[]);\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

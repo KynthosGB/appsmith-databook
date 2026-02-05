@@ -50,7 +50,7 @@
     "id",
     "EditActions1"
   ],
-  "columnUpdatedAt": 1768383733937,
+  "columnUpdatedAt": 1770304547368,
   "columnWidthMap": {
     "description": 123,
     "enabled": 118,
@@ -169,6 +169,9 @@
     },
     {
       "key": "primaryColumns.notify_charge_affaires.computedValue"
+    },
+    {
+      "key": "primaryColumns.target_everwin_user_id.isCellVisible"
     }
   ],
   "dynamicPropertyPathList": [
@@ -207,6 +210,9 @@
     },
     {
       "key": "primaryColumns.notify_charge_affaires.isCellVisible"
+    },
+    {
+      "key": "primaryColumns.target_everwin_user_id.isCellVisible"
     }
   ],
   "dynamicTriggerPathList": [
@@ -718,6 +724,7 @@
       "id": "target_everwin_user_id",
       "index": 9,
       "isCellEditable": true,
+      "isCellVisible": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( true )) :  true  })()}}",
       "isDerived": false,
       "isDisabled": false,
       "isDiscardVisible": true,
@@ -732,7 +739,9 @@
       "sticky": "",
       "textSize": "0.85rem",
       "thousandSeparator": true,
-      "validation": {},
+      "validation": {
+        "isColumnEditableCellRequired": false
+      },
       "verticalAlignment": "CENTER",
       "width": 150
     },

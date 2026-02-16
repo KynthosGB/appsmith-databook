@@ -5,7 +5,7 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "1",
-  "bottomRow": 106,
+  "bottomRow": 152,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "cachedTableData": {},
   "canFreezeColumn": true,
@@ -165,9 +165,6 @@
       "key": "primaryColumns.event_key.validation.isColumnEditableCellRequired"
     },
     {
-      "key": "primaryColumns.EditActions1.isDiscardDisabled"
-    },
-    {
       "key": "primaryColumns.notify_charge_affaires.computedValue"
     },
     {
@@ -204,9 +201,6 @@
     },
     {
       "key": "primaryColumns.EditActions1.isSaveDisabled"
-    },
-    {
-      "key": "primaryColumns.EditActions1.isDiscardDisabled"
     },
     {
       "key": "primaryColumns.notify_charge_affaires.isCellVisible"
@@ -275,7 +269,7 @@
       "isCellVisible": true,
       "isDerived": true,
       "isDisabled": false,
-      "isDiscardDisabled": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (\n  !TableAlertRules.isAddRowInProgress\n  && !TableAlertRules.isRowEditing\n)) : \n  !TableAlertRules.isAddRowInProgress\n  && !TableAlertRules.isRowEditing\n })()}}",
+      "isDiscardDisabled": false,
       "isDiscardVisible": true,
       "isEditable": false,
       "isSaveDisabled": "",
@@ -724,7 +718,7 @@
       "id": "target_everwin_user_id",
       "index": 9,
       "isCellEditable": true,
-      "isCellVisible": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( true )) :  true  })()}}",
+      "isCellVisible": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (true)) : true })()}}",
       "isDerived": false,
       "isDisabled": false,
       "isDiscardVisible": true,
@@ -735,7 +729,7 @@
       "notation": "standard",
       "originalId": "target_everwin_user_id",
       "selectOptions": "{{(() => { const tableData = TableAlertRules.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (\n  (QryEverwinUsers.data || []).map(u => ({\n    label: u.display_name,\n    value: String(u.everwin_user_id),\n  }))\n)) : \n  (QryEverwinUsers.data || []).map(u => ({\n    label: u.display_name,\n    value: String(u.everwin_user_id),\n  }))\n })()}}",
-      "sortBy": "value",
+      "sortBy": "label",
       "sticky": "",
       "textSize": "0.85rem",
       "thousandSeparator": true,

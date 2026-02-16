@@ -27,12 +27,11 @@ SET
   END,
 
   target_everwin_user_id = CASE
-    WHEN
-      '{{ TableAlertRules.updatedRow.event_type ?? TableAlertRules.triggeredRow.event_type }}' = 'STATUS_CHANGED'
-      AND NULLIF('{{ TableAlertRules.updatedRow.status_code ?? TableAlertRules.triggeredRow.status_code }}','') = 'ATTENTE_CLIENT'
-    THEN NULL
-    ELSE NULLIF('{{ TableAlertRules.updatedRow.target_everwin_user_id ?? TableAlertRules.triggeredRow.target_everwin_user_id }}','')
-  END,
+		WHEN '{{ TableAlertRules.updatedRow.event_type ?? TableAlertRules.triggeredRow.event_type }}' = 'STATUS_CHANGED'
+		THEN NULLIF('{{ TableAlertRules.updatedRow.target_everwin_user_id ?? TableAlertRules.triggeredRow.target_everwin_user_id }}','')
+		ELSE NULLIF('{{ TableAlertRules.updatedRow.target_everwin_user_id ?? TableAlertRules.triggeredRow.target_everwin_user_id }}','')
+	END,
+
 
   enabled = {{
     (() => {
@@ -75,8 +74,5 @@ SET
 	}},
 	
   updated_at = now()
-	
-	
-
 
 WHERE id = '{{ (TableAlertRules.updatedRow?.id ?? TableAlertRules.triggeredRow?.id) }}'::uuid;

@@ -3,7 +3,7 @@
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 20,
-  "defaultSelectedValues": "S{{\n  (() => {\n    const row = (QryInfoApproAppareil.data || [])\n      .find(r => r.appro_code === \"VIROLES\");\n    if (!row) return null;\n\n    if (row.na) return \"na\";\n    if (row.envoye) return \"envoye\";\n\n    return null;\n  })()\n}}\n",
+  "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoApproAppareil.data || [])\n      .find(r => r.appro_code === \"VIROLES\");\n    if (!row) return null;\n\n    if (row.na) return \"na\";\n    if (row.envoye) return \"envoye\";\n\n    return null;\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

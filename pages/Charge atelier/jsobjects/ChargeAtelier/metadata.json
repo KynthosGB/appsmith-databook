@@ -1,0 +1,20 @@
+{
+  "gitSyncId": "6915b9d6a2ab6852a3eeef70_6153e1cb-90b6-4cc2-ab69-4fe1ff7995a4",
+  "id": "Charge atelier_ChargeAtelier",
+  "unpublishedCollection": {
+    "name": "ChargeAtelier",
+    "pageId": "Charge atelier",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": [
+      {
+        "name": "HOURS_PER_DAY",
+        "value": "7.5"
+      },
+      {
+        "name": "CAPACITE_ATELIER",
+        "value": "120"
+      }
+    ]
+  }
+}

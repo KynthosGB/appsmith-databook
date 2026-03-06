@@ -1,0 +1,9 @@
+SELECT
+  wga.numero_appareil,
+  wf.date_debut AS "DateDebutFab",
+  wf.date_fin AS "DateFinFab"
+FROM workflow_groupe_appareil wga
+JOIN workflow_fabrication wf ON wf.groupe_appareil_id = wga.id
+WHERE wf.date_debut IS NOT NULL
+  AND wf.date_fin IS NOT NULL
+ORDER BY wf.date_debut;

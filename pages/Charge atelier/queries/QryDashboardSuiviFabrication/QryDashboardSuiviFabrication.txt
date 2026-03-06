@@ -1,0 +1,187 @@
+SELECT
+  a.numero_appareil,
+  a.numero_affaire,
+  ca.nom_appareil,
+  a.delai,
+  aff.nom_client AS client,
+
+  -- Stats globales par appareil
+  COUNT(wga.*) AS total_etapes,
+  COUNT(*) FILTER (WHERE ws.code IN ('TERMINE', 'VALIDE_CLIENT')) AS etapes_faites,
+  COUNT(*) FILTER (WHERE ws.code IN ('EN_COURS', 'ATTENTE_CLIENT')) AS etapes_en_cours,
+  COUNT(*) FILTER (WHERE ws.code IN ('A_FAIRE')) AS etapes_a_faire,
+  COUNT(*) FILTER (WHERE ws.code = 'ATTENTE_CLIENT') AS nb_en_attente_client,
+
+  -- Détail des grandes étapes pour l'appareil (utilisé dans l'UI)
+  jsonb_agg(
+    jsonb_build_object(
+      -- debug (optionnel)
+      'debug_fab_base', CASE WHEN wge.code='FABRICATION' THEN fab.fab_jours_base END,
+
+      'groupe_id',          wge.id,
+      'groupe_code',        wge.code,
+      'groupe_libelle',     wge.libelle,
+
+      'statut_id',          ws.id,
+      'statut_code',        ws.code,
+      'statut_libelle',     ws.libelle,
+      'statut_couleur',     ws.couleur,
+
+      -- dates génériques pour l'étape
+      'date_objectif',
+        CASE
+          WHEN wge.code = 'NOTE_CALCUL'     THEN wnc.date_objectif
+          WHEN wge.code = 'PLAN'            THEN wp.date_objectif
+          WHEN wge.code = 'CAHIER_SOUDAGE'  THEN wcs.date_objectif
+          WHEN wge.code = 'PREPARATION'     THEN wprep.date_objectif
+          WHEN wge.code = 'BESOINS'         THEN wa.date_objectif
+          WHEN wge.code = 'ACHATS'          THEN wach.date_objectif
+
+          -- ✅ FABRICATION : objectif = date fin réelle (fallback si null)
+          WHEN wge.code = 'FABRICATION'     THEN fab.fab_date_fin
+          ELSE NULL
+        END,
+
+      -- ✅ FABRICATION : début = date début réelle (fallback si null)
+      'date_debut',
+        CASE
+          WHEN wge.code = 'FABRICATION' THEN fab.fab_date_debut
+          ELSE NULL
+        END,
+
+      'date_fin',
+        CASE
+          WHEN wge.code = 'NOTE_CALCUL'     THEN wnc.date_objectif
+          WHEN wge.code = 'PLAN'            THEN wp.date_objectif
+          WHEN wge.code = 'CAHIER_SOUDAGE'  THEN wcs.date_objectif
+          WHEN wge.code = 'PREPARATION'     THEN wprep.date_objectif
+          WHEN wge.code = 'BESOINS'         THEN wa.date_objectif
+          WHEN wge.code = 'ACHATS'          THEN wach.date_objectif
+
+          -- ✅ FABRICATION : fin = date fin réelle (fallback si null)
+          WHEN wge.code = 'FABRICATION'     THEN fab.fab_date_fin
+          ELSE NULL
+        END,
+
+      -- Nombre de jours (durée en jours ouvrés)
+      'nombre_jours',
+        CASE
+          WHEN wge.code = 'NOTE_CALCUL'     THEN wnc.nombre_jours
+          WHEN wge.code = 'PLAN'            THEN wp.nombre_jours
+          WHEN wge.code = 'CAHIER_SOUDAGE'  THEN wcs.nombre_jours
+          WHEN wge.code = 'PREPARATION'     THEN wprep.nombre_jours
+
+          -- ✅ FABRICATION : durée base (sans marge) juste informative
+          WHEN wge.code = 'FABRICATION'     THEN fab.fab_jours_base
+          ELSE NULL
+        END,
+
+      'groupe_appareil_id', wga.id,
+      'color',              ws.couleur
+    )
+    ORDER BY wge.ordre
+  ) AS etapes
+
+FROM public.appareils a
+LEFT JOIN public.affaires aff
+       ON aff.numero_affaire = a.numero_affaire
+LEFT JOIN public.caracteristiques_appareils ca
+       ON ca.numero_appareil = a.numero_appareil
+
+LEFT JOIN public.workflow_groupe_appareil wga
+       ON wga.numero_appareil = a.numero_appareil
+LEFT JOIN public.workflow_groupe_etape wge
+       ON wge.id = wga.groupe_id
+LEFT JOIN public.workflow_statut ws
+       ON ws.id = wga.statut_id
+
+-- tables de détail
+LEFT JOIN public.workflow_note_calcul     wnc   ON wnc.groupe_appareil_id = wga.id
+LEFT JOIN public.workflow_plan            wp    ON wp.groupe_appareil_id  = wga.id
+LEFT JOIN public.workflow_cahier_soudage  wcs   ON wcs.groupe_appareil_id = wga.id
+LEFT JOIN public.workflow_preparation     wprep ON wprep.groupe_appareil_id = wga.id
+LEFT JOIN public.workflow_appro           wa    ON wa.groupe_appareil_id = wga.id
+LEFT JOIN public.workflow_achats          wach  ON wach.groupe_appareil_id = wga.id
+
+-- ✅ FABRICATION (dates réelles)
+LEFT JOIN public.workflow_fabrication wfab
+       ON wfab.groupe_appareil_id = wga.id
+
+-- ✅ Calculs FAB (dates réelles + fallback)
+LEFT JOIN LATERAL (
+  SELECT
+    calc.fab_jours_base,
+
+    -- fin = date fin réelle si renseignée, sinon veille du délai hors week-end
+    COALESCE(
+      fin_real.fab_date_fin_real,
+      fin_calc.fab_date_fin_calc
+    ) AS fab_date_fin,
+
+    -- début = date début réelle si renseignée, sinon reculé en jours ouvrés (base heures, sans marge)
+    COALESCE(
+      deb_real.fab_date_debut_real,
+      (
+        SELECT d::date
+        FROM generate_series(
+          (COALESCE(fin_real.fab_date_fin_real, fin_calc.fab_date_fin_calc)::date - INTERVAL '730 days')::date,
+          COALESCE(fin_real.fab_date_fin_real, fin_calc.fab_date_fin_calc)::date,
+          INTERVAL '1 day'
+        ) AS g(d)
+        WHERE EXTRACT(ISODOW FROM d) < 6
+        ORDER BY d DESC
+        OFFSET (GREATEST(calc.fab_jours_base, 1) - 1)
+        LIMIT 1
+      )
+    ) AS fab_date_debut
+
+  FROM
+    -- durée base (sans marge)
+    LATERAL (
+      SELECT CEIL(((COALESCE(wfab.heures_prevues, 0) * 0.70) / 7.5))::int AS fab_jours_base
+    ) calc
+
+    -- dates réelles (normalisées si week-end)
+    CROSS JOIN LATERAL (
+      SELECT
+        CASE
+          WHEN wfab.date_fin IS NULL THEN NULL
+          WHEN EXTRACT(ISODOW FROM wfab.date_fin::date) = 6 THEN (wfab.date_fin::date - INTERVAL '1 day')::date
+          WHEN EXTRACT(ISODOW FROM wfab.date_fin::date) = 7 THEN (wfab.date_fin::date - INTERVAL '2 day')::date
+          ELSE wfab.date_fin::date
+        END AS fab_date_fin_real
+    ) fin_real
+
+    CROSS JOIN LATERAL (
+      SELECT
+        CASE
+          WHEN wfab.date_debut IS NULL THEN NULL
+          WHEN EXTRACT(ISODOW FROM wfab.date_debut::date) = 6 THEN (wfab.date_debut::date - INTERVAL '1 day')::date
+          WHEN EXTRACT(ISODOW FROM wfab.date_debut::date) = 7 THEN (wfab.date_debut::date - INTERVAL '2 day')::date
+          ELSE wfab.date_debut::date
+        END AS fab_date_debut_real
+    ) deb_real
+
+    -- fin calculée = veille du délai hors week-end (fallback)
+    CROSS JOIN LATERAL (
+      SELECT
+        CASE
+          WHEN EXTRACT(ISODOW FROM (a.delai::date - INTERVAL '1 day')) = 6 THEN (a.delai::date - INTERVAL '2 day')::date
+          WHEN EXTRACT(ISODOW FROM (a.delai::date - INTERVAL '1 day')) = 7 THEN (a.delai::date - INTERVAL '3 day')::date
+          ELSE (a.delai::date - INTERVAL '1 day')::date
+        END AS fab_date_fin_calc
+    ) fin_calc
+) fab ON TRUE
+
+WHERE a.cloture_suivi_fabrication = false
+AND a.numero_appareil NOT LIKE '%Z'
+AND a.numero_affaire != '260999'
+
+GROUP BY
+  a.numero_appareil,
+  a.numero_affaire,
+  ca.nom_appareil,
+  a.delai,
+  aff.nom_client
+
+ORDER BY a.numero_appareil DESC;

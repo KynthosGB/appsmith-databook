@@ -62,6 +62,10 @@
     {
       "id": "Administration",
       "isDefault": false
+    },
+    {
+      "id": "Charge atelier",
+      "isDefault": false
     }
   ],
   "unpublishedAppLayout": {

@@ -1,17 +1,26 @@
 {
   "animateLoading": true,
   "bottomRow": 151,
+  "bottomRowBeforeCollapse": 151,
   "docUrl": "{{ appsmith.store.pdfPlanUrl }}",
   "dynamicBindingPathList": [
     {
       "key": "docUrl"
+    },
+    {
+      "key": "isVisible"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "isVisible"
     }
   ],
   "dynamicTriggerPathList": [],
   "flexVerticalAlignment": "start",
   "isCanvas": false,
   "isLoading": false,
-  "isVisible": true,
+  "isVisible": "{{ !!ListeAppareils.selectedRow?.numero_appareil }}",
   "key": "xmxuoeavnh",
   "leftColumn": 1,
   "mobileBottomRow": 105,
@@ -28,6 +37,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 63,
   "topRow": 65,
+  "topRowBeforeCollapse": 65,
   "type": "DOCUMENT_VIEWER_WIDGET",
   "version": 1,
   "widgetId": "x82zm3mitc",

@@ -1,0 +1,4 @@
+{
+	"numero_affaire": "{{ ListeAppareils.selectedRow.numero_affaire }}",
+  "numero_appareil": "{{ ListeAppareils.selectedRow.numero_appareil }}",
+}

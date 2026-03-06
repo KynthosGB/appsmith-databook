@@ -83,6 +83,9 @@
     },
     {
       "key": "textSize"
+    },
+    {
+      "key": "onRowSelected"
     }
   ],
   "dynamicTriggerPathList": [
@@ -91,6 +94,9 @@
     },
     {
       "key": "primaryColumns.customColumn2.onClick"
+    },
+    {
+      "key": "onRowSelected"
     }
   ],
   "enableClientSideSearch": true,
@@ -114,6 +120,7 @@
   "mobileRightColumn": 47,
   "mobileTopRow": 8,
   "needsErrorInfo": false,
+  "onRowSelected": "{{\n  storeValue(\n    'pdfPlanUrl', `https://n8n.kynthos.fr/webhook/appsmith-pdf-plan?numero_affaire=${ListeAffaires.selectedRow.numero_affaire}&numero_appareil=${ListeAppareils.selectedRow.numero_appareil}`\n  )\n}}",
   "originalBottomRow": 61,
   "originalTopRow": 18,
   "parentColumnSpace": 20.25,

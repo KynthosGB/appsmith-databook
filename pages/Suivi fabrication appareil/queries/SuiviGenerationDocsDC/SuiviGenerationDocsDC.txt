@@ -1,0 +1,31 @@
+SELECT
+    dt.id AS document_type_id,
+    dt.code,
+    dt.nom AS nom_document,
+    dt.categorie,
+    
+    dg.generated_at AT TIME ZONE 'Europe/Paris' AS derniere_generation,
+
+    CASE
+        WHEN dg.generated_at IS NOT NULL THEN true
+        ELSE false
+    END AS deja_genere
+
+FROM public.document_types dt
+
+LEFT JOIN (
+    SELECT DISTINCT ON (numero_affaire, numero_appareil, document_type_id)
+        numero_affaire,
+        numero_appareil,
+        document_type_id,
+        generated_at
+    FROM public.document_generations
+    ORDER BY numero_affaire, numero_appareil, document_type_id, generated_at DESC
+) dg
+ON dg.document_type_id = dt.id
+AND dg.numero_affaire = {{ appsmith.URL.queryParams.numero_affaire }}
+AND dg.numero_appareil = {{ appsmith.URL.queryParams.numero_appareil }}
+
+WHERE dt.actif = true
+
+ORDER BY dt.ordre_affichage, dt.nom;

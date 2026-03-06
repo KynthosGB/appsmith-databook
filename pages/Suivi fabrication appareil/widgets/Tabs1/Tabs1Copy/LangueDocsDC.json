@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "alignment": "left",
   "animateLoading": true,
-  "bottomRow": 13,
+  "bottomRow": 9,
   "boxShadow": "none",
   "defaultOptionValue": "fr",
   "dynamicBindingPathList": [
@@ -19,7 +19,7 @@
   "isRequired": false,
   "isVisible": true,
   "key": "b6gx74w96c",
-  "label": "Choisissez la langue :",
+  "label": "Choisissez la langue des documents du dossier constructeur :",
   "labelAlignment": "left",
   "labelPosition": "Top",
   "labelTextSize": "0.875rem",
@@ -42,16 +42,16 @@
       "value": "en"
     }
   ],
-  "originalBottomRow": 13,
-  "originalTopRow": 7,
+  "originalBottomRow": 9,
+  "originalTopRow": 1,
   "parentColumnSpace": 8.03125,
-  "parentId": "r90246qlvq",
+  "parentId": "5ana2dge91",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
-  "rightColumn": 40,
-  "topRow": 7,
+  "rightColumn": 14,
+  "topRow": 1,
   "type": "RADIO_GROUP_WIDGET",
   "version": 1,
-  "widgetId": "3yytcypw4v",
-  "widgetName": "LangueRDC"
+  "widgetId": "b9gfnonkv7",
+  "widgetName": "LangueDocsDC"
 }

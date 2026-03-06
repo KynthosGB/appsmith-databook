@@ -1,0 +1,11 @@
+{
+  "langue": {{ LangueDocsDC.selectedOptionValue }},
+	"document_type_id": {{ appsmith.store.document_type_id_to_generate }},
+  "enceintes": {{ JS_DocsDCPayload.formatEnceintes(EnceintesAppareil.data) }},
+  "donnees_generales_appareil": {{
+    JS_DocsDCPayload.formatDonneesGeneralesAffaire(DonneesGeneralesAffaire.data?.[0])
+  }},
+  "caracteristiques_appareil": {{
+    JS_DocsDCPayload.formatCaracteristiques(CaracteristiquesAppareils.data?.[0])
+  }}
+}

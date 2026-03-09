@@ -1,7 +1,8 @@
 SELECT
   wga.numero_appareil,
   wf.date_debut AS "DateDebutFab",
-  wf.date_fin AS "DateFinFab"
+  wf.date_fin AS "DateFinFab",
+	wf.heures_prevues_montage AS "HeuresPrevuesMontage"
 FROM workflow_groupe_appareil wga
 JOIN workflow_fabrication wf ON wf.groupe_appareil_id = wga.id
 WHERE wf.date_debut IS NOT NULL

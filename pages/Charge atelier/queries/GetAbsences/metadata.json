@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n  everwin_user_id,\n  date_jour,\n  heures_absence\nFROM public.absences_monteurs\nWHERE date_jour >= {{ AbsencesPlanning.getMonthStart() }}\n  AND date_jour <= {{ AbsencesPlanning.getMonthEnd() }}\nORDER BY everwin_user_id, date_jour;",
+      "body": "SELECT\n  everwin_user_id,\n  date_jour,\n  heures_absence\nFROM public.absences_monteurs\nWHERE date_jour >= {{ ChargeAtelier.getStartDate() }}\n  AND date_jour <= {{ ChargeAtelier.getEndDate() }}\nORDER BY everwin_user_id, date_jour;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

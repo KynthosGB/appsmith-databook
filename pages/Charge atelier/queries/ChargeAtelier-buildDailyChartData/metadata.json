@@ -1,6 +1,6 @@
 {
-  "gitSyncId": "6915b9d6a2ab6852a3eeef70_28a6335f-5d95-4789-926a-0a355631884d",
-  "id": "Charge atelier_ChargeAtelier.buildDailyLoad",
+  "gitSyncId": "69ae7ca2dd881670b4e51c2e_6f8648ed-0312-49f8-a56d-6df21c0ae02c",
+  "id": "Charge atelier_ChargeAtelier.buildDailyChartData",
   "pluginId": "js-plugin",
   "pluginType": "JS",
   "unpublishedAction": {
@@ -22,8 +22,8 @@
         "key": "body"
       }
     ],
-    "fullyQualifiedName": "ChargeAtelier.buildDailyLoad",
-    "name": "buildDailyLoad",
+    "fullyQualifiedName": "ChargeAtelier.buildDailyChartData",
+    "name": "buildDailyChartData",
     "pageId": "Charge atelier",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false

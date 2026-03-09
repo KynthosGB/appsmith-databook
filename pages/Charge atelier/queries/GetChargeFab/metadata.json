@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n  wga.numero_appareil,\n  wf.date_debut AS \"DateDebutFab\",\n  wf.date_fin AS \"DateFinFab\"\nFROM workflow_groupe_appareil wga\nJOIN workflow_fabrication wf ON wf.groupe_appareil_id = wga.id\nWHERE wf.date_debut IS NOT NULL\n  AND wf.date_fin IS NOT NULL\nORDER BY wf.date_debut;",
+      "body": "SELECT\n  wga.numero_appareil,\n  wf.date_debut AS \"DateDebutFab\",\n  wf.date_fin AS \"DateFinFab\",\n\twf.heures_prevues_montage AS \"HeuresPrevuesMontage\"\nFROM workflow_groupe_appareil wga\nJOIN workflow_fabrication wf ON wf.groupe_appareil_id = wga.id\nWHERE wf.date_debut IS NOT NULL\n  AND wf.date_fin IS NOT NULL\nORDER BY wf.date_debut;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

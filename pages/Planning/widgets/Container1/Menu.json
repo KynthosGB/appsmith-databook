@@ -31,6 +31,9 @@
     },
     {
       "key": "menuItems.menuItemns7yvrbl1t.onClick"
+    },
+    {
+      "key": "menuItems.menuItemtm0jz5tfvc.onClick"
     }
   ],
   "iconAlign": "left",
@@ -71,6 +74,15 @@
       "label": "Planning général",
       "onClick": "{{navigateTo('Planning', {}, 'NEW_WINDOW');}}",
       "widgetId": "wc3kd5uw9n"
+    },
+    "menuItemtm0jz5tfvc": {
+      "id": "menuItemtm0jz5tfvc",
+      "index": 3,
+      "isDisabled": false,
+      "isVisible": true,
+      "label": "Suivi fabrication",
+      "onClick": "{{navigateTo('Suivi fabrication appareil', {}, 'SAME_WINDOW');}}",
+      "widgetId": "l5xv4mohyh"
     }
   },
   "menuItemsSource": "STATIC",
@@ -89,6 +101,6 @@
   "topRow": 0,
   "type": "MENU_BUTTON_WIDGET",
   "version": 1,
-  "widgetId": "j2mr3jkn37",
+  "widgetId": "reniyqg98d",
   "widgetName": "Menu"
 }

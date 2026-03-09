@@ -1,3 +1,0 @@
-{
-	"code": {{this.params.code}}
-}

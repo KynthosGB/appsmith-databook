@@ -1,3 +1,0 @@
-UPDATE public.affaires
-SET cloture = TRUE
-WHERE numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}';

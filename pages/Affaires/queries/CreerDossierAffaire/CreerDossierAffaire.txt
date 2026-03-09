@@ -1,4 +1,0 @@
-{
-	"numero_affaire": "{{InputNumeroAffaire.text}}",
-  "nom_client": "{{InputNomClient.text}}",
-}

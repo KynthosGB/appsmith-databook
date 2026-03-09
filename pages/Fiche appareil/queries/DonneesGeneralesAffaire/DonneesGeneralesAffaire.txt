@@ -1,2 +1,0 @@
-SELECT * FROM public."donnees_generales_appareils"
-WHERE numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}';

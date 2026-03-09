@@ -32,18 +32,6 @@
   "icon": "file",
   "pages": [
     {
-      "id": "Appareils",
-      "isDefault": false
-    },
-    {
-      "id": "Affaires",
-      "isDefault": false
-    },
-    {
-      "id": "Fiche appareil",
-      "isDefault": false
-    },
-    {
       "id": "Tableau de bord BE",
       "isDefault": false
     },

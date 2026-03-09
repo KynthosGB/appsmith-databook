@@ -1,3 +1,0 @@
-SELECT * FROM public."enceintes_appareils"
-WHERE numero_appareil = '{{ appsmith.URL.queryParams.numero_appareil }}'
-ORDER BY id ASC;

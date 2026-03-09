@@ -1,3 +1,0 @@
-SELECT numero_appareil, numero_affaire
-FROM public."appareils" 
-ORDER BY numero_affaire DESC;

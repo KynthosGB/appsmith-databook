@@ -1,0 +1,52 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 73,
+  "dynamicBindingPathList": [
+    {
+      "key": "truncateButtonColor"
+    },
+    {
+      "key": "fontFamily"
+    },
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicTriggerPathList": [],
+  "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
+  "fontSize": "0.875rem",
+  "fontStyle": "",
+  "isLoading": false,
+  "isVisible": true,
+  "key": "k6fdc2ijnf",
+  "leftColumn": 0,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "minWidth": 450,
+  "mobileBottomRow": 4,
+  "mobileLeftColumn": 18,
+  "mobileRightColumn": 34,
+  "mobileTopRow": 0,
+  "needsErrorInfo": false,
+  "originalBottomRow": 75,
+  "originalTopRow": 67,
+  "overflow": "NONE",
+  "parentColumnSpace": 19.9375,
+  "parentId": "no9chk2shu",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 64,
+  "shouldTruncate": false,
+  "text": "Ce graphique montre la capacité de l'atelier VS les heures prévues. Voici le détail du calcul :\n- Pour la courbe verte : Nombre de monteurs actifs * 7.5h/j (hors WE, jours fériés, fermetures et absences renseignées dans les onglets Absences et Fermetures)\n- Pour la surface bleue : Somme des heures prévues (70% des heures/Nb jours entre date début et date fin prévisionnelle) - jours fériés - jours fermés renseignés - heures absences renseignées",
+  "textAlign": "LEFT",
+  "textColor": "#231F20",
+  "topRow": 67,
+  "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "type": "TEXT_WIDGET",
+  "version": 1,
+  "widgetId": "0nscc7vlo5",
+  "widgetName": "Text4"
+}

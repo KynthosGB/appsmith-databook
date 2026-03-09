@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6915b9d6a2ab6852a3eeef70_d5e38b56-e53b-44f6-9e05-377bd0552474",
-  "id": "Charge atelier_GetChargeFab",
+  "gitSyncId": "69ae7ca2dd881670b4e51c2e_27910b5a-0478-4c0e-90b4-039a2b251db6",
+  "id": "Charge atelier_GetAbsences",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n  wga.numero_appareil,\n  wf.date_debut AS \"DateDebutFab\",\n  wf.date_fin AS \"DateFinFab\",\n\twf.heures_prevues_montage AS \"HeuresPrevuesMontage\"\nFROM workflow_groupe_appareil wga\nJOIN workflow_fabrication wf ON wf.groupe_appareil_id = wga.id\nWHERE wf.date_debut IS NOT NULL\n  AND wf.date_fin IS NOT NULL\nORDER BY wf.date_debut;",
+      "body": "SELECT\n  everwin_user_id,\n  date_jour,\n  heures_absence\nFROM public.absences_monteurs\nWHERE date_jour >= {{ ChargeAtelier.getStartDate() }}\n  AND date_jour <= {{ ChargeAtelier.getEndDate() }}\nORDER BY everwin_user_id, date_jour;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,8 +22,12 @@
       "name": "Databook - Neon",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [],
-    "name": "GetChargeFab",
+    "dynamicBindingPathList": [
+      {
+        "key": "body"
+      }
+    ],
+    "name": "GetAbsences",
     "pageId": "Charge atelier",
     "runBehaviour": "AUTOMATIC",
     "userSetOnLoad": false

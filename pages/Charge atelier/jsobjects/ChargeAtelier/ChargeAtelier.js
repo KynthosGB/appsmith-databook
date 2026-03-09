@@ -1,6 +1,5 @@
 export default {
   HOURS_PER_DAY: 7.5,
-  CAPACITE_ATELIER: 120,
 
   formatDate(date) {
     const y = date.getFullYear();
@@ -19,9 +18,155 @@ export default {
     return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
   },
 
-  isWorkingDayUTC(date) {
+  isWeekend(date) {
     const day = date.getUTCDay();
-    return day !== 0 && day !== 6;
+    return day === 0 || day === 6;
+  },
+
+  getAllFabDates() {
+    const rows = GetChargeFab.data || [];
+    const dates = [];
+
+    rows.forEach(row => {
+      const d1 = this.parseDate(row.DateDebutFab);
+      const d2 = this.parseDate(row.DateFinFab);
+
+      if (d1) dates.push(d1);
+      if (d2) dates.push(d2);
+    });
+
+    return dates;
+  },
+
+  getStartDate() {
+    const dates = this.getAllFabDates();
+    if (!dates.length) return null;
+
+    const minDate = new Date(Math.min(...dates.map(d => d.getTime())));
+    return this.formatDate(minDate);
+  },
+
+  getEndDate() {
+    const dates = this.getAllFabDates();
+    if (!dates.length) return null;
+
+    const maxDate = new Date(Math.max(...dates.map(d => d.getTime())));
+    return this.formatDate(maxDate);
+  },
+
+  getDateRange() {
+    const startStr = this.getStartDate();
+    const endStr = this.getEndDate();
+
+    if (!startStr || !endStr) return [];
+
+    let current = this.normalizeUTC(new Date(startStr + "T00:00:00"));
+    const end = this.normalizeUTC(new Date(endStr + "T00:00:00"));
+
+    const days = [];
+
+    while (current <= end) {
+      const localDate = new Date(
+        current.getUTCFullYear(),
+        current.getUTCMonth(),
+        current.getUTCDate()
+      );
+      days.push(this.formatDate(localDate));
+      current.setUTCDate(current.getUTCDate() + 1);
+    }
+
+    return days;
+  },
+
+  getMonteursCount() {
+    return (QryMonteurs.data || []).length;
+  },
+
+  buildAbsenceMap() {
+    const rows = GetAbsences.data || [];
+    const map = {};
+
+    rows.forEach(row => {
+      const day = String(row.date_jour).slice(0, 10);
+      const hours = Number(row.heures_absence || 0);
+      map[day] = (map[day] || 0) + hours;
+    });
+
+    return map;
+  },
+
+  buildClosureMap() {
+    const rows = GetFermeturesEntreprise.data || [];
+    const map = {};
+
+    rows.forEach(row => {
+      let start = this.parseDate(row.date_debut);
+      let end = this.parseDate(row.date_fin);
+
+      if (!start || !end) return;
+      if (start > end) [start, end] = [end, start];
+
+      start = this.normalizeUTC(start);
+      end = this.normalizeUTC(end);
+
+      for (let d = new Date(start); d <= end; d.setUTCDate(d.getUTCDate() + 1)) {
+        const localDate = new Date(
+          d.getUTCFullYear(),
+          d.getUTCMonth(),
+          d.getUTCDate()
+        );
+        const key = this.formatDate(localDate);
+        map[key] = true;
+      }
+    });
+
+    return map;
+  },
+
+  buildHolidayMap() {
+    const start = this.getStartDate();
+    const end = this.getEndDate();
+
+    if (!start || !end) return {};
+    return JoursFeriesFR.getHolidaySet(start, end);
+  },
+
+  getTheoreticalCapacityHours() {
+    return this.getMonteursCount() * this.HOURS_PER_DAY;
+  },
+
+  buildDailyCapacityData() {
+    const days = this.getDateRange();
+    const absenceMap = this.buildAbsenceMap();
+    const closureMap = this.buildClosureMap();
+    const holidayMap = this.buildHolidayMap();
+    const theoretical = this.getTheoreticalCapacityHours();
+
+    return days.map(dayStr => {
+      const date = new Date(dayStr + "T00:00:00");
+      const utcDate = this.normalizeUTC(date);
+
+      const isWeekend = this.isWeekend(utcDate);
+      const isClosed = !!closureMap[dayStr];
+      const isHoliday = !!holidayMap[dayStr];
+      const absenceHours = Number(absenceMap[dayStr] || 0);
+
+      let capacity = 0;
+
+      if (!isWeekend && !isClosed && !isHoliday) {
+        capacity = Math.max(theoretical - absenceHours, 0);
+      }
+
+      return {
+        period: dayStr,
+        capacity: Number(capacity.toFixed(2)),
+        theoretical: Number(theoretical.toFixed(2)),
+        absenceHours: Number(absenceHours.toFixed(2)),
+        isWeekend,
+        isClosed,
+        isHoliday
+      };
+    });
   },
 
   getISOWeekInfo(dateStr) {
@@ -46,40 +191,71 @@ export default {
   },
 
   getMonthKey(dateStr) {
-    return dateStr.slice(0, 7); // YYYY-MM
+    return dateStr.slice(0, 7);
   },
 
-  buildDailyLoad() {
-    const rows = GetChargeFab.data || [];
-    const loadByDay = {};
+  buildDailyLoadMap() {
+		const rows = GetChargeFab.data || [];
+		const loadByDay = {};
+		const closureMap = this.buildClosureMap();
+		const holidayMap = this.buildHolidayMap();
 
-    rows.forEach(row => {
-      let d1 = this.parseDate(row.DateDebutFab);
-      let d2 = this.parseDate(row.DateFinFab);
+		rows.forEach(row => {
+			let d1 = this.parseDate(row.DateDebutFab);
+			let d2 = this.parseDate(row.DateFinFab);
+			const totalHours = Number(row.HeuresPrevuesMontage || 0);
 
-      if (!d1 || !d2) return;
+			if (!d1 || !d2 || totalHours <= 0) return;
+			if (d1 > d2) [d1, d2] = [d2, d1];
 
-      if (d1 > d2) [d1, d2] = [d2, d1];
+			d1 = this.normalizeUTC(d1);
+			d2 = this.normalizeUTC(d2);
 
-      d1 = this.normalizeUTC(d1);
-      d2 = this.normalizeUTC(d2);
+			const workingDays = [];
 
-      for (let d = new Date(d1); d <= d2; d.setUTCDate(d.getUTCDate() + 1)) {
-        if (this.isWorkingDayUTC(d)) {
-          const localDate = new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate());
-          const key = this.formatDate(localDate);
-          loadByDay[key] = (loadByDay[key] || 0) + this.HOURS_PER_DAY;
-        }
-      }
-    });
+			for (let d = new Date(d1); d <= d2; d.setUTCDate(d.getUTCDate() + 1)) {
+				const localDate = new Date(
+					d.getUTCFullYear(),
+					d.getUTCMonth(),
+					d.getUTCDate()
+				);
+				const key = this.formatDate(localDate);
 
-    return Object.keys(loadByDay)
-      .sort()
-      .map(date => ({
-        period: date,
-        hours: Number(loadByDay[date].toFixed(2)),
-        capacity: this.CAPACITE_ATELIER
-      }));
+				const isWeekend = this.isWeekend(d);
+				const isClosed = !!closureMap[key];
+				const isHoliday = !!holidayMap[key];
+
+				if (!isWeekend && !isClosed && !isHoliday) {
+					workingDays.push(key);
+				}
+			}
+
+			if (!workingDays.length) return;
+
+			const dailyHours = totalHours / workingDays.length;
+
+			workingDays.forEach(key => {
+				loadByDay[key] = (loadByDay[key] || 0) + dailyHours;
+			});
+		});
+
+		return loadByDay;
+	},
+
+  buildDailyChartData() {
+    const capacityRows = this.buildDailyCapacityData();
+    const loadMap = this.buildDailyLoadMap();
+
+    return capacityRows.map(row => ({
+      period: row.period,
+      hours: Number((loadMap[row.period] || 0).toFixed(2)),
+      capacity: row.capacity,
+      theoretical: row.theoretical,
+      absenceHours: row.absenceHours,
+      isWeekend: row.isWeekend,
+      isClosed: row.isClosed,
+      isHoliday: row.isHoliday
+    }));
   },
 
   aggregateByWeek(dailyData) {
@@ -92,14 +268,12 @@ export default {
         grouped[key] = {
           period: key,
           hours: 0,
-          capacity: 0,
-          daysCount: 0
+          capacity: 0
         };
       }
 
       grouped[key].hours += item.hours;
       grouped[key].capacity += item.capacity;
-      grouped[key].daysCount += 1;
     });
 
     return Object.values(grouped)
@@ -121,14 +295,12 @@ export default {
         grouped[key] = {
           period: key,
           hours: 0,
-          capacity: 0,
-          daysCount: 0
+          capacity: 0
         };
       }
 
       grouped[key].hours += item.hours;
       grouped[key].capacity += item.capacity;
-      grouped[key].daysCount += 1;
     });
 
     return Object.values(grouped)
@@ -142,22 +314,16 @@ export default {
 
   getChartData() {
     const granularity = SelectGranularite.selectedOptionValue || "day";
-    const dailyData = this.buildDailyLoad();
+    const dailyData = this.buildDailyChartData();
 
-    if (granularity === "week") {
-      return this.aggregateByWeek(dailyData);
-    }
-
-    if (granularity === "month") {
-      return this.aggregateByMonth(dailyData);
-    }
+    if (granularity === "week") return this.aggregateByWeek(dailyData);
+    if (granularity === "month") return this.aggregateByMonth(dailyData);
 
     return dailyData;
   },
 
   getXAxisName() {
     const granularity = SelectGranularite.selectedOptionValue || "day";
-
     if (granularity === "week") return "Semaine";
     if (granularity === "month") return "Mois";
     return "Date";
@@ -165,7 +331,6 @@ export default {
 
   getSeriesName() {
     const granularity = SelectGranularite.selectedOptionValue || "day";
-
     if (granularity === "week") return "Charge atelier hebdo";
     if (granularity === "month") return "Charge atelier mensuelle";
     return "Charge atelier";

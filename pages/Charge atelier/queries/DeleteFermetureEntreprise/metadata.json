@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6915b9d6a2ab6852a3eeef70_37e994e2-6431-489f-959d-f7819a34beb1",
-  "id": "Charge atelier_QryMonteurs",
+  "gitSyncId": "69ae7ca2dd881670b4e51c2e_8129cab3-79eb-40dc-911d-7845c93e4341",
+  "id": "Charge atelier_DeleteFermetureEntreprise",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT *\nFROM public.everwin_users\nWHERE is_active = true\nAND pole = 'Montage'\nORDER BY everwin_user_id;",
+      "body": "DELETE FROM public.fermetures_entreprise\nWHERE id = {{ TableFermetures.triggeredRow.id }};",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,10 +22,14 @@
       "name": "Databook - Neon",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [],
-    "name": "QryMonteurs",
+    "dynamicBindingPathList": [
+      {
+        "key": "body"
+      }
+    ],
+    "name": "DeleteFermetureEntreprise",
     "pageId": "Charge atelier",
-    "runBehaviour": "AUTOMATIC",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": true
   }
 }

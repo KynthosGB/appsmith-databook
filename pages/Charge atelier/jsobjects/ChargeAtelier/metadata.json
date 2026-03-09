@@ -10,10 +10,6 @@
       {
         "name": "HOURS_PER_DAY",
         "value": "7.5"
-      },
-      {
-        "name": "CAPACITE_ATELIER",
-        "value": "120"
       }
     ]
   }

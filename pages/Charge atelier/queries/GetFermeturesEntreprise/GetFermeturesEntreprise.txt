@@ -1,0 +1,8 @@
+SELECT
+  id,
+  date_debut,
+  date_fin,
+  type_fermeture,
+  commentaire
+FROM public.fermetures_entreprise
+ORDER BY id DESC;

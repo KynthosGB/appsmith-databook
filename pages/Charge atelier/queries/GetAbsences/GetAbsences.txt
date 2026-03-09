@@ -1,0 +1,8 @@
+SELECT
+  everwin_user_id,
+  date_jour,
+  heures_absence
+FROM public.absences_monteurs
+WHERE date_jour >= {{ ChargeAtelier.getStartDate() }}
+  AND date_jour <= {{ ChargeAtelier.getEndDate() }}
+ORDER BY everwin_user_id, date_jour;

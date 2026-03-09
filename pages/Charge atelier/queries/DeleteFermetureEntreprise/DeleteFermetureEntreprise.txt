@@ -1,0 +1,2 @@
+DELETE FROM public.fermetures_entreprise
+WHERE id = {{ TableFermetures.triggeredRow.id }};

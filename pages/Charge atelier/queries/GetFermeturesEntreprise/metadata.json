@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6915b9d6a2ab6852a3eeef70_d5e38b56-e53b-44f6-9e05-377bd0552474",
-  "id": "Charge atelier_GetChargeFab",
+  "gitSyncId": "69ae7ca2dd881670b4e51c2e_9fa07009-2b2c-443e-8b04-62fc55c2d74a",
+  "id": "Charge atelier_GetFermeturesEntreprise",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n  wga.numero_appareil,\n  wf.date_debut AS \"DateDebutFab\",\n  wf.date_fin AS \"DateFinFab\",\n\twf.heures_prevues_montage AS \"HeuresPrevuesMontage\"\nFROM workflow_groupe_appareil wga\nJOIN workflow_fabrication wf ON wf.groupe_appareil_id = wga.id\nWHERE wf.date_debut IS NOT NULL\n  AND wf.date_fin IS NOT NULL\nORDER BY wf.date_debut;",
+      "body": "SELECT\n  id,\n  date_debut,\n  date_fin,\n  type_fermeture,\n  commentaire\nFROM public.fermetures_entreprise\nORDER BY id DESC;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -23,7 +23,7 @@
       "pluginId": "postgres-plugin"
     },
     "dynamicBindingPathList": [],
-    "name": "GetChargeFab",
+    "name": "GetFermeturesEntreprise",
     "pageId": "Charge atelier",
     "runBehaviour": "AUTOMATIC",
     "userSetOnLoad": false

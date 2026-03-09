@@ -1,16 +1,12 @@
 {
-  "gitSyncId": "6915b9d6a2ab6852a3eeef70_5e5cee9a-2606-4749-bd00-6d3824874e78",
-  "id": "Charge atelier_ChargeAtelier.isWorkingDayUTC",
+  "gitSyncId": "69ae7ca2dd881670b4e51c2e_5dcec4e4-2c42-4108-90a7-cf73d5ac81f5",
+  "id": "Charge atelier_ChargeAtelier.getAllFabDates",
   "pluginId": "js-plugin",
   "pluginType": "JS",
   "unpublishedAction": {
     "actionConfiguration": {
       "encodeParamsToggle": true,
-      "jsArguments": [
-        {
-          "name": "date"
-        }
-      ],
+      "jsArguments": [],
       "paginationType": "NONE",
       "timeoutInMillisecond": 10000
     },
@@ -26,8 +22,8 @@
         "key": "body"
       }
     ],
-    "fullyQualifiedName": "ChargeAtelier.isWorkingDayUTC",
-    "name": "isWorkingDayUTC",
+    "fullyQualifiedName": "ChargeAtelier.getAllFabDates",
+    "name": "getAllFabDates",
     "pageId": "Charge atelier",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false

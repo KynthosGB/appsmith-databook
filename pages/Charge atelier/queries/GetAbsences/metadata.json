@@ -29,7 +29,7 @@
     ],
     "name": "GetAbsences",
     "pageId": "Charge atelier",
-    "runBehaviour": "AUTOMATIC",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

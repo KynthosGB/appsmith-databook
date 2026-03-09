@@ -1,0 +1,12 @@
+INSERT INTO public.fermetures_entreprise (
+  date_debut,
+  date_fin,
+  type_fermeture,
+  commentaire
+)
+VALUES (
+  {{ moment(TableFermetures.newRow.date_debut).format("YYYY-MM-DD") }}::date,
+  {{ moment(TableFermetures.newRow.date_fin).format("YYYY-MM-DD") }}::date,
+  {{ TableFermetures.newRow.type_fermeture }},
+  {{ TableFermetures.newRow.commentaire || null }}
+);

@@ -1,0 +1,8 @@
+UPDATE public.fermetures_entreprise
+SET
+  date_debut = {{ moment(TableFermetures.updatedRow.date_debut).format("YYYY-MM-DD") }}::date,
+  date_fin = {{ moment(TableFermetures.updatedRow.date_fin).format("YYYY-MM-DD") }}::date,
+  type_fermeture = {{ TableFermetures.updatedRow.type_fermeture }},
+  commentaire = {{ TableFermetures.updatedRow.commentaire || null }},
+  updated_at = now()
+WHERE id = {{ TableFermetures.updatedRow.id }};

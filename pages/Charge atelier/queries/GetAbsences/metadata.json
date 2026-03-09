@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6915b9d6a2ab6852a3eeef70_37e994e2-6431-489f-959d-f7819a34beb1",
-  "id": "Charge atelier_QryMonteurs",
+  "gitSyncId": "69ae7ca2dd881670b4e51c2e_27910b5a-0478-4c0e-90b4-039a2b251db6",
+  "id": "Charge atelier_GetAbsences",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT *\nFROM public.everwin_users\nWHERE is_active = true\nAND pole = 'Montage'\nORDER BY everwin_user_id;",
+      "body": "SELECT\n  everwin_user_id,\n  date_jour,\n  heures_absence\nFROM public.absences_monteurs\nWHERE date_jour >= {{ AbsencesPlanning.getMonthStart() }}\n  AND date_jour <= {{ AbsencesPlanning.getMonthEnd() }}\nORDER BY everwin_user_id, date_jour;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,10 +22,14 @@
       "name": "Databook - Neon",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [],
-    "name": "QryMonteurs",
+    "dynamicBindingPathList": [
+      {
+        "key": "body"
+      }
+    ],
+    "name": "GetAbsences",
     "pageId": "Charge atelier",
     "runBehaviour": "AUTOMATIC",
-    "userSetOnLoad": true
+    "userSetOnLoad": false
   }
 }

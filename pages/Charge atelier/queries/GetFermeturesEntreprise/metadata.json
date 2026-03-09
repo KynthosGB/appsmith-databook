@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6915b9d6a2ab6852a3eeef70_37e994e2-6431-489f-959d-f7819a34beb1",
-  "id": "Charge atelier_QryMonteurs",
+  "gitSyncId": "69ae7ca2dd881670b4e51c2e_9fa07009-2b2c-443e-8b04-62fc55c2d74a",
+  "id": "Charge atelier_GetFermeturesEntreprise",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT *\nFROM public.everwin_users\nWHERE is_active = true\nAND pole = 'Montage'\nORDER BY everwin_user_id;",
+      "body": "SELECT\n  id,\n  date_debut,\n  date_fin,\n  type_fermeture,\n  commentaire\nFROM public.fermetures_entreprise\nORDER BY id DESC;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -23,9 +23,9 @@
       "pluginId": "postgres-plugin"
     },
     "dynamicBindingPathList": [],
-    "name": "QryMonteurs",
+    "name": "GetFermeturesEntreprise",
     "pageId": "Charge atelier",
     "runBehaviour": "AUTOMATIC",
-    "userSetOnLoad": true
+    "userSetOnLoad": false
   }
 }

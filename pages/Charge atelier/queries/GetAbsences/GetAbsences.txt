@@ -1,0 +1,8 @@
+SELECT
+  everwin_user_id,
+  date_jour,
+  heures_absence
+FROM public.absences_monteurs
+WHERE date_jour >= {{ AbsencesPlanning.getMonthStart() }}
+  AND date_jour <= {{ AbsencesPlanning.getMonthEnd() }}
+ORDER BY everwin_user_id, date_jour;

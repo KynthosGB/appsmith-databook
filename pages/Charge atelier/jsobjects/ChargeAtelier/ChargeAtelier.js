@@ -382,5 +382,15 @@ export default {
         }
       ]
     };
-  }
+  },
+	
+	async init() {
+		await GetChargeFab.run();
+		await Promise.all([
+			QryMonteurs.run(),
+			GetFermeturesEntreprise.run()
+		]);
+		await GetAbsences.run();
+		return true;
+	},
 }

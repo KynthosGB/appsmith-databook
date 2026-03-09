@@ -1,6 +1,6 @@
 {
-  "gitSyncId": "6915b9d6a2ab6852a3eeef70_0d0d0a44-a03f-4d38-98b2-23bcf9826807",
-  "id": "Charge atelier_ChargeAtelier.buildEchartOption",
+  "gitSyncId": "6915b9d6a2ab6852a3eeef70_2cda5e49-ff17-4750-8c8d-f83358528401",
+  "id": "Charge atelier_ChargeAtelier.init",
   "pluginId": "js-plugin",
   "pluginType": "JS",
   "unpublishedAction": {
@@ -22,10 +22,10 @@
         "key": "body"
       }
     ],
-    "fullyQualifiedName": "ChargeAtelier.buildEchartOption",
-    "name": "buildEchartOption",
+    "fullyQualifiedName": "ChargeAtelier.init",
+    "name": "init",
     "pageId": "Charge atelier",
-    "runBehaviour": "MANUAL",
+    "runBehaviour": "AUTOMATIC",
     "userSetOnLoad": true
   }
 }

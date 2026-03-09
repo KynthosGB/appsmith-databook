@@ -30,6 +30,6 @@
     "name": "GetAbsences",
     "pageId": "Charge atelier",
     "runBehaviour": "MANUAL",
-    "userSetOnLoad": false
+    "userSetOnLoad": true
   }
 }

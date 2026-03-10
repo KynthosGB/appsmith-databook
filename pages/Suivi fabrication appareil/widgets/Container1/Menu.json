@@ -43,6 +43,9 @@
     },
     {
       "key": "menuItems.menuItemns7yvrbl1t.onClick"
+    },
+    {
+      "key": "menuItems.menuItemyxnm2ctjxc.onClick"
     }
   ],
   "iconAlign": "left",
@@ -103,6 +106,15 @@
       "label": "Générer le dossier constructeur",
       "onClick": "{{\n  // 1️⃣ stop tout ancien polling (sécurité)\n  ProgressCtl.stopPolling();\n\n  // 2️⃣ réinitialise toutes les valeurs de la modal\n  storeValue('jobId', null);\n  storeValue('missingCodes', []);\n  storeValue('notFoundCount', 0);\n  storeValue('progressSnapshot', { percent: 0, step: \"En attente du lancement de la création\" });\n\n  // 3️⃣ force un dernier rafraîchissement vide\n  GetProgress.run();\n\n  // 4️⃣ ouvre la modal\n  showModal(ModalGenerationDossier.name);\n}}",
       "widgetId": "4ljimgtr6l"
+    },
+    "menuItemyxnm2ctjxc": {
+      "id": "menuItemyxnm2ctjxc",
+      "index": 5,
+      "isDisabled": false,
+      "isVisible": true,
+      "label": "Charge atelier",
+      "onClick": "{{navigateTo('Charge atelier', {}, 'NEW_WINDOW');}}",
+      "widgetId": "goc541azga"
     }
   },
   "menuItemsSource": "STATIC",

@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT *\nFROM public.everwin_users\nWHERE is_active = true\nAND pole = 'Montage'\nORDER BY everwin_user_id;",
+      "body": "SELECT *\nFROM public.everwin_users\nWHERE is_active = true\nAND pole = 'Montage'\nORDER BY display_name ASC;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

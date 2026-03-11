@@ -193,27 +193,49 @@ export default {
   getMonthKey(dateStr) {
     return dateStr.slice(0, 7);
   },
+	
+	buildActualHoursTotalMap() {
+		const rows = APIHeuresReellesEverwin.data?.totaux || [];
+		const map = {};
+
+		rows.forEach(row => {
+			const appareil = row.numero_appareil;
+			map[appareil] = Number(row.heures_realisees_total || 0);
+		});
+
+		return map;
+	},
 
   buildDailyLoadMap() {
 		const rows = GetChargeFab.data || [];
 		const loadByDay = {};
 		const closureMap = this.buildClosureMap();
 		const holidayMap = this.buildHolidayMap();
+		const actualMap = this.buildActualHoursTotalMap();
+
+		const today = this.formatDate(new Date());
 
 		rows.forEach(row => {
-			let d1 = this.parseDate(row.DateDebutFab);
-			let d2 = this.parseDate(row.DateFinFab);
-			const totalHours = Number(row.HeuresPrevuesMontage || 0);
+			let start = this.parseDate(row.DateDebutFab);
+			let end = this.parseDate(row.DateFinFab);
+			const totalPlanned = Number(row.HeuresPrevuesMontage || 0);
+			const appareil = row.numero_appareil;
+			const actualDone = Number(actualMap[appareil] || 0);
+			const remainingHours = Math.max(totalPlanned - actualDone, 0);
 
-			if (!d1 || !d2 || totalHours <= 0) return;
-			if (d1 > d2) [d1, d2] = [d2, d1];
+			if (!start || !end || remainingHours <= 0) return;
+			if (start > end) [start, end] = [end, start];
 
-			d1 = this.normalizeUTC(d1);
-			d2 = this.normalizeUTC(d2);
+			const todayDate = this.parseDate(today);
+			if (todayDate > start) start = todayDate;
+			if (start > end) return;
+
+			start = this.normalizeUTC(start);
+			end = this.normalizeUTC(end);
 
 			const workingDays = [];
 
-			for (let d = new Date(d1); d <= d2; d.setUTCDate(d.getUTCDate() + 1)) {
+			for (let d = new Date(start); d <= end; d.setUTCDate(d.getUTCDate() + 1)) {
 				const localDate = new Date(
 					d.getUTCFullYear(),
 					d.getUTCMonth(),
@@ -232,7 +254,7 @@ export default {
 
 			if (!workingDays.length) return;
 
-			const dailyHours = totalHours / workingDays.length;
+			const dailyHours = remainingHours / workingDays.length;
 
 			workingDays.forEach(key => {
 				loadByDay[key] = (loadByDay[key] || 0) + dailyHours;
@@ -383,6 +405,25 @@ export default {
       ]
     };
   },
+	
+	buildRemainingHoursDebug() {
+		const rows = GetChargeFab.data || [];
+		const actualMap = this.buildActualHoursTotalMap();
+
+		return rows.map(row => {
+			const planned = Number(row.HeuresPrevuesMontage || 0);
+			const done = Number(actualMap[row.numero_appareil] || 0);
+
+			return {
+				numero_appareil: row.numero_appareil,
+				planned,
+				done,
+				remaining: Math.max(planned - done, 0),
+				DateDebutFab: row.DateDebutFab,
+				DateFinFab: row.DateFinFab
+			};
+		});
+	},
 	
 	async init() {
 		await GetChargeFab.run();

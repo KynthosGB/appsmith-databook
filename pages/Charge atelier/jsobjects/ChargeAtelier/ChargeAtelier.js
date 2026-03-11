@@ -431,7 +431,10 @@ export default {
 			QryMonteurs.run(),
 			GetFermeturesEntreprise.run()
 		]);
-		await GetAbsences.run();
+		await Promise.all([
+			GetAbsences.run(),
+			APIHeuresReellesEverwin.run()
+		]);
 		return true;
 	},
 }

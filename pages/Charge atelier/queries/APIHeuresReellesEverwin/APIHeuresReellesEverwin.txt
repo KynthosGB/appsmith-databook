@@ -1,0 +1,5 @@
+{{
+{
+  everwin_user_ids: (QryMonteurs.data || []).map(u => u.everwin_user_id)
+}
+}}

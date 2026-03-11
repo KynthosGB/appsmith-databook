@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 73,
+  "bottomRow": 120,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -40,7 +40,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 64,
   "shouldTruncate": false,
-  "text": "Ce graphique montre la capacité de l'atelier VS les heures prévues. Voici le détail du calcul :\n- Pour la courbe verte : Nombre de monteurs actifs * 7.5h/j (hors WE, jours fériés, fermetures et absences renseignées dans les onglets Absences et Fermetures)\n- Pour la surface bleue : Somme des heures prévues (70% des heures/Nb jours entre date début et date fin prévisionnelle) - jours fériés - jours fermés renseignés - heures absences renseignées",
+  "text": "Ce graphique compare la capacité disponible de l'atelier avec la charge de travail planifiée restante sur les appareils en fabrication.\n\n🟢 Courbe verte — Capacité de l'atelier\nLa courbe verte représente le nombre d'heures de travail disponibles dans l'atelier. Le calcul est le suivant :\n- Nombre de monteurs actifs × 7,5 heures par jour\n\nOn retire ensuite :\n- les week-ends\n- les jours fériés\n- les fermetures de l'entreprise renseignées dans l'onglet Fermetures\n- les absences des monteurs renseignées dans l'onglet Absences\n\nOn obtient ainsi la capacité réelle de travail disponible par jour, puis ces valeurs sont additionnées par semaine pour l'affichage du graphique.\n\n🔵 Surface bleue — Charge de travail restante\nLa surface bleue représente les heures de montage restant à réaliser sur les appareils en fabrication. Le calcul se fait en plusieurs étapes :\n\nPour chaque appareil, on récupère les heures de montage prévues.\nOn soustrait les heures déjà réalisées par les monteurs (récupérées automatiquement depuis le logiciel Everwin).\nOn obtient ainsi les heures restantes à réaliser.\nCes heures restantes sont réparties sur les jours ouvrés restants entre :\n\nla date de début prévisionnelle\nla date de fin prévisionnelle\n\nLors de cette répartition, on exclut :\n- les week-ends\n- les jours fériés\n- les jours de fermeture de l'entreprise.\n\nLes heures sont ensuite regroupées par semaine pour être affichées dans le graphique.",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 67,

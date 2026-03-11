@@ -1,0 +1,103 @@
+SELECT
+  a.numero_appareil,
+  a.numero_affaire,
+  aff.nom_client AS client,
+  ca.nom_appareil,
+  a.delai,
+
+  wga.id AS groupe_appareil_id,
+  wge.id AS groupe_id,
+  wge.code AS groupe_code,
+  wge.libelle AS groupe_libelle,
+
+  ws.id AS statut_id,
+  ws.code AS statut_code,
+  ws.libelle AS statut_libelle,
+  ws.couleur AS statut_couleur,
+
+  fab.fab_jours_base,
+  fab.fab_date_debut AS date_debut,
+  fab.fab_date_fin AS date_fin
+
+FROM public.appareils a
+LEFT JOIN public.affaires aff
+       ON aff.numero_affaire = a.numero_affaire
+LEFT JOIN public.caracteristiques_appareils ca
+       ON ca.numero_appareil = a.numero_appareil
+
+LEFT JOIN public.workflow_groupe_appareil wga
+       ON wga.numero_appareil = a.numero_appareil
+LEFT JOIN public.workflow_groupe_etape wge
+       ON wge.id = wga.groupe_id
+LEFT JOIN public.workflow_statut ws
+       ON ws.id = wga.statut_id
+
+LEFT JOIN public.workflow_fabrication wfab
+       ON wfab.groupe_appareil_id = wga.id
+
+LEFT JOIN LATERAL (
+  SELECT
+    calc.fab_jours_base,
+
+    COALESCE(
+      fin_real.fab_date_fin_real,
+      fin_calc.fab_date_fin_calc
+    ) AS fab_date_fin,
+
+    COALESCE(
+      deb_real.fab_date_debut_real,
+      (
+        SELECT d::date
+        FROM generate_series(
+          (COALESCE(fin_real.fab_date_fin_real, fin_calc.fab_date_fin_calc)::date - INTERVAL '730 days')::date,
+          COALESCE(fin_real.fab_date_fin_real, fin_calc.fab_date_fin_calc)::date,
+          INTERVAL '1 day'
+        ) AS g(d)
+        WHERE EXTRACT(ISODOW FROM d) < 6
+        ORDER BY d DESC
+        OFFSET (GREATEST(calc.fab_jours_base, 1) - 1)
+        LIMIT 1
+      )
+    ) AS fab_date_debut
+
+  FROM
+    LATERAL (
+      SELECT CEIL(((COALESCE(wfab.heures_prevues, 0) * 0.70) / 7.5))::int AS fab_jours_base
+    ) calc
+
+    CROSS JOIN LATERAL (
+      SELECT
+        CASE
+          WHEN wfab.date_fin IS NULL THEN NULL
+          WHEN EXTRACT(ISODOW FROM wfab.date_fin::date) = 6 THEN (wfab.date_fin::date - INTERVAL '1 day')::date
+          WHEN EXTRACT(ISODOW FROM wfab.date_fin::date) = 7 THEN (wfab.date_fin::date - INTERVAL '2 day')::date
+          ELSE wfab.date_fin::date
+        END AS fab_date_fin_real
+    ) fin_real
+
+    CROSS JOIN LATERAL (
+      SELECT
+        CASE
+          WHEN wfab.date_debut IS NULL THEN NULL
+          WHEN EXTRACT(ISODOW FROM wfab.date_debut::date) = 6 THEN (wfab.date_debut::date + INTERVAL '2 day')::date
+          WHEN EXTRACT(ISODOW FROM wfab.date_debut::date) = 7 THEN (wfab.date_debut::date + INTERVAL '1 day')::date
+          ELSE wfab.date_debut::date
+        END AS fab_date_debut_real
+    ) deb_real
+
+    CROSS JOIN LATERAL (
+      SELECT
+        CASE
+          WHEN EXTRACT(ISODOW FROM (a.delai::date - INTERVAL '1 day')) = 6 THEN (a.delai::date - INTERVAL '2 day')::date
+          WHEN EXTRACT(ISODOW FROM (a.delai::date - INTERVAL '1 day')) = 7 THEN (a.delai::date - INTERVAL '3 day')::date
+          ELSE (a.delai::date - INTERVAL '1 day')::date
+        END AS fab_date_fin_calc
+    ) fin_calc
+) fab ON TRUE
+
+WHERE a.cloture_suivi_fabrication = false
+  AND a.numero_appareil NOT LIKE '%Z'
+  /*AND a.numero_affaire != '260999'*/
+  AND wge.code = 'FABRICATION'
+
+ORDER BY a.numero_appareil DESC;

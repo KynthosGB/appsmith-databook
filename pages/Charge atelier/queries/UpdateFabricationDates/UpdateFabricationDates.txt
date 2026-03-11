@@ -1,0 +1,5 @@
+UPDATE public.workflow_fabrication
+SET
+  date_debut = {{ this.params.date_debut }},
+  date_fin   = {{ this.params.date_fin }}
+WHERE groupe_appareil_id = {{ this.params.groupe_appareil_id }};

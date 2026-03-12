@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "UPDATE public.workflow_fabrication\nSET\n  date_debut = {{ this.params.date_debut }},\n  date_fin   = {{ this.params.date_fin }}\nWHERE groupe_appareil_id = {{ this.params.groupe_appareil_id }};",
+      "body": "UPDATE public.workflow_fabrication\nSET\n  date_debut = {{ this.params.date_debut }}::date,\n  date_fin   = {{ this.params.date_fin }}::date\nWHERE groupe_appareil_id = {{ this.params.groupe_appareil_id }};",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

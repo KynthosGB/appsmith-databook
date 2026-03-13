@@ -17,7 +17,9 @@ SELECT
 
   fab.fab_jours_base,
   fab.fab_date_debut AS date_debut,
-  fab.fab_date_fin AS date_fin
+  fab.fab_date_fin AS date_fin,
+	
+	eu.display_name
 
 FROM public.appareils a
 LEFT JOIN public.affaires aff
@@ -31,9 +33,10 @@ LEFT JOIN public.workflow_groupe_etape wge
        ON wge.id = wga.groupe_id
 LEFT JOIN public.workflow_statut ws
        ON ws.id = wga.statut_id
-
 LEFT JOIN public.workflow_fabrication wfab
        ON wfab.groupe_appareil_id = wga.id
+LEFT JOIN public.everwin_users eu
+       ON eu.everwin_user_id = wfab.monteur_id
 
 LEFT JOIN LATERAL (
   SELECT
@@ -99,5 +102,6 @@ WHERE a.cloture_suivi_fabrication = false
   AND a.numero_appareil NOT LIKE '%Z'
   /*AND a.numero_affaire != '260999'*/
   AND wge.code = 'FABRICATION'
+	AND ws.id != 1
 
-ORDER BY a.numero_appareil DESC;
+ORDER BY a.delai ASC;

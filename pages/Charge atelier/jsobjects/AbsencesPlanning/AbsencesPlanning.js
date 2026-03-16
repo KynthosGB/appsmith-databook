@@ -47,33 +47,33 @@ export default {
   },
 
   buildTableData() {
-    const monteurs = QryMonteurs.data || [];
-    const absences = GetAbsences.data || [];
-    const dayColumns = this.getDayColumns();
+		const monteurs = QryMonteurs.data || [];
+		const absences = GetAbsencesTable.data || [];
+		const dayColumns = this.getDayColumns();
 
-    const absenceMap = {};
+		const absenceMap = {};
 
-    absences.forEach(a => {
-      const d = new Date(a.date_jour);
-      const day = String(d.getDate());
-      const key = `${a.everwin_user_id}__${day}`;
-      absenceMap[key] = a.heures_absence;
-    });
+		absences.forEach(a => {
+			const dateStr = String(a.date_jour).slice(0, 10);
+			const day = String(Number(dateStr.split("-")[2]));
+			const key = `${a.everwin_user_id}__${day}`;
+			absenceMap[key] = a.heures_absence;
+		});
 
-    return monteurs.map(monteur => {
-      const row = {
-        everwin_user_id: monteur.everwin_user_id,
-        nom: monteur.display_name || monteur.everwin_user_id
-      };
+		return monteurs.map(monteur => {
+			const row = {
+				everwin_user_id: monteur.everwin_user_id,
+				nom: monteur.display_name || monteur.everwin_user_id
+			};
 
-      dayColumns.forEach(col => {
-        const mapKey = `${monteur.everwin_user_id}__${col.key}`;
-        row[col.key] = absenceMap[mapKey] ?? null;
-      });
+			dayColumns.forEach(col => {
+				const mapKey = `${monteur.everwin_user_id}__${col.key}`;
+				row[col.key] = absenceMap[mapKey] ?? null;
+			});
 
-      return row;
-    });
-  },
+			return row;
+		});
+	},
 
   buildRowPayload(row) {
     const dayMap = this.getDayMap();

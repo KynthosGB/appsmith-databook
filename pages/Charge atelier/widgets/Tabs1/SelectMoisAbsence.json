@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 4,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => (  `${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, \"0\")}` ))(SelectMoisAbsence.options, SelectMoisAbsence.serverSideFiltering) }}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => (  moment().format(\"YYYY-MM\") ))(SelectMoisAbsence.options, SelectMoisAbsence.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -23,6 +23,9 @@
   "dynamicPropertyPathList": [
     {
       "key": "sourceData"
+    },
+    {
+      "key": "onOptionChange"
     }
   ],
   "dynamicTriggerPathList": [
@@ -50,7 +53,7 @@
   "mobileRightColumn": 20,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "onOptionChange": "{{GetAbsences.run()}}",
+  "onOptionChange": "{{\n  GetAbsencesTable.run();\n}}",
   "optionLabel": "label",
   "optionValue": "value",
   "parentColumnSpace": 19.9375,

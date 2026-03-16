@@ -128,6 +128,7 @@
   "parentColumnSpace": 19.625,
   "parentId": "5ana2dge91",
   "parentRowSpace": 10,
+  "primaryColumnId": "document_type_id",
   "primaryColumns": {
     "categorie": {
       "alias": "categorie",

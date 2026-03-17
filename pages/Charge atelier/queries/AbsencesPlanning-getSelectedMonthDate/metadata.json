@@ -1,6 +1,6 @@
 {
-  "gitSyncId": "69ae7ca2dd881670b4e51c2e_8a5b0b0d-12ad-4aa1-96ab-7c7d7f1e9bfe",
-  "id": "Charge atelier_AbsencesPlanning.buildTableData",
+  "gitSyncId": "6915b9d6a2ab6852a3eeef70_a47bed75-9263-442c-b0d5-9bdbeff4034d",
+  "id": "Charge atelier_AbsencesPlanning.getSelectedMonthDate",
   "pluginId": "js-plugin",
   "pluginType": "JS",
   "unpublishedAction": {
@@ -22,8 +22,8 @@
         "key": "body"
       }
     ],
-    "fullyQualifiedName": "AbsencesPlanning.buildTableData",
-    "name": "buildTableData",
+    "fullyQualifiedName": "AbsencesPlanning.getSelectedMonthDate",
+    "name": "getSelectedMonthDate",
     "pageId": "Charge atelier",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false

@@ -62,12 +62,12 @@
     "_26",
     "_27",
     "_28",
+    "everwin_user_id",
     "_29",
     "_30",
-    "_31",
-    "everwin_user_id"
+    "_31"
   ],
-  "columnUpdatedAt": 1773753518109,
+  "columnUpdatedAt": 1773754089684,
   "columnWidthMap": {
     "EditActions1": 88,
     "_1": 60,
@@ -238,6 +238,15 @@
     },
     {
       "key": "primaryColumns._31.computedValue"
+    },
+    {
+      "key": "primaryColumns._29.isCellVisible"
+    },
+    {
+      "key": "primaryColumns._30.isCellVisible"
+    },
+    {
+      "key": "primaryColumns._31.isCellVisible"
     }
   ],
   "dynamicPropertyPathList": [
@@ -255,6 +264,15 @@
     },
     {
       "key": "primaryColumns.EditActions1.onSave"
+    },
+    {
+      "key": "primaryColumns._29.isCellVisible"
+    },
+    {
+      "key": "primaryColumns._30.isCellVisible"
+    },
+    {
+      "key": "primaryColumns._31.isCellVisible"
     }
   ],
   "dynamicTriggerPathList": [
@@ -996,7 +1014,7 @@
       "id": "_29",
       "index": 28,
       "isCellEditable": true,
-      "isCellVisible": true,
+      "isCellVisible": "{{(() => { const tableData = TableAbsences.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( AbsencesPlanning.getDaysInMonth() >= 29 )) :  AbsencesPlanning.getDaysInMonth() >= 29  })()}}",
       "isDerived": false,
       "isDisabled": false,
       "isDiscardVisible": true,
@@ -1061,7 +1079,7 @@
       "id": "_30",
       "index": 29,
       "isCellEditable": true,
-      "isCellVisible": true,
+      "isCellVisible": "{{(() => { const tableData = TableAbsences.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( AbsencesPlanning.getDaysInMonth() >= 30 )) :  AbsencesPlanning.getDaysInMonth() >= 30  })()}}",
       "isDerived": false,
       "isDisabled": false,
       "isDiscardVisible": true,
@@ -1095,7 +1113,7 @@
       "id": "_31",
       "index": 30,
       "isCellEditable": true,
-      "isCellVisible": true,
+      "isCellVisible": "{{(() => { const tableData = TableAbsences.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( AbsencesPlanning.getDaysInMonth() >= 31 )) :  AbsencesPlanning.getDaysInMonth() >= 31  })()}}",
       "isDerived": false,
       "isDisabled": false,
       "isDiscardVisible": true,
@@ -1373,7 +1391,7 @@
   "rightColumn": 64,
   "searchKey": "",
   "showInlineEditingOptionDropdown": true,
-  "tableData": "{{AbsencesPlanning.buildTableData() }}",
+  "tableData": "{{ AbsencesPlanning.buildTableRows() }}",
   "textSize": "0.8rem",
   "topRow": 5,
   "totalRecordsCount": 0,

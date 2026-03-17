@@ -1,104 +1,111 @@
 export default {
-  getSelectedMonth() {
-    return SelectMoisAbsence.selectedOptionValue || "2026-03";
+  getSelectedMonthDate() {
+    const value = SelectMoisAbsence.selectedOptionValue;
+    if (!value) return new Date();
+
+    const d = new Date(value);
+    return isNaN(d.getTime()) ? new Date() : d;
   },
 
-  getMonthInfo() {
-    const [year, month] = this.getSelectedMonth().split("-").map(Number);
-    const lastDay = new Date(year, month, 0);
-
-    return {
-      year,
-      month,
-      daysInMonth: lastDay.getDate()
-    };
+  getDaysInMonth() {
+    const d = this.getSelectedMonthDate();
+    return new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
   },
 
   getMonthStart() {
-    const { year, month } = this.getMonthInfo();
-    return `${year}-${String(month).padStart(2, "0")}-01`;
+    const d = this.getSelectedMonthDate();
+    const start = new Date(d.getFullYear(), d.getMonth(), 1);
+    return start.toISOString().slice(0, 10);
   },
 
   getMonthEnd() {
-    const { year, month, daysInMonth } = this.getMonthInfo();
-    return `${year}-${String(month).padStart(2, "0")}-${String(daysInMonth).padStart(2, "0")}`;
+    const d = this.getSelectedMonthDate();
+    const end = new Date(d.getFullYear(), d.getMonth() + 1, 0);
+    return end.toISOString().slice(0, 10);
   },
 
-  getDayColumns() {
-    const { year, month, daysInMonth } = this.getMonthInfo();
-    const cols = [];
+  buildTableRows() {
+    const monteurs = QryMonteurs.data || [];
+    const absences = GetAbsences.data || [];
+    const selected = this.getSelectedMonthDate();
+    const year = selected.getFullYear();
+    const month = selected.getMonth();
+    const daysInMonth = this.getDaysInMonth();
+
+    const rowsByUser = {};
+
+    monteurs.forEach(monteur => {
+      const row = {
+        everwin_user_id: monteur.everwin_user_id,
+        nom: monteur.display_name
+      };
+
+      for (let day = 1; day <= 31; day++) {
+        row[String(day)] = "";
+      }
+
+      rowsByUser[monteur.everwin_user_id] = row;
+    });
+
+    absences.forEach(abs => {
+      const userId = abs.everwin_user_id;
+      const d = new Date(abs.date_jour);
+
+      if (isNaN(d.getTime())) return;
+      if (d.getFullYear() !== year || d.getMonth() !== month) return;
+
+      const day = d.getDate();
+      if (day < 1 || day > 31) return;
+
+      if (!rowsByUser[userId]) {
+        const row = {
+          everwin_user_id: userId,
+          nom: ""
+        };
+
+        for (let i = 1; i <= 31; i++) {
+          row[String(i)] = "";
+        }
+
+        rowsByUser[userId] = row;
+      }
+
+      rowsByUser[userId][String(day)] = Number(abs.heures_absence || 0);
+    });
+
+    return Object.values(rowsByUser).map(row => {
+      for (let day = 1; day <= 31; day++) {
+        if (day > daysInMonth) {
+          row[String(day)] = "";
+        }
+      }
+      return row;
+    });
+  },
+
+  buildRowPayload(updatedRow) {
+    const selected = this.getSelectedMonthDate();
+    const year = selected.getFullYear();
+    const month = selected.getMonth();
+    const daysInMonth = this.getDaysInMonth();
+
+    const payload = [];
 
     for (let day = 1; day <= daysInMonth; day++) {
-      cols.push({
-        key: String(day),
-        fullDate: `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`
+      const value = Number(updatedRow[String(day)] || 0);
+
+      const date = new Date(year, month, day);
+      const yyyy = date.getFullYear();
+      const mm = String(date.getMonth() + 1).padStart(2, "0");
+      const dd = String(date.getDate()).padStart(2, "0");
+
+      payload.push({
+        everwin_user_id: updatedRow.everwin_user_id,
+        date_jour: `${yyyy}-${mm}-${dd}`,
+        heures_absence: value
       });
     }
 
-    return cols;
-  },
-
-  getDayMap() {
-    const map = {};
-    this.getDayColumns().forEach(col => {
-      map[col.key] = col.fullDate;
-    });
-    return map;
-  },
-
-  buildTableData() {
-		const monteurs = QryMonteurs.data || [];
-		const absences = GetAbsencesTable.data || [];
-		const dayColumns = this.getDayColumns();
-
-		const absenceMap = {};
-
-		absences.forEach(a => {
-			const dateStr = String(a.date_jour).slice(0, 10);
-			const day = String(Number(dateStr.split("-")[2]));
-			const key = `${a.everwin_user_id}__${day}`;
-			absenceMap[key] = a.heures_absence;
-		});
-
-		return monteurs.map(monteur => {
-			const row = {
-				everwin_user_id: monteur.everwin_user_id,
-				nom: monteur.display_name || monteur.everwin_user_id
-			};
-
-			dayColumns.forEach(col => {
-				const mapKey = `${monteur.everwin_user_id}__${col.key}`;
-				row[col.key] = absenceMap[mapKey] ?? null;
-			});
-
-			return row;
-		});
-	},
-
-  buildRowPayload(row) {
-    const dayMap = this.getDayMap();
-    const payload = [];
-
-    if (!row || !row.everwin_user_id) return payload;
-
-    Object.keys(dayMap).forEach(dayKey => {
-      const value = row[dayKey];
-
-      if (
-        value !== null &&
-        value !== "" &&
-        value !== undefined &&
-        !isNaN(Number(value)) &&
-        Number(value) > 0
-      ) {
-        payload.push({
-          everwin_user_id: row.everwin_user_id,
-          date_jour: dayMap[dayKey],
-          heures_absence: Number(value)
-        });
-      }
-    });
-
     return payload;
   }
-}
+};

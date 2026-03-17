@@ -53,7 +53,7 @@
   "mobileRightColumn": 20,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "onOptionChange": "{{\n  GetAbsencesTable.run();\n}}",
+  "onOptionChange": "{{\n  GetAbsences.run();\n}}",
   "optionLabel": "label",
   "optionValue": "value",
   "parentColumnSpace": 19.9375,

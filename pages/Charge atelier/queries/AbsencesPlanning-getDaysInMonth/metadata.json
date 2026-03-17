@@ -1,6 +1,6 @@
 {
-  "gitSyncId": "69ae7ca2dd881670b4e51c2e_bd56638c-9529-4f28-85a2-23617af8809d",
-  "id": "Charge atelier_AbsencesPlanning.getMonthInfo",
+  "gitSyncId": "6915b9d6a2ab6852a3eeef70_69ed99aa-0ca7-4027-aad6-f57e119aeb5c",
+  "id": "Charge atelier_AbsencesPlanning.getDaysInMonth",
   "pluginId": "js-plugin",
   "pluginType": "JS",
   "unpublishedAction": {
@@ -22,8 +22,8 @@
         "key": "body"
       }
     ],
-    "fullyQualifiedName": "AbsencesPlanning.getMonthInfo",
-    "name": "getMonthInfo",
+    "fullyQualifiedName": "AbsencesPlanning.getDaysInMonth",
+    "name": "getDaysInMonth",
     "pageId": "Charge atelier",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false

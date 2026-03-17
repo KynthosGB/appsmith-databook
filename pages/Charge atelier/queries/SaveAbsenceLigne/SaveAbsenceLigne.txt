@@ -1,9 +1,10 @@
 WITH deleted AS (
   DELETE FROM public.absences_monteurs
-  WHERE everwin_user_id = {{ TableAbsences.updatedRow.everwin_user_id }}
+  WHERE everwin_user_id = {{
+    TableAbsences.updatedRow?.everwin_user_id || TableAbsences.triggeredRow?.everwin_user_id
+  }}
     AND date_jour >= {{ AbsencesPlanning.getMonthStart() }}::date
     AND date_jour <= {{ AbsencesPlanning.getMonthEnd() }}::date
-  RETURNING 1
 )
 INSERT INTO public.absences_monteurs (
   everwin_user_id,
@@ -15,10 +16,18 @@ SELECT
   t.date_jour::date,
   t.heures_absence::numeric
 FROM json_to_recordset(
-  '{{ JSON.stringify(AbsencesPlanning.buildRowPayload(TableAbsences.updatedRow)) }}'
+  '{{ JSON.stringify(
+    AbsencesPlanning.buildRowPayload(
+      TableAbsences.updatedRow || TableAbsences.triggeredRow
+    )
+  ) }}'
 ) AS t(
   everwin_user_id text,
   date_jour text,
   heures_absence numeric
 )
-WHERE t.heures_absence > 0;
+WHERE t.heures_absence > 0
+ON CONFLICT (everwin_user_id, date_jour)
+DO UPDATE SET
+  heures_absence = EXCLUDED.heures_absence,
+  updated_at = now();

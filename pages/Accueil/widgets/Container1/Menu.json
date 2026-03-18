@@ -1,0 +1,105 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 4,
+  "boxShadow": "none",
+  "dynamicBindingPathList": [
+    {
+      "key": "menuColor"
+    },
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "menuItems.menuItemtqwh0zdtbo.onClick"
+    },
+    {
+      "key": "menuItems.menuItem2.isVisible"
+    },
+    {
+      "key": "menuItems.menuItemtqwh0zdtbo.isVisible"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "menuItems.menuItem3ksq8t6h4z.onClick"
+    },
+    {
+      "key": "menuItems.menuItemns7yvrbl1t.onClick"
+    },
+    {
+      "key": "menuItems.menuItemtm0jz5tfvc.onClick"
+    },
+    {
+      "key": "menuItems.menuItem3ntdy0s4i0.onClick"
+    }
+  ],
+  "iconAlign": "left",
+  "iconName": "menu",
+  "isCompact": false,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "r9a8usrjux",
+  "label": "Menu",
+  "leftColumn": 57,
+  "menuColor": "{{appsmith.theme.colors.primaryColor}}",
+  "menuItems": {
+    "menuItem3ksq8t6h4z": {
+      "id": "menuItem3ksq8t6h4z",
+      "index": 1,
+      "isDisabled": false,
+      "isVisible": true,
+      "label": "Tableau de bord BE",
+      "onClick": "{{navigateTo('Tableau de bord BE', {}, 'NEW_WINDOW');}}",
+      "widgetId": "ty4ek9esbw"
+    },
+    "menuItem3ntdy0s4i0": {
+      "id": "menuItem3ntdy0s4i0",
+      "index": 3,
+      "isDisabled": false,
+      "isVisible": true,
+      "label": "Charge atelier",
+      "onClick": "{{navigateTo('Charge atelier', {}, 'NEW_WINDOW');}}",
+      "widgetId": "xzd6eszbni"
+    },
+    "menuItemns7yvrbl1t": {
+      "id": "menuItemns7yvrbl1t",
+      "index": 2,
+      "isDisabled": false,
+      "isVisible": true,
+      "label": "Planning général",
+      "onClick": "{{navigateTo('Planning', {}, 'NEW_WINDOW');}}",
+      "widgetId": "wc3kd5uw9n"
+    },
+    "menuItemtm0jz5tfvc": {
+      "id": "menuItemtm0jz5tfvc",
+      "index": 0,
+      "isDisabled": false,
+      "isVisible": true,
+      "label": "Suivi fabrication",
+      "onClick": "{{navigateTo('Suivi fabrication appareil', {}, 'SAME_WINDOW');}}",
+      "widgetId": "l5xv4mohyh"
+    }
+  },
+  "menuItemsSource": "STATIC",
+  "menuVariant": "PRIMARY",
+  "mobileBottomRow": 8,
+  "mobileLeftColumn": 48,
+  "mobileRightColumn": 64,
+  "mobileTopRow": 4,
+  "needsErrorInfo": false,
+  "parentColumnSpace": 19.3046875,
+  "parentId": "2mqeq97zwz",
+  "parentRowSpace": 10,
+  "placement": "CENTER",
+  "renderMode": "CANVAS",
+  "rightColumn": 64,
+  "topRow": 0,
+  "type": "MENU_BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "cym4crlqyx",
+  "widgetName": "Menu"
+}

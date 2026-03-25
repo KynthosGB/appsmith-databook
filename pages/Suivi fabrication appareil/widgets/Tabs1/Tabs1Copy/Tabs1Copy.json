@@ -137,7 +137,7 @@
       "responsiveBehavior": "fill",
       "rightColumn": 1228.375,
       "tabId": "tab2sv3ruxkst",
-      "tabName": "Gestion des documents",
+      "tabName": "Génération des documents",
       "topRow": 1,
       "type": "CANVAS_WIDGET",
       "version": 1,
@@ -200,7 +200,7 @@
       "id": "tab2sv3ruxkst",
       "index": 2,
       "isVisible": true,
-      "label": "Gestion des documents",
+      "label": "Génération des documents",
       "widgetId": "5ana2dge91"
     }
   },

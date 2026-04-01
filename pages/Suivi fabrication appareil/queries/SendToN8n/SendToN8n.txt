@@ -1,4 +1,5 @@
 {
+  "langue": {{RadioLangue.selectedOptionValue}},
   "nom_client": {{DonneesGeneralesAffaire.data[0].nom_client}},
   "numero_affaire": {{CaracteristiquesAppareils.data[0].numero_affaire}},
   "reference_client": {{CaracteristiquesAppareils.data[0].reference_client}},

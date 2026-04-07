@@ -3,7 +3,7 @@
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 37,
-  "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoPrestaExtAppareil.data || [])\n      .find(r => r.presta_code === \"TRANSPORT\");\n    if (!row) return null;\n\n    if (row.na)     return \"na\";\n    if (row.envoye) return \"commande\";\n\n    return null;\n  })()\n}}\n",
+  "defaultSelectedValues": "{{\n  (() => {\n    const row = (QryInfoPrestaExtAppareil.data || [])\n      .find(r => r.presta_code === \"TRANSPORT\");\n    if (!row) return null;\n\n    if (row.na)     return \"na\";\n    if (row.commande) return \"commande\";\n\n    return null;\n  })()\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

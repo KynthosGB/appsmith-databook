@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 10,
   "boxShadow": "none",
-  "defaultText": "{{RevueContrat.data[0].emballage_berces || \"\" }}",
+  "defaultText": "{{RevueContrat.data[0].mode_transport || \"\" }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

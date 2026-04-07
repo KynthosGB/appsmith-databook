@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 21,
   "boxShadow": "none",
-  "defaultText": "{{\n  DonneesGeneralesAffaire.data\n    ?.map(dga => `${dga.vent} / ${dga.seisme}`)\n    .join(\"\\n\")\n}}",
+  "defaultText": "{{\n  DonneesGeneralesAffaire.data\n    ?.map(dga => `${dga.vent} ${dga.unite_vent} / ${dga.seisme}`)\n    .join(\"\\n\")\n}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

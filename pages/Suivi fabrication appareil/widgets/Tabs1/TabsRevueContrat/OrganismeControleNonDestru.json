@@ -35,7 +35,7 @@
   "isRequired": false,
   "isVisible": true,
   "key": "skgjv1onqf",
-  "label": "Organisme de contrôles non destructifs (si imposé apr le client)",
+  "label": "Organisme de contrôles non destructifs (si imposé par le client)",
   "labelAlignment": "left",
   "labelPosition": "Top",
   "labelStyle": "",

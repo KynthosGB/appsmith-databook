@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 31,
   "boxShadow": "none",
-  "defaultText": "{{ (CheckboxBerces.selectedValues.includes(\"na\") ? \"NA\" : \"\") }}",
+  "defaultText": "{{ (CheckboxBerces.selectedValues.includes(\"na\") ? \"NA\" : \"Oui\") }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

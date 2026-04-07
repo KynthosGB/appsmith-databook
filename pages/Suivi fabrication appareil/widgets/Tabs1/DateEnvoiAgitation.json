@@ -7,7 +7,7 @@
   "closeOnSelection": true,
   "dateFormat": "DD-MM-YYYY",
   "datePickerType": "DATE_PICKER",
-  "defaultDate": "{{\n  (QryInfoPrestaExtAppareil.data || [])\n    .find(r => r.appro_code === \"AGITATION\")\n    ?.date || \"\"\n}}\n",
+  "defaultDate": "{{\n  (QryInfoPrestaExtAppareil.data || [])\n    .find(r => r.presta_code === \"AGITATION\")\n    ?.date || \"\"\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -56,8 +56,8 @@
   "mobileTopRow": 10,
   "needsErrorInfo": false,
   "onDateSelected": "{{JS_SuiviFab.savePrestaExterneItem(\"AGITATION\", CheckboxAgitation, DateEnvoiAgitation)\n}}",
-  "originalBottomRow": 28,
-  "originalTopRow": 21,
+  "originalBottomRow": 24,
+  "originalTopRow": 17,
   "parentColumnSpace": 4.1171875,
   "parentId": "gur4cgnmdx",
   "parentRowSpace": 10,

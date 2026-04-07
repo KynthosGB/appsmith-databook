@@ -7,7 +7,7 @@
   "closeOnSelection": true,
   "dateFormat": "DD-MM-YYYY",
   "datePickerType": "DATE_PICKER",
-  "defaultDate": "{{\n  (QryInfoPrestaExtAppareil.data || [])\n    .find(r => r.appro_code === \"CALORIFUGE\")\n    ?.date || \"\"\n}}\n",
+  "defaultDate": "{{\n  (QryInfoPrestaExtAppareil.data || [])\n    .find(r => r.presta_code === \"CALORIFUGE\")\n    ?.date || \"\"\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

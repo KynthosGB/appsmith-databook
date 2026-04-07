@@ -7,7 +7,7 @@
   "closeOnSelection": true,
   "dateFormat": "DD-MM-YYYY",
   "datePickerType": "DATE_PICKER",
-  "defaultDate": "{{\n  (QryInfoPrestaExtAppareil.data || [])\n    .find(r => r.appro_code === \"TRANSPORT\")\n    ?.date || \"\"\n}}\n",
+  "defaultDate": "{{\n  (QryInfoPrestaExtAppareil.data || [])\n    .find(r => r.presta_code === \"TRANSPORT\")\n    ?.date || \"\"\n}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -56,8 +56,8 @@
   "mobileTopRow": 10,
   "needsErrorInfo": false,
   "onDateSelected": "{{JS_SuiviFab.savePrestaExterneItem(\"TRANSPORT\", CheckboxTransport, DateEnvoiTransport)\n}}",
-  "originalBottomRow": 47,
-  "originalTopRow": 40,
+  "originalBottomRow": 37,
+  "originalTopRow": 30,
   "parentColumnSpace": 4.1171875,
   "parentId": "gur4cgnmdx",
   "parentRowSpace": 10,

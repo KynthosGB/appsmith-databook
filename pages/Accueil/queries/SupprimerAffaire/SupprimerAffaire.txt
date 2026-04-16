@@ -1,0 +1,104 @@
+BEGIN;
+
+CREATE TEMP TABLE tmp_appareils_affaire AS
+SELECT a.numero_appareil
+FROM public.appareils a
+WHERE a.numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}';
+
+CREATE TEMP TABLE tmp_groupes AS
+SELECT wga.id
+FROM public.workflow_groupe_appareil wga
+INNER JOIN tmp_appareils_affaire aa
+    ON aa.numero_appareil = wga.numero_appareil;
+
+DELETE FROM public.workflow_groupe_appareil_history
+WHERE groupe_appareil_id IN (SELECT id FROM tmp_groupes);
+
+DELETE FROM public.workflow_achats
+WHERE groupe_appareil_id IN (SELECT id FROM tmp_groupes);
+
+DELETE FROM public.workflow_appro
+WHERE groupe_appareil_id IN (SELECT id FROM tmp_groupes);
+
+DELETE FROM public.workflow_cahier_soudage
+WHERE groupe_appareil_id IN (SELECT id FROM tmp_groupes);
+
+DELETE FROM public.workflow_dossier_constructeur
+WHERE groupe_appareil_id IN (SELECT id FROM tmp_groupes);
+
+DELETE FROM public.workflow_fabrication
+WHERE groupe_appareil_id IN (SELECT id FROM tmp_groupes);
+
+DELETE FROM public.workflow_note_calcul
+WHERE groupe_appareil_id IN (SELECT id FROM tmp_groupes);
+
+DELETE FROM public.workflow_plan
+WHERE groupe_appareil_id IN (SELECT id FROM tmp_groupes);
+
+DELETE FROM public.workflow_preparation
+WHERE groupe_appareil_id IN (SELECT id FROM tmp_groupes);
+
+DELETE FROM public.workflow_achats_item
+WHERE groupe_appareil_id IN (SELECT id FROM tmp_groupes);
+
+DELETE FROM public.workflow_appro_item
+WHERE groupe_appareil_id IN (SELECT id FROM tmp_groupes);
+
+DELETE FROM public.workflow_controle_item
+WHERE groupe_appareil_id IN (SELECT id FROM tmp_groupes);
+
+DELETE FROM public.workflow_presta_externe_item
+WHERE groupe_appareil_id IN (SELECT id FROM tmp_groupes);
+
+DELETE FROM public.workflow_groupe_appareil
+WHERE id IN (SELECT id FROM tmp_groupes);
+
+DELETE FROM public.revue_de_contrat_appareil
+WHERE numero_appareil IN (SELECT numero_appareil FROM tmp_appareils_affaire);
+
+DELETE FROM public.sommaire_appareils
+WHERE numero_appareil IN (SELECT numero_appareil FROM tmp_appareils_affaire);
+
+DELETE FROM public.sommaire_custom_appareils
+WHERE numero_appareil IN (SELECT numero_appareil FROM tmp_appareils_affaire);
+
+DELETE FROM public.enceintes_appareils
+WHERE numero_appareil IN (SELECT numero_appareil FROM tmp_appareils_affaire);
+
+DELETE FROM public.atelier_postes
+WHERE numero_appareil IN (SELECT numero_appareil FROM tmp_appareils_affaire);
+
+DELETE FROM public.caracteristiques_appareils
+WHERE numero_appareil IN (SELECT numero_appareil FROM tmp_appareils_affaire)
+   OR numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}';
+
+DELETE FROM public.donnees_generales_appareils
+WHERE numero_appareil IN (SELECT numero_appareil FROM tmp_appareils_affaire)
+   OR numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}';
+
+DELETE FROM public.document_generations
+WHERE numero_appareil IN (SELECT numero_appareil FROM tmp_appareils_affaire)
+   OR numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}';
+
+DELETE FROM public.client_emails
+WHERE numero_appareil IN (SELECT numero_appareil FROM tmp_appareils_affaire)
+   OR numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}';
+
+DELETE FROM public.achats_nomenclature_appareil
+WHERE numero_appareil IN (SELECT numero_appareil FROM tmp_appareils_affaire)
+   OR numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}';
+
+DELETE FROM public.liste_ccpu_nomenclature_appareil
+WHERE numero_appareil IN (SELECT numero_appareil FROM tmp_appareils_affaire)
+   OR numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}';
+
+DELETE FROM public.appareils
+WHERE numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}';
+
+DELETE FROM public.affaires
+WHERE numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}';
+
+DROP TABLE IF EXISTS tmp_groupes;
+DROP TABLE IF EXISTS tmp_appareils_affaire;
+
+COMMIT;

@@ -39,11 +39,13 @@
     "charge_affaire",
     "everwin_user_id",
     "everwin_source_db",
-    "customColumn2"
+    "customColumn2",
+    "customColumn3"
   ],
-  "columnUpdatedAt": 1773231000762,
+  "columnUpdatedAt": 1776341268712,
   "columnWidthMap": {
     "customColumn1": 111,
+    "customColumn2": 113,
     "numero_affaire": 685
   },
   "compactMode": "DEFAULT",
@@ -94,6 +96,12 @@
     },
     {
       "key": "primaryColumns.everwin_source_db.computedValue"
+    },
+    {
+      "key": "primaryColumns.customColumn3.boxShadow"
+    },
+    {
+      "key": "primaryColumns.customColumn3.borderRadius"
     }
   ],
   "dynamicPropertyPathList": [
@@ -107,6 +115,9 @@
   "dynamicTriggerPathList": [
     {
       "key": "primaryColumns.customColumn2.onClick"
+    },
+    {
+      "key": "primaryColumns.customColumn3.onClick"
     }
   ],
   "enableClientSideSearch": true,
@@ -237,6 +248,45 @@
       "notation": "standard",
       "onClick": "{{showModal(ModalConfirmationCloture.name);}}",
       "originalId": "customColumn2",
+      "sticky": "right",
+      "textSize": "0.8rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "customColumn3": {
+      "alias": "Supp",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "borderRadius": "{{ListeAffaires.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.borderRadius.appBorderRadius)))}}",
+      "boxShadow": "{{ListeAffaires.processedTableData.map((currentRow, currentIndex) => ( \"none\"))}}",
+      "buttonColor": "#ef4444",
+      "buttonStyle": "rgb(3, 179, 101)",
+      "columnType": "iconButton",
+      "computedValue": "",
+      "currencyCode": "USD",
+      "customAlias": "",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "iconName": "trash",
+      "id": "customColumn3",
+      "index": 7,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": true,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Supp",
+      "labelColor": "#FFFFFF",
+      "notation": "standard",
+      "onClick": "{{showModal(ModalSuppressionAffaire.name);}}",
+      "originalId": "customColumn3",
       "sticky": "right",
       "textSize": "0.8rem",
       "thousandSeparator": true,

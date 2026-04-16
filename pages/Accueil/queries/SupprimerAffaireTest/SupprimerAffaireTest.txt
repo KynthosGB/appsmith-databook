@@ -1,0 +1,153 @@
+WITH appareils_affaire AS (
+    SELECT a.numero_appareil
+    FROM public.appareils a
+    WHERE a.numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}'
+),
+groupes AS (
+    SELECT wga.id
+    FROM public.workflow_groupe_appareil wga
+    INNER JOIN appareils_affaire aa
+        ON aa.numero_appareil = wga.numero_appareil
+)
+
+SELECT 'affaires' AS table_name, COUNT(*)::bigint AS nb
+FROM public.affaires
+WHERE numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}'
+
+UNION ALL
+SELECT 'appareils', COUNT(*)::bigint
+FROM public.appareils
+WHERE numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}'
+
+UNION ALL
+SELECT 'caracteristiques_appareils', COUNT(*)::bigint
+FROM public.caracteristiques_appareils
+WHERE numero_appareil IN (SELECT numero_appareil FROM appareils_affaire)
+   OR numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}'
+
+UNION ALL
+SELECT 'donnees_generales_appareils', COUNT(*)::bigint
+FROM public.donnees_generales_appareils
+WHERE numero_appareil IN (SELECT numero_appareil FROM appareils_affaire)
+   OR numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}'
+
+UNION ALL
+SELECT 'enceintes_appareils', COUNT(*)::bigint
+FROM public.enceintes_appareils
+WHERE numero_appareil IN (SELECT numero_appareil FROM appareils_affaire)
+
+UNION ALL
+SELECT 'atelier_postes', COUNT(*)::bigint
+FROM public.atelier_postes
+WHERE numero_appareil IN (SELECT numero_appareil FROM appareils_affaire)
+
+UNION ALL
+SELECT 'revue_de_contrat_appareil', COUNT(*)::bigint
+FROM public.revue_de_contrat_appareil
+WHERE numero_appareil IN (SELECT numero_appareil FROM appareils_affaire)
+
+UNION ALL
+SELECT 'sommaire_appareils', COUNT(*)::bigint
+FROM public.sommaire_appareils
+WHERE numero_appareil IN (SELECT numero_appareil FROM appareils_affaire)
+
+UNION ALL
+SELECT 'sommaire_custom_appareils', COUNT(*)::bigint
+FROM public.sommaire_custom_appareils
+WHERE numero_appareil IN (SELECT numero_appareil FROM appareils_affaire)
+
+UNION ALL
+SELECT 'document_generations', COUNT(*)::bigint
+FROM public.document_generations
+WHERE numero_appareil IN (SELECT numero_appareil FROM appareils_affaire)
+   OR numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}'
+
+UNION ALL
+SELECT 'client_emails', COUNT(*)::bigint
+FROM public.client_emails
+WHERE numero_appareil IN (SELECT numero_appareil FROM appareils_affaire)
+   OR numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}'
+
+UNION ALL
+SELECT 'achats_nomenclature_appareil', COUNT(*)::bigint
+FROM public.achats_nomenclature_appareil
+WHERE numero_appareil IN (SELECT numero_appareil FROM appareils_affaire)
+   OR numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}'
+
+UNION ALL
+SELECT 'liste_ccpu_nomenclature_appareil', COUNT(*)::bigint
+FROM public.liste_ccpu_nomenclature_appareil
+WHERE numero_appareil IN (SELECT numero_appareil FROM appareils_affaire)
+   OR numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}'
+
+UNION ALL
+SELECT 'workflow_groupe_appareil', COUNT(*)::bigint
+FROM public.workflow_groupe_appareil
+WHERE id IN (SELECT id FROM groupes)
+
+UNION ALL
+SELECT 'workflow_groupe_appareil_history', COUNT(*)::bigint
+FROM public.workflow_groupe_appareil_history
+WHERE groupe_appareil_id IN (SELECT id FROM groupes)
+
+UNION ALL
+SELECT 'workflow_note_calcul', COUNT(*)::bigint
+FROM public.workflow_note_calcul
+WHERE groupe_appareil_id IN (SELECT id FROM groupes)
+
+UNION ALL
+SELECT 'workflow_plan', COUNT(*)::bigint
+FROM public.workflow_plan
+WHERE groupe_appareil_id IN (SELECT id FROM groupes)
+
+UNION ALL
+SELECT 'workflow_cahier_soudage', COUNT(*)::bigint
+FROM public.workflow_cahier_soudage
+WHERE groupe_appareil_id IN (SELECT id FROM groupes)
+
+UNION ALL
+SELECT 'workflow_preparation', COUNT(*)::bigint
+FROM public.workflow_preparation
+WHERE groupe_appareil_id IN (SELECT id FROM groupes)
+
+UNION ALL
+SELECT 'workflow_fabrication', COUNT(*)::bigint
+FROM public.workflow_fabrication
+WHERE groupe_appareil_id IN (SELECT id FROM groupes)
+
+UNION ALL
+SELECT 'workflow_achats', COUNT(*)::bigint
+FROM public.workflow_achats
+WHERE groupe_appareil_id IN (SELECT id FROM groupes)
+
+UNION ALL
+SELECT 'workflow_appro', COUNT(*)::bigint
+FROM public.workflow_appro
+WHERE groupe_appareil_id IN (SELECT id FROM groupes)
+
+UNION ALL
+SELECT 'workflow_dossier_constructeur', COUNT(*)::bigint
+FROM public.workflow_dossier_constructeur
+WHERE groupe_appareil_id IN (SELECT id FROM groupes)
+
+UNION ALL
+SELECT 'workflow_achats_item', COUNT(*)::bigint
+FROM public.workflow_achats_item
+WHERE groupe_appareil_id IN (SELECT id FROM groupes)
+
+UNION ALL
+SELECT 'workflow_appro_item', COUNT(*)::bigint
+FROM public.workflow_appro_item
+WHERE groupe_appareil_id IN (SELECT id FROM groupes)
+
+UNION ALL
+SELECT 'workflow_controle_item', COUNT(*)::bigint
+FROM public.workflow_controle_item
+WHERE groupe_appareil_id IN (SELECT id FROM groupes)
+
+UNION ALL
+SELECT 'workflow_presta_externe_item', COUNT(*)::bigint
+FROM public.workflow_presta_externe_item
+WHERE groupe_appareil_id IN (SELECT id FROM groupes)
+
+ORDER BY table_name;

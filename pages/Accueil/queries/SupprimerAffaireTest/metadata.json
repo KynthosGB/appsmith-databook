@@ -1,0 +1,35 @@
+{
+  "gitSyncId": "6915b9d6a2ab6852a3eeef70_b898f772-3c76-415b-abc5-4e3339b15bed",
+  "id": "Accueil_SupprimerAffaireTest",
+  "pluginId": "postgres-plugin",
+  "pluginType": "DB",
+  "unpublishedAction": {
+    "actionConfiguration": {
+      "body": "WITH appareils_affaire AS (\n    SELECT a.numero_appareil\n    FROM public.appareils a\n    WHERE a.numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}'\n),\ngroupes AS (\n    SELECT wga.id\n    FROM public.workflow_groupe_appareil wga\n    INNER JOIN appareils_affaire aa\n        ON aa.numero_appareil = wga.numero_appareil\n)\n\nSELECT 'affaires' AS table_name, COUNT(*)::bigint AS nb\nFROM public.affaires\nWHERE numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}'\n\nUNION ALL\nSELECT 'appareils', COUNT(*)::bigint\nFROM public.appareils\nWHERE numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}'\n\nUNION ALL\nSELECT 'caracteristiques_appareils', COUNT(*)::bigint\nFROM public.caracteristiques_appareils\nWHERE numero_appareil IN (SELECT numero_appareil FROM appareils_affaire)\n   OR numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}'\n\nUNION ALL\nSELECT 'donnees_generales_appareils', COUNT(*)::bigint\nFROM public.donnees_generales_appareils\nWHERE numero_appareil IN (SELECT numero_appareil FROM appareils_affaire)\n   OR numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}'\n\nUNION ALL\nSELECT 'enceintes_appareils', COUNT(*)::bigint\nFROM public.enceintes_appareils\nWHERE numero_appareil IN (SELECT numero_appareil FROM appareils_affaire)\n\nUNION ALL\nSELECT 'atelier_postes', COUNT(*)::bigint\nFROM public.atelier_postes\nWHERE numero_appareil IN (SELECT numero_appareil FROM appareils_affaire)\n\nUNION ALL\nSELECT 'revue_de_contrat_appareil', COUNT(*)::bigint\nFROM public.revue_de_contrat_appareil\nWHERE numero_appareil IN (SELECT numero_appareil FROM appareils_affaire)\n\nUNION ALL\nSELECT 'sommaire_appareils', COUNT(*)::bigint\nFROM public.sommaire_appareils\nWHERE numero_appareil IN (SELECT numero_appareil FROM appareils_affaire)\n\nUNION ALL\nSELECT 'sommaire_custom_appareils', COUNT(*)::bigint\nFROM public.sommaire_custom_appareils\nWHERE numero_appareil IN (SELECT numero_appareil FROM appareils_affaire)\n\nUNION ALL\nSELECT 'document_generations', COUNT(*)::bigint\nFROM public.document_generations\nWHERE numero_appareil IN (SELECT numero_appareil FROM appareils_affaire)\n   OR numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}'\n\nUNION ALL\nSELECT 'client_emails', COUNT(*)::bigint\nFROM public.client_emails\nWHERE numero_appareil IN (SELECT numero_appareil FROM appareils_affaire)\n   OR numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}'\n\nUNION ALL\nSELECT 'achats_nomenclature_appareil', COUNT(*)::bigint\nFROM public.achats_nomenclature_appareil\nWHERE numero_appareil IN (SELECT numero_appareil FROM appareils_affaire)\n   OR numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}'\n\nUNION ALL\nSELECT 'liste_ccpu_nomenclature_appareil', COUNT(*)::bigint\nFROM public.liste_ccpu_nomenclature_appareil\nWHERE numero_appareil IN (SELECT numero_appareil FROM appareils_affaire)\n   OR numero_affaire = '{{ ListeAffaires.triggeredRow.numero_affaire }}'\n\nUNION ALL\nSELECT 'workflow_groupe_appareil', COUNT(*)::bigint\nFROM public.workflow_groupe_appareil\nWHERE id IN (SELECT id FROM groupes)\n\nUNION ALL\nSELECT 'workflow_groupe_appareil_history', COUNT(*)::bigint\nFROM public.workflow_groupe_appareil_history\nWHERE groupe_appareil_id IN (SELECT id FROM groupes)\n\nUNION ALL\nSELECT 'workflow_note_calcul', COUNT(*)::bigint\nFROM public.workflow_note_calcul\nWHERE groupe_appareil_id IN (SELECT id FROM groupes)\n\nUNION ALL\nSELECT 'workflow_plan', COUNT(*)::bigint\nFROM public.workflow_plan\nWHERE groupe_appareil_id IN (SELECT id FROM groupes)\n\nUNION ALL\nSELECT 'workflow_cahier_soudage', COUNT(*)::bigint\nFROM public.workflow_cahier_soudage\nWHERE groupe_appareil_id IN (SELECT id FROM groupes)\n\nUNION ALL\nSELECT 'workflow_preparation', COUNT(*)::bigint\nFROM public.workflow_preparation\nWHERE groupe_appareil_id IN (SELECT id FROM groupes)\n\nUNION ALL\nSELECT 'workflow_fabrication', COUNT(*)::bigint\nFROM public.workflow_fabrication\nWHERE groupe_appareil_id IN (SELECT id FROM groupes)\n\nUNION ALL\nSELECT 'workflow_achats', COUNT(*)::bigint\nFROM public.workflow_achats\nWHERE groupe_appareil_id IN (SELECT id FROM groupes)\n\nUNION ALL\nSELECT 'workflow_appro', COUNT(*)::bigint\nFROM public.workflow_appro\nWHERE groupe_appareil_id IN (SELECT id FROM groupes)\n\nUNION ALL\nSELECT 'workflow_dossier_constructeur', COUNT(*)::bigint\nFROM public.workflow_dossier_constructeur\nWHERE groupe_appareil_id IN (SELECT id FROM groupes)\n\nUNION ALL\nSELECT 'workflow_achats_item', COUNT(*)::bigint\nFROM public.workflow_achats_item\nWHERE groupe_appareil_id IN (SELECT id FROM groupes)\n\nUNION ALL\nSELECT 'workflow_appro_item', COUNT(*)::bigint\nFROM public.workflow_appro_item\nWHERE groupe_appareil_id IN (SELECT id FROM groupes)\n\nUNION ALL\nSELECT 'workflow_controle_item', COUNT(*)::bigint\nFROM public.workflow_controle_item\nWHERE groupe_appareil_id IN (SELECT id FROM groupes)\n\nUNION ALL\nSELECT 'workflow_presta_externe_item', COUNT(*)::bigint\nFROM public.workflow_presta_externe_item\nWHERE groupe_appareil_id IN (SELECT id FROM groupes)\n\nORDER BY table_name;",
+      "encodeParamsToggle": true,
+      "paginationType": "NONE",
+      "pluginSpecifiedTemplates": [
+        {
+          "value": true
+        }
+      ],
+      "timeoutInMillisecond": 10000
+    },
+    "confirmBeforeExecute": false,
+    "datasource": {
+      "id": "Databook - Neon",
+      "isAutoGenerated": false,
+      "name": "Databook - Neon",
+      "pluginId": "postgres-plugin"
+    },
+    "dynamicBindingPathList": [
+      {
+        "key": "body"
+      }
+    ],
+    "name": "SupprimerAffaireTest",
+    "pageId": "Accueil",
+    "runBehaviour": "MANUAL",
+    "userSetOnLoad": false
+  }
+}

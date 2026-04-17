@@ -103,7 +103,7 @@
       "index": 2,
       "isDisabled": false,
       "isVisible": "{{!appsmith.URL.queryParams.numero_appareil?.endsWith(\"Z\")}}",
-      "label": "Générer le dossier constructeur",
+      "label": "Générer la trame du DC",
       "onClick": "{{\n  // 1️⃣ stop tout ancien polling (sécurité)\n  ProgressCtl.stopPolling();\n\n  // 2️⃣ réinitialise toutes les valeurs de la modal\n  storeValue('jobId', null);\n  storeValue('missingCodes', []);\n  storeValue('notFoundCount', 0);\n  storeValue('progressSnapshot', { percent: 0, step: \"En attente du lancement de la création\" });\n\n  // 3️⃣ force un dernier rafraîchissement vide\n  GetProgress.run();\n\n  // 4️⃣ ouvre la modal\n  showModal(ModalGenerationDossier.name);\n}}",
       "widgetId": "4ljimgtr6l"
     },

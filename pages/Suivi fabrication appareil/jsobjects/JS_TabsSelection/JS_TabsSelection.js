@@ -14,6 +14,8 @@ export default {
 		if (label === "Echanges client") {
       QryClientEmails.run();
     }
-		
+		if (label === "DC") {
+      SuiviGenerationDocsDC.run();
+    }
   }
 };

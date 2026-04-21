@@ -35,5 +35,21 @@ export default {
       ...e,
       date_epreuve: this.formatDateISOToFR(e.date_epreuve),
     }));
-  }
+  },
+	
+	formatControlesAppareil(list = []) {
+		const result = {};
+
+		(list || []).forEach(c => {
+			const code = c.controle_code;
+			if (!code) return;
+
+			result[code] = {
+				...c,
+				afficher: c.na !== true
+			};
+		});
+
+		return result;
+	}
 };

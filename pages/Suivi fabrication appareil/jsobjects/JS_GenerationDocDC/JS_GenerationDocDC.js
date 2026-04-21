@@ -5,6 +5,7 @@ export default {
         DonneesGeneralesAffaire.run(),
         CaracteristiquesAppareils.run(),
         EnceintesAppareil.run(),
+				QryInfoControlesAppareil.run(),
       ]);
 
       await storeValue("document_type_id_to_generate", documentTypeId);

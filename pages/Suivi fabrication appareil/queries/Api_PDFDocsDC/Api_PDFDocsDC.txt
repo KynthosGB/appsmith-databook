@@ -7,5 +7,8 @@
   }},
   "caracteristiques_appareil": {{
     JS_DocsDCPayload.formatCaracteristiques(CaracteristiquesAppareils.data?.[0])
-  }}
+  }},
+	"controles_appareil": {{
+  	JS_DocsDCPayload.formatControlesAppareil(QryInfoControlesAppareil.data)
+	}}
 }

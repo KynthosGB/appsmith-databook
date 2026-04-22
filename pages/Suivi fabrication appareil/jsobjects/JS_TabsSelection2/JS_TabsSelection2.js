@@ -1,6 +1,6 @@
 export default {
   onTabSelected() {
-		const label2 = TabsRevueContrat.selectedTab || TabsRevueContrat.selectedTabLabel;
+		const label2 = TabsRevueContrat.selectedTab;
 
 		if (label2 !== "Données de l'appareil") {
       CaracteristiquesAppareils.run();

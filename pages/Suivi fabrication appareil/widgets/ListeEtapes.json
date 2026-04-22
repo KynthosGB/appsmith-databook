@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "1.5rem",
-  "bottomRow": 22,
+  "bottomRow": 20,
   "boxShadow": "none",
   "buttonVariant": "PRIMARY",
   "childStylesheet": {
@@ -279,7 +279,7 @@
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
   "rightColumn": 64,
-  "topRow": 18,
+  "topRow": 16,
   "type": "BUTTON_GROUP_WIDGET",
   "version": 1,
   "widgetId": "3u7pbbw2n3",

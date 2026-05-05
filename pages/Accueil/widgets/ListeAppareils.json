@@ -37,9 +37,10 @@
     "customColumn1",
     "customColumn2"
   ],
-  "columnUpdatedAt": 1764747940957,
+  "columnUpdatedAt": 1777990443974,
   "columnWidthMap": {
-    "customColumn1": 87,
+    "customColumn1": 88,
+    "customColumn3": 109,
     "numero_affaire": 1119,
     "numero_appareil": 885
   },

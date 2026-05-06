@@ -1,0 +1,734 @@
+WITH params AS (
+  SELECT
+    '{{ ListeAffaires.selectedRow.numero_affaire + InputRepereAppareil.text }}'::text AS num_app,
+    '{{ ListeAffaires.selectedRow.numero_affaire }}'::text AS num_aff,
+    '{{ InputNomAppareil.text }}'::text AS nom_appareil,
+    '{{ InputRepereAppareil.text }}'::text AS repere,
+    {{ DateDelai.selectedDate ? moment(DateDelai.selectedDate).format("YYYY-MM-DD") : null }}::date AS delai,
+    '{{ appsmith.store.appareil_source.numero_appareil }}'::text AS num_app_src
+),
+
+ins_app AS (
+  INSERT INTO public.appareils (
+    numero_appareil,
+    numero_affaire,
+    delai,
+    cloture_suivi_fabrication
+  )
+  SELECT
+    p.num_app,
+    p.num_aff,
+    p.delai,
+    false
+  FROM params p
+  RETURNING numero_appareil
+),
+
+ins_carac AS (
+  INSERT INTO public.caracteristiques_appareils (
+    nom_appareil,
+    repere_appareil,
+    reference_client,
+    date_livraison,
+    type_appareil,
+    module_ce,
+    type_fluide,
+    niveau_risque,
+    annee_construction,
+    categorie,
+    controle,
+    attestation_conception,
+    controle_radio,
+    ressuage,
+    duree_service,
+    cycles_quotidiens,
+    coeff_soudure,
+    soudure_exterieure,
+    soudure_interieure,
+    paroi_exterieure,
+    paroi_interieure,
+    paroi_acier_carbone,
+    traitement_thermique,
+    resilience,
+    restriction_service,
+    hauteur,
+    largeur,
+    profondeur,
+    epaisseur,
+    numero_affaire,
+    numero_appareil,
+    code_construction_id,
+    edition_code_construction,
+    categorie_risque_ce_id,
+    letal,
+    classe_echangeur
+  )
+  SELECT
+    p.num_aff || p.repere || ' - ' || p.nom_appareil,
+    p.repere,
+    c.reference_client,
+    c.date_livraison,
+    c.type_appareil,
+    c.module_ce,
+    c.type_fluide,
+    c.niveau_risque,
+    c.annee_construction,
+    c.categorie,
+    c.controle,
+    c.attestation_conception,
+    c.controle_radio,
+    c.ressuage,
+    c.duree_service,
+    c.cycles_quotidiens,
+    c.coeff_soudure,
+    c.soudure_exterieure,
+    c.soudure_interieure,
+    c.paroi_exterieure,
+    c.paroi_interieure,
+    c.paroi_acier_carbone,
+    c.traitement_thermique,
+    c.resilience,
+    c.restriction_service,
+    c.hauteur,
+    c.largeur,
+    c.profondeur,
+    c.epaisseur,
+    p.num_aff,
+    p.num_app,
+    c.code_construction_id,
+    c.edition_code_construction,
+    c.categorie_risque_ce_id,
+    c.letal,
+    c.classe_echangeur
+  FROM public.caracteristiques_appareils c
+  JOIN params p ON TRUE
+  WHERE c.numero_appareil = p.num_app_src
+  RETURNING 1
+),
+
+ins_dg AS (
+  INSERT INTO public.donnees_generales_appareils (
+    numero_affaire,
+    nom_client,
+    nom_affaire,
+    nom_redacteur,
+    nom_verificateur,
+    date_creation_dossier,
+    organisme_controle,
+    indice_plan,
+    indice_nomenclature,
+    indice_cahier_soudures,
+    seisme,
+    vent,
+    fonction_redacteur,
+    fonction_verificateur,
+    indice_note_calcul,
+    numero_appareil,
+    unite_vent,
+    langue,
+    unite_mesure
+  )
+  SELECT
+    p.num_aff,
+    d.nom_client,
+    d.nom_affaire,
+    d.nom_redacteur,
+    d.nom_verificateur,
+    d.date_creation_dossier,
+    d.organisme_controle,
+    d.indice_plan,
+    d.indice_nomenclature,
+    d.indice_cahier_soudures,
+    d.seisme,
+    d.vent,
+    d.fonction_redacteur,
+    d.fonction_verificateur,
+    d.indice_note_calcul,
+    p.num_app,
+    d.unite_vent,
+    d.langue,
+    d.unite_mesure
+  FROM public.donnees_generales_appareils d
+  JOIN params p ON TRUE
+  WHERE d.numero_appareil = p.num_app_src
+  RETURNING 1
+),
+
+ins_enceintes AS (
+  INSERT INTO public.enceintes_appareils (
+    numero,
+    pression_min,
+    pression_max,
+    pression_min_calculee,
+    pression_max_calculee,
+    temperature_min,
+    temperature_max,
+    temperature_max_calculee,
+    delta_temperature,
+    pression_epreuve,
+    date_epreuve,
+    pression_declenchement_securite,
+    densite,
+    poids_a_vide,
+    poids_essai,
+    nature_fluide,
+    capacite,
+    nuance,
+    epaisseur_calorifique,
+    explosif,
+    inflammable,
+    toxique,
+    oxydant,
+    type_appareil,
+    epaisseur_corrosion,
+    poids_de_service,
+    numero_appareil,
+    temperature_min_calculee
+  )
+  SELECT
+    e.numero,
+    e.pression_min,
+    e.pression_max,
+    e.pression_min_calculee,
+    e.pression_max_calculee,
+    e.temperature_min,
+    e.temperature_max,
+    e.temperature_max_calculee,
+    e.delta_temperature,
+    e.pression_epreuve,
+    e.date_epreuve,
+    e.pression_declenchement_securite,
+    e.densite,
+    e.poids_a_vide,
+    e.poids_essai,
+    e.nature_fluide,
+    e.capacite,
+    e.nuance,
+    e.epaisseur_calorifique,
+    e.explosif,
+    e.inflammable,
+    e.toxique,
+    e.oxydant,
+    e.type_appareil,
+    e.epaisseur_corrosion,
+    e.poids_de_service,
+    p.num_app,
+    e.temperature_min_calculee
+  FROM public.enceintes_appareils e
+  JOIN params p ON TRUE
+  WHERE e.numero_appareil = p.num_app_src
+  RETURNING 1
+),
+
+ins_revue AS (
+  INSERT INTO public.revue_de_contrat_appareil (
+    numero_appareil,
+    numero_devis,
+    date_devis,
+    numero_appel_doffre,
+    date_appel_doffre,
+    plan_ensemble,
+    taille_piquages,
+    dim_pos_tubulures,
+    orifices,
+    plans_de_detail,
+    materiaux_appareils,
+    valeur_surepaisseur_corrosion,
+    temp_min_max,
+    press_min_max,
+    materiaux_nace_asme,
+    mdmt,
+    materiaux_joints,
+    materiaux_boulonneries,
+    materiaux_caracteristiques_tubes,
+    couple_temp_press,
+    nature_et_etat_fluide,
+    actions_vent_neige_seisme,
+    efforts_piquages,
+    autres_sollicitations_ext,
+    donnees_relatives_variation_soll,
+    position_appareil,
+    nature_fluide_utilise,
+    sollicitations_essais,
+    sollicitations_transport_montage,
+    code_calcul,
+    tolerances_particulieres,
+    traitement_thermique_specifique,
+    protection_surfaces_internes,
+    protection_surfaces_externes,
+    cahier_de_soudage,
+    qualif_soudeurs_supp,
+    controle_radio_pourcentage,
+    controle_ressuage_pourcentage,
+    organisme_controle_non_destructif,
+    inspection_fat,
+    pmi,
+    test_helium,
+    controle_ultrason,
+    points_zero,
+    pression_essai_hydrostatique,
+    fourniture_livraison_appareil,
+    instruments_accessoires,
+    pieces_de_rechange,
+    plan_qualite,
+    emballage_berces,
+    emballage_caisse_bois,
+    isolation_calorifugeage,
+    plateforme,
+    echelle,
+    agitation,
+    mode_transport,
+    incoterme,
+    contrainte_transport,
+    protection_appareil,
+    emballage_appareil,
+    contraintes_installation_site,
+    remplissage_colonne,
+    supervision_installation,
+    supervision_mise_en_service,
+    montage_site,
+    dechargement_site,
+    montant_commande,
+    nombre_heures_devis,
+    date_livraison_prev,
+    penalite_retard_livraison,
+    created_at,
+    updated_at
+  )
+  SELECT
+    p.num_app,
+    r.numero_devis,
+    r.date_devis,
+    r.numero_appel_doffre,
+    r.date_appel_doffre,
+    r.plan_ensemble,
+    r.taille_piquages,
+    r.dim_pos_tubulures,
+    r.orifices,
+    r.plans_de_detail,
+    r.materiaux_appareils,
+    r.valeur_surepaisseur_corrosion,
+    r.temp_min_max,
+    r.press_min_max,
+    r.materiaux_nace_asme,
+    r.mdmt,
+    r.materiaux_joints,
+    r.materiaux_boulonneries,
+    r.materiaux_caracteristiques_tubes,
+    r.couple_temp_press,
+    r.nature_et_etat_fluide,
+    r.actions_vent_neige_seisme,
+    r.efforts_piquages,
+    r.autres_sollicitations_ext,
+    r.donnees_relatives_variation_soll,
+    r.position_appareil,
+    r.nature_fluide_utilise,
+    r.sollicitations_essais,
+    r.sollicitations_transport_montage,
+    r.code_calcul,
+    r.tolerances_particulieres,
+    r.traitement_thermique_specifique,
+    r.protection_surfaces_internes,
+    r.protection_surfaces_externes,
+    r.cahier_de_soudage,
+    r.qualif_soudeurs_supp,
+    r.controle_radio_pourcentage,
+    r.controle_ressuage_pourcentage,
+    r.organisme_controle_non_destructif,
+    r.inspection_fat,
+    r.pmi,
+    r.test_helium,
+    r.controle_ultrason,
+    r.points_zero,
+    r.pression_essai_hydrostatique,
+    r.fourniture_livraison_appareil,
+    r.instruments_accessoires,
+    r.pieces_de_rechange,
+    r.plan_qualite,
+    r.emballage_berces,
+    r.emballage_caisse_bois,
+    r.isolation_calorifugeage,
+    r.plateforme,
+    r.echelle,
+    r.agitation,
+    r.mode_transport,
+    r.incoterme,
+    r.contrainte_transport,
+    r.protection_appareil,
+    r.emballage_appareil,
+    r.contraintes_installation_site,
+    r.remplissage_colonne,
+    r.supervision_installation,
+    r.supervision_mise_en_service,
+    r.montage_site,
+    r.dechargement_site,
+    r.montant_commande,
+    r.nombre_heures_devis,
+    r.date_livraison_prev,
+    r.penalite_retard_livraison,
+    now(),
+    now()
+  FROM public.revue_de_contrat_appareil r
+  JOIN params p ON TRUE
+  WHERE r.numero_appareil = p.num_app_src
+  RETURNING 1
+),
+
+ins_sommaire AS (
+  INSERT INTO public.sommaire_appareils (
+    numero_appareil,
+    master_id,
+    include,
+    chapter_ord_override,
+    sub_ord_override,
+    created_at,
+    updated_at,
+    label_fr_override,
+    label_en_override
+  )
+  SELECT
+    p.num_app,
+    s.master_id,
+    s.include,
+    s.chapter_ord_override,
+    s.sub_ord_override,
+    now(),
+    now(),
+    s.label_fr_override,
+    s.label_en_override
+  FROM public.sommaire_appareils s
+  JOIN params p ON TRUE
+  WHERE s.numero_appareil = p.num_app_src
+  RETURNING 1
+),
+
+ins_sommaire_custom AS (
+  INSERT INTO public.sommaire_custom_appareils (
+    numero_appareil,
+    master_id,
+    parent_master_id,
+    level,
+    label_fr,
+    label_en,
+    include,
+    sub_ord,
+    created_at,
+    updated_at
+  )
+  SELECT
+    p.num_app,
+    sc.master_id,
+    sc.parent_master_id,
+    sc.level,
+    sc.label_fr,
+    sc.label_en,
+    sc.include,
+    sc.sub_ord,
+    now(),
+    now()
+  FROM public.sommaire_custom_appareils sc
+  JOIN params p ON TRUE
+  WHERE sc.numero_appareil = p.num_app_src
+  RETURNING 1
+),
+
+old_groups AS (
+  SELECT
+    g.id AS old_groupe_appareil_id,
+    g.groupe_id,
+    g.responsable,
+    g.statut_id
+  FROM public.workflow_groupe_appareil g
+  JOIN params p ON TRUE
+  WHERE g.numero_appareil = p.num_app_src
+),
+
+ins_groups AS (
+  INSERT INTO public.workflow_groupe_appareil (
+    numero_appareil,
+    groupe_id,
+    responsable,
+    statut_id
+  )
+  SELECT
+    p.num_app,
+    og.groupe_id,
+    og.responsable,
+    og.statut_id
+  FROM old_groups og
+  JOIN params p ON TRUE
+  RETURNING id AS new_groupe_appareil_id, groupe_id
+),
+
+group_map AS (
+  SELECT
+    og.old_groupe_appareil_id,
+    ig.new_groupe_appareil_id,
+    og.groupe_id
+  FROM old_groups og
+  JOIN ins_groups ig ON ig.groupe_id = og.groupe_id
+),
+
+ins_wf_note_calcul AS (
+  INSERT INTO public.workflow_note_calcul (
+    groupe_appareil_id,
+    numero,
+    indice,
+    date_objectif,
+    date_edition,
+    nombre_jours,
+    date_debut
+  )
+  SELECT
+    gm.new_groupe_appareil_id,
+    w.numero,
+    w.indice,
+    w.date_objectif,
+    w.date_edition,
+    w.nombre_jours,
+    w.date_debut
+  FROM public.workflow_note_calcul w
+  JOIN group_map gm ON gm.old_groupe_appareil_id = w.groupe_appareil_id
+  RETURNING 1
+),
+
+ins_wf_plan AS (
+  INSERT INTO public.workflow_plan (
+    groupe_appareil_id,
+    numero,
+    indice,
+    dessinateur_id,
+    date_objectif,
+    date_premier_envoi,
+    date_debut,
+    date_fin,
+    nombre_jours
+  )
+  SELECT
+    gm.new_groupe_appareil_id,
+    w.numero,
+    w.indice,
+    w.dessinateur_id,
+    w.date_objectif,
+    w.date_premier_envoi,
+    w.date_debut,
+    w.date_fin,
+    w.nombre_jours
+  FROM public.workflow_plan w
+  JOIN group_map gm ON gm.old_groupe_appareil_id = w.groupe_appareil_id
+  RETURNING 1
+),
+
+ins_wf_cahier_soudage AS (
+  INSERT INTO public.workflow_cahier_soudage (
+    groupe_appareil_id,
+    iwt_id,
+    numero,
+    indice,
+    date_objectif,
+    date_debut,
+    date_fin,
+    nombre_jours
+  )
+  SELECT
+    gm.new_groupe_appareil_id,
+    w.iwt_id,
+    w.numero,
+    w.indice,
+    w.date_objectif,
+    w.date_debut,
+    w.date_fin,
+    w.nombre_jours
+  FROM public.workflow_cahier_soudage w
+  JOIN group_map gm ON gm.old_groupe_appareil_id = w.groupe_appareil_id
+  RETURNING 1
+),
+
+ins_wf_preparation AS (
+  INSERT INTO public.workflow_preparation (
+    groupe_appareil_id,
+    preparateur_id,
+    date_objectif,
+    date_debut,
+    date_fin,
+    nombre_jours
+  )
+  SELECT
+    gm.new_groupe_appareil_id,
+    w.preparateur_id,
+    w.date_objectif,
+    w.date_debut,
+    w.date_fin,
+    w.nombre_jours
+  FROM public.workflow_preparation w
+  JOIN group_map gm ON gm.old_groupe_appareil_id = w.groupe_appareil_id
+  RETURNING 1
+),
+
+ins_wf_appro AS (
+  INSERT INTO public.workflow_appro (
+    groupe_appareil_id,
+    date_objectif,
+    date_fin
+  )
+  SELECT
+    gm.new_groupe_appareil_id,
+    w.date_objectif,
+    w.date_fin
+  FROM public.workflow_appro w
+  JOIN group_map gm ON gm.old_groupe_appareil_id = w.groupe_appareil_id
+  RETURNING 1
+),
+
+ins_wf_appro_item AS (
+  INSERT INTO public.workflow_appro_item (
+    groupe_appareil_id,
+    code,
+    na,
+    envoye,
+    date
+  )
+  SELECT
+    gm.new_groupe_appareil_id,
+    w.code,
+    w.na,
+    w.envoye,
+    w.date
+  FROM public.workflow_appro_item w
+  JOIN group_map gm ON gm.old_groupe_appareil_id = w.groupe_appareil_id
+  RETURNING 1
+),
+
+ins_wf_achats AS (
+  INSERT INTO public.workflow_achats (
+    groupe_appareil_id,
+    date_objectif,
+    date_fin
+  )
+  SELECT
+    gm.new_groupe_appareil_id,
+    w.date_objectif,
+    w.date_fin
+  FROM public.workflow_achats w
+  JOIN group_map gm ON gm.old_groupe_appareil_id = w.groupe_appareil_id
+  RETURNING 1
+),
+
+ins_wf_achats_item AS (
+  INSERT INTO public.workflow_achats_item (
+    groupe_appareil_id,
+    code,
+    na,
+    recu
+  )
+  SELECT
+    gm.new_groupe_appareil_id,
+    w.code,
+    w.na,
+    w.recu
+  FROM public.workflow_achats_item w
+  JOIN group_map gm ON gm.old_groupe_appareil_id = w.groupe_appareil_id
+  RETURNING 1
+),
+
+ins_wf_fabrication AS (
+  INSERT INTO public.workflow_fabrication (
+    groupe_appareil_id,
+    monteur_id,
+    heures_prevues,
+    heures_passees,
+    date_debut,
+    date_fin,
+    heures_prevues_montage,
+    nombre_jours_marge_fab,
+    date_debut_reelle,
+    date_fin_reelle
+  )
+  SELECT
+    gm.new_groupe_appareil_id,
+    w.monteur_id,
+    w.heures_prevues,
+    w.heures_passees,
+    w.date_debut,
+    w.date_fin,
+    w.heures_prevues_montage,
+    w.nombre_jours_marge_fab,
+    w.date_debut_reelle,
+    w.date_fin_reelle
+  FROM public.workflow_fabrication w
+  JOIN group_map gm ON gm.old_groupe_appareil_id = w.groupe_appareil_id
+  RETURNING 1
+),
+
+ins_wf_controle_item AS (
+  INSERT INTO public.workflow_controle_item (
+    groupe_appareil_id,
+    code,
+    na,
+    fait,
+    date
+  )
+  SELECT
+    gm.new_groupe_appareil_id,
+    w.code,
+    w.na,
+    w.fait,
+    w.date
+  FROM public.workflow_controle_item w
+  JOIN group_map gm ON gm.old_groupe_appareil_id = w.groupe_appareil_id
+  RETURNING 1
+),
+
+ins_wf_dossier_constructeur AS (
+  INSERT INTO public.workflow_dossier_constructeur (
+    groupe_appareil_id,
+    numero
+  )
+  SELECT
+    gm.new_groupe_appareil_id,
+    w.numero
+  FROM public.workflow_dossier_constructeur w
+  JOIN group_map gm ON gm.old_groupe_appareil_id = w.groupe_appareil_id
+  RETURNING 1
+),
+
+ins_wf_presta_externe_item AS (
+  INSERT INTO public.workflow_presta_externe_item (
+    groupe_appareil_id,
+    code,
+    na,
+    commande,
+    date
+  )
+  SELECT
+    gm.new_groupe_appareil_id,
+    w.code,
+    w.na,
+    w.commande,
+    w.date
+  FROM public.workflow_presta_externe_item w
+  JOIN group_map gm ON gm.old_groupe_appareil_id = w.groupe_appareil_id
+  RETURNING 1
+)
+
+SELECT
+  (SELECT COUNT(*) FROM ins_app) AS appareils,
+  (SELECT COUNT(*) FROM ins_carac) AS caracteristiques,
+  (SELECT COUNT(*) FROM ins_dg) AS donnees_generales,
+  (SELECT COUNT(*) FROM ins_enceintes) AS enceintes,
+  (SELECT COUNT(*) FROM ins_revue) AS revue_de_contrat,
+  (SELECT COUNT(*) FROM ins_sommaire) AS sommaire,
+  (SELECT COUNT(*) FROM ins_sommaire_custom) AS sommaire_custom,
+  (SELECT COUNT(*) FROM ins_groups) AS workflow_groupes,
+  (SELECT COUNT(*) FROM ins_wf_note_calcul) AS workflow_note_calcul,
+  (SELECT COUNT(*) FROM ins_wf_plan) AS workflow_plan,
+  (SELECT COUNT(*) FROM ins_wf_cahier_soudage) AS workflow_cahier_soudage,
+  (SELECT COUNT(*) FROM ins_wf_preparation) AS workflow_preparation,
+  (SELECT COUNT(*) FROM ins_wf_appro) AS workflow_appro,
+  (SELECT COUNT(*) FROM ins_wf_appro_item) AS workflow_appro_items,
+  (SELECT COUNT(*) FROM ins_wf_achats) AS workflow_achats,
+  (SELECT COUNT(*) FROM ins_wf_achats_item) AS workflow_achats_items,
+  (SELECT COUNT(*) FROM ins_wf_fabrication) AS workflow_fabrication,
+  (SELECT COUNT(*) FROM ins_wf_controle_item) AS workflow_controle_items,
+  (SELECT COUNT(*) FROM ins_wf_dossier_constructeur) AS workflow_dossier_constructeur,
+  (SELECT COUNT(*) FROM ins_wf_presta_externe_item) AS workflow_presta_externe_items;

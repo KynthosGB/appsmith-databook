@@ -35,9 +35,10 @@
     "numero_appareil",
     "numero_affaire",
     "customColumn1",
+    "customColumn3",
     "customColumn2"
   ],
-  "columnUpdatedAt": 1777990443974,
+  "columnUpdatedAt": 1777990568539,
   "columnWidthMap": {
     "customColumn1": 88,
     "customColumn3": 109,
@@ -76,6 +77,15 @@
     },
     {
       "key": "primaryColumns.customColumn2.boxShadow"
+    },
+    {
+      "key": "primaryColumns.customColumn3.boxShadow"
+    },
+    {
+      "key": "primaryColumns.customColumn3.borderRadius"
+    },
+    {
+      "key": "primaryColumns.customColumn3.buttonColor"
     }
   ],
   "dynamicPropertyPathList": [
@@ -87,6 +97,9 @@
     },
     {
       "key": "onRowSelected"
+    },
+    {
+      "key": "primaryColumns.customColumn3.onClick"
     }
   ],
   "dynamicTriggerPathList": [
@@ -98,6 +111,9 @@
     },
     {
       "key": "onRowSelected"
+    },
+    {
+      "key": "primaryColumns.customColumn3.onClick"
     }
   ],
   "enableClientSideSearch": true,
@@ -198,6 +214,45 @@
       "notation": "standard",
       "onClick": "{{showModal(ModalSuppression.name);}}",
       "originalId": "customColumn2",
+      "sticky": "right",
+      "textSize": "0.8rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "customColumn3": {
+      "alias": "Dupliquer",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "borderRadius": "{{ListeAppareils.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.borderRadius.appBorderRadius)))}}",
+      "boxShadow": "{{ListeAppareils.processedTableData.map((currentRow, currentIndex) => ( \"none\"))}}",
+      "buttonColor": "{{ListeAppareils.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.colors.primaryColor)))}}",
+      "buttonStyle": "rgb(3, 179, 101)",
+      "columnType": "iconButton",
+      "computedValue": "",
+      "currencyCode": "USD",
+      "customAlias": "",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "iconName": "duplicate",
+      "id": "customColumn3",
+      "index": 3,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": true,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Dupliquer",
+      "labelColor": "#FFFFFF",
+      "notation": "standard",
+      "onClick": "{{  storeValue(\"appareil_modal_mode\", \"duplicate\");\n  storeValue(\"appareil_source\", currentRow);\nshowModal(ModalCreerAppareil.name);\n}}",
+      "originalId": "customColumn3",
       "sticky": "right",
       "textSize": "0.8rem",
       "thousandSeparator": true,

@@ -20,6 +20,9 @@
   "dynamicPropertyPathList": [
     {
       "key": "isDisabled"
+    },
+    {
+      "key": "onClick"
     }
   ],
   "dynamicTriggerPathList": [
@@ -41,7 +44,7 @@
   "mobileRightColumn": 60,
   "mobileTopRow": 2,
   "needsErrorInfo": false,
-  "onClick": "{{showModal(ModalCreerAppareil.name);}}",
+  "onClick": "{{\n  storeValue(\"appareil_modal_mode\", \"create\");\n  storeValue(\"appareil_source\", null);\n  showModal(ModalCreerAppareil.name);\n}}",
   "originalBottomRow": 16,
   "originalTopRow": 12,
   "parentColumnSpace": 20.25,

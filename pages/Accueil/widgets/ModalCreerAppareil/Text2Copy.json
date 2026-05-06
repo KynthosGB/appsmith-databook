@@ -41,7 +41,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 54,
   "shouldTruncate": false,
-  "text": "{{ \"Créer un appareil pour l'affaire \" + ListeAffaires.selectedRow.numero_affaire }}",
+  "text": "{{ appsmith.store.appareil_modal_mode === \"duplicate\"\n    ? \"Dupliquer l'appareil \" + appsmith.store.appareil_source.numero_appareil\n    : \"Créer un appareil pour l'affaire \" + ListeAffaires.selectedRow.numero_affaire\n}}",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 1,

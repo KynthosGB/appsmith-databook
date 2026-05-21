@@ -223,7 +223,16 @@
       "isVisible": true,
       "itemType": "BUTTON",
       "label": "NDC",
-      "menuItems": {},
+      "menuItems": {
+        "menuItemdh8vvx8tbo": {
+          "id": "menuItemdh8vvx8tbo",
+          "index": 0,
+          "isDisabled": false,
+          "isVisible": true,
+          "label": "Menu Item",
+          "widgetId": "1h4wn37t8f"
+        }
+      },
       "placement": "CENTER",
       "variant": "filled",
       "widgetId": "8f653eitcb"

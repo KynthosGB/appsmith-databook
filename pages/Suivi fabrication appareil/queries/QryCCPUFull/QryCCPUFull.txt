@@ -3,4 +3,4 @@ FROM liste_ccpu_nomenclature_appareil
 WHERE numero_appareil = '{{ 
   appsmith.URL.queryParams.numero_appareil || CaracteristiquesAppareils.data?.[0]?.numero_appareil 
 }}'
-ORDER BY code DESC;
+ORDER BY ordre_excel ASC;

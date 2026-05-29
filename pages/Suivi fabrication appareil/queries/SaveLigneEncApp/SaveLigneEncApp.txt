@@ -32,6 +32,9 @@ SET
   type_appareil                  = {{ this.params.type_appareil }},
   epaisseur_corrosion            = {{ this.params.epaisseur_corrosion }},
   poids_a_vide                   = {{ this.params.poids_a_vide }},
-  poids_de_service               = {{ this.params.poids_de_service }}
+  poids_de_service               = {{ this.params.poids_de_service }},
+	
+	categorie_risque_enceinte      = {{ this.params.categorie_risque_enceinte }},
+	module_enceinte                = {{this.params.module_enceinte }}
 WHERE id = {{ this.params.id }}
 RETURNING *;

@@ -27,7 +27,7 @@ FROM json_to_recordset(
   heures_absence numeric
 )
 WHERE t.heures_absence > 0
-ON CONFLICT (everwin_user_id, date_jour)
+ON CONFLICT (everwin_user_id, source_db, date_jour)
 DO UPDATE SET
   heures_absence = EXCLUDED.heures_absence,
   updated_at = now();
